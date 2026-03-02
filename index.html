@@ -381,6 +381,8 @@
     .cat-ai { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(0,229,184,.2); }
     .cat-talent { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(168,85,247,.2); }
     .cat-food { background: rgba(249,115,22,.12); color: #f97316; border: 1px solid rgba(249,115,22,.2); }
+    a.product-card { display: block; color: inherit; text-decoration: none; }
+    .prod-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 6px; }
 
     /* ═══ SKILLS ═══ */
     #skills { background: rgba(255,255,255,.01); border-top: 1px solid var(--border); }
@@ -499,6 +501,27 @@
     }
     footer a { color: var(--teal); text-decoration: none; }
 
+    /* ═══ PRODUCTS DROPDOWN ═══ */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { cursor: pointer; }
+    .dropdown-menu {
+      display: none; position: absolute; top: calc(100% + 12px); left: 50%;
+      transform: translateX(-50%);
+      background: rgba(9,9,26,.97); border: 1px solid var(--border);
+      border-radius: 14px; padding: .6rem; min-width: 200px;
+      backdrop-filter: blur(20px); box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      z-index: 300;
+    }
+    .nav-dropdown:hover .dropdown-menu { display: block; }
+    .dropdown-item {
+      display: flex; align-items: center; gap: .6rem;
+      padding: .5rem .75rem; border-radius: 9px;
+      color: var(--muted); text-decoration: none; font-size: .82rem; font-weight: 500;
+      transition: all .15s;
+    }
+    .dropdown-item:hover { background: var(--teal-dim); color: var(--teal); }
+    .dropdown-item img { width: 18px; height: 18px; border-radius: 4px; }
+
     /* ═══ LANG SWITCHER ═══ */
     .lang-switcher {
       display: flex; gap: .3rem; align-items: center; margin-right: .75rem;
@@ -558,7 +581,18 @@
     <li><a href="#about" data-i18n="nav.about">About</a></li>
     <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
     <li><a href="#a2sv">A2SV</a></li>
-    <li><a href="#products" data-i18n="nav.products">Products</a></li>
+    <li class="nav-dropdown">
+      <a href="#products" data-i18n="nav.products">Products ▾</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="https://adot.life" target="_blank"><img src="https://www.google.com/s2/favicons?domain=adot.life&sz=32" alt="">Adot</a>
+        <a class="dropdown-item" href="https://afrochat.app" target="_blank"><img src="https://www.google.com/s2/favicons?domain=afrochat.app&sz=32" alt="">AfroChat</a>
+        <a class="dropdown-item" href="https://akilconnect.org" target="_blank"><img src="https://www.google.com/s2/favicons?domain=akilconnect.org&sz=32" alt="">Akil</a>
+        <a class="dropdown-item" href="https://dime.gold" target="_blank"><img src="https://www.google.com/s2/favicons?domain=dime.gold&sz=32" alt="">Dime</a>
+        <a class="dropdown-item" href="https://eskalate.io" target="_blank"><img src="https://www.google.com/s2/favicons?domain=eskalate.io&sz=32" alt="">Eskalate</a>
+        <a class="dropdown-item" href="https://rateeat.app" target="_blank"><img src="https://www.google.com/s2/favicons?domain=rateeat.app&sz=32" alt="">RateEat</a>
+        <a class="dropdown-item" href="https://skillbridge.academy" target="_blank"><img src="https://www.google.com/s2/favicons?domain=skillbridge.academy&sz=32" alt="">SkillBridge</a>
+      </div>
+    </li>
     <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
     <li><a href="#awards" data-i18n="nav.awards">Awards</a></li>
   </ul>
@@ -712,11 +746,11 @@
             <div>
               <div class="tl-co">
                 <div class="co-icon" style="background:rgba(0,229,184,.12)">🌍</div>
-                <span class="co-name">A2SV Foundation &amp; Eskalate · Palo Alto / Kigali</span>
+                <span class="co-name">A2SV Foundation &amp; Eskalate · CA 501(c)(3) · Palo Alto / Kigali</span>
               </div>
               <div class="tl-role">Founder &amp; CEO</div>
             </div>
-            <span class="tl-period">Nov 2019 → Present</span>
+            <span class="tl-period">Nov 2019 → Present</span> <span style="font-size:.68rem;color:var(--muted2);margin-left:.25rem">incorp. 2021</span>
           </div>
           <ul class="tl-bullets">
             <li>Founded and scaled a nonprofit training <strong>1,200+ elite African engineers</strong> from 20+ countries</li>
@@ -868,89 +902,103 @@
 
     <div class="products-grid">
 
-      <div class="product-card anim" data-tilt>
+      <a class="product-card anim" href="https://adot.life" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(0,229,184,.15)">🤖</div>
+          <div class="prod-icon" style="background:rgba(244,63,94,.12);padding:5px;">
+            <img src="https://www.google.com/s2/favicons?domain=adot.life&sz=64" alt="Adot" />
+          </div>
           <div>
             <div class="prod-name">Adot</div>
             <div class="prod-tag">adot.life</div>
           </div>
         </div>
-        <div class="prod-desc">An AI platform providing locally-adapted solutions for Africa, making cutting-edge artificial intelligence accessible in African languages and contexts. Includes <strong>Maternity Companion</strong> at <a href="https://adot.life" target="_blank" style="color:var(--teal);text-decoration:none">adot.life</a> for prenatal care in underserved communities.</div>
-        <span class="prod-cat cat-ai">AI Platform</span>
-      </div>
+        <div class="prod-desc">A comprehensive maternity companion for African mothers. Personalized health insights from medical experts, vital and cycle tracking, appointment reminders, and direct access to healthcare professionals. 200+ mothers, 4 partner hospitals, 20+ medical experts.</div>
+        <span class="prod-cat cat-health">Maternal Health</span>
+      </a>
 
-      <div class="product-card anim" data-tilt>
+      <a class="product-card anim" href="https://afrochat.app" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(168,85,247,.15)">💬</div>
+          <div class="prod-icon" style="background:rgba(168,85,247,.12);padding:5px;">
+            <img src="https://www.google.com/s2/favicons?domain=afrochat.app&sz=64" alt="AfroChat" />
+          </div>
           <div>
             <div class="prod-name">AfroChat</div>
-            <div class="prod-tag">Chat for Africa</div>
+            <div class="prod-tag">afrochat.app</div>
           </div>
         </div>
-        <div class="prod-desc">An AI-powered chatbot connecting African youth with opportunities, resources, and information in their own languages and cultural context.</div>
-        <span class="prod-cat cat-ai">AI · Social</span>
-      </div>
+        <div class="prod-desc">AI-powered assistant giving Africans affordable access to multiple generative AI models, image generation, and persona creation in one place. Integrated with Telegram, localized for African contexts. 2.6k+ users across 85 countries.</div>
+        <span class="prod-cat cat-ai">AI Assistant</span>
+      </a>
 
-      <div class="product-card anim" data-tilt>
+      <a class="product-card anim" href="https://akilconnect.org" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(59,130,246,.15)">🧠</div>
+          <div class="prod-icon" style="background:rgba(0,229,184,.12);padding:5px;">
+            <img src="https://www.google.com/s2/favicons?domain=akilconnect.org&sz=64" alt="Akil" />
+          </div>
           <div>
             <div class="prod-name">Akil</div>
-            <div class="prod-tag">Academic AI Platform</div>
+            <div class="prod-tag">akilconnect.org</div>
           </div>
         </div>
-        <div class="prod-desc">AI-driven academic success platform for high school students: personalized learning paths, adaptive assessments, and intelligent tutoring to unlock student potential.</div>
-        <span class="prod-cat cat-edu">Education</span>
-      </div>
+        <div class="prod-desc">A career platform connecting African youth with jobs, internships, and volunteer roles. AI-powered matching helps young people find opportunities aligned to their skills, while organizations streamline recruitment and access top talent.</div>
+        <span class="prod-cat cat-talent">Youth Careers</span>
+      </a>
 
-      <div class="product-card anim" data-tilt>
+      <a class="product-card anim" href="https://dime.gold" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(245,158,11,.15)">💸</div>
+          <div class="prod-icon" style="background:rgba(245,158,11,.12);padding:5px;">
+            <img src="https://www.google.com/s2/favicons?domain=dime.gold&sz=64" alt="Dime" />
+          </div>
           <div>
             <div class="prod-name">Dime</div>
-            <div class="prod-tag">Fintech · Remittance</div>
+            <div class="prod-tag">dime.gold</div>
           </div>
         </div>
-        <div class="prod-desc">The easiest way to send money home. A fintech platform empowering African diaspora and businesses with seamless cross-border payments and African talent access.</div>
-        <span class="prod-cat cat-fin">FinTech</span>
-      </div>
+        <div class="prod-desc">The easiest way to transfer money to Africa. Best exchange rates from multiple local banks, flexible bank deposits, and low transparent fees, built for the African diaspora sending money home.</div>
+        <span class="prod-cat cat-fin">FinTech · Remittance</span>
+      </a>
 
-      <div class="product-card anim" data-tilt>
+      <a class="product-card anim" href="https://eskalate.io" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(168,85,247,.15)">🌐</div>
+          <div class="prod-icon" style="background:rgba(168,85,247,.12);padding:5px;">
+            <img src="https://www.google.com/s2/favicons?domain=eskalate.io&sz=64" alt="Eskalate" />
+          </div>
           <div>
             <div class="prod-name">Eskalate</div>
-            <div class="prod-tag">eskalate.io · Talent Marketplace</div>
+            <div class="prod-tag">eskalate.io</div>
           </div>
         </div>
-        <div class="prod-desc">A remote talent marketplace exclusively connecting A2SV graduates with global companies. Access Google-caliber African engineers for software, AI/ML, and data science roles.</div>
-        <span class="prod-cat cat-talent">Talent · Remote</span>
-      </div>
+        <div class="prod-desc">IT outsourcing powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.</div>
+        <span class="prod-cat cat-talent">Talent · Outsourcing</span>
+      </a>
 
-      <div class="product-card anim" data-tilt>
+      <a class="product-card anim" href="https://rateeat.app" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(249,115,22,.15)">🍽️</div>
+          <div class="prod-icon" style="background:rgba(249,115,22,.12);padding:5px;">
+            <img src="https://www.google.com/s2/favicons?domain=rateeat.app&sz=64" alt="RateEat" />
+          </div>
           <div>
             <div class="prod-name">RateEat</div>
-            <div class="prod-tag">Restaurant Discovery</div>
+            <div class="prod-tag">rateeat.app</div>
           </div>
         </div>
-        <div class="prod-desc">A restaurant discovery and rating platform for Africa, helping users find the best dining experiences with community-powered reviews and local context.</div>
+        <div class="prod-desc">Africa's restaurant discovery platform. Visual menus, item-specific reviews, smart filters by location, price, and rating, plus real-time order tracking. 500+ diners, 400+ restaurants, 1,400+ reviews.</div>
         <span class="prod-cat cat-food">Food · Social</span>
-      </div>
+      </a>
 
-      <div class="product-card anim" data-tilt>
+      <a class="product-card anim" href="https://skillbridge.academy" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(59,130,246,.15)">🔗</div>
+          <div class="prod-icon" style="background:rgba(59,130,246,.12);padding:5px;">
+            <img src="https://www.google.com/s2/favicons?domain=skillbridge.academy&sz=64" alt="SkillBridge" />
+          </div>
           <div>
             <div class="prod-name">SkillBridge</div>
-            <div class="prod-tag">Youth Opportunities</div>
+            <div class="prod-tag">skillbridge.academy</div>
           </div>
         </div>
-        <div class="prod-desc">A platform connecting African youth with skill-building programs, internships, and career opportunities, bridging the gap between talent and the global job market.</div>
-        <span class="prod-cat cat-edu">Skills · Careers</span>
-      </div>
+        <div class="prod-desc">AI-powered learning platform for African high school students. Expert-verified study materials aligned to national exams, gamified learning, personalized AI tutoring, and past exam solutions. 2,700+ students, 75K+ questions solved.</div>
+        <span class="prod-cat cat-edu">Education · AI</span>
+      </a>
 
     </div>
   </div>
@@ -1139,6 +1187,30 @@
   </div>
 </section>
 
+<!-- ═══ RESOURCES ═══ -->
+<section style="border-top:1px solid var(--border)">
+  <div class="container" style="padding-top:3rem;padding-bottom:3rem">
+    <div class="section-tag">resources</div>
+    <h2 class="section-h" style="margin-bottom:1.5rem">A2SV <em>Documents</em></h2>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/view?usp=sharing" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1.5rem;border-radius:12px;text-decoration:none;font-size:.9rem;font-weight:600;transition:all .25s"
+         onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        A2SV 5 Years of Impact Report
+      </a>
+      <a href="https://drive.google.com/file/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX/view?usp=sharing" target="_blank" rel="noopener"
+         style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1.5rem;border-radius:12px;text-decoration:none;font-size:.9rem;font-weight:600;transition:all .25s"
+         onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
+         onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        A2SV 2-Pager
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
   <div class="contact-inner">
@@ -1171,7 +1243,13 @@
 
 <footer>
   <p>© 2025 Emre Varol &nbsp;·&nbsp; Founder &amp; CEO, <a href="https://a2sv.org" target="_blank">A2SV</a> &nbsp;·&nbsp; Built with purpose 🌍</p>
+  <p style="margin-top:.5rem">
+    <img src="https://visitor-badge.laobi.icu/badge?page_id=emrevarol.emrevarol&left_color=%2306060f&right_color=%2300e5b8&left_text=visitors" alt="visitor count" style="height:20px;border-radius:4px;" />
+  </p>
 </footer>
+
+<!-- GoatCounter Analytics — view at https://emrevarol.goatcounter.com -->
+<script data-goatcounter="https://emrevarol.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 <script>
 // ═══ PARTICLES ═══
