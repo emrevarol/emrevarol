@@ -499,26 +499,6 @@
     }
     footer a { color: var(--teal); text-decoration: none; }
 
-    /* ═══ SIDE LOGOS ═══ */
-    .side-logos {
-      position: fixed; top: 50%; transform: translateY(-50%);
-      display: flex; flex-direction: column; gap: .75rem;
-      z-index: 5; pointer-events: none;
-    }
-    .side-logos-left { left: calc((100vw - 1100px) / 2 - 110px); }
-    .side-logos-right { right: calc((100vw - 1100px) / 2 - 110px); }
-    @media (max-width: 1380px) { .side-logos { display: none; } }
-    .side-logo {
-      display: flex; align-items: center; gap: .5rem;
-      opacity: .28; transition: opacity .25s;
-      font-size: .72rem; font-weight: 700; color: var(--muted);
-      letter-spacing: .3px; white-space: nowrap;
-    }
-    .side-logo:hover { opacity: .6; }
-    .side-logo-dot {
-      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
-    }
-
     /* ═══ LANG SWITCHER ═══ */
     .lang-switcher {
       display: flex; gap: .3rem; align-items: center; margin-right: .75rem;
@@ -561,25 +541,6 @@
   </style>
 </head>
 <body>
-
-<!-- Side Logos Left -->
-<div class="side-logos side-logos-left">
-  <div class="side-logo"><div class="side-logo-dot" style="background:#4285f4"></div>Google</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#6b1d8b"></div>Palantir</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#00d4aa"></div>Liftoff</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#ff0000"></div>Yahoo Research</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#0078d4"></div>Bilkent</div>
-</div>
-
-<!-- Side Logos Right -->
-<div class="side-logos side-logos-right">
-  <div class="side-logo"><div class="side-logo-dot" style="background:#4285f4"></div>Google</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#ff9900"></div>Amazon</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#1d4ed8"></div>Bloomberg</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#0a66c2"></div>LinkedIn</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#ff6600"></div>Databricks</div>
-  <div class="side-logo"><div class="side-logo-dot" style="background:#a855f7"></div>Eskalate</div>
-</div>
 
 <!-- Aurora -->
 <div class="aurora-wrap">
