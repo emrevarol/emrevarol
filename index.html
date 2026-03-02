@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emre Varol — Founder, Engineer, Builder</title>
+  <title>Emre Varol | Founder, Engineer, Builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
@@ -499,6 +499,38 @@
     }
     footer a { color: var(--teal); text-decoration: none; }
 
+    /* ═══ SIDE LOGOS ═══ */
+    .side-logos {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: .75rem;
+      z-index: 5; pointer-events: none;
+    }
+    .side-logos-left { left: calc((100vw - 1100px) / 2 - 110px); }
+    .side-logos-right { right: calc((100vw - 1100px) / 2 - 110px); }
+    @media (max-width: 1380px) { .side-logos { display: none; } }
+    .side-logo {
+      display: flex; align-items: center; gap: .5rem;
+      opacity: .28; transition: opacity .25s;
+      font-size: .72rem; font-weight: 700; color: var(--muted);
+      letter-spacing: .3px; white-space: nowrap;
+    }
+    .side-logo:hover { opacity: .6; }
+    .side-logo-dot {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ═══ LANG SWITCHER ═══ */
+    .lang-switcher {
+      display: flex; gap: .3rem; align-items: center; margin-right: .75rem;
+    }
+    .lang-btn {
+      background: none; border: 1px solid var(--border);
+      color: var(--muted); padding: .2rem .5rem; border-radius: 6px;
+      font-size: .72rem; font-weight: 700; cursor: pointer;
+      transition: all .2s; letter-spacing: .5px;
+    }
+    .lang-btn:hover, .lang-btn.active { color: var(--teal); border-color: rgba(0,229,184,.35); background: var(--teal-dim); }
+
     /* ═══ SCROLL ANIMATION ═══ */
     .anim { opacity: 0; transform: translateY(35px); transition: opacity .65s ease, transform .65s ease; }
     .anim.in { opacity: 1; transform: none; }
@@ -530,6 +562,25 @@
 </head>
 <body>
 
+<!-- Side Logos Left -->
+<div class="side-logos side-logos-left">
+  <div class="side-logo"><div class="side-logo-dot" style="background:#4285f4"></div>Google</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#6b1d8b"></div>Palantir</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#00d4aa"></div>Liftoff</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#ff0000"></div>Yahoo Research</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#0078d4"></div>Bilkent</div>
+</div>
+
+<!-- Side Logos Right -->
+<div class="side-logos side-logos-right">
+  <div class="side-logo"><div class="side-logo-dot" style="background:#4285f4"></div>Google</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#ff9900"></div>Amazon</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#1d4ed8"></div>Bloomberg</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#0a66c2"></div>LinkedIn</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#ff6600"></div>Databricks</div>
+  <div class="side-logo"><div class="side-logo-dot" style="background:#a855f7"></div>Eskalate</div>
+</div>
+
 <!-- Aurora -->
 <div class="aurora-wrap">
   <div class="aurora-orb orb1"></div>
@@ -541,16 +592,22 @@
 
 <!-- NAV -->
 <nav id="topnav">
-  <a href="#hero" class="nav-logo">Emre<span>.</span></a>
+  <a href="#hero" class="nav-logo">Emre<span> Varol</span></a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#experience">Experience</a></li>
+    <li><a href="#about" data-i18n="nav.about">About</a></li>
+    <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
     <li><a href="#a2sv">A2SV</a></li>
-    <li><a href="#products">Products</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#awards">Awards</a></li>
+    <li><a href="#products" data-i18n="nav.products">Products</a></li>
+    <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
+    <li><a href="#awards" data-i18n="nav.awards">Awards</a></li>
   </ul>
-  <a href="mailto:emre@a2sv.org" class="nav-cta">Say Hello</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('tr')">TR</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('rw')">RW</button>
+  </div>
+  <a href="mailto:emre@a2sv.org" class="nav-cta" data-i18n="nav.cta">Say Hello</a>
   <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
 </nav>
 
@@ -558,11 +615,10 @@
 <section id="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <div class="hero-badge"><span class="live-dot"></span>Open to Partnerships</div>
       <h1 class="hero-name">Emre<br /><span class="grad">Varol</span></h1>
       <div class="hero-typewriter"><span id="typetext"></span><span class="cursor"></span></div>
       <p class="hero-desc">
-        Founder &amp; CEO of <strong>A2SV</strong> — a Google-backed nonprofit transforming Africa's tech ecosystem.
+        Founder &amp; CEO of <strong>A2SV</strong>, a Google-backed nonprofit transforming Africa's tech ecosystem.
         8+ years at <strong>Google · Palantir · Liftoff</strong>. On a mission to bridge talent and opportunity.
       </p>
       <div class="hero-actions">
@@ -602,7 +658,7 @@
           </defs>
         </svg>
         <img src="images/emre-hero.jpeg" alt="Emre Varol" class="hero-photo" />
-        <div class="hero-photo-badge">📍 Palo Alto · Kigali</div>
+        <div class="hero-photo-badge">📍 Palo Alto · Kigali · Ankara</div>
       </div>
     </div>
   </div>
@@ -656,10 +712,10 @@
         <p>
           I grew up in <strong>Ankara, Turkey</strong>, earned a B.S. &amp; M.S. in Computer Engineering from
           <strong>Bilkent University</strong>, and competed at the <strong>International Olympiad in Informatics</strong>
-          — before spending 8+ years building production systems at <strong>Palantir, Google, and Liftoff</strong>.
+          before spending 8+ years building production systems at <strong>Palantir, Google, and Liftoff</strong>.
         </p>
         <p>
-          But a promise I made to myself in my master's thesis — dedicating it to the children of Africa — never faded.
+          But a promise I made to myself in my master's thesis, dedicating it to the children of Africa, never faded.
           In 2019, I flew to Addis Ababa with one idea: Africa's engineers can compete with anyone in the world.
           They just needed the right structure.
         </p>
@@ -707,7 +763,7 @@
             <li><strong>70% Google SWE interview success rate</strong> (vs. ~2% global average) in 2022</li>
             <li>Organized Africa's largest AI hackathon: <strong>8,500+ participants from 48 countries</strong></li>
             <li>Secured backing from <strong>Google, Jeff Dean</strong> (Google Chief Scientist), Karim Beguir (InstaDeep)</li>
-            <li>Co-founded <strong>Eskalate</strong> — talent marketplace connecting A2SV grads with global companies</li>
+            <li>Co-founded <strong>Eskalate</strong>, a talent marketplace connecting A2SV grads with global companies</li>
           </ul>
         </div>
       </div>
@@ -809,7 +865,7 @@
           I watched them earn Google interviews. I watched them pass. The talent was always there.
         </p>
         <p>
-          We run a rigorous <strong>1,000+ hour annual curriculum</strong> — data structures, algorithms, system design, soft skills —
+          We run a rigorous <strong>1,000+ hour annual curriculum</strong>: data structures, algorithms, system design, soft skills,
           completely free for every student. Then we connect them to the world's top companies.
         </p>
         <p>
@@ -847,7 +903,7 @@
   <div class="container">
     <div class="section-tag">incubator</div>
     <h2 class="section-h">A2SV <em>Products</em></h2>
-    <p class="section-sub">Digital solutions built by A2SV engineers — tackling Africa's most pressing challenges in healthcare, education, finance, and AI access.</p>
+    <p class="section-sub">Digital solutions built by A2SV engineers, tackling Africa's most pressing challenges in healthcare, education, finance, and AI access.</p>
 
     <div class="products-grid">
 
@@ -856,10 +912,10 @@
           <div class="prod-icon" style="background:rgba(0,229,184,.15)">🤖</div>
           <div>
             <div class="prod-name">Adot</div>
-            <div class="prod-tag">adot.et</div>
+            <div class="prod-tag">adot.life</div>
           </div>
         </div>
-        <div class="prod-desc">An AI platform providing locally-adapted AI solutions for Africa — making cutting-edge artificial intelligence accessible in African languages and contexts.</div>
+        <div class="prod-desc">An AI platform providing locally-adapted solutions for Africa, making cutting-edge artificial intelligence accessible in African languages and contexts. Includes <strong>Maternity Companion</strong> at <a href="https://adot.life" target="_blank" style="color:var(--teal);text-decoration:none">adot.life</a> for prenatal care in underserved communities.</div>
         <span class="prod-cat cat-ai">AI Platform</span>
       </div>
 
@@ -883,7 +939,7 @@
             <div class="prod-tag">Academic AI Platform</div>
           </div>
         </div>
-        <div class="prod-desc">AI-driven academic success platform for high school students — personalized learning paths, adaptive assessments, and intelligent tutoring to unlock student potential.</div>
+        <div class="prod-desc">AI-driven academic success platform for high school students: personalized learning paths, adaptive assessments, and intelligent tutoring to unlock student potential.</div>
         <span class="prod-cat cat-edu">Education</span>
       </div>
 
@@ -919,7 +975,7 @@
             <div class="prod-tag">Restaurant Discovery</div>
           </div>
         </div>
-        <div class="prod-desc">A restaurant discovery and rating platform for Africa — helping users find the best dining experiences with community-powered reviews and local context.</div>
+        <div class="prod-desc">A restaurant discovery and rating platform for Africa, helping users find the best dining experiences with community-powered reviews and local context.</div>
         <span class="prod-cat cat-food">Food · Social</span>
       </div>
 
@@ -931,20 +987,8 @@
             <div class="prod-tag">Youth Opportunities</div>
           </div>
         </div>
-        <div class="prod-desc">A platform connecting African youth with skill-building programs, internships, and career opportunities — bridging the gap between talent and the global job market.</div>
+        <div class="prod-desc">A platform connecting African youth with skill-building programs, internships, and career opportunities, bridging the gap between talent and the global job market.</div>
         <span class="prod-cat cat-edu">Skills · Careers</span>
-      </div>
-
-      <div class="product-card anim" data-tilt>
-        <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(244,63,94,.15)">🤱</div>
-          <div>
-            <div class="prod-name">Maternity Companion</div>
-            <div class="prod-tag">Women's Healthcare</div>
-          </div>
-        </div>
-        <div class="prod-desc">A digital companion for expectant mothers in Africa — providing personalized prenatal guidance, health tracking, and access to maternal care resources in underserved communities.</div>
-        <span class="prod-cat cat-health">Healthcare</span>
       </div>
 
     </div>
@@ -1057,13 +1101,13 @@
     <div class="section-tag">recognition</div>
     <h2 class="section-h">Honors &amp; <em>Awards</em></h2>
     <div class="awards-list">
-      <div class="award-item anim"><div class="award-ico">🏆</div><div class="award-txt"><strong>Ten Outstanding Young Persons (TOYP) 2024</strong> — Humanitarian &amp; Voluntary Leadership · JCI Turkey</div></div>
-      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Ranked 1st</strong> — Bilkent University IEEE Computer Society Programming Competition (2010)</div></div>
-      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Ranked 1st</strong> — 12th METU Programming Competition (2009)</div></div>
-      <div class="award-item anim"><div class="award-ico">🌐</div><div class="award-txt"><strong>Ranked 10th Globally</strong> — 2nd IEEEXtreme Programming Contest (2008)</div></div>
-      <div class="award-item anim"><div class="award-ico">🌍</div><div class="award-txt"><strong>International Olympiad in Informatics (IOI)</strong> — Representing Turkey (2005)</div></div>
-      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Gold Medal (1st Place)</strong> — Turkish National Olympiads in Informatics (2004)</div></div>
-      <div class="award-item anim"><div class="award-ico">📊</div><div class="award-txt"><strong>Ranked 82nd / 500,000+</strong> — National High School Entrance Exam, Turkey (2002)</div></div>
+      <div class="award-item anim"><div class="award-ico">🏆</div><div class="award-txt"><strong>Ten Outstanding Young Persons (TOYP) 2024</strong>, Humanitarian &amp; Voluntary Leadership · JCI Turkey</div></div>
+      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Ranked 1st</strong>, Bilkent University IEEE Computer Society Programming Competition (2010)</div></div>
+      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Ranked 1st</strong>, 12th METU Programming Competition (2009)</div></div>
+      <div class="award-item anim"><div class="award-ico">🌐</div><div class="award-txt"><strong>Ranked 10th Globally</strong>, 2nd IEEEXtreme Programming Contest (2008)</div></div>
+      <div class="award-item anim"><div class="award-ico">🌍</div><div class="award-txt"><strong>International Olympiad in Informatics (IOI)</strong>, Representing Turkey (2005)</div></div>
+      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Gold Medal (1st Place)</strong>, Turkish National Olympiads in Informatics (2004)</div></div>
+      <div class="award-item anim"><div class="award-ico">📊</div><div class="award-txt"><strong>Ranked 82nd / 500,000+</strong>, National High School Entrance Exam, Turkey (2002)</div></div>
     </div>
 
     <div style="margin-top:3rem">
@@ -1090,12 +1134,10 @@
   <div class="gs-inner">
     <div class="gs-badge">🔴🟡</div>
     <div class="gs-text">
-      <h3>Cim Bom Cim Bom — Galatasaray!</h3>
+      <h3>Galatasaray</h3>
       <p>
-        Born in <strong>Ankara</strong> but my heart bleeds <strong>red and yellow</strong>.
-        A proud Galatasaray supporter through every title, every derby, every dramatic comeback.
-        Champions League glory? Yes. İstanbul'un efendisi? Always.
-        Football runs as deep as code in these veins.
+        Born in <strong>Ankara</strong>, heart red and yellow.
+        Football and code have been with me equally long.
       </p>
       <div class="gs-stripe">
         <div class="gs-stripe-bar" style="background:var(--gs-red)"></div>
@@ -1118,7 +1160,7 @@
         <p style="color:var(--muted);line-height:1.85;margin-top:1rem;font-size:.96rem">
           You'll find me with a guitar in hand, on a hiking trail, watching Galatasaray dominate,
           or deep in a book on psychology, leadership, or strategy.
-          I believe the best engineers are also curious humans — and I try to embody that.
+          I believe the best engineers are also curious humans, and I try to embody that.
         </p>
         <div class="pills" style="margin-top:1.5rem">
           <span class="pill pill-plain">🎸 Guitar</span>
@@ -1141,7 +1183,7 @@
   <div class="contact-inner">
     <div class="section-tag" style="justify-content:center">contact</div>
     <h2>Let's <em style="font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Connect</em></h2>
-    <p>
+    <p data-i18n="contact.desc">
       Interested in partnering with A2SV, hiring African talent through Eskalate,
       or just want to say hello? I'd love to hear from you.
     </p>
@@ -1258,6 +1300,58 @@ function toggleNav() {
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
   if(window.innerWidth<=960) document.querySelector('.nav-links').removeAttribute('style');
 }));
+
+// ═══ LANGUAGE SWITCHER ═══
+const translations = {
+  en: {
+    'nav.about': 'About',
+    'nav.experience': 'Experience',
+    'nav.products': 'Products',
+    'nav.skills': 'Skills',
+    'nav.awards': 'Awards',
+    'nav.cta': 'Say Hello',
+    'contact.desc': "Interested in partnering with A2SV, hiring African talent through Eskalate, or just want to say hello? I'd love to hear from you.",
+  },
+  tr: {
+    'nav.about': 'Hakkımda',
+    'nav.experience': 'Deneyim',
+    'nav.products': 'Ürünler',
+    'nav.skills': 'Beceriler',
+    'nav.awards': 'Ödüller',
+    'nav.cta': 'Merhaba',
+    'contact.desc': "A2SV ile iş birliği yapmak, Eskalate aracılığıyla Afrika'dan yetenek işe almak ya da sadece merhaba demek ister misiniz? Sizden haber almaktan mutluluk duyarım.",
+  },
+  es: {
+    'nav.about': 'Sobre mí',
+    'nav.experience': 'Experiencia',
+    'nav.products': 'Productos',
+    'nav.skills': 'Habilidades',
+    'nav.awards': 'Premios',
+    'nav.cta': 'Hola',
+    'contact.desc': '¿Te interesa asociarte con A2SV, contratar talento africano a través de Eskalate, o simplemente saludar? Me encantaría saber de ti.',
+  },
+  rw: {
+    'nav.about': 'Ibyerekeye',
+    'nav.experience': 'Uburambe',
+    'nav.products': 'Ibicuruzwa',
+    'nav.skills': 'Ubumenyi',
+    'nav.awards': 'Ibihembo',
+    'nav.cta': 'Muraho',
+    'contact.desc': "Ushaka gukorana na A2SV, gushaka inzobere z'Afurika binyuze muri Eskalate, cyangwa ukunda kuvuga muraho? Nishimiye kukumva.",
+  }
+};
+
+function setLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (translations[lang] && translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  document.documentElement.lang = lang;
+}
 
 // ═══ PARALLAX HERO ═══
 window.addEventListener('scroll', ()=>{
