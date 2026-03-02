@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emre Varol — Founder, Engineer, Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #06060f;
+      --bg2: #09091a;
+      --card: rgba(255,255,255,0.04);
+      --card-hover: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.18);
+      --teal: #00e5b8;
+      --teal-dim: rgba(0,229,184,0.12);
+      --teal-glow: rgba(0,229,184,0.25);
+      --purple: #a855f7;
+      --purple-dim: rgba(168,85,247,0.12);
+      --gold: #f59e0b;
+      --gold-dim: rgba(245,158,11,0.1);
+      --rose: #f43f5e;
+      --blue: #3b82f6;
+      --gs-red: #e8212c;
+      --gs-yellow: #f9a800;
+      --text: #f0f4ff;
+      --muted: #94a3b8;
+      --muted2: #475569;
+      --radius: 18px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    ::selection { background: var(--teal-dim); color: var(--teal); }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 4px; }
+
+    /* ═══ AURORA BACKGROUND ═══ */
+    .aurora-wrap {
+      position: fixed; inset: 0; z-index: 0;
+      overflow: hidden; pointer-events: none;
+    }
+    .aurora-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); opacity: .55;
+      animation: drift linear infinite;
+    }
+    .orb1 { width: 600px; height: 600px; background: radial-gradient(circle, #00d4aa44, transparent 70%); top: -200px; left: -200px; animation-duration: 22s; }
+    .orb2 { width: 500px; height: 500px; background: radial-gradient(circle, #7c3aed33, transparent 70%); top: 30%; right: -150px; animation-duration: 28s; animation-delay: -8s; }
+    .orb3 { width: 400px; height: 400px; background: radial-gradient(circle, #f59e0b22, transparent 70%); bottom: 10%; left: 20%; animation-duration: 35s; animation-delay: -15s; }
+    .orb4 { width: 350px; height: 350px; background: radial-gradient(circle, #3b82f622, transparent 70%); bottom: -100px; right: 10%; animation-duration: 25s; animation-delay: -5s; }
+    @keyframes drift {
+      0%   { transform: translate(0, 0) scale(1); }
+      25%  { transform: translate(60px, 40px) scale(1.08); }
+      50%  { transform: translate(20px, 80px) scale(0.95); }
+      75%  { transform: translate(-40px, 30px) scale(1.05); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    /* particle canvas */
+    #particles { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .6; }
+
+    /* ═══ NAV ═══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 62px;
+      background: rgba(6,6,15,0.65);
+      backdrop-filter: blur(24px) saturate(1.5);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-size: 1.15rem; font-weight: 900; color: var(--text); text-decoration: none; letter-spacing: -1px; }
+    .nav-logo span { color: var(--teal); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--teal), #00b894);
+      color: #000; padding: .42rem 1.2rem; border-radius: 10px;
+      font-weight: 700; font-size: .82rem; text-decoration: none;
+      box-shadow: 0 0 20px var(--teal-glow); transition: all .2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 30px var(--teal-glow); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; }
+
+    /* ═══ HERO ═══ */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 80px 5% 0; overflow: hidden;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+      width: 100%; max-width: 1200px; margin: 0 auto;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: .55rem;
+      background: linear-gradient(135deg, rgba(0,229,184,0.12), rgba(168,85,247,0.1));
+      border: 1px solid rgba(0,229,184,0.25);
+      color: var(--teal); padding: .38rem 1rem; border-radius: 100px;
+      font-size: .78rem; font-weight: 700; letter-spacing: .8px;
+      margin-bottom: 1.5rem; text-transform: uppercase;
+    }
+    .live-dot { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; animation: pulse 1.4s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;box-shadow:0 0 0 0 var(--teal-glow)} 50%{opacity:.6;box-shadow:0 0 0 5px transparent} }
+
+    .hero-name {
+      font-size: clamp(3rem, 5.5vw, 4.6rem);
+      font-weight: 900; letter-spacing: -3px; line-height: 1.02;
+      margin-bottom: .6rem;
+    }
+    .hero-name .grad {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 60%, var(--gold) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; animation: gradshift 4s ease infinite alternate;
+      background-size: 200%;
+    }
+    @keyframes gradshift { 0%{background-position:0%} 100%{background-position:100%} }
+
+    .hero-typewriter { font-size: clamp(1rem,1.8vw,1.3rem); color: var(--muted); margin-bottom: 1.75rem; min-height: 1.8rem; }
+    .cursor { display: inline-block; width: 2px; height: 1.1em; background: var(--teal); animation: blink .7s step-end infinite; vertical-align: middle; margin-left: 2px; }
+    @keyframes blink { 50%{opacity:0} }
+
+    .hero-desc { color: var(--muted); font-size: .97rem; max-width: 460px; line-height: 1.8; margin-bottom: 2rem; }
+    .hero-desc strong { color: var(--text); font-weight: 600; }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: linear-gradient(135deg, var(--teal), #00c49f);
+      color: #000; padding: .8rem 1.8rem; border-radius: 12px;
+      font-weight: 700; font-size: .92rem; text-decoration: none;
+      box-shadow: 0 4px 20px var(--teal-glow); transition: all .25s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 35px var(--teal-glow); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid var(--border); color: var(--text);
+      padding: .8rem 1.8rem; border-radius: 12px;
+      font-weight: 600; font-size: .92rem; text-decoration: none;
+      background: var(--card); transition: all .25s;
+      backdrop-filter: blur(8px);
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); transform: translateY(-2px); }
+
+    /* hero photo */
+    .hero-photo-wrap { display: flex; justify-content: center; position: relative; }
+    .hero-photo-ring {
+      position: relative; display: inline-block;
+    }
+    .ring-svg {
+      position: absolute; inset: -18px; z-index: 0;
+      animation: spin 10s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-photo {
+      position: relative; z-index: 1;
+      width: clamp(250px, 28vw, 370px); height: clamp(250px, 28vw, 370px);
+      border-radius: 50%; object-fit: cover; object-position: center top;
+      border: 3px solid rgba(0,229,184,.3);
+      box-shadow: 0 0 60px rgba(0,229,184,.2), 0 0 120px rgba(168,85,247,.1);
+      filter: brightness(1.05);
+    }
+    .hero-photo-badge {
+      position: absolute; bottom: 8px; right: -18px; z-index: 2;
+      background: linear-gradient(135deg, var(--gold), #e58c00);
+      color: #000; padding: .45rem .9rem; border-radius: 10px;
+      font-size: .72rem; font-weight: 800; white-space: nowrap;
+      box-shadow: 0 4px 18px rgba(245,158,11,.4);
+    }
+
+    /* social sidebar */
+    .hero-social {
+      position: absolute; left: -55px; top: 50%;
+      transform: translateY(-50%); display: flex; flex-direction: column; gap: .65rem;
+    }
+    .hero-social a {
+      width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;
+      border-radius: 8px; border: 1px solid var(--border); color: var(--muted);
+      text-decoration: none; transition: all .2s; background: var(--card);
+      backdrop-filter: blur(8px);
+    }
+    .hero-social a:hover { color: var(--teal); border-color: var(--teal); background: var(--teal-dim); transform: translateX(-2px); }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: .4rem;
+      color: var(--muted2); font-size: .7rem; letter-spacing: 2px; text-transform: uppercase;
+      animation: floatY 2.5s ease-in-out infinite;
+    }
+    @keyframes floatY { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+    .scroll-chevron { width: 18px; height: 18px; }
+
+    /* ═══ STATS ═══ */
+    #impact {
+      position: relative; z-index: 2; padding: 4rem 5%;
+      background: linear-gradient(180deg, transparent, rgba(0,229,184,0.03) 50%, transparent);
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem; max-width: 1100px; margin: 0 auto;
+    }
+    .stat-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.75rem 1.5rem; text-align: center;
+      transition: all .35s; position: relative; overflow: hidden;
+      cursor: default;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--teal-dim), var(--purple-dim));
+      opacity: 0; transition: opacity .3s;
+    }
+    .stat-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--teal), var(--purple), transparent);
+      opacity: 0; transition: opacity .3s;
+    }
+    .stat-card:hover { transform: translateY(-6px); border-color: rgba(0,229,184,.25); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+    .stat-card:hover::before, .stat-card:hover::after { opacity: 1; }
+    .stat-number {
+      position: relative; z-index: 1;
+      font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; letter-spacing: -2px; line-height: 1;
+      background: linear-gradient(135deg, var(--teal), #00b8d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat-label { position: relative; z-index: 1; color: var(--text); font-size: .85rem; font-weight: 600; margin-top: .5rem; }
+    .stat-sub { position: relative; z-index: 1; color: var(--muted2); font-size: .72rem; margin-top: .3rem; }
+
+    /* ═══ SECTIONS ═══ */
+    section { position: relative; z-index: 2; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 5rem 5%; }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: 'Fira Code', monospace; color: var(--teal);
+      font-size: .75rem; margin-bottom: .8rem; opacity: .8;
+    }
+    .section-tag::before { content: '//'; opacity: .6; margin-right: .15rem; }
+    h2.section-h {
+      font-size: clamp(1.9rem, 3vw, 2.6rem); font-weight: 800;
+      letter-spacing: -1.5px; margin-bottom: 1rem; line-height: 1.1;
+    }
+    h2.section-h em { font-style: normal; background: linear-gradient(135deg, var(--teal), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-sub { color: var(--muted); font-size: .97rem; max-width: 520px; line-height: 1.75; }
+
+    /* ═══ ABOUT ═══ */
+    .about-grid { display: grid; grid-template-columns: 1fr 1.45fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .about-photo-wrap { position: relative; }
+    .about-photo {
+      width: 100%; border-radius: 24px; object-fit: cover; aspect-ratio: 3/4;
+      box-shadow: 0 30px 80px rgba(0,0,0,.6);
+      border: 1px solid var(--border);
+    }
+    .about-badge {
+      position: absolute; bottom: -1rem; right: -1rem;
+      background: linear-gradient(135deg, var(--bg2), #0f0f2a);
+      border: 1px solid var(--border); border-radius: 14px;
+      padding: 1rem 1.25rem; backdrop-filter: blur(20px);
+      box-shadow: 0 10px 40px rgba(0,0,0,.5);
+    }
+    .about-badge .n { font-size: 2.2rem; font-weight: 900; line-height: 1; background: linear-gradient(135deg, var(--gold), #f97316); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .about-badge .t { font-size: .68rem; color: var(--muted); margin-top: .2rem; }
+    .about-content p { color: var(--muted); line-height: 1.85; margin-bottom: 1.2rem; font-size: .96rem; }
+    .about-content p strong { color: var(--text); font-weight: 600; }
+    .pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+    .pill { padding: .3rem .9rem; border-radius: 100px; font-size: .78rem; font-weight: 600; border: 1px solid; }
+    .pill-teal { background: var(--teal-dim); border-color: rgba(0,229,184,.3); color: var(--teal); }
+    .pill-purple { background: var(--purple-dim); border-color: rgba(168,85,247,.3); color: var(--purple); }
+    .pill-gold { background: var(--gold-dim); border-color: rgba(245,158,11,.3); color: var(--gold); }
+    .pill-gs {
+      background: linear-gradient(135deg, rgba(232,33,44,.15), rgba(249,168,0,.12));
+      border-color: rgba(232,33,44,.4); color: var(--gs-yellow);
+    }
+    .pill-plain { background: rgba(255,255,255,0.04); border-color: var(--border); color: var(--muted); }
+
+    /* ═══ EXPERIENCE ═══ */
+    #experience { background: rgba(255,255,255,.01); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .timeline { position: relative; margin-top: 3rem; padding-left: 20px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px;
+      background: linear-gradient(180deg, var(--teal) 0%, var(--purple) 50%, transparent 100%);
+    }
+    .tl-item { display: flex; gap: 2rem; margin-bottom: 2.25rem; position: relative; }
+    .tl-dot-wrap { flex-shrink: 0; width: 50px; display: flex; justify-content: flex-end; padding-top: .3rem; margin-left: -25px; }
+    .tl-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid var(--teal); background: var(--bg);
+      box-shadow: 0 0 0 4px rgba(0,229,184,.12), 0 0 14px var(--teal-glow);
+      transition: all .3s; flex-shrink: 0;
+    }
+    .tl-item:hover .tl-dot { background: var(--teal); box-shadow: 0 0 0 6px rgba(0,229,184,.15), 0 0 22px var(--teal-glow); }
+    .tl-card {
+      flex: 1; background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem 1.75rem;
+      transition: all .3s; cursor: default;
+    }
+    .tl-card:hover { border-color: rgba(0,229,184,.2); transform: translateX(5px); background: var(--card-hover); box-shadow: 0 10px 40px rgba(0,0,0,.3); }
+    .tl-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .tl-co { display: flex; align-items: center; gap: .65rem; margin-bottom: .45rem; }
+    .co-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; flex-shrink: 0; }
+    .co-name { font-size: .78rem; color: var(--muted); }
+    .tl-role { font-size: 1.02rem; font-weight: 700; }
+    .tl-period { font-family: 'Fira Code', monospace; font-size: .72rem; color: var(--teal); background: var(--teal-dim); border: 1px solid rgba(0,229,184,.2); padding: .22rem .65rem; border-radius: 6px; white-space: nowrap; flex-shrink: 0; }
+    .tl-bullets { margin-top: 1rem; list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+    .tl-bullets li { color: var(--muted); font-size: .875rem; line-height: 1.6; padding-left: 1.25rem; position: relative; }
+    .tl-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-size: .8rem; }
+    .tl-bullets li strong { color: var(--text); font-weight: 600; }
+
+    /* ═══ A2SV SPOTLIGHT ═══ */
+    #a2sv {
+      background: linear-gradient(135deg, rgba(0,229,184,.04) 0%, rgba(168,85,247,.03) 100%);
+      border-top: 1px solid rgba(0,229,184,.08);
+      border-bottom: 1px solid rgba(168,85,247,.08);
+    }
+    .a2sv-top { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: start; margin-top: 2rem; }
+    .a2sv-content p { color: var(--muted); line-height: 1.85; margin-bottom: 1rem; font-size: .96rem; }
+    .a2sv-content p strong { color: var(--text); }
+    .co-pills { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.5rem; }
+    .co-pill {
+      background: rgba(255,255,255,.04); border: 1px solid var(--border);
+      color: var(--muted); padding: .3rem .85rem; border-radius: 100px;
+      font-size: .78rem; font-weight: 600; transition: all .2s; cursor: default;
+    }
+    .co-pill:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
+    .a2sv-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; }
+    .a2sv-mini {
+      background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.2rem; text-align: center; transition: all .3s;
+    }
+    .a2sv-mini:hover { border-color: rgba(0,229,184,.25); transform: translateY(-3px); background: var(--card-hover); }
+    .a2sv-mini .ico { font-size: 1.6rem; margin-bottom: .4rem; }
+    .a2sv-mini .val { font-size: 1.4rem; font-weight: 900; color: var(--teal); letter-spacing: -1px; }
+    .a2sv-mini .lbl { font-size: .7rem; color: var(--muted); margin-top: .2rem; }
+    .a2sv-mini.span2 { grid-column: span 2; }
+    .big-pct { font-size: 2.5rem; font-weight: 900; letter-spacing: -2px; background: linear-gradient(135deg, var(--teal), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    /* ═══ PRODUCTS ═══ */
+    #products { border-top: 1px solid var(--border); }
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
+    .product-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem; transition: all .35s; cursor: default;
+      position: relative; overflow: hidden;
+    }
+    .product-card::before {
+      content: ''; position: absolute; inset: 0; opacity: 0;
+      background: linear-gradient(135deg, var(--teal-dim), transparent);
+      transition: opacity .3s;
+    }
+    .product-card:hover { border-color: rgba(0,229,184,.25); transform: translateY(-5px); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+    .product-card:hover::before { opacity: 1; }
+    .prod-header { display: flex; align-items: center; gap: .75rem; margin-bottom: .85rem; position: relative; z-index: 1; }
+    .prod-icon { width: 42px; height: 42px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .prod-name { font-size: 1rem; font-weight: 700; }
+    .prod-tag { font-size: .68rem; color: var(--muted); margin-top: .1rem; font-family: 'Fira Code', monospace; }
+    .prod-desc { color: var(--muted); font-size: .83rem; line-height: 1.65; position: relative; z-index: 1; }
+    .prod-cat {
+      display: inline-block; margin-top: .85rem; font-size: .68rem; font-weight: 700;
+      padding: .2rem .65rem; border-radius: 6px; text-transform: uppercase; letter-spacing: .5px;
+      position: relative; z-index: 1;
+    }
+    .cat-health { background: rgba(244,63,94,.12); color: var(--rose); border: 1px solid rgba(244,63,94,.2); }
+    .cat-edu { background: rgba(59,130,246,.12); color: var(--blue); border: 1px solid rgba(59,130,246,.2); }
+    .cat-fin { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(245,158,11,.2); }
+    .cat-ai { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(0,229,184,.2); }
+    .cat-talent { background: var(--purple-dim); color: var(--purple); border: 1px solid rgba(168,85,247,.2); }
+    .cat-food { background: rgba(249,115,22,.12); color: #f97316; border: 1px solid rgba(249,115,22,.2); }
+
+    /* ═══ SKILLS ═══ */
+    #skills { background: rgba(255,255,255,.01); border-top: 1px solid var(--border); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+    .skill-cat {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.4rem; transition: border-color .3s;
+    }
+    .skill-cat:hover { border-color: rgba(0,229,184,.2); }
+    .skill-cat-h { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--teal); margin-bottom: .9rem; display: flex; align-items: center; gap: .45rem; }
+    .s-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .s-tag {
+      background: rgba(255,255,255,.04); border: 1px solid var(--border);
+      color: var(--muted); padding: .22rem .62rem; border-radius: 6px;
+      font-size: .76rem; font-weight: 500; transition: all .2s; cursor: default;
+    }
+    .s-tag:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
+
+    /* ═══ EDUCATION ═══ */
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+    .edu-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.75rem; transition: all .3s; position: relative; overflow: hidden;
+    }
+    .edu-card::after {
+      content: ''; position: absolute; bottom: -30px; right: -30px;
+      width: 100px; height: 100px; border-radius: 50%;
+      background: radial-gradient(circle, var(--teal-dim), transparent);
+    }
+    .edu-card:hover { border-color: rgba(0,229,184,.2); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(0,0,0,.3); }
+    .edu-deg { font-size: 1.02rem; font-weight: 700; margin-bottom: .3rem; }
+    .edu-uni { color: var(--teal); font-size: .88rem; font-weight: 600; }
+    .edu-yr { color: var(--muted); font-size: .78rem; margin-top: .5rem; font-family: 'Fira Code', monospace; }
+    .edu-gpa { display: inline-block; margin-top: .75rem; background: var(--gold-dim); border: 1px solid rgba(245,158,11,.25); color: var(--gold); padding: .2rem .65rem; border-radius: 6px; font-size: .78rem; font-weight: 700; }
+
+    /* ═══ AWARDS ═══ */
+    .awards-list { margin-top: 2rem; display: flex; flex-direction: column; gap: .7rem; }
+    .award-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: .95rem 1.2rem; transition: all .3s;
+    }
+    .award-item:hover { border-color: rgba(245,158,11,.2); transform: translateX(5px); background: var(--card-hover); }
+    .award-ico { font-size: 1.3rem; flex-shrink: 0; margin-top: .1rem; }
+    .award-txt { font-size: .875rem; color: var(--muted); line-height: 1.5; }
+    .award-txt strong { color: var(--text); font-weight: 600; }
+
+    /* ═══ PUBLICATIONS ═══ */
+    .pubs-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .pub-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1.2rem 1.5rem; border-left: 3px solid var(--blue); transition: all .3s;
+    }
+    .pub-card:hover { border-left-color: var(--purple); transform: translateX(5px); }
+    .pub-t { font-weight: 600; font-size: .9rem; margin-bottom: .4rem; }
+    .pub-a { color: var(--muted); font-size: .8rem; }
+    .pub-v { display: inline-block; margin-top: .5rem; font-family: 'Fira Code', monospace; font-size: .72rem; color: var(--blue); background: rgba(59,130,246,.1); padding: .15rem .5rem; border-radius: 4px; }
+
+    /* ═══ GALATASARAY ═══ */
+    .gs-section {
+      background: linear-gradient(135deg, rgba(232,33,44,.06), rgba(249,168,0,.05));
+      border-top: 1px solid rgba(232,33,44,.15); border-bottom: 1px solid rgba(249,168,0,.15);
+    }
+    .gs-inner {
+      max-width: 1100px; margin: 0 auto; padding: 4rem 5%;
+      display: flex; align-items: center; gap: 3rem; flex-wrap: wrap;
+    }
+    .gs-badge {
+      flex-shrink: 0;
+      width: 100px; height: 100px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 3.5rem;
+      background: linear-gradient(135deg, rgba(232,33,44,.2), rgba(249,168,0,.2));
+      border: 2px solid rgba(232,33,44,.4);
+      box-shadow: 0 0 40px rgba(232,33,44,.2), 0 0 80px rgba(249,168,0,.1);
+      animation: gsGlow 2.5s ease-in-out infinite;
+    }
+    @keyframes gsGlow {
+      0%,100% { box-shadow: 0 0 40px rgba(232,33,44,.2), 0 0 80px rgba(249,168,0,.1); }
+      50% { box-shadow: 0 0 60px rgba(232,33,44,.35), 0 0 120px rgba(249,168,0,.2); }
+    }
+    .gs-text h3 {
+      font-size: 1.5rem; font-weight: 800; margin-bottom: .5rem;
+      background: linear-gradient(135deg, var(--gs-red), var(--gs-yellow));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .gs-text p { color: var(--muted); font-size: .93rem; line-height: 1.7; max-width: 520px; }
+    .gs-text p strong { color: var(--text); }
+    .gs-stripe {
+      display: flex; gap: .5rem; margin-top: 1rem;
+    }
+    .gs-stripe-bar { height: 5px; width: 40px; border-radius: 3px; }
+
+    /* ═══ PERSONAL ═══ */
+    .personal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .personal-photo { width: 100%; border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/3; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+
+    /* ═══ CONTACT ═══ */
+    #contact { background: var(--bg2); border-top: 1px solid var(--border); }
+    .contact-inner { max-width: 680px; margin: 0 auto; text-align: center; padding: 5rem 5%; }
+    .contact-inner h2 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -1.5px; margin-bottom: 1rem; }
+    .contact-inner p { color: var(--muted); font-size: .97rem; margin-bottom: 2.5rem; line-height: 1.8; }
+    .contact-links { display: flex; justify-content: center; gap: .9rem; flex-wrap: wrap; }
+    .c-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); padding: .7rem 1.35rem; border-radius: 11px;
+      text-decoration: none; font-size: .88rem; font-weight: 600; transition: all .25s;
+    }
+    .c-link:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); transform: translateY(-2px); }
+    .c-link.primary { background: linear-gradient(135deg, var(--teal), #00b894); color: #000; border-color: transparent; box-shadow: 0 4px 20px var(--teal-glow); }
+    .c-link.primary:hover { transform: translateY(-3px); box-shadow: 0 8px 35px var(--teal-glow); }
+
+    footer {
+      text-align: center; padding: 1.5rem 5%;
+      color: var(--muted2); font-size: .78rem; border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+
+    /* ═══ SCROLL ANIMATION ═══ */
+    .anim { opacity: 0; transform: translateY(35px); transition: opacity .65s ease, transform .65s ease; }
+    .anim.in { opacity: 1; transform: none; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo-wrap { order: -1; }
+      .hero-desc, .hero-actions { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-social { display: none; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photo { aspect-ratio: 4/3; }
+      .a2sv-top { grid-template-columns: 1fr; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .personal-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .products-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Aurora -->
+<div class="aurora-wrap">
+  <div class="aurora-orb orb1"></div>
+  <div class="aurora-orb orb2"></div>
+  <div class="aurora-orb orb3"></div>
+  <div class="aurora-orb orb4"></div>
+</div>
+<canvas id="particles"></canvas>
+
+<!-- NAV -->
+<nav id="topnav">
+  <a href="#hero" class="nav-logo">Emre<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#a2sv">A2SV</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+  </ul>
+  <a href="mailto:emre@a2sv.org" class="nav-cta">Say Hello</a>
+  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge"><span class="live-dot"></span>Open to Partnerships</div>
+      <h1 class="hero-name">Emre<br /><span class="grad">Varol</span></h1>
+      <div class="hero-typewriter"><span id="typetext"></span><span class="cursor"></span></div>
+      <p class="hero-desc">
+        Founder &amp; CEO of <strong>A2SV</strong> — a Google-backed nonprofit transforming Africa's tech ecosystem.
+        8+ years at <strong>Google · Palantir · Liftoff</strong>. On a mission to bridge talent and opportunity.
+      </p>
+      <div class="hero-actions">
+        <a href="#a2sv" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Explore A2SV
+        </a>
+        <a href="#contact" class="btn-ghost">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-social">
+        <a href="https://www.linkedin.com/in/emre-varol/" target="_blank" title="LinkedIn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://a2sv.org" target="_blank" title="A2SV">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        </a>
+        <a href="mailto:emre@a2sv.org" title="Email">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+      <div class="hero-photo-ring">
+        <!-- spinning dashed ring -->
+        <svg class="ring-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:calc(clamp(250px,28vw,370px) + 36px);height:calc(clamp(250px,28vw,370px) + 36px)">
+          <circle cx="200" cy="200" r="195" stroke="url(#ringGrad)" stroke-width="1.5" stroke-dasharray="12 8" />
+          <defs>
+            <linearGradient id="ringGrad" x1="0" y1="0" x2="400" y2="400">
+              <stop offset="0%" stop-color="#00e5b8" />
+              <stop offset="50%" stop-color="#a855f7" />
+              <stop offset="100%" stop-color="#f59e0b" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <img src="images/emre-hero.jpeg" alt="Emre Varol" class="hero-photo" />
+        <div class="hero-photo-badge">📍 Palo Alto · Kigali</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <svg class="scroll-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<section id="impact">
+  <div class="stats-grid">
+    <div class="stat-card anim">
+      <div class="stat-number" data-target="1200">0+</div>
+      <div class="stat-label">Engineers Trained</div>
+      <div class="stat-sub">from 22 African countries</div>
+    </div>
+    <div class="stat-card anim">
+      <div class="stat-number" data-target="120">0+</div>
+      <div class="stat-label">Top Tech Job Offers</div>
+      <div class="stat-sub">Google · Amazon · Bloomberg</div>
+    </div>
+    <div class="stat-card anim">
+      <div class="stat-number" data-target="8500">0+</div>
+      <div class="stat-label">Hackathon Participants</div>
+      <div class="stat-sub">Africa's largest AI hackathon</div>
+    </div>
+    <div class="stat-card anim">
+      <div class="stat-number" data-target="20">0+</div>
+      <div class="stat-label">Products Incubated</div>
+      <div class="stat-sub">healthcare · finance · edtech</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="container">
+    <div class="section-tag">about me</div>
+    <h2 class="section-h">Builder. Teacher. <em>Changemaker.</em></h2>
+    <div class="about-grid">
+      <div class="about-photo-wrap anim">
+        <img src="images/emre-city.jpeg" alt="Emre Varol in the city" class="about-photo" />
+        <div class="about-badge">
+          <div class="n">8+</div>
+          <div class="t">Years in Silicon Valley</div>
+        </div>
+      </div>
+      <div class="about-content anim">
+        <p>
+          I grew up in <strong>Ankara, Turkey</strong>, earned a B.S. &amp; M.S. in Computer Engineering from
+          <strong>Bilkent University</strong>, and competed at the <strong>International Olympiad in Informatics</strong>
+          — before spending 8+ years building production systems at <strong>Palantir, Google, and Liftoff</strong>.
+        </p>
+        <p>
+          But a promise I made to myself in my master's thesis — dedicating it to the children of Africa — never faded.
+          In 2019, I flew to Addis Ababa with one idea: Africa's engineers can compete with anyone in the world.
+          They just needed the right structure.
+        </p>
+        <p>
+          That idea became <strong>A2SV</strong>. Today, 1,200+ engineers from 22 African countries have gone through our program.
+          Students who had never heard of Google are now at Google. That never gets old.
+        </p>
+        <div class="pills">
+          <span class="pill pill-teal">Founder &amp; CEO · A2SV</span>
+          <span class="pill pill-gold">TOYP 2024 Awardee</span>
+          <span class="pill pill-purple">IOI Competitor</span>
+          <span class="pill pill-gs">🔴🟡 Galatasaray</span>
+          <span class="pill pill-plain">Guitar 🎸</span>
+          <span class="pill pill-plain">Hiking 🥾</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═══ -->
+<section id="experience">
+  <div class="container">
+    <div class="section-tag">career</div>
+    <h2 class="section-h">Where I've <em>Built</em></h2>
+    <p class="section-sub">From academic research to Silicon Valley to building Africa's tech future.</p>
+
+    <div class="timeline">
+      <div class="tl-item anim">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">
+                <div class="co-icon" style="background:rgba(0,229,184,.12)">🌍</div>
+                <span class="co-name">A2SV Foundation &amp; Eskalate · Palo Alto / Kigali</span>
+              </div>
+              <div class="tl-role">Founder &amp; CEO</div>
+            </div>
+            <span class="tl-period">Nov 2019 → Present</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Founded and scaled a nonprofit training <strong>1,200+ elite African engineers</strong> from 20+ countries</li>
+            <li>Secured <strong>120+ job offers</strong> at Google, Amazon, Bloomberg, LinkedIn, Databricks, Palantir</li>
+            <li><strong>70% Google SWE interview success rate</strong> (vs. ~2% global average) in 2022</li>
+            <li>Organized Africa's largest AI hackathon: <strong>8,500+ participants from 48 countries</strong></li>
+            <li>Secured backing from <strong>Google, Jeff Dean</strong> (Google Chief Scientist), Karim Beguir (InstaDeep)</li>
+            <li>Co-founded <strong>Eskalate</strong> — talent marketplace connecting A2SV grads with global companies</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item anim">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">
+                <div class="co-icon" style="background:rgba(99,102,241,.12)">📱</div>
+                <span class="co-name">Liftoff Mobile, Inc. · Palo Alto, CA</span>
+              </div>
+              <div class="tl-role">Machine Learning Engineer</div>
+            </div>
+            <span class="tl-period">Sep 2016 → Oct 2019</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Architected core ML pipelines for mobile ad targeting: re-engagement &amp; view-through optimization</li>
+            <li>Automated feature selection with <strong>Gradient Boosted Decision Trees (GBDT)</strong></li>
+            <li>Delivered <strong>~15% revenue uplift</strong> on a <strong>$100M+ business line</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item anim">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">
+                <div class="co-icon" style="background:rgba(234,179,8,.12)">🔍</div>
+                <span class="co-name">Google Research · Mountain View, CA</span>
+              </div>
+              <div class="tl-role">Software Engineer, Google Research</div>
+            </div>
+            <span class="tl-period">Aug 2014 → Aug 2016</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Enhanced <strong>search ad relevance &amp; quality</strong> using advanced NLP</li>
+            <li>Built automated system for generating ad callouts</li>
+            <li>Developed negation &amp; conditional statement detectors to improve ad content accuracy</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item anim">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">
+                <div class="co-icon" style="background:rgba(239,68,68,.12)">⚡</div>
+                <span class="co-name">Palantir Technologies · London / Palo Alto</span>
+              </div>
+              <div class="tl-role">Software Engineer</div>
+            </div>
+            <span class="tl-period">Sep 2012 → Jun 2014</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Migrated document persister from file-based to <strong>Git-based system</strong>, improving scalability</li>
+            <li>Reduced database processing from <strong>hours to seconds</strong> via diff-based updates</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item anim">
+        <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+        <div class="tl-card">
+          <div class="tl-top">
+            <div>
+              <div class="tl-co">
+                <div class="co-icon" style="background:rgba(236,72,153,.12)">🔬</div>
+                <span class="co-name">Yahoo! Research · Barcelona, Spain</span>
+              </div>
+              <div class="tl-role">Research Intern</div>
+            </div>
+            <span class="tl-period">2009 · 2010 · 2011</span>
+          </div>
+          <ul class="tl-bullets">
+            <li>Research on <strong>query forwarding</strong> in distributed web search engines</li>
+            <li>Pipelined strategies reducing latency in large-scale distributed systems</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ A2SV SPOTLIGHT ═══ -->
+<section id="a2sv">
+  <div class="container">
+    <div class="section-tag">a2sv</div>
+    <h2 class="section-h">Africa to <em>Silicon Valley</em></h2>
+    <div class="a2sv-top">
+      <div class="a2sv-content anim">
+        <p>
+          A2SV is a <strong>Google-backed nonprofit</strong> I founded in 2019. I started with 22 students in Addis Ababa.
+          I watched them earn Google interviews. I watched them pass. The talent was always there.
+        </p>
+        <p>
+          We run a rigorous <strong>1,000+ hour annual curriculum</strong> — data structures, algorithms, system design, soft skills —
+          completely free for every student. Then we connect them to the world's top companies.
+        </p>
+        <p>
+          Our program now spans <strong>22 African countries</strong>. Our incubator launched <strong>20+ digital products</strong>
+          tackling healthcare, education, and financial inclusion. Our hackathon is the
+          <strong>largest student tech competition in Africa</strong>.
+        </p>
+        <p><em>Featured in: Financial Times · Yahoo Finance · Business Insider Africa</em></p>
+        <div class="co-pills">
+          <span class="co-pill">🔵 Google</span>
+          <span class="co-pill">🟠 Amazon</span>
+          <span class="co-pill">🟦 Bloomberg</span>
+          <span class="co-pill">🔗 LinkedIn</span>
+          <span class="co-pill">🟤 Palantir</span>
+          <span class="co-pill">⚡ Databricks</span>
+        </div>
+      </div>
+      <div class="a2sv-mini-grid anim">
+        <div class="a2sv-mini"><div class="ico">🎓</div><div class="val">1,200+</div><div class="lbl">Engineers Trained</div></div>
+        <div class="a2sv-mini"><div class="ico">💼</div><div class="val">120+</div><div class="lbl">Job Offers Secured</div></div>
+        <div class="a2sv-mini"><div class="ico">🚀</div><div class="val">20+</div><div class="lbl">Products Incubated</div></div>
+        <div class="a2sv-mini"><div class="ico">🌍</div><div class="val">48</div><div class="lbl">Hackathon Countries</div></div>
+        <div class="a2sv-mini span2">
+          <div class="ico">🏆</div>
+          <div class="big-pct">70%</div>
+          <div class="lbl">Google Interview Success Rate (vs ~2% global avg)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ A2SV PRODUCTS ═══ -->
+<section id="products">
+  <div class="container">
+    <div class="section-tag">incubator</div>
+    <h2 class="section-h">A2SV <em>Products</em></h2>
+    <p class="section-sub">Digital solutions built by A2SV engineers — tackling Africa's most pressing challenges in healthcare, education, finance, and AI access.</p>
+
+    <div class="products-grid">
+
+      <div class="product-card anim" data-tilt>
+        <div class="prod-header">
+          <div class="prod-icon" style="background:rgba(0,229,184,.15)">🤖</div>
+          <div>
+            <div class="prod-name">Adot</div>
+            <div class="prod-tag">adot.et</div>
+          </div>
+        </div>
+        <div class="prod-desc">An AI platform providing locally-adapted AI solutions for Africa — making cutting-edge artificial intelligence accessible in African languages and contexts.</div>
+        <span class="prod-cat cat-ai">AI Platform</span>
+      </div>
+
+      <div class="product-card anim" data-tilt>
+        <div class="prod-header">
+          <div class="prod-icon" style="background:rgba(168,85,247,.15)">💬</div>
+          <div>
+            <div class="prod-name">AfroChat</div>
+            <div class="prod-tag">Chat for Africa</div>
+          </div>
+        </div>
+        <div class="prod-desc">An AI-powered chatbot connecting African youth with opportunities, resources, and information in their own languages and cultural context.</div>
+        <span class="prod-cat cat-ai">AI · Social</span>
+      </div>
+
+      <div class="product-card anim" data-tilt>
+        <div class="prod-header">
+          <div class="prod-icon" style="background:rgba(59,130,246,.15)">🧠</div>
+          <div>
+            <div class="prod-name">Akil</div>
+            <div class="prod-tag">Academic AI Platform</div>
+          </div>
+        </div>
+        <div class="prod-desc">AI-driven academic success platform for high school students — personalized learning paths, adaptive assessments, and intelligent tutoring to unlock student potential.</div>
+        <span class="prod-cat cat-edu">Education</span>
+      </div>
+
+      <div class="product-card anim" data-tilt>
+        <div class="prod-header">
+          <div class="prod-icon" style="background:rgba(245,158,11,.15)">💸</div>
+          <div>
+            <div class="prod-name">Dime</div>
+            <div class="prod-tag">Fintech · Remittance</div>
+          </div>
+        </div>
+        <div class="prod-desc">The easiest way to send money home. A fintech platform empowering African diaspora and businesses with seamless cross-border payments and African talent access.</div>
+        <span class="prod-cat cat-fin">FinTech</span>
+      </div>
+
+      <div class="product-card anim" data-tilt>
+        <div class="prod-header">
+          <div class="prod-icon" style="background:rgba(168,85,247,.15)">🌐</div>
+          <div>
+            <div class="prod-name">Eskalate</div>
+            <div class="prod-tag">eskalate.io · Talent Marketplace</div>
+          </div>
+        </div>
+        <div class="prod-desc">A remote talent marketplace exclusively connecting A2SV graduates with global companies. Access Google-caliber African engineers for software, AI/ML, and data science roles.</div>
+        <span class="prod-cat cat-talent">Talent · Remote</span>
+      </div>
+
+      <div class="product-card anim" data-tilt>
+        <div class="prod-header">
+          <div class="prod-icon" style="background:rgba(249,115,22,.15)">🍽️</div>
+          <div>
+            <div class="prod-name">RateEat</div>
+            <div class="prod-tag">Restaurant Discovery</div>
+          </div>
+        </div>
+        <div class="prod-desc">A restaurant discovery and rating platform for Africa — helping users find the best dining experiences with community-powered reviews and local context.</div>
+        <span class="prod-cat cat-food">Food · Social</span>
+      </div>
+
+      <div class="product-card anim" data-tilt>
+        <div class="prod-header">
+          <div class="prod-icon" style="background:rgba(59,130,246,.15)">🔗</div>
+          <div>
+            <div class="prod-name">SkillBridge</div>
+            <div class="prod-tag">Youth Opportunities</div>
+          </div>
+        </div>
+        <div class="prod-desc">A platform connecting African youth with skill-building programs, internships, and career opportunities — bridging the gap between talent and the global job market.</div>
+        <span class="prod-cat cat-edu">Skills · Careers</span>
+      </div>
+
+      <div class="product-card anim" data-tilt>
+        <div class="prod-header">
+          <div class="prod-icon" style="background:rgba(244,63,94,.15)">🤱</div>
+          <div>
+            <div class="prod-name">Maternity Companion</div>
+            <div class="prod-tag">Women's Healthcare</div>
+          </div>
+        </div>
+        <div class="prod-desc">A digital companion for expectant mothers in Africa — providing personalized prenatal guidance, health tracking, and access to maternal care resources in underserved communities.</div>
+        <span class="prod-cat cat-health">Healthcare</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-tag">skills</div>
+    <h2 class="section-h">What I <em>Know</em></h2>
+    <div class="skills-grid">
+      <div class="skill-cat anim">
+        <div class="skill-cat-h">🧭 Leadership &amp; Strategy</div>
+        <div class="s-tags">
+          <span class="s-tag">Nonprofit Management</span><span class="s-tag">Startup Leadership</span>
+          <span class="s-tag">Fundraising</span><span class="s-tag">Global Partnerships</span>
+          <span class="s-tag">Strategic Comms</span><span class="s-tag">Scaling EdTech</span>
+          <span class="s-tag">Financial Oversight</span><span class="s-tag">Cross-Cultural Teams</span>
+        </div>
+      </div>
+      <div class="skill-cat anim">
+        <div class="skill-cat-h">💻 Software Engineering</div>
+        <div class="s-tags">
+          <span class="s-tag">Distributed Systems</span><span class="s-tag">Backend Architecture</span>
+          <span class="s-tag">Scalable ML Pipelines</span><span class="s-tag">Algorithm Design</span>
+          <span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span>
+          <span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-cat anim">
+        <div class="skill-cat-h">🤖 AI &amp; Data Science</div>
+        <div class="s-tags">
+          <span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span>
+          <span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span>
+          <span class="s-tag">Ad Tech ML</span><span class="s-tag">Conversion Optimization</span>
+        </div>
+      </div>
+      <div class="skill-cat anim">
+        <div class="skill-cat-h">☁️ Cloud &amp; Tools</div>
+        <div class="s-tags">
+          <span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span>
+          <span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>
+        </div>
+      </div>
+      <div class="skill-cat anim">
+        <div class="skill-cat-h">📚 Teaching &amp; Mentorship</div>
+        <div class="s-tags">
+          <span class="s-tag">Curriculum Design</span><span class="s-tag">Competitive Programming</span>
+          <span class="s-tag">Public Speaking</span><span class="s-tag">Mentorship Programs</span>
+          <span class="s-tag">Technical Coaching</span>
+        </div>
+      </div>
+      <div class="skill-cat anim">
+        <div class="skill-cat-h">✨ Interests</div>
+        <div class="s-tags">
+          <span class="s-tag">AI for Social Good</span><span class="s-tag">EdTech Innovation</span>
+          <span class="s-tag">Guitar 🎸</span><span class="s-tag">Football ⚽</span>
+          <span class="s-tag">Hiking 🥾</span><span class="s-tag">Reading 📚</span><span class="s-tag">Chess ♟️</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EDUCATION ═══ -->
+<section id="education">
+  <div class="container">
+    <div class="section-tag">education</div>
+    <h2 class="section-h">Academic <em>Roots</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card anim">
+        <div class="edu-deg">M.S. Computer Engineering</div>
+        <div class="edu-uni">Bilkent University, Ankara, Turkey</div>
+        <div class="edu-yr">Jan 2010 → Jan 2012</div>
+        <div class="edu-gpa">GPA 3.61 / 4.00</div>
+      </div>
+      <div class="edu-card anim">
+        <div class="edu-deg">B.S. Computer Engineering</div>
+        <div class="edu-uni">Bilkent University, Ankara, Turkey</div>
+        <div class="edu-yr">Sep 2006 → Jan 2010</div>
+        <div class="edu-gpa">GPA 3.64 / 4.00</div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <div class="section-tag">teaching</div>
+      <h3 style="font-size:1.25rem;font-weight:700;margin:.5rem 0 1.25rem">Teaching Experience</h3>
+      <div style="display:flex;flex-direction:column;gap:.7rem">
+        <div class="award-item anim">
+          <div class="award-ico">🏫</div>
+          <div class="award-txt"><strong>Guest Lecturer — Addis Ababa Institute of Technology</strong><br>Nov 2019 – Sep 2022 · Data Structures, Algorithms, Problem-Solving, Digital Logic Design</div>
+        </div>
+        <div class="award-item anim">
+          <div class="award-ico">🇹🇷</div>
+          <div class="award-txt"><strong>Lecturer &amp; Coach — TUBITAK National Olympiads in Informatics</strong><br>2005 – 2011 · Advanced algorithms, national team coaching, contest design &amp; selection</div>
+        </div>
+        <div class="award-item anim">
+          <div class="award-ico">📖</div>
+          <div class="award-txt"><strong>Teaching Assistant — Bilkent University</strong><br>Feb 2010 – Jun 2012 · CS351, CS102 (Algorithms), CS473, CS223 (Digital Design)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ AWARDS ═══ -->
+<section id="awards" style="background:rgba(255,255,255,.01);border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-tag">recognition</div>
+    <h2 class="section-h">Honors &amp; <em>Awards</em></h2>
+    <div class="awards-list">
+      <div class="award-item anim"><div class="award-ico">🏆</div><div class="award-txt"><strong>Ten Outstanding Young Persons (TOYP) 2024</strong> — Humanitarian &amp; Voluntary Leadership · JCI Turkey</div></div>
+      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Ranked 1st</strong> — Bilkent University IEEE Computer Society Programming Competition (2010)</div></div>
+      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Ranked 1st</strong> — 12th METU Programming Competition (2009)</div></div>
+      <div class="award-item anim"><div class="award-ico">🌐</div><div class="award-txt"><strong>Ranked 10th Globally</strong> — 2nd IEEEXtreme Programming Contest (2008)</div></div>
+      <div class="award-item anim"><div class="award-ico">🌍</div><div class="award-txt"><strong>International Olympiad in Informatics (IOI)</strong> — Representing Turkey (2005)</div></div>
+      <div class="award-item anim"><div class="award-ico">🥇</div><div class="award-txt"><strong>Gold Medal (1st Place)</strong> — Turkish National Olympiads in Informatics (2004)</div></div>
+      <div class="award-item anim"><div class="award-ico">📊</div><div class="award-txt"><strong>Ranked 82nd / 500,000+</strong> — National High School Entrance Exam, Turkey (2002)</div></div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <div class="section-tag">research</div>
+      <h3 style="font-size:1.25rem;font-weight:700;margin:.5rem 0 1.25rem">Publications</h3>
+      <div class="pubs-list">
+        <div class="pub-card anim">
+          <div class="pub-t">Query forwarding in geographically distributed web search engines</div>
+          <div class="pub-a">Cambazoglu B. B., <strong>Varol E.</strong>, Kayaaslan E., Aykanat C., Baeza-Yates R.</div>
+          <span class="pub-v">SIGIR '10 · ACM SIGIR 2010</span>
+        </div>
+        <div class="pub-card anim">
+          <div class="pub-t">CoDet: Sentence-based containment detection in news corpora</div>
+          <div class="pub-a"><strong>Varol E.</strong>, Can F., Aykanat C., Kaya O.</div>
+          <span class="pub-v">CIKM '11 · ACM CIKM 2011</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALATASARAY ═══ -->
+<section class="gs-section">
+  <div class="gs-inner">
+    <div class="gs-badge">🔴🟡</div>
+    <div class="gs-text">
+      <h3>Cim Bom Cim Bom — Galatasaray!</h3>
+      <p>
+        Born in <strong>Ankara</strong> but my heart bleeds <strong>red and yellow</strong>.
+        A proud Galatasaray supporter through every title, every derby, every dramatic comeback.
+        Champions League glory? Yes. İstanbul'un efendisi? Always.
+        Football runs as deep as code in these veins.
+      </p>
+      <div class="gs-stripe">
+        <div class="gs-stripe-bar" style="background:var(--gs-red)"></div>
+        <div class="gs-stripe-bar" style="background:var(--gs-yellow)"></div>
+        <div class="gs-stripe-bar" style="background:var(--gs-red)"></div>
+        <div class="gs-stripe-bar" style="background:var(--gs-yellow)"></div>
+        <div class="gs-stripe-bar" style="background:var(--gs-red)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PERSONAL ═══ -->
+<section style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="personal-grid">
+      <div class="anim">
+        <div class="section-tag">beyond code</div>
+        <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)">When I'm <em>not</em> building</h2>
+        <p style="color:var(--muted);line-height:1.85;margin-top:1rem;font-size:.96rem">
+          You'll find me with a guitar in hand, on a hiking trail, watching Galatasaray dominate,
+          or deep in a book on psychology, leadership, or strategy.
+          I believe the best engineers are also curious humans — and I try to embody that.
+        </p>
+        <div class="pills" style="margin-top:1.5rem">
+          <span class="pill pill-plain">🎸 Guitar</span>
+          <span class="pill pill-plain">⚽ Football</span>
+          <span class="pill pill-plain">🥾 Hiking</span>
+          <span class="pill pill-plain">📚 Reading</span>
+          <span class="pill pill-plain">✍️ Writing</span>
+          <span class="pill pill-plain">🧀 Good Cheese</span>
+        </div>
+      </div>
+      <div class="anim">
+        <img src="images/emre-guitar.jpeg" alt="Emre playing guitar" class="personal-photo" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-tag" style="justify-content:center">contact</div>
+    <h2>Let's <em style="font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Connect</em></h2>
+    <p>
+      Interested in partnering with A2SV, hiring African talent through Eskalate,
+      or just want to say hello? I'd love to hear from you.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:emre@a2sv.org" class="c-link primary">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        emre@a2sv.org
+      </a>
+      <a href="https://a2sv.org" target="_blank" class="c-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        a2sv.org
+      </a>
+      <a href="https://www.linkedin.com/in/emre-varol/" target="_blank" class="c-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="tel:+14708469962" class="c-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.45a16 16 0 006.29 6.29l1.51-1.51a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +1 (470) 846-9962
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Emre Varol &nbsp;·&nbsp; Founder &amp; CEO, <a href="https://a2sv.org" target="_blank">A2SV</a> &nbsp;·&nbsp; Built with purpose 🌍</p>
+</footer>
+
+<script>
+// ═══ PARTICLES ═══
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, dots = [];
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+resize(); window.addEventListener('resize', resize);
+class Dot {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random()*W; this.y = Math.random()*H;
+    this.r = Math.random()*.9+.2;
+    this.vx = (Math.random()-.5)*.2; this.vy = (Math.random()-.5)*.2;
+    this.a = Math.random()*.35+.05;
+    this.c = Math.random() > .6 ? '#a855f7' : '#00e5b8';
+  }
+  update() {
+    this.x += this.vx; this.y += this.vy;
+    if(this.x<0||this.x>W||this.y<0||this.y>H) this.reset();
+  }
+  draw() {
+    ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+    ctx.fillStyle = this.c.replace(')', `,${this.a})`).replace('rgb','rgba').replace('#00e5b8',`rgba(0,229,184,${this.a})`).replace('#a855f7',`rgba(168,85,247,${this.a})`);
+    ctx.fill();
+  }
+}
+for(let i=0;i<90;i++) dots.push(new Dot());
+function drawLines() {
+  for(let i=0;i<dots.length;i++) for(let j=i+1;j<dots.length;j++) {
+    const dx=dots[i].x-dots[j].x, dy=dots[i].y-dots[j].y, d=Math.sqrt(dx*dx+dy*dy);
+    if(d<100) { ctx.beginPath(); ctx.moveTo(dots[i].x,dots[i].y); ctx.lineTo(dots[j].x,dots[j].y); ctx.strokeStyle=`rgba(0,229,184,${(1-d/100)*.06})`; ctx.lineWidth=.4; ctx.stroke(); }
+  }
+}
+function animate() { ctx.clearRect(0,0,W,H); dots.forEach(d=>{d.update();d.draw();}); drawLines(); requestAnimationFrame(animate); }
+animate();
+
+// ═══ TYPEWRITER ═══
+const roles=['Founder & CEO of A2SV','Machine Learning Engineer','Software Engineer','Education Innovator','Competitive Programmer','Builder of African Tech Talent'];
+let ri=0,ci=0,del=false;
+const el=document.getElementById('typetext');
+function type() {
+  const cur=roles[ri];
+  if(!del){ el.textContent=cur.slice(0,++ci); if(ci===cur.length){del=true;setTimeout(type,2000);return;} setTimeout(type,65); }
+  else { el.textContent=cur.slice(0,--ci); if(ci===0){del=false;ri=(ri+1)%roles.length;} setTimeout(type,28); }
+}
+type();
+
+// ═══ COUNTERS ═══
+function counter(el, target) {
+  let v=0; const step=Math.ceil(target/90);
+  const t=setInterval(()=>{v=Math.min(v+step,target); el.textContent=v.toLocaleString()+'+'; if(v>=target)clearInterval(t);},18);
+}
+
+// ═══ INTERSECTION OBSERVER ═══
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      if(e.target.classList.contains('anim')) e.target.classList.add('in');
+      const n=e.target.querySelector('.stat-number[data-target]');
+      if(n&&!n.dataset.done){ n.dataset.done='1'; counter(n,+n.dataset.target); }
+    }
+  });
+},{threshold:.15});
+document.querySelectorAll('.anim,.stat-card').forEach(el=>io.observe(el));
+
+// ═══ 3D TILT CARDS ═══
+document.querySelectorAll('[data-tilt]').forEach(card=>{
+  card.addEventListener('mousemove', e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(600px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-5px)`;
+    card.style.transition='transform .05s';
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform=''; card.style.transition='transform .4s ease';
+  });
+});
+
+// ═══ MOBILE NAV ═══
+function toggleNav() {
+  const links=document.querySelector('.nav-links');
+  if(links.style.display==='flex'){ links.removeAttribute('style'); }
+  else { links.style.cssText='display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:rgba(6,6,15,.97);padding:1rem 5%;border-bottom:1px solid var(--border);gap:1.1rem;z-index:99;backdrop-filter:blur(20px)'; }
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
+  if(window.innerWidth<=960) document.querySelector('.nav-links').removeAttribute('style');
+}));
+
+// ═══ PARALLAX HERO ═══
+window.addEventListener('scroll', ()=>{
+  const y=window.scrollY;
+  const ring=document.querySelector('.hero-photo-ring');
+  if(ring) ring.style.transform=`translateY(${y*.08}px)`;
+});
+</script>
+</body>
+</html>
