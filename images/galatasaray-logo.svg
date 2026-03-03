@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220">
+  <!-- Shield outline -->
+  <defs>
+    <clipPath id="shield-clip">
+      <path d="M100 10 L185 45 L185 130 Q185 185 100 210 Q15 185 15 130 L15 45 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- Shield background - split red/yellow -->
+  <path d="M100 10 L185 45 L185 130 Q185 185 100 210 Q15 185 15 130 L15 45 Z" fill="#E8212C"/>
+  <path d="M100 10 L100 210 Q15 185 15 130 L15 45 Z" fill="#F9A800"/>
+
+  <!-- Shield border -->
+  <path d="M100 10 L185 45 L185 130 Q185 185 100 210 Q15 185 15 130 L15 45 Z"
+        fill="none" stroke="#fff" stroke-width="3"/>
+
+  <!-- Stars row (4 championship stars) -->
+  <g fill="#F9A800">
+    <polygon points="58,30 60,35 66,35 61,38 63,44 58,41 53,44 55,38 50,35 56,35" transform="scale(0.7) translate(22,25)"/>
+    <polygon points="83,30 85,35 91,35 86,38 88,44 83,41 78,44 80,38 75,35 81,35" transform="scale(0.7) translate(22,25)"/>
+    <polygon points="108,30 110,35 116,35 111,38 113,44 108,41 103,44 105,38 100,35 106,35" transform="scale(0.7) translate(22,25)"/>
+    <polygon points="133,30 135,35 141,35 136,38 138,44 133,41 128,44 130,38 125,35 131,35" transform="scale(0.7) translate(22,25)"/>
+  </g>
+  <g fill="#E8212C">
+    <polygon points="58,30 60,35 66,35 61,38 63,44 58,41 53,44 55,38 50,35 56,35" transform="scale(0.7) translate(97,25)"/>
+    <polygon points="83,30 85,35 91,35 86,38 88,44 83,41 78,44 80,38 75,35 81,35" transform="scale(0.7) translate(97,25)"/>
+    <polygon points="108,30 110,35 116,35 111,38 113,44 108,41 103,44 105,38 100,35 106,35" transform="scale(0.7) translate(97,25)"/>
+    <polygon points="133,30 135,35 141,35 136,38 138,44 133,41 128,44 130,38 125,35 131,35" transform="scale(0.7) translate(97,25)"/>
+  </g>
+
+  <!-- GS Letters -->
+  <!-- G - on yellow side -->
+  <text x="57" y="155" font-family="Georgia, serif" font-size="72" font-weight="900"
+        fill="#E8212C" text-anchor="middle" dominant-baseline="middle">G</text>
+  <!-- S - on red side -->
+  <text x="143" y="155" font-family="Georgia, serif" font-size="72" font-weight="900"
+        fill="#F9A800" text-anchor="middle" dominant-baseline="middle">S</text>
+
+  <!-- Horizontal divider line -->
+  <line x1="100" y1="70" x2="100" y2="195" stroke="#fff" stroke-width="2.5" opacity="0.6"/>
+</svg>
