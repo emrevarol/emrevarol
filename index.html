@@ -350,6 +350,40 @@
     .a2sv-mini.span2 { grid-column: span 2; }
     .big-pct { font-size: 2.5rem; font-weight: 900; letter-spacing: -2px; background: linear-gradient(135deg, var(--teal), var(--purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 
+    /* ═══ A2SV VIDEO ROW ═══ */
+    .vid-row { margin-top: 3rem; }
+    .vid-row-label {
+      font-size: .7rem; text-transform: uppercase; letter-spacing: .12em;
+      color: var(--muted); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .vid-row-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .vid-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .vid-card {
+      position: relative; border-radius: 12px; overflow: hidden;
+      aspect-ratio: 16/9; display: block;
+      border: 1px solid var(--border); transition: all .3s;
+    }
+    .vid-card:hover { border-color: rgba(0,229,184,.35); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.5); }
+    .vid-thumb { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .vid-card:hover .vid-thumb { transform: scale(1.05); }
+    .vid-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.15) 55%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: .75rem;
+    }
+    .vid-play {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%);
+      width: 38px; height: 38px; background: rgba(255,255,255,.12);
+      backdrop-filter: blur(6px); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .3s; border: 1px solid rgba(255,255,255,.25);
+    }
+    .vid-card:hover .vid-play { background: var(--teal); border-color: var(--teal); transform: translate(-50%,-60%) scale(1.12); }
+    .vid-play svg { width: 13px; height: 13px; fill: white; margin-left: 2px; }
+    .vid-badge { font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; color: var(--teal); margin-bottom: .25rem; font-weight: 700; }
+    .vid-title { font-size: .78rem; color: white; font-weight: 600; line-height: 1.3; }
+
     /* ═══ PRODUCTS ═══ */
     #products { border-top: 1px solid var(--border); }
     .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2.5rem; }
@@ -596,6 +630,7 @@
       .about-grid { grid-template-columns: 1fr; }
       .about-photo { aspect-ratio: 4/3; }
       .a2sv-top { grid-template-columns: 1fr; }
+      .vid-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .edu-grid { grid-template-columns: 1fr; }
@@ -605,6 +640,7 @@
     }
     @media (max-width: 600px) {
       .stats-grid { grid-template-columns: 1fr 1fr; }
+      .vid-grid { grid-template-columns: 1fr 1fr; }
       .products-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
     }
@@ -940,6 +976,51 @@
         </div>
       </div>
     </div>
+
+    <!-- Video row -->
+    <div class="vid-row anim">
+      <div class="vid-row-label">In the Media</div>
+      <div class="vid-grid">
+
+        <a class="vid-card" href="https://www.youtube.com/watch?v=52ELtLxgMto" target="_blank" rel="noopener">
+          <img class="vid-thumb" src="https://img.youtube.com/vi/52ELtLxgMto/hqdefault.jpg" alt="A2SV: Africa to Silicon Valley" loading="lazy" />
+          <div class="vid-overlay">
+            <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
+            <div class="vid-badge">YouTube</div>
+            <div class="vid-title">A2SV: Africa to Silicon Valley</div>
+          </div>
+        </a>
+
+        <a class="vid-card" href="https://www.youtube.com/watch?v=meUHhneJRiE" target="_blank" rel="noopener">
+          <img class="vid-thumb" src="https://img.youtube.com/vi/meUHhneJRiE/hqdefault.jpg" alt="A2SV in 2023" loading="lazy" />
+          <div class="vid-overlay">
+            <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
+            <div class="vid-badge">Year in Review</div>
+            <div class="vid-title">A2SV in 2023</div>
+          </div>
+        </a>
+
+        <a class="vid-card" href="https://www.youtube.com/watch?v=nnbEglsSLZw" target="_blank" rel="noopener">
+          <img class="vid-thumb" src="https://img.youtube.com/vi/nnbEglsSLZw/hqdefault.jpg" alt="A2SV on TRT World" loading="lazy" />
+          <div class="vid-overlay">
+            <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
+            <div class="vid-badge">TRT World</div>
+            <div class="vid-title">A2SV on TRT World</div>
+          </div>
+        </a>
+
+        <a class="vid-card" href="https://www.youtube.com/watch?v=yg59HhjeVWc" target="_blank" rel="noopener">
+          <img class="vid-thumb" src="https://img.youtube.com/vi/yg59HhjeVWc/hqdefault.jpg" alt="The A2SV Podcast" loading="lazy" />
+          <div class="vid-overlay">
+            <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
+            <div class="vid-badge">Podcast</div>
+            <div class="vid-title">The A2SV Podcast</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
