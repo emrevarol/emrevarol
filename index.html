@@ -452,12 +452,13 @@
     }
     .gs-badge {
       flex-shrink: 0;
-      width: 100px; height: 100px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; font-size: 3.5rem;
-      background: linear-gradient(135deg, rgba(232,33,44,.2), rgba(249,168,0,.2));
-      border: 2px solid rgba(232,33,44,.4);
+      width: 110px; height: 110px; border-radius: 22px;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(232,33,44,.15), rgba(249,168,0,.15));
+      border: 2px solid rgba(232,33,44,.35);
       box-shadow: 0 0 40px rgba(232,33,44,.2), 0 0 80px rgba(249,168,0,.1);
       animation: gsGlow 2.5s ease-in-out infinite;
+      overflow: hidden;
     }
     @keyframes gsGlow {
       0%,100% { box-shadow: 0 0 40px rgba(232,33,44,.2), 0 0 80px rgba(249,168,0,.1); }
@@ -535,7 +536,8 @@
       position: relative; overflow: hidden; border-radius: 14px;
       aspect-ratio: 4/3; cursor: pointer; border: 1px solid var(--border);
     }
-    .gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
+    .gallery-item:nth-child(1),
+    .gallery-item:nth-child(9) { grid-column: span 2; aspect-ratio: 16/9; }
     .gallery-item img {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform .4s ease; display: block;
@@ -563,7 +565,8 @@
     .lightbox-close:hover { opacity: 1; }
     @media (max-width: 700px) {
       .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-item:nth-child(1) { grid-column: span 2; }
+      .gallery-item:nth-child(1),
+      .gallery-item:nth-child(9) { grid-column: span 2; }
     }
 
     /* ═══ LANG SWITCHER ═══ */
@@ -747,7 +750,7 @@
         <img src="images/emre-about.jpg" alt="Emre Varol" class="about-photo" />
         <div class="about-badge">
           <div class="n">8+</div>
-          <div class="t">Years in Silicon Valley</div>
+          <div class="t" data-i18n="about.badge.t">Years in Silicon Valley</div>
         </div>
       </div>
       <div class="about-content anim">
@@ -902,20 +905,20 @@
     <h2 class="section-h" data-i18n-html="a2sv.h">Africa to <em>Silicon Valley</em></h2>
     <div class="a2sv-top">
       <div class="a2sv-content anim">
-        <p>
+        <p data-i18n-html="a2sv.p1">
           A2SV is a <strong>Google-backed nonprofit</strong> I founded in 2019. I started with 22 students in Addis Ababa.
           I watched them earn Google interviews. I watched them pass. The talent was always there.
         </p>
-        <p>
+        <p data-i18n-html="a2sv.p2">
           We run a rigorous <strong>1,000+ hour annual curriculum</strong>: data structures, algorithms, system design, soft skills,
           completely free for every student. Then we connect them to the world's top companies.
         </p>
-        <p>
+        <p data-i18n-html="a2sv.p3">
           Our program now spans <strong>22 African countries</strong>. Our incubator launched <strong>20+ digital products</strong>
           tackling healthcare, education, and financial inclusion. Our hackathon is the
           <strong>largest student tech competition in Africa</strong>.
         </p>
-        <p><em>Featured in: Financial Times · Yahoo Finance · Business Insider Africa</em></p>
+        <p data-i18n-html="a2sv.featured"><em>Featured in: Financial Times · Yahoo Finance · Business Insider Africa</em></p>
         <div class="co-pills">
           <span class="co-pill">🔵 Google</span>
           <span class="co-pill">🟠 Amazon</span>
@@ -926,14 +929,14 @@
         </div>
       </div>
       <div class="a2sv-mini-grid anim">
-        <div class="a2sv-mini"><div class="ico">🎓</div><div class="val">1,200+</div><div class="lbl">Engineers Trained</div></div>
-        <div class="a2sv-mini"><div class="ico">💼</div><div class="val">120+</div><div class="lbl">Job Offers Secured</div></div>
-        <div class="a2sv-mini"><div class="ico">🚀</div><div class="val">20+</div><div class="lbl">Products Incubated</div></div>
-        <div class="a2sv-mini"><div class="ico">🌍</div><div class="val">48</div><div class="lbl">Hackathon Countries</div></div>
+        <div class="a2sv-mini"><div class="ico">🎓</div><div class="val">1,200+</div><div class="lbl" data-i18n="a2sv.mini1">Engineers Trained</div></div>
+        <div class="a2sv-mini"><div class="ico">💼</div><div class="val">120+</div><div class="lbl" data-i18n="a2sv.mini2">Job Offers Secured</div></div>
+        <div class="a2sv-mini"><div class="ico">🚀</div><div class="val">20+</div><div class="lbl" data-i18n="a2sv.mini3">Products Incubated</div></div>
+        <div class="a2sv-mini"><div class="ico">🌍</div><div class="val">48</div><div class="lbl" data-i18n="a2sv.mini4">Hackathon Countries</div></div>
         <div class="a2sv-mini span2">
           <div class="ico">🏆</div>
           <div class="big-pct">70%</div>
-          <div class="lbl">Google Interview Success Rate (vs ~2% global avg)</div>
+          <div class="lbl" data-i18n="a2sv.mini5">Google Interview Success Rate (vs ~2% global avg)</div>
         </div>
       </div>
     </div>
@@ -959,7 +962,7 @@
             <div class="prod-tag">adot.life</div>
           </div>
         </div>
-        <div class="prod-desc">A comprehensive maternity companion for African mothers. Personalized health insights from medical experts, vital and cycle tracking, appointment reminders, and direct access to healthcare professionals. 200+ mothers, 4 partner hospitals, 20+ medical experts.</div>
+        <div class="prod-desc" data-i18n="prod.adot">A comprehensive maternity companion for African mothers. Personalized health insights from medical experts, vital and cycle tracking, appointment reminders, and direct access to healthcare professionals. 200+ mothers, 4 partner hospitals, 20+ medical experts.</div>
         <span class="prod-cat cat-health">Maternal Health</span>
       </a>
 
@@ -973,7 +976,7 @@
             <div class="prod-tag">afrochat.app</div>
           </div>
         </div>
-        <div class="prod-desc">AI-powered assistant giving Africans affordable access to multiple generative AI models, image generation, and persona creation in one place. Integrated with Telegram, localized for African contexts. 2.6k+ users across 85 countries.</div>
+        <div class="prod-desc" data-i18n="prod.afrochat">AI-powered assistant giving Africans affordable access to multiple generative AI models, image generation, and persona creation in one place. Integrated with Telegram, localized for African contexts. 2.6k+ users across 85 countries.</div>
         <span class="prod-cat cat-ai">AI Assistant</span>
       </a>
 
@@ -987,21 +990,20 @@
             <div class="prod-tag">akilconnect.org</div>
           </div>
         </div>
-        <div class="prod-desc">A career platform connecting African youth with jobs, internships, and volunteer roles. AI-powered matching helps young people find opportunities aligned to their skills, while organizations streamline recruitment and access top talent.</div>
+        <div class="prod-desc" data-i18n="prod.akil">A career platform connecting African youth with jobs, internships, and volunteer roles. AI-powered matching helps young people find opportunities aligned to their skills, while organizations streamline recruitment and access top talent.</div>
         <span class="prod-cat cat-talent">Youth Careers</span>
       </a>
 
       <a class="product-card anim" href="https://dime.gold" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(245,158,11,.12);padding:5px;">
-            <img src="https://www.google.com/s2/favicons?domain=dime.gold&sz=64" alt="Dime" />
+          <div class="prod-icon" style="background:rgba(245,158,11,.15);font-size:1.5rem;">💸
           </div>
           <div>
             <div class="prod-name">Dime</div>
             <div class="prod-tag">dime.gold</div>
           </div>
         </div>
-        <div class="prod-desc">The easiest way to transfer money to Africa. Best exchange rates from multiple local banks, flexible bank deposits, and low transparent fees, built for the African diaspora sending money home.</div>
+        <div class="prod-desc" data-i18n="prod.dime">The easiest way to transfer money to Africa. Best exchange rates from multiple local banks, flexible bank deposits, and low transparent fees, built for the African diaspora sending money home.</div>
         <span class="prod-cat cat-fin">FinTech · Remittance</span>
       </a>
 
@@ -1015,7 +1017,7 @@
             <div class="prod-tag">eskalate.io</div>
           </div>
         </div>
-        <div class="prod-desc">IT outsourcing powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.</div>
+        <div class="prod-desc" data-i18n="prod.eskalate">IT outsourcing powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.</div>
         <span class="prod-cat cat-talent">Talent · Outsourcing</span>
       </a>
 
@@ -1029,7 +1031,7 @@
             <div class="prod-tag">rateeat.app</div>
           </div>
         </div>
-        <div class="prod-desc">Africa's restaurant discovery platform. Visual menus, item-specific reviews, smart filters by location, price, and rating, plus real-time order tracking. 500+ diners, 400+ restaurants, 1,400+ reviews.</div>
+        <div class="prod-desc" data-i18n="prod.rateeat">Africa's restaurant discovery platform. Visual menus, item-specific reviews, smart filters by location, price, and rating, plus real-time order tracking. 500+ diners, 400+ restaurants, 1,400+ reviews.</div>
         <span class="prod-cat cat-food">Food · Social</span>
       </a>
 
@@ -1043,7 +1045,7 @@
             <div class="prod-tag">skillbridge.academy</div>
           </div>
         </div>
-        <div class="prod-desc">AI-powered learning platform for African high school students. Expert-verified study materials aligned to national exams, gamified learning, personalized AI tutoring, and past exam solutions. 2,700+ students, 75K+ questions solved.</div>
+        <div class="prod-desc" data-i18n="prod.skillbridge">AI-powered learning platform for African high school students. Expert-verified study materials aligned to national exams, gamified learning, personalized AI tutoring, and past exam solutions. 2,700+ students, 75K+ questions solved.</div>
         <span class="prod-cat cat-edu">Education · AI</span>
       </a>
 
@@ -1058,7 +1060,7 @@
     <h2 class="section-h" data-i18n-html="skills.h">What I <em>Know</em></h2>
     <div class="skills-grid">
       <div class="skill-cat anim">
-        <div class="skill-cat-h">🧭 Leadership &amp; Strategy</div>
+        <div class="skill-cat-h" data-i18n-html="skill1.h">🧭 Leadership &amp; Strategy</div>
         <div class="s-tags">
           <span class="s-tag">Nonprofit Management</span><span class="s-tag">Startup Leadership</span>
           <span class="s-tag">Fundraising</span><span class="s-tag">Global Partnerships</span>
@@ -1067,7 +1069,7 @@
         </div>
       </div>
       <div class="skill-cat anim">
-        <div class="skill-cat-h">💻 Software Engineering</div>
+        <div class="skill-cat-h" data-i18n="skill2.h">💻 Software Engineering</div>
         <div class="s-tags">
           <span class="s-tag">Distributed Systems</span><span class="s-tag">Backend Architecture</span>
           <span class="s-tag">Scalable ML Pipelines</span><span class="s-tag">Algorithm Design</span>
@@ -1076,7 +1078,7 @@
         </div>
       </div>
       <div class="skill-cat anim">
-        <div class="skill-cat-h">🤖 AI &amp; Data Science</div>
+        <div class="skill-cat-h" data-i18n-html="skill3.h">🤖 AI &amp; Data Science</div>
         <div class="s-tags">
           <span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span>
           <span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span>
@@ -1084,14 +1086,14 @@
         </div>
       </div>
       <div class="skill-cat anim">
-        <div class="skill-cat-h">☁️ Cloud &amp; Tools</div>
+        <div class="skill-cat-h" data-i18n-html="skill4.h">☁️ Cloud &amp; Tools</div>
         <div class="s-tags">
           <span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span>
           <span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>
         </div>
       </div>
       <div class="skill-cat anim">
-        <div class="skill-cat-h">📚 Teaching &amp; Mentorship</div>
+        <div class="skill-cat-h" data-i18n-html="skill5.h">📚 Teaching &amp; Mentorship</div>
         <div class="s-tags">
           <span class="s-tag">Curriculum Design</span><span class="s-tag">Competitive Programming</span>
           <span class="s-tag">Public Speaking</span><span class="s-tag">Mentorship Programs</span>
@@ -1099,7 +1101,7 @@
         </div>
       </div>
       <div class="skill-cat anim">
-        <div class="skill-cat-h">✨ Interests</div>
+        <div class="skill-cat-h" data-i18n="skill6.h">✨ Interests</div>
         <div class="s-tags">
           <span class="s-tag">AI for Social Good</span><span class="s-tag">EdTech Innovation</span>
           <span class="s-tag">Guitar 🎸</span><span class="s-tag">Football ⚽</span>
@@ -1188,8 +1190,8 @@
 <!-- ═══ GALATASARAY ═══ -->
 <section class="gs-section">
   <div class="gs-inner">
-    <div class="gs-badge" style="padding:12px;">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Galatasaray_Star_Logo.svg" alt="Galatasaray" style="width:72px;height:72px;filter:drop-shadow(0 0 10px rgba(232,33,44,.5));" />
+    <div class="gs-badge">
+      <img src="https://www.google.com/s2/favicons?domain=galatasaray.com&sz=128" alt="Galatasaray" style="width:86px;height:86px;object-fit:contain;" />
     </div>
     <div class="gs-text">
       <h3>Galatasaray</h3>
@@ -1214,8 +1216,8 @@
     <div class="personal-grid">
       <div class="anim">
         <div class="section-tag">beyond code</div>
-        <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)">When I'm <em>not</em> building</h2>
-        <p style="color:var(--muted);line-height:1.85;margin-top:1rem;font-size:.96rem">
+        <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)" data-i18n-html="personal.h">When I'm <em>not</em> building</h2>
+        <p style="color:var(--muted);line-height:1.85;margin-top:1rem;font-size:.96rem" data-i18n="personal.p">
           You'll find me with a guitar in hand, on a hiking trail, watching Galatasaray dominate,
           or deep in a book on psychology, leadership, or strategy.
           I believe the best engineers are also curious humans, and I try to embody that.
@@ -1240,7 +1242,7 @@
 <section style="border-top:1px solid var(--border)">
   <div class="container">
     <div class="section-tag">gallery</div>
-    <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)">Moments &amp; <em>Memories</em></h2>
+    <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)" data-i18n-html="gallery.h">Moments &amp; <em>Memories</em></h2>
     <div class="gallery-grid">
       <div class="gallery-item" onclick="openLightbox('images/gallery-1.jpg')">
         <img src="images/gallery-1.jpg" alt="GITEX 2024 Africa" loading="lazy" />
@@ -1251,7 +1253,7 @@
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-3.jpg')">
-        <img src="images/gallery-3.jpg" alt="Speaking at Google" loading="lazy" />
+        <img src="images/gallery-3.jpg" alt="A2SV Hackathon 2023 with Ricardo Baeza-Yates" loading="lazy" />
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-4.jpg')">
@@ -1263,7 +1265,23 @@
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-6.jpg')">
-        <img src="images/gallery-6.jpg" alt="Guitar" loading="lazy" />
+        <img src="images/gallery-6.jpg" alt="Ethiopia Startup 2024" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-7.jpg')">
+        <img src="images/gallery-7.jpg" alt="A2SV Hackathon 2023 Project Visit" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-8.jpg')">
+        <img src="images/gallery-8.jpg" alt="Global AI Summit on Africa 2025" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-9.jpg')">
+        <img src="images/gallery-9.jpg" alt="Global AI Summit on Africa 2025 Panel" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-10.jpg')">
+        <img src="images/gallery-10.jpg" alt="Google at Work" loading="lazy" />
         <div class="gallery-overlay"></div>
       </div>
     </div>
@@ -1279,21 +1297,21 @@
 <section style="border-top:1px solid var(--border)">
   <div class="container" style="padding-top:3rem;padding-bottom:3rem">
     <div class="section-tag">resources</div>
-    <h2 class="section-h" style="margin-bottom:1.5rem">A2SV <em>Documents</em></h2>
+    <h2 class="section-h" style="margin-bottom:1.5rem" data-i18n-html="resources.h">A2SV <em>Documents</em></h2>
     <div style="display:flex;gap:1rem;flex-wrap:wrap">
       <a href="https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/view?usp=sharing" target="_blank" rel="noopener"
          style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1.5rem;border-radius:12px;text-decoration:none;font-size:.9rem;font-weight:600;transition:all .25s"
          onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
          onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        A2SV 5 Years of Impact Report
+        <span data-i18n="resources.link1">A2SV 5 Years of Impact Report</span>
       </a>
       <a href="https://drive.google.com/file/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX/view?usp=sharing" target="_blank" rel="noopener"
          style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1.5rem;border-radius:12px;text-decoration:none;font-size:.9rem;font-weight:600;transition:all .25s"
          onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
          onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        A2SV 2-Pager
+        <span data-i18n="resources.link2">A2SV 2-Pager</span>
       </a>
     </div>
   </div>
@@ -1334,7 +1352,7 @@
 </section>
 
 <footer>
-  <p>© 2025 Emre Varol &nbsp;·&nbsp; Founder &amp; CEO, <a href="https://a2sv.org" target="_blank">A2SV</a> &nbsp;·&nbsp; Built with purpose 🌍</p>
+  <p>© 2025 Emre Varol &nbsp;·&nbsp; Founder &amp; CEO, <a href="https://a2sv.org" target="_blank">A2SV</a> &nbsp;·&nbsp; <span data-i18n="footer.purpose">Built with purpose 🌍</span></p>
   <p style="margin-top:.5rem">
     <img src="https://visitor-badge.laobi.icu/badge?page_id=emrevarol.emrevarol&left_color=%2306060f&right_color=%2300e5b8&left_text=visitors" alt="visitor count" style="height:20px;border-radius:4px;" />
   </p>
@@ -1457,6 +1475,23 @@ const translations = {
     'stat2.label': 'Top Tech Job Offers', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon Participants', 'stat3.sub': "Africa's largest AI hackathon",
     'stat4.label': 'Products Incubated', 'stat4.sub': 'healthcare · finance · edtech',
+    'a2sv.p1': "A2SV is a <strong>Google-backed nonprofit</strong> I founded in 2019. I started with 22 students in Addis Ababa. I watched them earn Google interviews. I watched them pass. The talent was always there.",
+    'a2sv.p2': "We run a rigorous <strong>1,000+ hour annual curriculum</strong>: data structures, algorithms, system design, soft skills, completely free for every student. Then we connect them to the world's top companies.",
+    'a2sv.p3': "Our program now spans <strong>22 African countries</strong>. Our incubator launched <strong>20+ digital products</strong> tackling healthcare, education, and financial inclusion. Our hackathon is the <strong>largest student tech competition in Africa</strong>.",
+    'a2sv.featured': '<em>Featured in: Financial Times · Yahoo Finance · Business Insider Africa</em>',
+    'a2sv.mini1': 'Engineers Trained', 'a2sv.mini2': 'Job Offers Secured', 'a2sv.mini3': 'Products Incubated', 'a2sv.mini4': 'Hackathon Countries', 'a2sv.mini5': 'Google Interview Success Rate (vs ~2% global avg)',
+    'prod.adot': 'A comprehensive maternity companion for African mothers. Personalized health insights from medical experts, vital and cycle tracking, appointment reminders, and direct access to healthcare professionals. 200+ mothers, 4 partner hospitals, 20+ medical experts.',
+    'prod.afrochat': 'AI-powered assistant giving Africans affordable access to multiple generative AI models, image generation, and persona creation in one place. Integrated with Telegram, localized for African contexts. 2.6k+ users across 85 countries.',
+    'prod.akil': 'A career platform connecting African youth with jobs, internships, and volunteer roles. AI-powered matching helps young people find opportunities aligned to their skills, while organizations streamline recruitment and access top talent.',
+    'prod.dime': "The easiest way to transfer money to Africa. Best exchange rates from multiple local banks, flexible bank deposits, and low transparent fees, built for the African diaspora sending money home.",
+    'prod.eskalate': 'IT outsourcing powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.',
+    'prod.rateeat': "Africa's restaurant discovery platform. Visual menus, item-specific reviews, smart filters by location, price, and rating, plus real-time order tracking. 500+ diners, 400+ restaurants, 1,400+ reviews.",
+    'prod.skillbridge': 'AI-powered learning platform for African high school students. Expert-verified study materials aligned to national exams, gamified learning, personalized AI tutoring, and past exam solutions. 2,700+ students, 75K+ questions solved.',
+    'skill1.h': '🧭 Leadership &amp; Strategy', 'skill2.h': '💻 Software Engineering', 'skill3.h': '🤖 AI &amp; Data Science', 'skill4.h': '☁️ Cloud &amp; Tools', 'skill5.h': '📚 Teaching &amp; Mentorship', 'skill6.h': '✨ Interests',
+    'personal.h': "When I'm <em>not</em> building", 'personal.p': "You'll find me with a guitar in hand, on a hiking trail, watching Galatasaray dominate, or deep in a book on psychology, leadership, or strategy. I believe the best engineers are also curious humans, and I try to embody that.",
+    'gallery.h': 'Moments &amp; <em>Memories</em>',
+    'resources.h': 'A2SV <em>Documents</em>', 'resources.link1': 'A2SV 5 Years of Impact Report', 'resources.link2': 'A2SV 2-Pager',
+    'footer.purpose': 'Built with purpose 🌍', 'about.badge.t': 'Years in Silicon Valley',
   },
   tr: {
     roles: ["A2SV'nin Kurucusu ve CEO'su", 'Makine Öğrenmesi Mühendisi', 'Yazılım Mühendisi', 'Eğitim Vizyoneri', 'Rekabetçi Programcı', "Afrika'nın Teknoloji Yeteneğini İnşa Eden"],
@@ -1480,6 +1515,23 @@ const translations = {
     'stat2.label': 'İş Teklifi Alındı', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon Katılımcısı', 'stat3.sub': "Afrika'nın en büyük AI yarışması",
     'stat4.label': 'Kuluçkaya Alınan Ürün', 'stat4.sub': 'sağlık · finans · eğitim',
+    'a2sv.p1': "A2SV, 2019'da kurduğum <strong>Google destekli bir sivil toplum kuruluşu</strong>. Addis Ababa'da 22 öğrenciyle başladım. Onların Google mülakatlarına girdiğini izledim. Geçtiklerini gördüm. Yetenek her zaman oradaydı.",
+    'a2sv.p2': "Her öğrenciye tamamen ücretsiz <strong>yıllık 1.000+ saatlik müfredat</strong> sunuyoruz: veri yapıları, algoritmalar, sistem tasarımı, yazılım becerileri. Ardından onları dünyanın en iyi şirketlerine bağlıyoruz.",
+    'a2sv.p3': "Programımız artık <strong>22 Afrika ülkesine</strong> yayıldı. Kuluçka merkezimiz sağlık, eğitim ve finansal kapsayıcılık alanında <strong>20'den fazla dijital ürün</strong> çıkardı. Hackathon'umuz <strong>Afrika'nın en büyük öğrenci teknoloji yarışması</strong>.",
+    'a2sv.featured': '<em>Haber yapıldık: Financial Times · Yahoo Finance · Business Insider Africa</em>',
+    'a2sv.mini1': 'Yetiştirilen Mühendis', 'a2sv.mini2': 'Alınan İş Teklifi', 'a2sv.mini3': 'Kuluçkadaki Ürün', 'a2sv.mini4': 'Hackathon Ülkesi', 'a2sv.mini5': "Google Mülakat Başarısı (global ~%2'ye karşı)",
+    'prod.adot': "Afrika'daki anneler için kapsamlı bir hamilelik rehberi. Kişisel sağlık takibi, döngü ve vital ölçümü, randevu hatırlatmaları ve 20+ tıp uzmanına doğrudan erişim. 200+ anne, 4 ortak hastane.",
+    'prod.afrochat': "Birden fazla üretici yapay zeka modeline, görsel üretimine ve persona oluşturmaya uygun fiyatla erişim sunan yapay zeka asistanı. Telegram entegrasyonu ve Afrika odaklı yerelleştirme. 85 ülkeden 2.600+ kullanıcı.",
+    'prod.akil': "Afrika gençlerini iş, staj ve gönüllü fırsatlarıyla buluşturan kariyer platformu. Yapay zeka destekli eşleştirme sayesinde herkes becerilerine uygun fırsatları kolayca buluyor.",
+    'prod.dime': "Afrika'ya para göndermenin en kolay yolu. Birden fazla yerel bankadan en iyi döviz kurları, esnek banka transferleri ve şeffaf düşük komisyonlar. Yurt dışındaki Afrika diasporası için.",
+    'prod.eskalate': "A2SV mezunlarıyla güçlendirilmiş IT dış kaynak platformu. 2 haftalık ücretsiz deneme ile Google kalitesinde Afrika geliştiricilerini işe alın ya da ekibinizi büyütün. 90+ geliştirici yerleştirildi.",
+    'prod.rateeat': "Afrika'nın restoran keşif platformu. Görsel menüler, ürüne özel yorumlar, konum-fiyat-puan filtreleri ve gerçek zamanlı sipariş takibi. 500+ müşteri, 400+ restoran, 1.400+ yorum.",
+    'prod.skillbridge': "Afrika'nın lise öğrencileri için yapay zeka destekli öğrenme platformu. Ulusal sınavlara uyumlu ders materyalleri, gamification ve kişisel yapay zeka öğretmeni. 2.700+ öğrenci, 75.000+ çözülen soru.",
+    'skill1.h': '🧭 Liderlik &amp; Strateji', 'skill2.h': '💻 Yazılım Mühendisliği', 'skill3.h': '🤖 Yapay Zeka &amp; Veri Bilimi', 'skill4.h': '☁️ Bulut &amp; Araçlar', 'skill5.h': '📚 Eğitim &amp; Mentorluk', 'skill6.h': '✨ İlgi Alanları',
+    'personal.h': 'Kod yazmadığım <em>zamanlarda</em>', 'personal.p': 'Beni elimde gitar, dağlarda yürüyüşte, Galatasaray maçında ya da psikoloji, liderlik veya strateji üzerine bir kitabın içinde bulabilirsiniz. En iyi mühendislerin aynı zamanda meraklı insanlar olduğuna inanıyorum.',
+    'gallery.h': 'Anlar ve <em>Anılar</em>',
+    'resources.h': 'A2SV <em>Belgeleri</em>', 'resources.link1': 'A2SV 5 Yıllık Etki Raporu', 'resources.link2': 'A2SV Tanıtım Dosyası',
+    'footer.purpose': 'Bir amaç uğruna inşa edildi 🌍', 'about.badge.t': 'Yıl Silikon Vadisi',
   },
   es: {
     roles: ['Fundador y CEO de A2SV', 'Ingeniero de Machine Learning', 'Ingeniero de Software', 'Innovador en Educación', 'Programador Competitivo', 'Constructor del Talento Tecnológico Africano'],
@@ -1503,6 +1555,23 @@ const translations = {
     'stat2.label': 'Ofertas de Trabajo', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Participantes Hackathon', 'stat3.sub': 'el mayor hackathon de IA en África',
     'stat4.label': 'Productos Incubados', 'stat4.sub': 'salud · finanzas · edtech',
+    'a2sv.p1': "A2SV es la <strong>ONG respaldada por Google</strong> que fundé en 2019. Empecé con 22 estudiantes en Addis Abeba. Los vi conseguir entrevistas en Google. Los vi aprobarlas. El talento siempre estuvo ahí.",
+    'a2sv.p2': "Ofrecemos un <strong>currículo anual de más de 1.000 horas</strong> completamente gratuito: estructuras de datos, algoritmos, diseño de sistemas, habilidades blandas. Después los conectamos con las mejores empresas del mundo.",
+    'a2sv.p3': "Nuestro programa ya abarca <strong>22 países africanos</strong>. Nuestra incubadora lanzó <strong>más de 20 productos digitales</strong> en salud, educación e inclusión financiera. Nuestro hackathon es la <strong>mayor competición tecnológica estudiantil de África</strong>.",
+    'a2sv.featured': '<em>Aparecimos en: Financial Times · Yahoo Finance · Business Insider Africa</em>',
+    'a2sv.mini1': 'Ingenieros Formados', 'a2sv.mini2': 'Ofertas de Trabajo', 'a2sv.mini3': 'Productos Incubados', 'a2sv.mini4': 'Países Hackathon', 'a2sv.mini5': 'Tasa de Éxito Google (vs ~2% global)',
+    'prod.adot': 'Asistente integral de maternidad para madres africanas. Seguimiento de salud personalizado, rastreo de ciclos, recordatorios de citas y acceso directo a más de 20 especialistas médicos. 200+ usuarias, 4 hospitales asociados.',
+    'prod.afrochat': 'Asistente de IA que da acceso asequible a múltiples modelos generativos, generación de imágenes y creación de personas. Integrado con Telegram y localizado para el contexto africano. 2.600+ usuarios de 85 países.',
+    'prod.akil': 'Plataforma de empleo que conecta jóvenes africanos con trabajos, pasantías y roles de voluntariado. El emparejamiento impulsado por IA ayuda a encontrar oportunidades según sus habilidades.',
+    'prod.dime': 'La forma más sencilla de enviar dinero a África. Las mejores tasas de cambio de múltiples bancos locales, depósitos bancarios flexibles y comisiones transparentes y bajas. Para la diáspora africana.',
+    'prod.eskalate': 'Outsourcing de IT impulsado por ingenieros formados en A2SV. Contrata desarrolladores africanos de calibre Google para proyectos o expansión de equipos, con 2 semanas de prueba gratuita. 90+ desarrolladores colocados.',
+    'prod.rateeat': 'Plataforma de descubrimiento de restaurantes en África. Menús visuales, reseñas por ítem, filtros inteligentes por ubicación, precio y valoración, más seguimiento de pedidos en tiempo real. 500+ comensales, 400+ restaurantes.',
+    'prod.skillbridge': 'Plataforma de aprendizaje con IA para estudiantes de secundaria africanos. Materiales alineados a exámenes nacionales, gamificación y tutoría personalizada con IA. 2.700+ estudiantes, 75.000+ preguntas resueltas.',
+    'skill1.h': '🧭 Liderazgo &amp; Estrategia', 'skill2.h': '💻 Ingeniería de Software', 'skill3.h': '🤖 IA &amp; Ciencia de Datos', 'skill4.h': '☁️ Cloud &amp; Herramientas', 'skill5.h': '📚 Docencia &amp; Mentoría', 'skill6.h': '✨ Intereses',
+    'personal.h': 'Cuando <em>no</em> estoy construyendo', 'personal.p': 'Me encuentras con la guitarra, en una ruta de senderismo, viendo a Galatasaray dominar, o sumergido en un libro de psicología, liderazgo o estrategia. Creo que los mejores ingenieros también son personas curiosas.',
+    'gallery.h': 'Momentos y <em>Recuerdos</em>',
+    'resources.h': 'Documentos <em>A2SV</em>', 'resources.link1': 'Informe de Impacto: 5 Años de A2SV', 'resources.link2': 'Dossier de 2 Páginas',
+    'footer.purpose': 'Construido con propósito 🌍', 'about.badge.t': 'Años en Silicon Valley',
   },
   rw: {
     roles: ["Umushinga n'Umuyobozi wa A2SV", 'Injeniyeri ya Machine Learning', 'Injeniyeri ya Logiciel', 'Umutsindagira mu Burezi', 'Umukinnyi wa Gahunda', "Umubuza Inzobere za Teknoloji muri Afurika"],
@@ -1526,6 +1595,23 @@ const translations = {
     'stat2.label': 'Ibyifuzo bya Akazi', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Abagize Hackathon', 'stat3.sub': 'irushanwa rinini rya AI muri Afurika',
     'stat4.label': 'Ibicuruzwa Byubakwe', 'stat4.sub': 'ubuzima · imari · uburezi',
+    'a2sv.p1': "A2SV ni <strong>umuryango wunganiwe na Google</strong> nashyinguriye mu 2019. Natangiye n'abanyeshuri 22 i Addis Ababa. Nabirirwe bagera ku biganiro bya Google. Barabishe. Impano yari aho buri gihe.",
+    'a2sv.p2': "Dutanga <strong>amashuri arenga amasaha 1.000 mu mwaka</strong> ku buntu burundu: imiterere y'amakuru, algorithm, igishushanyo cy'uburyo, no gutekereza. Tuzabakurisha kuri sosiyete nziza ku isi.",
+    'a2sv.p3': "Gahunda yacu igeze mu <strong>bihugu 22 bya Afurika</strong>. Incubateur yacu yasohoye <strong>ibicuruzwa 20+ by'ikoranabuhanga</strong> mu buzima, uburezi no kwinjira mu mfashanyo y'imari. Hackathon yacu ni <strong>irushanwa rikomeye rya teknoloji muri Afurika</strong>.",
+    'a2sv.featured': '<em>Byanditswe muri: Financial Times · Yahoo Finance · Business Insider Africa</em>',
+    'a2sv.mini1': 'Inzobere Zitozwe', 'a2sv.mini2': 'Ibyifuzo bya Akazi', 'a2sv.mini3': 'Ibicuruzwa Byubakwe', 'a2sv.mini4': "Ibihugu bya Hackathon", 'a2sv.mini5': "Gutsinda Biganiro bya Google (vs ~2% ku isi)",
+    'prod.adot': "Inshuti y'ubuzima bw'inzara i Afurika. Gukurikirana ubuzima bwawe, indwara, kwibuka gahunda n'inzobere 20+ mu buzima. Abategarugori 200+, ibitaro 4 bifatanyije.",
+    'prod.afrochat': "Umufasha wa AI utanga uburenganzira bwo gukoresha AI nyinshi ku giciro gito. Kora amashusho, huza na Telegram, byemewe i Afurika. Abakoresha 2.600+ bava mu bihugu 85.",
+    'prod.akil': "Platform y'akazi ikurikirana urubyiruko rwa Afurika hamwe n'akazi, internship no gufasha abandi. AI ifasha gushaka amahirwe ahwanye n'ubumenyi bwawe.",
+    'prod.dime': "Uburyo bworoshye bwo kohereza amafaranga i Afurika. Amakuru meza y'amafaranga biva mu mabanki menshi, kwishyura gufite ibiciro bito kandi bigaragara. Kubw'inzamugambi z'Afurika.",
+    'prod.eskalate': "Outsourcing y'ikoranabuhanga iyoborwa n'inzobere za A2SV. Fata impuguke z'Afurika zo ku rwego rwa Google gukorera project zawe, hamwe na ibyumweru 2 bikuriwe ubuntu. Impuguke 90+ zabonye akazi.",
+    'prod.rateeat': "Platform yo gushakisha resitora muri Afurika. Menu y'amashusho, ibitekerezo by'ibicuruzwa buri kimwe, gushakisha no gukurikirana ibicuruzwa mu gihe nyacyo. Resitora 400+, ibisubizo 1.400+.",
+    'prod.skillbridge': "Platform yo kwiga iyoborwa na AI kubanyeshuri b'amashuri yisumbuye muri Afurika. Ibikoresho by'isomo bihwanye n'ibizamini by'igihugu, kwiga mu gushaka, umwarimu wa AI. Abanyeshuri 2.700+.",
+    'skill1.h': '🧭 Ubuyobozi &amp; Ingamba', 'skill2.h': '💻 Ubuhanga bw\'Ikoranabuhanga', 'skill3.h': '🤖 AI &amp; Siyanse y\'Amakuru', 'skill4.h': '☁️ Cloud &amp; Ibikoresho', 'skill5.h': '📚 Kwigisha &amp; Gutuza', 'skill6.h': '✨ Ibyifuzo',
+    'personal.h': "Igihe <em>ntubaka</em>", 'personal.p': "Uramfite nkurikije: ikirangirire mu ntoki, urugendo ku musozi, kureba Galatasaray, cyangwa gusoma igitabo cy'ubuyobozi cyangwa ingamba. Nziko inzobere nziza ziba abantu b'ubushake.",
+    'gallery.h': "Ibihe n'<em>Inzira</em>",
+    'resources.h': "Inyandiko <em>za A2SV</em>", 'resources.link1': "Raporo y'Ingaruka: Imyaka 5 ya A2SV", 'resources.link2': "Inyandiko y'Intangiriro (2 Pager)",
+    'footer.purpose': "Ubatswe n'intego 🌍", 'about.badge.t': 'Imyaka i Silicon Valley',
   }
 };
 
