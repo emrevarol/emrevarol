@@ -505,12 +505,16 @@
     .nav-dropdown { position: relative; }
     .nav-dropdown > a { cursor: pointer; }
     .dropdown-menu {
-      display: none; position: absolute; top: calc(100% + 12px); left: 50%;
+      display: none; position: absolute; top: 100%; left: 50%;
       transform: translateX(-50%);
       background: rgba(9,9,26,.97); border: 1px solid var(--border);
-      border-radius: 14px; padding: .6rem; min-width: 200px;
+      border-radius: 14px; padding: .6rem; padding-top: 1rem; min-width: 200px;
       backdrop-filter: blur(20px); box-shadow: 0 20px 60px rgba(0,0,0,.5);
-      z-index: 300;
+      z-index: 300; margin-top: 0;
+    }
+    /* invisible bridge so mouse can travel from link to menu */
+    .nav-dropdown::after {
+      content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 16px;
     }
     .nav-dropdown:hover .dropdown-menu { display: block; }
     .dropdown-item {
@@ -521,6 +525,46 @@
     }
     .dropdown-item:hover { background: var(--teal-dim); color: var(--teal); }
     .dropdown-item img { width: 18px; height: 18px; border-radius: 4px; }
+
+    /* ═══ PHOTO GALLERY ═══ */
+    .gallery-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: .75rem; margin-top: 2rem;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden; border-radius: 14px;
+      aspect-ratio: 4/3; cursor: pointer; border: 1px solid var(--border);
+    }
+    .gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16/9; }
+    .gallery-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .4s ease; display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.5) 0%, transparent 60%);
+      opacity: 0; transition: opacity .3s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    /* lightbox */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,.92); align-items: center; justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; object-fit: contain; }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem;
+      color: white; font-size: 2rem; cursor: pointer; background: none; border: none;
+      opacity: .7; transition: opacity .2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    @media (max-width: 700px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 2; }
+    }
 
     /* ═══ LANG SWITCHER ═══ */
     .lang-switcher {
@@ -639,6 +683,9 @@
         <a href="mailto:emre@a2sv.org" title="Email">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
+        <a href="https://www.instagram.com/varolemre" target="_blank" title="Instagram @varolemre">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
       </div>
       <div class="hero-photo-ring">
         <!-- spinning dashed ring -->
@@ -652,7 +699,7 @@
             </linearGradient>
           </defs>
         </svg>
-        <img src="images/emre-hero.jpg" alt="Emre Varol" class="hero-photo" />
+        <img src="images/emre-hero.jpeg" alt="Emre Varol" class="hero-photo" />
         <div class="hero-photo-badge">📍 Palo Alto · Kigali · Ankara</div>
       </div>
     </div>
@@ -669,23 +716,23 @@
   <div class="stats-grid">
     <div class="stat-card anim">
       <div class="stat-number" data-target="1200">0+</div>
-      <div class="stat-label">Engineers Trained</div>
-      <div class="stat-sub">from 22 African countries</div>
+      <div class="stat-label" data-i18n="stat1.label">Engineers Trained</div>
+      <div class="stat-sub" data-i18n="stat1.sub">from 22 African countries</div>
     </div>
     <div class="stat-card anim">
       <div class="stat-number" data-target="120">0+</div>
-      <div class="stat-label">Top Tech Job Offers</div>
-      <div class="stat-sub">Google · Amazon · Bloomberg</div>
+      <div class="stat-label" data-i18n="stat2.label">Top Tech Job Offers</div>
+      <div class="stat-sub" data-i18n="stat2.sub">Google · Amazon · Bloomberg</div>
     </div>
     <div class="stat-card anim">
       <div class="stat-number" data-target="8500">0+</div>
-      <div class="stat-label">Hackathon Participants</div>
-      <div class="stat-sub">Africa's largest AI hackathon</div>
+      <div class="stat-label" data-i18n="stat3.label">Hackathon Participants</div>
+      <div class="stat-sub" data-i18n="stat3.sub">Africa's largest AI hackathon</div>
     </div>
     <div class="stat-card anim">
       <div class="stat-number" data-target="20">0+</div>
-      <div class="stat-label">Products Incubated</div>
-      <div class="stat-sub">healthcare · finance · edtech</div>
+      <div class="stat-label" data-i18n="stat4.label">Products Incubated</div>
+      <div class="stat-sub" data-i18n="stat4.sub">healthcare · finance · edtech</div>
     </div>
   </div>
 </section>
@@ -1141,7 +1188,9 @@
 <!-- ═══ GALATASARAY ═══ -->
 <section class="gs-section">
   <div class="gs-inner">
-    <div class="gs-badge">🔴🟡</div>
+    <div class="gs-badge" style="padding:12px;">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Galatasaray_Star_Logo.svg" alt="Galatasaray" style="width:72px;height:72px;filter:drop-shadow(0 0 10px rgba(232,33,44,.5));" />
+    </div>
     <div class="gs-text">
       <h3>Galatasaray</h3>
       <p>
@@ -1186,6 +1235,45 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ PHOTO GALLERY ═══ -->
+<section style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="section-tag">gallery</div>
+    <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)">Moments &amp; <em>Memories</em></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox('images/gallery-1.jpg')">
+        <img src="images/gallery-1.jpg" alt="GITEX 2024 Africa" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-2.jpg')">
+        <img src="images/gallery-2.jpg" alt="Ghana School of Engineering" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-3.jpg')">
+        <img src="images/gallery-3.jpg" alt="Speaking at Google" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-4.jpg')">
+        <img src="images/gallery-4.jpg" alt="With Karim Beguir" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-5.jpg')">
+        <img src="images/gallery-5.jpg" alt="Night out in Kigali" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-6.jpg')">
+        <img src="images/gallery-6.jpg" alt="Guitar" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+</div>
 
 <!-- ═══ RESOURCES ═══ -->
 <section style="border-top:1px solid var(--border)">
@@ -1236,6 +1324,10 @@
       <a href="tel:+14708469962" class="c-link">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.45a16 16 0 006.29 6.29l1.51-1.51a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         +1 (470) 846-9962
+      </a>
+      <a href="https://www.instagram.com/varolemre" target="_blank" class="c-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @varolemre
       </a>
     </div>
   </div>
@@ -1341,15 +1433,17 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
 }));
 
 // ═══ LANGUAGE SWITCHER ═══
+const EM = 'font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text';
 const translations = {
   en: {
+    roles: ['Founder & CEO of A2SV','Machine Learning Engineer','Software Engineer','Education Innovator','Competitive Programmer','Builder of African Tech Talent'],
     'nav.about': 'About', 'nav.experience': 'Experience', 'nav.products': 'Products ▾',
     'nav.skills': 'Skills', 'nav.awards': 'Awards', 'nav.cta': 'Say Hello',
     'hero.desc': 'Founder &amp; CEO of <strong>A2SV</strong>, a Google-backed nonprofit transforming Africa\'s tech ecosystem. 8+ years at <strong>Google · Palantir · Liftoff</strong>. On a mission to bridge talent and opportunity.',
     'hero.btn1': 'Explore A2SV', 'hero.btn2': 'Get in Touch',
     'about.tag': 'about me', 'about.h': 'Builder. Teacher. <em>Changemaker.</em>',
     'about.p1': 'I grew up in <strong>Ankara, Turkey</strong>, earned a B.S. &amp; M.S. in Computer Engineering from <strong>Bilkent University</strong>, and competed at the <strong>International Olympiad in Informatics</strong> before spending 8+ years building production systems at <strong>Palantir, Google, and Liftoff</strong>.',
-    'about.p2': "But a promise I made to myself in my master's thesis, dedicating it to the children of Africa, never faded. In 2019, I flew to Addis Ababa with one idea: Africa's engineers can compete with anyone in the world. They just needed the right structure.",
+    'about.p2': "But a promise I made to myself in my master\'s thesis — dedicating it to the children of Africa — never faded. In 2019, I flew to Addis Ababa with one idea: Africa\'s engineers can compete with anyone in the world. They just needed the right structure.",
     'about.p3': 'That idea became <strong>A2SV</strong>. Today, 1,200+ engineers from 22 African countries have gone through our program. Students who had never heard of Google are now at Google. That never gets old.',
     'exp.tag': 'career', 'exp.h': "Where I've <em>Built</em>", 'exp.sub': "From academic research to Silicon Valley to building Africa's tech future.",
     'a2sv.h': 'Africa to <em>Silicon Valley</em>',
@@ -1357,62 +1451,81 @@ const translations = {
     'skills.tag': 'skills', 'skills.h': 'What I <em>Know</em>',
     'edu.tag': 'education', 'edu.h': 'Academic <em>Roots</em>',
     'awards.tag': 'recognition', 'awards.h': 'Honors &amp; <em>Awards</em>',
-    'contact.h': 'Let\'s <em style="font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Connect</em>',
+    'contact.h': `Let's <em style="${EM}">Connect</em>`,
     'contact.desc': "Interested in partnering with A2SV, hiring African talent through Eskalate, or just want to say hello? I'd love to hear from you.",
+    'stat1.label': 'Engineers Trained', 'stat1.sub': 'from 22 African countries',
+    'stat2.label': 'Top Tech Job Offers', 'stat2.sub': 'Google · Amazon · Bloomberg',
+    'stat3.label': 'Hackathon Participants', 'stat3.sub': "Africa's largest AI hackathon",
+    'stat4.label': 'Products Incubated', 'stat4.sub': 'healthcare · finance · edtech',
   },
   tr: {
+    roles: ["A2SV'nin Kurucusu ve CEO'su", 'Makine Öğrenmesi Mühendisi', 'Yazılım Mühendisi', 'Eğitim Vizyoneri', 'Rekabetçi Programcı', "Afrika'nın Teknoloji Yeteneğini İnşa Eden"],
     'nav.about': 'Hakkımda', 'nav.experience': 'Deneyim', 'nav.products': 'Ürünler ▾',
-    'nav.skills': 'Beceriler', 'nav.awards': 'Ödüller', 'nav.cta': 'Merhaba',
-    'hero.desc': "<strong>A2SV</strong>'nin Kurucu ve CEO'su — Google destekli, Afrika'nın teknoloji ekosistemini dönüştüren bir sivil toplum kuruluşu. <strong>Google · Palantir · Liftoff</strong>'ta 8+ yıl. Yetenek ile fırsatı buluşturmak için çalışıyorum.",
-    'hero.btn1': "A2SV'yi Keşfet", 'hero.btn2': 'İletişime Geç',
+    'nav.skills': 'Beceriler', 'nav.awards': 'Ödüller', 'nav.cta': 'Merhaba De',
+    'hero.desc': "<strong>A2SV</strong>'nin kurucusu ve CEO'yum. Google destekli bu sivil toplum kuruluşuyla Afrika'nın teknoloji ekosistemini dönüştürüyoruz. <strong>Google · Palantir · Liftoff</strong>'ta 8 yılı aşkın deneyimimin ardından şimdi tek bir misyon var: yeteneği fırsatla buluşturmak.",
+    'hero.btn1': "A2SV'yi Keşfet", 'hero.btn2': 'Yazın Bana',
     'about.tag': 'hakkımda', 'about.h': 'Kurucu. Öğretmen. <em>Değişim Yaratan.</em>',
-    'about.p1': '<strong>Ankara, Türkiye</strong>\'de büyüdüm, <strong>Bilkent Üniversitesi</strong>\'nde Bilgisayar Mühendisliği alanında lisans ve yüksek lisans yaptım, <strong>Uluslararası Bilişim Olimpiyatları</strong>\'nda yarıştım; ardından <strong>Palantir, Google ve Liftoff</strong>\'ta 8+ yıl geçirdim.',
-    'about.p2': "Ama yüksek lisans tezimde Afrika çocuklarına yaptığım söz hiç solmadı. 2019'da bir fikirle Addis Ababa'ya uçtum: Afrika'nın mühendisleri dünyanın herhangi biriyle yarışabilir. Tek eksiği doğru yapıydı.",
-    'about.p3': 'O fikir <strong>A2SV</strong> oldu. Bugün, 22 Afrika ülkesinden 1.200\'den fazla mühendis programımızdan geçti. Google\'ı hiç duymamış öğrenciler artık Google\'da çalışıyor. Bu hiç eskimez.',
-    'exp.tag': 'kariyer', 'exp.h': 'Nerede <em>İnşa Ettim</em>', 'exp.sub': "Akademik araştırmadan Silikon Vadisi'ne, oradan Afrika'nın teknoloji geleceğini inşa etmeye.",
+    'about.p1': '<strong>Ankara</strong>\'da büyüdüm. <strong>Bilkent Üniversitesi</strong>\'nde bilgisayar mühendisliği okudum, <strong>Uluslararası Bilişim Olimpiyatı</strong>\'nda Türkiye\'yi temsil ettim. Ardından yıllarca <strong>Palantir, Google ve Liftoff</strong>\'ta kod yazdım.',
+    'about.p2': "Ama yüksek lisans tezimi Afrika çocuklarına ithaf ettiğimde verdiğim söz hiç aklımdan çıkmadı. 2019'da tek bir fikirle Addis Ababa'ya uçtum: Afrika'nın mühendisleri dünyanın herhangi biriyle yarışabilir. Tek eksiği doğru yapıydı.",
+    'about.p3': 'O fikir bugün <strong>A2SV</strong> oldu. 22 Afrika ülkesinden 1.200\'den fazla mühendis programımızdan geçti. Google\'ı hiç duymamış gençler şimdi Google\'da çalışıyor. Bu duygu hiç eskimiyor.',
+    'exp.tag': 'kariyer', 'exp.h': 'Nerede <em>Ürettim</em>', 'exp.sub': "Akademik araştırmadan Silikon Vadisi'ne, oradan Afrika'nın geleceğini kurmaya.",
     'a2sv.h': "Afrika'dan <em>Silikon Vadisi'ne</em>",
-    'products.tag': 'kuluçka', 'products.h': 'A2SV <em>Ürünleri</em>', 'products.sub': "A2SV mühendisleri tarafından geliştirilen dijital çözümler; sağlık, eğitim, finans ve yapay zeka erişimindeki zorluklara yanıt veriyor.",
-    'skills.tag': 'beceriler', 'skills.h': '<em>Bildiklerim</em>',
-    'edu.tag': 'eğitim', 'edu.h': 'Akademik <em>Kökenler</em>',
+    'products.tag': 'ürünlerimiz', 'products.h': 'A2SV <em>Ürünleri</em>', 'products.sub': "A2SV mühendisleri tarafından geliştirilen bu dijital ürünler; Afrika'nın sağlık, eğitim, finans ve yapay zekaya erişim sorunlarına doğrudan çözüm üretiyor.",
+    'skills.tag': 'beceriler', 'skills.h': '<em>Neler Biliyorum</em>',
+    'edu.tag': 'eğitim', 'edu.h': 'Akademik <em>Köklerim</em>',
     'awards.tag': 'başarılar', 'awards.h': 'Ödüller &amp; <em>Takdirler</em>',
-    'contact.h': 'Hadi <em style="font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Bağlanalım</em>',
-    'contact.desc': "A2SV ile ortaklık kurmak, Eskalate aracılığıyla Afrika'dan yetenek işe almak ya da sadece merhaba demek ister misiniz? Sizden haber almaktan mutluluk duyarım.",
+    'contact.h': `Hadi <em style="${EM}">Tanışalım</em>`,
+    'contact.desc': "A2SV ile iş birliği yapmak, Eskalate üzerinden Afrika'dan yetenek işe almak ya da sadece selam vermek için bana yazabilirsiniz. Haberleşmeyi çok severim.",
+    'stat1.label': 'Yetiştirilen Mühendis', 'stat1.sub': '22 Afrika ülkesinden',
+    'stat2.label': 'İş Teklifi Alındı', 'stat2.sub': 'Google · Amazon · Bloomberg',
+    'stat3.label': 'Hackathon Katılımcısı', 'stat3.sub': "Afrika'nın en büyük AI yarışması",
+    'stat4.label': 'Kuluçkaya Alınan Ürün', 'stat4.sub': 'sağlık · finans · eğitim',
   },
   es: {
+    roles: ['Fundador y CEO de A2SV', 'Ingeniero de Machine Learning', 'Ingeniero de Software', 'Innovador en Educación', 'Programador Competitivo', 'Constructor del Talento Tecnológico Africano'],
     'nav.about': 'Sobre mí', 'nav.experience': 'Experiencia', 'nav.products': 'Productos ▾',
-    'nav.skills': 'Habilidades', 'nav.awards': 'Premios', 'nav.cta': 'Hola',
-    'hero.desc': 'Fundador y CEO de <strong>A2SV</strong>, una ONG respaldada por Google que transforma el ecosistema tecnológico de África. Más de 8 años en <strong>Google · Palantir · Liftoff</strong>. Con la misión de unir el talento con la oportunidad.',
-    'hero.btn1': 'Explorar A2SV', 'hero.btn2': 'Contactar',
+    'nav.skills': 'Habilidades', 'nav.awards': 'Premios', 'nav.cta': 'Escríbeme',
+    'hero.desc': 'Fundador y CEO de <strong>A2SV</strong>, una ONG respaldada por Google que está transformando el ecosistema tecnológico de África. Más de 8 años en <strong>Google · Palantir · Liftoff</strong>. Mi misión: conectar talento con oportunidad.',
+    'hero.btn1': 'Conoce A2SV', 'hero.btn2': 'Contáctame',
     'about.tag': 'sobre mí', 'about.h': 'Constructor. Maestro. <em>Agente de Cambio.</em>',
-    'about.p1': 'Crecí en <strong>Ankara, Turquía</strong>, obtuve una licenciatura y maestría en Ingeniería Informática en la <strong>Universidad Bilkent</strong>, y competí en la <strong>Olimpiada Internacional de Informática</strong>, antes de pasar 8+ años en <strong>Palantir, Google y Liftoff</strong>.',
-    'about.p2': 'Pero una promesa que me hice en mi tesis de maestría, dedicándola a los niños de África, nunca se desvaneció. En 2019 volé a Addis Abeba con una idea: los ingenieros de África pueden competir con cualquiera en el mundo. Solo necesitaban la estructura correcta.',
-    'about.p3': 'Esa idea se convirtió en <strong>A2SV</strong>. Hoy, más de 1.200 ingenieros de 22 países africanos han pasado por nuestro programa. Estudiantes que nunca habían oído hablar de Google ahora están en Google. Eso nunca envejece.',
-    'exp.tag': 'carrera', 'exp.h': 'Donde He <em>Construido</em>', 'exp.sub': 'De la investigación académica a Silicon Valley y a construir el futuro tecnológico de África.',
-    'a2sv.h': 'África a <em>Silicon Valley</em>',
-    'products.tag': 'incubadora', 'products.h': 'Productos <em>A2SV</em>', 'products.sub': 'Soluciones digitales creadas por ingenieros de A2SV para los desafíos más urgentes de África en salud, educación, finanzas e IA.',
-    'skills.tag': 'habilidades', 'skills.h': 'Lo Que <em>Sé</em>',
-    'edu.tag': 'educación', 'edu.h': 'Raíces <em>Académicas</em>',
+    'about.p1': 'Crecí en <strong>Ankara, Turquía</strong>. Estudié Ingeniería Informática en la <strong>Universidad Bilkent</strong>, competí en la <strong>Olimpiada Internacional de Informática</strong> y después pasé más de 8 años construyendo sistemas en <strong>Palantir, Google y Liftoff</strong>.',
+    'about.p2': 'Pero había una promesa que no podía olvidar: la que me hice en mi tesis de maestría, dedicándola a los niños de África. En 2019 tomé un vuelo a Addis Abeba con una sola idea: los ingenieros africanos pueden competir con cualquiera. Solo necesitaban la estructura correcta.',
+    'about.p3': 'Esa idea se convirtió en <strong>A2SV</strong>. Hoy, más de 1.200 ingenieros de 22 países africanos han pasado por nuestro programa. Chicos que nunca habían oído hablar de Google, ahora trabajan en Google. Eso no se cansa uno de verlo.',
+    'exp.tag': 'trayectoria', 'exp.h': 'Donde He <em>Construido</em>', 'exp.sub': 'De la investigación académica a Silicon Valley, y de allí a construir el futuro tecnológico de África.',
+    'a2sv.h': 'De África a <em>Silicon Valley</em>',
+    'products.tag': 'incubadora', 'products.h': 'Productos <em>A2SV</em>', 'products.sub': 'Soluciones digitales creadas por ingenieros de A2SV para los retos más urgentes de África: salud, educación, finanzas e inteligencia artificial.',
+    'skills.tag': 'habilidades', 'skills.h': 'Lo Que <em>Domino</em>',
+    'edu.tag': 'educación', 'edu.h': 'Mis <em>Raíces Académicas</em>',
     'awards.tag': 'reconocimientos', 'awards.h': 'Premios &amp; <em>Reconocimientos</em>',
-    'contact.h': 'Vamos a <em style="font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Conectar</em>',
-    'contact.desc': '¿Te interesa asociarte con A2SV, contratar talento africano a través de Eskalate, o simplemente saludar? Me encantaría saber de ti.',
+    'contact.h': `¿Hablamos? <em style="${EM}">Conectemos</em>`,
+    'contact.desc': '¿Quieres asociarte con A2SV, contratar talento africano a través de Eskalate, o simplemente saludar? Escríbeme, me encanta conocer gente nueva.',
+    'stat1.label': 'Ingenieros Formados', 'stat1.sub': 'de 22 países africanos',
+    'stat2.label': 'Ofertas de Trabajo', 'stat2.sub': 'Google · Amazon · Bloomberg',
+    'stat3.label': 'Participantes Hackathon', 'stat3.sub': 'el mayor hackathon de IA en África',
+    'stat4.label': 'Productos Incubados', 'stat4.sub': 'salud · finanzas · edtech',
   },
   rw: {
+    roles: ["Umushinga n'Umuyobozi wa A2SV", 'Injeniyeri ya Machine Learning', 'Injeniyeri ya Logiciel', 'Umutsindagira mu Burezi', 'Umukinnyi wa Gahunda', "Umubuza Inzobere za Teknoloji muri Afurika"],
     'nav.about': 'Ibyerekeye', 'nav.experience': 'Uburambe', 'nav.products': 'Ibicuruzwa ▾',
-    'nav.skills': 'Ubumenyi', 'nav.awards': 'Ibihembo', 'nav.cta': 'Muraho',
-    'hero.desc': 'Umushinga n\'Umuyobozi wa <strong>A2SV</strong>, umuryango wunganiwe na Google ugenzura uburambe bw\'ikoranabuhanga muri Afurika. Imyaka 8+ muri <strong>Google · Palantir · Liftoff</strong>. Intego: guhuza inyota n\'amahirwe.',
-    'hero.btn1': 'Menya A2SV', 'hero.btn2': 'Watumanahure',
+    'nav.skills': 'Ubumenyi', 'nav.awards': 'Ibihembo', 'nav.cta': 'Vugana Nawe',
+    'hero.desc': 'Umushingatsi n\'Umuyobozi Mukuru wa <strong>A2SV</strong>, umuryango wunganiwe na Google ugamije guhindura ejo hazaza h\'ikoranabuhanga muri Afurika. Imyaka 8+ muri <strong>Google · Palantir · Liftoff</strong>. Intego: guhuza inzobere n\'amahirwe.',
+    'hero.btn1': 'Menya A2SV', 'hero.btn2': 'Vugana Nawe',
     'about.tag': 'ibyerekeye', 'about.h': 'Umubatsi. Umwarimu. <em>Umuturutsi.</em>',
-    'about.p1': 'Navutse i <strong>Ankara, Turukiya</strong>, narangije amashuri makuru muri <strong>Kaminuza ya Bilkent</strong>, maze naratsindana mu <strong>Olimpiki y\'Amakuru</strong>, mbere yo gukora imyaka 8+ muri <strong>Palantir, Google na Liftoff</strong>.',
-    'about.p2': "Ariko isezerano nagiriye Afurika mu magambo ya thesis yanjye ntigahwema. Mu 2019, narutse i Addis Ababa nkurikije igitekerezo kimwe: abagizi b'ikoranabuhanga ba Afurika barashobora gutsindana n'uwo ari we wese. Bakeneye gusa imiterere ikwiye.",
-    'about.p3': 'Icyo gitekerezo cyabaye <strong>A2SV</strong>. Uyu munsi, abagizi barenga 1.200 bava mu bihugu 22 by\'Afurika barangije porogaramu yacu. Abanyeshuri batari barigeze bumva Google none bari muri Google. Ibyo ntibyereka kera.',
-    'exp.tag': 'inzira y\'akazi', 'exp.h': 'Aho Nakoze <em>Ibikorwa</em>', 'exp.sub': 'Kuva mu bushakashatsi bw\'amashuri kugeza i Silicon Valley no kubaka ejo hazaza h\'ikoranabuhanga muri Afurika.',
+    'about.p1': 'Navutse mu <strong>Ankara, Turukiya</strong>. Narangije amashuri makuru muri <strong>Kaminuza ya Bilkent</strong> mu ikoranabuhanga. Naratsindana mu <strong>Olimpiki y\'Amakuru</strong>, hanyuma nakoze imyaka 8+ muri <strong>Palantir, Google na Liftoff</strong>.',
+    'about.p2': "Ariko isezerano nagiriye Afurika mu thesis yanjye ntigahwema. Mu 2019, narutse i Addis Ababa nkurikije igitekerezo kimwe: inzobere z'ikoranabuhanga za Afurika zirashobora gutsindana n'uwo ari we wese ku isi. Bikeneye gusa imiterere ikwiye.",
+    'about.p3': 'Icyo gitekerezo cyabaye <strong>A2SV</strong>. Uyu munsi, inzobere zirenga 1.200 ziva mu bihugu 22 by\'Afurika zarangije gahunda yacu. Abanyeshuri batari barigeze bumva Google none bari muri Google. Ibyo ntibyereka kera.',
+    'exp.tag': 'inzira y\'akazi', 'exp.h': 'Aho Nakoze <em>Ibikorwa</em>', 'exp.sub': "Kuva mu bushakashatsi kugeza i Silicon Valley, none kubaka ejo hazaza h'ikoranabuhanga muri Afurika.",
     'a2sv.h': 'Afurika kuri <em>Silicon Valley</em>',
-    'products.tag': 'inzira y\'ubucuruzi', 'products.h': 'Ibicuruzwa <em>bya A2SV</em>', 'products.sub': "Ibisubizo by'ikoranabuhanga byubakwe n'abagizi ba A2SV, bivugana n'ibibazo bikomeye bya Afurika mu buzima, uburezi, imari n'uburenganzira bwa AI.",
+    'products.tag': 'ibicuruzwa', 'products.h': 'Ibicuruzwa <em>bya A2SV</em>', 'products.sub': "Ibisubizo by'ikoranabuhanga byubakwe n'inzobere za A2SV, zivugana n'ibibazo bikomeye bya Afurika mu buzima, uburezi, imari no kwinjira muri AI.",
     'skills.tag': 'ubumenyi', 'skills.h': 'Ibyo <em>Nzi</em>',
     'edu.tag': 'uburezi', 'edu.h': 'Imizi <em>y\'Amashuri</em>',
     'awards.tag': 'icyubahiro', 'awards.h': 'Ibihembo &amp; <em>Icyubahiro</em>',
-    'contact.h': 'Tuganire <em style="font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Hamwe</em>',
+    'contact.h': `Tuganire <em style="${EM}">Hamwe</em>`,
     'contact.desc': "Ushaka gukorana na A2SV, gushaka inzobere z'Afurika binyuze muri Eskalate, cyangwa ukunda kuvuga muraho? Nishimiye kukumva.",
+    'stat1.label': 'Inzobere Zitozwe', 'stat1.sub': 'biva mu bihugu 22 bya Afurika',
+    'stat2.label': 'Ibyifuzo bya Akazi', 'stat2.sub': 'Google · Amazon · Bloomberg',
+    'stat3.label': 'Abagize Hackathon', 'stat3.sub': 'irushanwa rinini rya AI muri Afurika',
+    'stat4.label': 'Ibicuruzwa Byubakwe', 'stat4.sub': 'ubuzima · imari · uburezi',
   }
 };
 
@@ -1426,6 +1539,13 @@ function setLang(lang) {
     const key = el.getAttribute('data-i18n-html');
     if (t[key] !== undefined) el.innerHTML = t[key];
   });
+  // Update typewriter roles
+  if (t.roles) {
+    roles.length = 0;
+    t.roles.forEach(r => roles.push(r));
+    ri = 0; ci = 0; del = false;
+    el.textContent = '';
+  }
   document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
   document.documentElement.lang = lang;
@@ -1437,6 +1557,18 @@ window.addEventListener('scroll', ()=>{
   const ring=document.querySelector('.hero-photo-ring');
   if(ring) ring.style.transform=`translateY(${y*.08}px)`;
 });
+
+// ═══ LIGHTBOX ═══
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
 </script>
 </body>
 </html>
