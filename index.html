@@ -358,7 +358,7 @@
       display: flex; align-items: center; gap: .6rem;
     }
     .vid-row-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .vid-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; max-width: 700px; }
+    .vid-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
     .vid-card {
       position: relative; border-radius: 12px; overflow: hidden;
       aspect-ratio: 16/9; display: block;
@@ -682,16 +682,16 @@
     <li><a href="#awards" data-i18n="nav.awards">Awards</a></li>
   </ul>
   <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('en')">EN</button>
-    <button class="lang-btn" onclick="setLang('tr')">TR</button>
-    <button class="lang-btn" onclick="setLang('es')">ES</button>
-    <button class="lang-btn" onclick="setLang('rw')">RW</button>
-    <button class="lang-btn" onclick="setLang('fr')">FR</button>
-    <button class="lang-btn" onclick="setLang('de')">DE</button>
-    <button class="lang-btn" onclick="setLang('ar')">AR</button>
-    <button class="lang-btn" onclick="setLang('pt')">PT</button>
-    <button class="lang-btn" onclick="setLang('sw')">SW</button>
-    <button class="lang-btn" onclick="setLang('am')">AM</button>
+    <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+    <button class="lang-btn" onclick="setLang('tr')">🇹🇷 TR</button>
+    <button class="lang-btn" onclick="setLang('es')">🇪🇸 ES</button>
+    <button class="lang-btn" onclick="setLang('rw')">🇷🇼 RW</button>
+    <button class="lang-btn" onclick="setLang('fr')">🇫🇷 FR</button>
+    <button class="lang-btn" onclick="setLang('de')">🇩🇪 DE</button>
+    <button class="lang-btn" onclick="setLang('ar')">🇸🇦 AR</button>
+    <button class="lang-btn" onclick="setLang('pt')">🇧🇷 PT</button>
+    <button class="lang-btn" onclick="setLang('sw')">🇹🇿 SW</button>
+    <button class="lang-btn" onclick="setLang('am')">🇪🇹 AM</button>
   </div>
   <a href="mailto:emre@a2sv.org" class="nav-cta" data-i18n="nav.cta">Say Hello</a>
   <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
@@ -866,7 +866,7 @@
                 <div class="co-icon" style="background:rgba(99,102,241,.12)">📱</div>
                 <span class="co-name">Liftoff Mobile, Inc. · Palo Alto, CA</span>
               </div>
-              <div class="tl-role" data-i18n="exp.liftoff.role">Machine Learning Engineer</div>
+              <div class="tl-role" data-i18n="exp.liftoff.role">AI Engineer</div>
             </div>
             <span class="tl-period">Sep 2016 → Oct 2019</span>
           </div>
@@ -988,20 +988,22 @@
     <!-- A2SV Documents (moved above In the Media) -->
     <div class="vid-row anim" style="margin-top:2.5rem">
       <div class="vid-row-label" data-i18n-html="resources.h">A2SV <em>Documents</em></div>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.2rem">
-        <a href="https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/view?usp=sharing" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.75rem 1.35rem;border-radius:12px;text-decoration:none;font-size:.88rem;font-weight:600;transition:all .25s"
-           onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
-           onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span data-i18n="resources.link1">A2SV 5 Years of Impact Report</span>
+      <div class="vid-grid" style="margin-top:.5rem">
+        <a class="vid-card" href="https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/view?usp=sharing" target="_blank" rel="noopener">
+          <img class="vid-thumb" src="https://lh3.googleusercontent.com/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z=w800" alt="A2SV 5 Years of Impact Report" loading="lazy" style="object-position:center top" />
+          <div class="vid-overlay">
+            <div class="vid-play"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div class="vid-badge">PDF</div>
+            <div class="vid-title" data-i18n="resources.link1">A2SV 5 Years of Impact Report</div>
+          </div>
         </a>
-        <a href="https://drive.google.com/file/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX/view?usp=sharing" target="_blank" rel="noopener"
-           style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.75rem 1.35rem;border-radius:12px;text-decoration:none;font-size:.88rem;font-weight:600;transition:all .25s"
-           onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
-           onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-          <span data-i18n="resources.link2">A2SV 2-Pager</span>
+        <a class="vid-card" href="https://drive.google.com/file/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX/view?usp=sharing" target="_blank" rel="noopener">
+          <img class="vid-thumb" src="https://lh3.googleusercontent.com/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX=w800" alt="A2SV 2-Pager" loading="lazy" style="object-position:center top" />
+          <div class="vid-overlay">
+            <div class="vid-play"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+            <div class="vid-badge">PDF</div>
+            <div class="vid-title" data-i18n="resources.link2">A2SV 2-Pager</div>
+          </div>
         </a>
       </div>
     </div>
@@ -1012,11 +1014,11 @@
       <div class="vid-grid">
 
         <a class="vid-card" href="https://www.youtube.com/watch?v=52ELtLxgMto" target="_blank" rel="noopener">
-          <img class="vid-thumb" src="https://img.youtube.com/vi/52ELtLxgMto/hqdefault.jpg" alt="A2SV: Africa to Silicon Valley" loading="lazy" />
+          <img class="vid-thumb" src="https://img.youtube.com/vi/52ELtLxgMto/hqdefault.jpg" alt="Global AI Summit on Africa 2025" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
-            <div class="vid-badge">YouTube</div>
-            <div class="vid-title">A2SV: Africa to Silicon Valley</div>
+            <div class="vid-badge" data-i18n="media.vid1.badge">Panel</div>
+            <div class="vid-title" data-i18n="media.vid1.title">AI is Reshaping Work — Where Does Africa Stand?</div>
           </div>
         </a>
 
@@ -1024,8 +1026,8 @@
           <img class="vid-thumb" src="https://img.youtube.com/vi/meUHhneJRiE/hqdefault.jpg" alt="A2SV in 2023" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
-            <div class="vid-badge">Year in Review</div>
-            <div class="vid-title">A2SV in 2023</div>
+            <div class="vid-badge" data-i18n="media.vid2.badge">Year in Review</div>
+            <div class="vid-title" data-i18n="media.vid2.title">A2SV in 2023</div>
           </div>
         </a>
 
@@ -1033,17 +1035,17 @@
           <img class="vid-thumb" src="https://img.youtube.com/vi/nnbEglsSLZw/hqdefault.jpg" alt="A2SV on TRT World" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
-            <div class="vid-badge">TRT World</div>
-            <div class="vid-title">A2SV on TRT World</div>
+            <div class="vid-badge" data-i18n="media.vid3.badge">TRT World</div>
+            <div class="vid-title" data-i18n="media.vid3.title">A2SV on TRT World</div>
           </div>
         </a>
 
         <a class="vid-card" href="https://www.youtube.com/watch?v=yg59HhjeVWc" target="_blank" rel="noopener">
-          <img class="vid-thumb" src="https://img.youtube.com/vi/yg59HhjeVWc/hqdefault.jpg" alt="The A2SV Podcast" loading="lazy" />
+          <img class="vid-thumb" src="https://img.youtube.com/vi/yg59HhjeVWc/hqdefault.jpg" alt="Emre Varol — Upbringings, Faith, Career, A2SV and more" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
-            <div class="vid-badge">Podcast</div>
-            <div class="vid-title">The A2SV Podcast</div>
+            <div class="vid-badge" data-i18n="media.vid4.badge">Podcast</div>
+            <div class="vid-title" data-i18n="media.vid4.title">Emre Varol — Upbringings, Faith, Career &amp; A2SV</div>
           </div>
         </a>
 
@@ -1190,7 +1192,7 @@
       <div class="skill-cat anim">
         <div class="skill-cat-h" data-i18n-html="skill3.h">🤖 AI &amp; Data Science</div>
         <div class="s-tags" data-i18n-html="skills.cat3">
-          <span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span>
+          <span class="s-tag">AI / ML</span><span class="s-tag">NLP</span>
           <span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span>
           <span class="s-tag">Ad Tech ML</span><span class="s-tag">Conversion Optimization</span>
         </div>
@@ -1485,7 +1487,7 @@ function animate() { ctx.clearRect(0,0,W,H); dots.forEach(d=>{d.update();d.draw(
 animate();
 
 // ═══ TYPEWRITER ═══
-const roles=['Founder & CEO of A2SV','Machine Learning Engineer','Software Engineer','Education Innovator','Competitive Programmer','Builder of African Tech Talent'];
+const roles=['Founder & CEO of A2SV','AI Engineer','Software Engineer','Education Innovator','Competitive Programmer','Builder of African Tech Talent'];
 let ri=0,ci=0,del=false;
 const el=document.getElementById('typetext');
 function type() {
@@ -1541,7 +1543,7 @@ document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',
 const EM = 'font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text';
 const translations = {
   en: {
-    roles: ['Founder & CEO of A2SV','Machine Learning Engineer','Software Engineer','Education Innovator','Competitive Programmer','Builder of African Tech Talent'],
+    roles: ['Founder & CEO of A2SV','AI Engineer','Software Engineer','Education Innovator','Competitive Programmer','Builder of African Tech Talent'],
     'nav.about': 'About', 'nav.experience': 'Experience', 'nav.products': 'Products ▾',
     'nav.skills': 'Skills', 'nav.awards': 'Awards', 'nav.cta': 'Say Hello',
     'hero.desc': 'Founder &amp; CEO of <strong>A2SV</strong>, a Google-backed nonprofit transforming Africa\'s tech ecosystem. 8+ years at <strong>Google · Palantir · Liftoff</strong>. On a mission to bridge talent and opportunity.',
@@ -1580,7 +1582,7 @@ const translations = {
     'resources.h': 'A2SV <em>Documents</em>', 'resources.link1': 'A2SV 5 Years of Impact Report', 'resources.link2': 'A2SV 2-Pager',
     'footer.purpose': 'Built with purpose 🌍', 'about.badge.t': 'Years in Silicon Valley',
     'exp.a2sv.role': 'Founder &amp; CEO',
-    'exp.liftoff.role': 'Machine Learning Engineer',
+    'exp.liftoff.role': 'AI Engineer',
     'exp.google.role': 'Software Engineer, Google Research',
     'exp.palantir.role': 'Software Engineer',
     'exp.yahoo.role': 'Research Intern',
@@ -1614,12 +1616,16 @@ const translations = {
     'skills.cat6': '<span class="s-tag">AI for Social Good</span><span class="s-tag">EdTech Innovation</span><span class="s-tag">Guitar 🎸</span><span class="s-tag">Football ⚽</span><span class="s-tag">Hiking 🥾</span><span class="s-tag">Reading 📚</span><span class="s-tag">Chess ♟️</span>',
     'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
     'media.label': 'In the Media',
+    'media.vid1.badge': 'Panel', 'media.vid1.title': 'AI is Reshaping Work — Where Does Africa Stand?',
+    'media.vid2.badge': 'Year in Review', 'media.vid2.title': 'A2SV in 2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV on TRT World',
+    'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Upbringings, Faith, Career & A2SV',
     'prod.cat.health': 'Maternal Health', 'prod.cat.ai': 'AI Assistant', 'prod.cat.youth': 'Youth Careers', 'prod.cat.fin': 'FinTech · Remittance', 'prod.cat.talent': 'Talent · Outsourcing', 'prod.cat.food': 'Food · Social', 'prod.cat.edu': 'Education · AI',
     'gs.h': 'Galatasaray', 'gs.p': 'Born in <strong>Ankara</strong>, heart red and yellow. Football and code have been with me equally long.',
     'gallery.cap1': 'GITEX 2024 · Morocco', 'gallery.cap2': 'University of Ghana, Legon · With A2SV students', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Finals', 'gallery.cap4': 'With Karim Beguir · A2SV advisor & InstaDeep founder', 'gallery.cap5': 'With Anand Raju · Qatar Investment Authority. Bilkent roommate, reunited in Qatar 2025', 'gallery.cap6': 'With KOICA manager · Ethiopia', 'gallery.cap7': 'With finalist team · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Speaker, with fellow panelists', 'gallery.cap9': 'Global AI Summit on Africa 2025 · The team', 'gallery.cap10': 'Google years · MTV Googleplex, 2015',
   },
   tr: {
-    roles: ["A2SV'nin Kurucusu ve CEO'su", 'Makine Öğrenmesi Mühendisi', 'Yazılım Mühendisi', 'Eğitim Vizyoneri', 'Rekabetçi Programcı', "Afrika'nın Teknoloji Yeteneğini İnşa Eden"],
+    roles: ["A2SV'nin Kurucusu ve CEO'su", 'Yapay Zeka Mühendisi', 'Yazılım Mühendisi', 'Eğitim Vizyoneri', 'Rekabetçi Programcı', "Afrika'nın Teknoloji Yeteneğini İnşa Eden"],
     'nav.about': 'Hakkımda', 'nav.experience': 'Deneyim', 'nav.products': 'Ürünler ▾',
     'nav.skills': 'Beceriler', 'nav.awards': 'Ödüller', 'nav.cta': 'İletişime Geç',
     'hero.desc': "<strong>A2SV</strong>'nin kurucusu ve CEO'yum. Google destekli bu sivil toplum kuruluşuyla Afrika'nın teknoloji ekosistemini dönüştürüyoruz. <strong>Google · Palantir · Liftoff</strong>'ta 8 yılı aşkın deneyimimin ardından şimdi tek bir misyon var: yeteneği fırsatla buluşturmak.",
@@ -1658,7 +1664,7 @@ const translations = {
     'resources.h': 'A2SV <em>Belgeleri</em>', 'resources.link1': 'A2SV 5 Yıllık Etki Raporu', 'resources.link2': 'A2SV Tanıtım Dosyası',
     'footer.purpose': 'Bir amaç uğruna inşa edildi 🌍', 'about.badge.t': 'Yıl Silikon Vadisi',
     'exp.a2sv.role': 'Kurucu &amp; CEO',
-    'exp.liftoff.role': 'Makine Öğrenmesi Mühendisi',
+    'exp.liftoff.role': 'Yapay Zeka Mühendisi',
     'exp.google.role': 'Yazılım Mühendisi, Google Research',
     'exp.palantir.role': 'Yazılım Mühendisi',
     'exp.yahoo.role': 'Araştırma Stajyeri',
@@ -1687,17 +1693,21 @@ const translations = {
     'pub.t2': 'CoDet: Haber metinlerinde cümle bazlı içerik tespiti',
     'skills.cat1': '<span class="s-tag">Sivil Toplum Yönetimi</span><span class="s-tag">Girişim Liderliği</span><span class="s-tag">Fon Toplama</span><span class="s-tag">Küresel Ortaklıklar</span><span class="s-tag">Stratejik İletişim</span><span class="s-tag">EdTech Büyütme</span><span class="s-tag">Mali Denetim</span><span class="s-tag">Çok Kültürlü Takımlar</span>',
     'skills.cat2': '<span class="s-tag">Dağıtık Sistemler</span><span class="s-tag">Backend Mimarisi</span><span class="s-tag">Ölçeklenebilir ML Pipeline</span><span class="s-tag">Algoritma Tasarımı</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
-    'skills.cat3': '<span class="s-tag">Makine Öğrenmesi</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Özellik Mühendisliği</span><span class="s-tag">Reklam Teknolojisi ML</span><span class="s-tag">Dönüşüm Optimizasyonu</span>',
+    'skills.cat3': '<span class="s-tag">Yapay Zeka / ML</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Özellik Mühendisliği</span><span class="s-tag">Reklam Teknolojisi ML</span><span class="s-tag">Dönüşüm Optimizasyonu</span>',
     'skills.cat5': '<span class="s-tag">Müfredat Tasarımı</span><span class="s-tag">Rekabetçi Programlama</span><span class="s-tag">Halka Açık Konuşma</span><span class="s-tag">Mentorluk Programları</span><span class="s-tag">Teknik Koçluk</span>',
     'skills.cat6': '<span class="s-tag">Toplumsal Fayda için AI</span><span class="s-tag">EdTech İnovasyonu</span><span class="s-tag">Gitar 🎸</span><span class="s-tag">Futbol ⚽</span><span class="s-tag">Yürüyüş 🥾</span><span class="s-tag">Okuma 📚</span><span class="s-tag">Satranç ♟️</span>',
     'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
     'media.label': 'Medyada',
+    'media.vid1.badge': 'Panel', 'media.vid1.title': 'Yapay Zeka İşi Yeniden Şekillendiriyor — Afrika Nerede Duruyor?',
+    'media.vid2.badge': 'Yıl Özeti', 'media.vid2.title': '2023\'te A2SV',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'TRT World\'de A2SV',
+    'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Yetişme, İnanç, Kariyer ve A2SV',
     'prod.cat.health': 'Anne Sağlığı', 'prod.cat.ai': 'Yapay Zeka Asistanı', 'prod.cat.youth': 'Gençlik Kariyer', 'prod.cat.fin': 'FinTek · Havale', 'prod.cat.talent': 'Yetenek · Dış Kaynak', 'prod.cat.food': 'Yemek · Sosyal', 'prod.cat.edu': 'Eğitim · Yapay Zeka',
     'gs.h': 'Galatasaray', 'gs.p': '<strong>Ankara</strong>\'da doğdum, kalbim kırmızı ve sarı. Futbol ve kod hayatımda hep eşit yer tuttu.',
     'gallery.cap1': 'GITEX 2024 · Fas', 'gallery.cap2': 'Ghana Üniversitesi, Legon · A2SV öğrencileriyle', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Final', 'gallery.cap4': 'Karim Beguir ile · A2SV danışmanımız ve InstaDeep kurucusu', 'gallery.cap5': 'Anand Raju ile · Qatar Investment Authority. Bilkent\'te oda arkadaşım, 2025\'te Qatar\'da buluştuk', 'gallery.cap6': 'KOICA yöneticisi ile · Etiyopya', 'gallery.cap7': 'Finalist takımla · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Konuşmacı, panelistlerle', 'gallery.cap9': 'Global AI Summit on Africa 2025 · Ekip', 'gallery.cap10': 'Google yılları · MTV Googleplex, 2015',
   },
   es: {
-    roles: ['Fundador y CEO de A2SV', 'Ingeniero de Machine Learning', 'Ingeniero de Software', 'Innovador en Educación', 'Programador Competitivo', 'Constructor del Talento Tecnológico Africano'],
+    roles: ['Fundador y CEO de A2SV', 'Ingeniero de IA', 'Ingeniero de Software', 'Innovador en Educación', 'Programador Competitivo', 'Constructor del Talento Tecnológico Africano'],
     'nav.about': 'Sobre mí', 'nav.experience': 'Experiencia', 'nav.products': 'Productos ▾',
     'nav.skills': 'Habilidades', 'nav.awards': 'Premios', 'nav.cta': 'Escríbeme',
     'hero.desc': 'Fundador y CEO de <strong>A2SV</strong>, una ONG respaldada por Google que está transformando el ecosistema tecnológico de África. Más de 8 años en <strong>Google · Palantir · Liftoff</strong>. Mi misión: conectar talento con oportunidad.',
@@ -1736,7 +1746,7 @@ const translations = {
     'resources.h': 'Documentos <em>A2SV</em>', 'resources.link1': 'Informe de Impacto: 5 Años de A2SV', 'resources.link2': 'Dossier de 2 Páginas',
     'footer.purpose': 'Construido con propósito 🌍', 'about.badge.t': 'Años en Silicon Valley',
     'exp.a2sv.role': 'Fundador &amp; CEO',
-    'exp.liftoff.role': 'Ingeniero de Machine Learning',
+    'exp.liftoff.role': 'Ingeniero de IA',
     'exp.google.role': 'Ingeniero de Software, Google Research',
     'exp.palantir.role': 'Ingeniero de Software',
     'exp.yahoo.role': 'Pasante de Investigación',
@@ -1764,6 +1774,10 @@ const translations = {
     'pub.t1': 'Reenvío de consultas en motores de búsqueda web geográficamente distribuidos',
     'pub.t2': 'CoDet: Detección de contención basada en oraciones en corpus de noticias',
     'media.label': 'En los Medios',
+    'media.vid1.badge': 'Panel', 'media.vid1.title': 'La IA está transformando el trabajo — ¿Dónde queda África?',
+    'media.vid2.badge': 'Resumen del Año', 'media.vid2.title': 'A2SV en 2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV en TRT World',
+    'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Orígenes, Fe, Carrera y A2SV',
     'prod.cat.health': 'Salud Materna', 'prod.cat.ai': 'Asistente IA', 'prod.cat.youth': 'Carreras Juveniles', 'prod.cat.fin': 'FinTech · Remesas', 'prod.cat.talent': 'Talento · Outsourcing', 'prod.cat.food': 'Comida · Social', 'prod.cat.edu': 'Educación · IA',
     'gs.h': 'Galatasaray', 'gs.p': 'Nacido en <strong>Ankara</strong>, corazón rojo y amarillo. El fútbol y el código me han acompañado por igual.',
     'skills.cat1': '<span class="s-tag">Gestión de ONGs</span><span class="s-tag">Liderazgo Startup</span><span class="s-tag">Recaudación de Fondos</span><span class="s-tag">Alianzas Globales</span><span class="s-tag">Comunicación Estratégica</span><span class="s-tag">Escalar EdTech</span><span class="s-tag">Supervisión Financiera</span><span class="s-tag">Equipos Multiculturales</span>',
@@ -1774,7 +1788,7 @@ const translations = {
     'skills.cat6': '<span class="s-tag">IA para el Bien Social</span><span class="s-tag">Innovación EdTech</span><span class="s-tag">Guitarra 🎸</span><span class="s-tag">Fútbol ⚽</span><span class="s-tag">Senderismo 🥾</span><span class="s-tag">Lectura 📚</span><span class="s-tag">Ajedrez ♟️</span>',
   },
   rw: {
-    roles: ["Umushinga n'Umuyobozi wa A2SV", 'Injeniyeri ya Machine Learning', 'Injeniyeri ya Logiciel', 'Umutsindagira mu Burezi', 'Umukinnyi wa Gahunda', "Umubuza Inzobere za Teknoloji muri Afurika"],
+    roles: ["Umushinga n'Umuyobozi wa A2SV", 'Injeniyeri ya AI', 'Injeniyeri ya Logiciel', 'Umutsindagira mu Burezi', 'Umukinnyi wa Gahunda', "Umubuza Inzobere za Teknoloji muri Afurika"],
     'nav.about': 'Ibyerekeye', 'nav.experience': 'Uburambe', 'nav.products': 'Ibicuruzwa ▾',
     'nav.skills': 'Ubumenyi', 'nav.awards': 'Ibihembo', 'nav.cta': 'Vugana Nawe',
     'hero.desc': 'Umushingatsi n\'Umuyobozi Mukuru wa <strong>A2SV</strong>, umuryango wunganiwe na Google ugamije guhindura ejo hazaza h\'ikoranabuhanga muri Afurika. Imyaka 8+ muri <strong>Google · Palantir · Liftoff</strong>. Intego: guhuza inzobere n\'amahirwe.',
@@ -1813,7 +1827,7 @@ const translations = {
     'resources.h': "Inyandiko <em>za A2SV</em>", 'resources.link1': "Raporo y'Ingaruka: Imyaka 5 ya A2SV", 'resources.link2': "Inyandiko y'Intangiriro (2 Pager)",
     'footer.purpose': "Ubatswe n'intego 🌍", 'about.badge.t': 'Imyaka i Silicon Valley',
     'exp.a2sv.role': 'Umushingatsi &amp; Umuyobozi Mukuru',
-    'exp.liftoff.role': 'Injeniyeri ya Machine Learning',
+    'exp.liftoff.role': 'Injeniyeri ya AI',
     'exp.google.role': 'Injeniyeri ya Logiciel, Google Research',
     'exp.palantir.role': 'Injeniyeri ya Logiciel',
     'exp.yahoo.role': 'Umunyeshuri w\'Ubushakashatsi',
@@ -1841,6 +1855,10 @@ const translations = {
     'pub.t1': 'Kohereza ibibazo muri moteri zishakisha ku rubuga zisaranganyijwe ku isi',
     'pub.t2': 'CoDet: Gukurura ibikubiye mu nkuru hashingiwe ku nteruro',
     'media.label': 'Mu Itangazamakuru',
+    'media.vid1.badge': 'Ikiganiro', 'media.vid1.title': 'AI irimo guhindura akazi — Afrika iherereye he?',
+    'media.vid2.badge': 'Umwaka mu Isuzuma', 'media.vid2.title': 'A2SV mu 2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV kuri TRT World',
+    'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Imikurire, Ukwizera, Umwuga na A2SV',
     'prod.cat.health': 'Ubuzima bw\'Ababyeyi', 'prod.cat.ai': 'Umufasha wa AI', 'prod.cat.youth': 'Imyuga y\'Urubyiruko', 'prod.cat.fin': 'FinTech · Kohereza', 'prod.cat.talent': 'Impano · Outsourcing', 'prod.cat.food': 'Ibiryo · Social', 'prod.cat.edu': 'Uburezi · AI',
     'gs.h': 'Galatasaray', 'gs.p': 'Navukiye i <strong>Ankara</strong>, umutima wanjye umutuku n\'umuhondo. Umupira w\'amaguru na code byabaye nanjye ku buryo bungana.',
     'skills.cat1': '<span class="s-tag">Gucunga ONG</span><span class="s-tag">Ubuyobozi bwa Startup</span><span class="s-tag">Gushaka Inkunga</span><span class="s-tag">Ubufatanye bw\'Isi</span><span class="s-tag">Itumanaho rya Ingamba</span><span class="s-tag">Gukura EdTech</span><span class="s-tag">Kugenzura Imari</span><span class="s-tag">Amatsinda Mpuzamahanga</span>',
@@ -1851,7 +1869,7 @@ const translations = {
     'skills.cat6': '<span class="s-tag">AI ku Bw\'Inyungu z\'Abaturage</span><span class="s-tag">Ibishya muri EdTech</span><span class="s-tag">Ikirangirire 🎸</span><span class="s-tag">Umupira w\'amaguru ⚽</span><span class="s-tag">Urugendo ku musozi 🥾</span><span class="s-tag">Gusoma 📚</span><span class="s-tag">Chess ♟️</span>',
   },
   fr: {
-    roles: ["Fondateur et PDG d'A2SV", 'Ingénieur en Machine Learning', 'Ingénieur Logiciel', 'Innovateur en Éducation', 'Programmeur Compétitif', "Développeur du Talent Tech Africain"],
+    roles: ["Fondateur et PDG d'A2SV", 'Ingénieur en IA', 'Ingénieur Logiciel', 'Innovateur en Éducation', 'Programmeur Compétitif', "Développeur du Talent Tech Africain"],
     'nav.about': 'À propos', 'nav.experience': 'Expérience', 'nav.products': 'Produits ▾',
     'nav.skills': 'Compétences', 'nav.awards': 'Distinctions', 'nav.cta': 'Me contacter',
     'hero.desc': "Fondateur et PDG d'<strong>A2SV</strong>, une ONG soutenue par Google qui transforme l'écosystème tech africain. 8+ ans chez <strong>Google · Palantir · Liftoff</strong>. En mission pour relier talent et opportunité.",
@@ -1890,7 +1908,7 @@ const translations = {
     'resources.h': 'Documents <em>A2SV</em>', 'resources.link1': "Rapport d'Impact A2SV 5 ans", 'resources.link2': 'Synthèse A2SV',
     'footer.purpose': 'Construit avec intention 🌍', 'about.badge.t': 'Ans en Silicon Valley',
     'exp.a2sv.role': 'Fondateur &amp; PDG',
-    'exp.liftoff.role': 'Ingénieur en Machine Learning',
+    'exp.liftoff.role': 'Ingénieur en IA',
     'exp.google.role': 'Ingénieur Logiciel, Google Research',
     'exp.palantir.role': 'Ingénieur Logiciel',
     'exp.yahoo.role': 'Stagiaire en Recherche',
@@ -1918,6 +1936,10 @@ const translations = {
     'pub.t1': 'Acheminement de requêtes dans les moteurs de recherche web géographiquement distribués',
     'pub.t2': 'CoDet: Détection de contenance basée sur les phrases dans les corpus de nouvelles',
     'media.label': 'Dans les Médias',
+    'media.vid1.badge': 'Panel', 'media.vid1.title': "L'IA transforme le travail — Où en est l'Afrique ?",
+    'media.vid2.badge': "Bilan de l'Année", 'media.vid2.title': 'A2SV en 2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV sur TRT World',
+    'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Origines, Foi, Carrière et A2SV',
     'prod.cat.health': 'Santé Maternelle', 'prod.cat.ai': 'Assistant IA', 'prod.cat.youth': 'Carrières Jeunesse', 'prod.cat.fin': 'FinTech · Transferts', 'prod.cat.talent': 'Talent · Externalisation', 'prod.cat.food': 'Alimentation · Social', 'prod.cat.edu': 'Éducation · IA',
     'gs.h': 'Galatasaray', 'gs.p': 'Né à <strong>Ankara</strong>, cœur rouge et jaune. Le football et le code m\'accompagnent depuis aussi longtemps.',
     'skills.cat1': '<span class="s-tag">Gestion d\'ONG</span><span class="s-tag">Leadership Startup</span><span class="s-tag">Collecte de Fonds</span><span class="s-tag">Partenariats Mondiaux</span><span class="s-tag">Communication Stratégique</span><span class="s-tag">Croissance EdTech</span><span class="s-tag">Supervision Financière</span><span class="s-tag">Équipes Multiculturelles</span>',
@@ -1928,7 +1950,7 @@ const translations = {
     'skills.cat6': '<span class="s-tag">IA pour le Bien Social</span><span class="s-tag">Innovation EdTech</span><span class="s-tag">Guitare 🎸</span><span class="s-tag">Football ⚽</span><span class="s-tag">Randonnée 🥾</span><span class="s-tag">Lecture 📚</span><span class="s-tag">Échecs ♟️</span>',
   },
   de: {
-    roles: ['Gründer & CEO von A2SV', 'Machine-Learning-Ingenieur', 'Softwareingenieur', 'Bildungsinnovator', 'Wettbewerbsprogrammierer', "Aufbauer von Afrikas Tech-Talenten"],
+    roles: ['Gründer & CEO von A2SV', 'KI-Ingenieur', 'Softwareingenieur', 'Bildungsinnovator', 'Wettbewerbsprogrammierer', "Aufbauer von Afrikas Tech-Talenten"],
     'nav.about': 'Über mich', 'nav.experience': 'Erfahrung', 'nav.products': 'Produkte ▾',
     'nav.skills': 'Fähigkeiten', 'nav.awards': 'Auszeichnungen', 'nav.cta': 'Hallo sagen',
     'hero.desc': 'Gründer &amp; CEO von <strong>A2SV</strong>, einer von Google unterstützten gemeinnützigen Organisation, die Afrikas Tech-Ökosystem transformiert. 8+ Jahre bei <strong>Google · Palantir · Liftoff</strong>. Mit der Mission, Talent und Chance zu verbinden.',
@@ -1967,7 +1989,7 @@ const translations = {
     'resources.h': 'A2SV <em>Dokumente</em>', 'resources.link1': 'A2SV 5-Jahres-Impact-Bericht', 'resources.link2': 'A2SV-Kurzprofil',
     'footer.purpose': 'Mit Zweck gebaut 🌍', 'about.badge.t': 'Jahre im Silicon Valley',
     'exp.a2sv.role': 'Gründer &amp; CEO',
-    'exp.liftoff.role': 'Machine-Learning-Ingenieur',
+    'exp.liftoff.role': 'KI-Ingenieur',
     'exp.google.role': 'Softwareingenieur, Google Research',
     'exp.palantir.role': 'Softwareingenieur',
     'exp.yahoo.role': 'Forschungspraktikant',
@@ -1995,6 +2017,10 @@ const translations = {
     'pub.t1': 'Query-Weiterleitung in geographisch verteilten Web-Suchmaschinen',
     'pub.t2': 'CoDet: Satzbasierte Inhalts-Erkennung in Nachrichtenkorpora',
     'media.label': 'In den Medien',
+    'media.vid1.badge': 'Panel', 'media.vid1.title': 'KI verändert die Arbeitswelt — Wo steht Afrika?',
+    'media.vid2.badge': 'Jahresrückblick', 'media.vid2.title': 'A2SV in 2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV auf TRT World',
+    'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Herkunft, Glaube, Karriere & A2SV',
     'prod.cat.health': 'Muttergesundheit', 'prod.cat.ai': 'KI-Assistent', 'prod.cat.youth': 'Jugendkarrieren', 'prod.cat.fin': 'FinTech · Überweisungen', 'prod.cat.talent': 'Talent · Outsourcing', 'prod.cat.food': 'Essen · Sozial', 'prod.cat.edu': 'Bildung · KI',
     'gs.h': 'Galatasaray', 'gs.p': 'Geboren in <strong>Ankara</strong>, Herz rot und gelb. Fußball und Code begleiten mich gleich lang.',
     'skills.cat1': '<span class="s-tag">Non-Profit-Management</span><span class="s-tag">Startup-Führung</span><span class="s-tag">Fundraising</span><span class="s-tag">Globale Partnerschaften</span><span class="s-tag">Strategische Kommunikation</span><span class="s-tag">EdTech Skalierung</span><span class="s-tag">Finanzaufsicht</span><span class="s-tag">Interkulturelle Teams</span>',
@@ -2005,7 +2031,7 @@ const translations = {
     'skills.cat6': '<span class="s-tag">KI für Soziales</span><span class="s-tag">EdTech Innovation</span><span class="s-tag">Gitarre 🎸</span><span class="s-tag">Fußball ⚽</span><span class="s-tag">Wandern 🥾</span><span class="s-tag">Lesen 📚</span><span class="s-tag">Schach ♟️</span>',
   },
   ar: {
-    roles: ['مؤسس ورئيس تنفيذي لـ A2SV', 'مهندس تعلم آلي', 'مهندس برمجيات', 'مبتكر في التعليم', 'مبرمج تنافسي', 'بانٍ للمواهب التقنية الأفريقية'],
+    roles: ['مؤسس ورئيس تنفيذي لـ A2SV', 'مهندس ذكاء اصطناعي', 'مهندس برمجيات', 'مبتكر في التعليم', 'مبرمج تنافسي', 'بانٍ للمواهب التقنية الأفريقية'],
     'nav.about': 'عني', 'nav.experience': 'الخبرة', 'nav.products': 'المنتجات ▾',
     'nav.skills': 'المهارات', 'nav.awards': 'الجوائز', 'nav.cta': 'تواصل معي',
     'hero.desc': 'مؤسس ورئيس تنفيذي لـ <strong>A2SV</strong>، منظمة غير ربحية مدعومة من Google تحوّل منظومة التكنولوجيا الأفريقية. أكثر من 8 سنوات في <strong>Google · Palantir · Liftoff</strong>. في مهمة لربط المواهب بالفرص.',
@@ -2044,7 +2070,7 @@ const translations = {
     'resources.h': 'وثائق <em>A2SV</em>', 'resources.link1': 'تقرير أثر A2SV لـ 5 سنوات', 'resources.link2': 'ملخص A2SV',
     'footer.purpose': 'مبني بهدف 🌍', 'about.badge.t': 'سنوات في Silicon Valley',
     'exp.a2sv.role': 'المؤسس &amp; الرئيس التنفيذي',
-    'exp.liftoff.role': 'مهندس تعلم آلي',
+    'exp.liftoff.role': 'مهندس ذكاء اصطناعي',
     'exp.google.role': 'مهندس برمجيات، Google Research',
     'exp.palantir.role': 'مهندس برمجيات',
     'exp.yahoo.role': 'متدرب باحث',
@@ -2072,6 +2098,10 @@ const translations = {
     'pub.t1': 'إعادة توجيه الاستعلامات في محركات البحث الموزعة جغرافياً',
     'pub.t2': 'CoDet: كشف الاحتواء المبني على الجمل في مجموعات الأخبار',
     'media.label': 'في الإعلام',
+    'media.vid1.badge': 'حوار', 'media.vid1.title': 'الذكاء الاصطناعي يعيد تشكيل العمل — أين تقف أفريقيا؟',
+    'media.vid2.badge': 'ملخص العام', 'media.vid2.title': 'A2SV في 2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV على TRT World',
+    'media.vid4.badge': 'بودكاست', 'media.vid4.title': 'إمري فارول — النشأة، الإيمان، المسيرة و A2SV',
     'prod.cat.health': 'صحة الأم', 'prod.cat.ai': 'مساعد ذكاء اصطناعي', 'prod.cat.youth': 'وظائف الشباب', 'prod.cat.fin': 'تكنولوجيا مالية · تحويلات', 'prod.cat.talent': 'مواهب · استعانة خارجية', 'prod.cat.food': 'طعام · اجتماعي', 'prod.cat.edu': 'تعليم · ذكاء اصطناعي',
     'gs.h': 'Galatasaray', 'gs.p': 'وُلدتُ في <strong>أنقرة</strong>، قلبي أحمر وأصفر. كرة القدم والبرمجة رافقتاني بنفس القدر.',
     'skills.cat1': '<span class="s-tag">إدارة غير ربحية</span><span class="s-tag">قيادة الشركات الناشئة</span><span class="s-tag">جمع التبرعات</span><span class="s-tag">شراكات عالمية</span><span class="s-tag">تواصل استراتيجي</span><span class="s-tag">توسيع EdTech</span><span class="s-tag">رقابة مالية</span><span class="s-tag">فرق متعددة الثقافات</span>',
@@ -2082,7 +2112,7 @@ const translations = {
     'skills.cat6': '<span class="s-tag">ذكاء اصطناعي للخير</span><span class="s-tag">ابتكار EdTech</span><span class="s-tag">غيتار 🎸</span><span class="s-tag">كرة قدم ⚽</span><span class="s-tag">مشي 🥾</span><span class="s-tag">قراءة 📚</span><span class="s-tag">شطرنج ♟️</span>',
   },
   pt: {
-    roles: ['Fundador e CEO da A2SV', 'Engenheiro de Machine Learning', 'Engenheiro de Software', 'Inovador em Educação', 'Programador Competitivo', 'Construtor do Talento Tech Africano'],
+    roles: ['Fundador e CEO da A2SV', 'Engenheiro de IA', 'Engenheiro de Software', 'Inovador em Educação', 'Programador Competitivo', 'Construtor do Talento Tech Africano'],
     'nav.about': 'Sobre mim', 'nav.experience': 'Experiência', 'nav.products': 'Produtos ▾',
     'nav.skills': 'Habilidades', 'nav.awards': 'Prêmios', 'nav.cta': 'Diga Olá',
     'hero.desc': 'Fundador e CEO da <strong>A2SV</strong>, uma ONG apoiada pelo Google que transforma o ecossistema tech africano. 8+ anos no <strong>Google · Palantir · Liftoff</strong>. Em missão para conectar talento e oportunidade.',
@@ -2121,7 +2151,7 @@ const translations = {
     'resources.h': 'Documentos <em>A2SV</em>', 'resources.link1': 'Relatório de Impacto A2SV 5 Anos', 'resources.link2': 'Síntese A2SV',
     'footer.purpose': 'Construído com propósito 🌍', 'about.badge.t': 'Anos no Silicon Valley',
     'exp.a2sv.role': 'Fundador &amp; CEO',
-    'exp.liftoff.role': 'Engenheiro de Machine Learning',
+    'exp.liftoff.role': 'Engenheiro de IA',
     'exp.google.role': 'Engenheiro de Software, Google Research',
     'exp.palantir.role': 'Engenheiro de Software',
     'exp.yahoo.role': 'Estagiário de Pesquisa',
@@ -2149,6 +2179,10 @@ const translations = {
     'pub.t1': 'Encaminhamento de consultas em motores de busca web distribuídos geograficamente',
     'pub.t2': 'CoDet: Detecção de contenção baseada em sentenças em corpus de notícias',
     'media.label': 'Na Mídia',
+    'media.vid1.badge': 'Painel', 'media.vid1.title': 'A IA está transformando o trabalho — Onde fica a África?',
+    'media.vid2.badge': 'Resumo do Ano', 'media.vid2.title': 'A2SV em 2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV na TRT World',
+    'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Origens, Fé, Carreira e A2SV',
     'prod.cat.health': 'Saúde Materna', 'prod.cat.ai': 'Assistente IA', 'prod.cat.youth': 'Carreiras Juvenis', 'prod.cat.fin': 'FinTech · Remessas', 'prod.cat.talent': 'Talento · Terceirização', 'prod.cat.food': 'Alimentação · Social', 'prod.cat.edu': 'Educação · IA',
     'gs.h': 'Galatasaray', 'gs.p': 'Nascido em <strong>Ankara</strong>, coração vermelho e amarelo. Futebol e código me acompanham há o mesmo tempo.',
     'skills.cat1': '<span class="s-tag">Gestão sem Fins Lucrativos</span><span class="s-tag">Liderança Startup</span><span class="s-tag">Captação de Recursos</span><span class="s-tag">Parcerias Globais</span><span class="s-tag">Comunicação Estratégica</span><span class="s-tag">Escalar EdTech</span><span class="s-tag">Supervisão Financeira</span><span class="s-tag">Equipes Multiculturais</span>',
@@ -2159,7 +2193,7 @@ const translations = {
     'skills.cat6': '<span class="s-tag">IA para o Bem Social</span><span class="s-tag">Inovação EdTech</span><span class="s-tag">Violão 🎸</span><span class="s-tag">Futebol ⚽</span><span class="s-tag">Trilhas 🥾</span><span class="s-tag">Leitura 📚</span><span class="s-tag">Xadrez ♟️</span>',
   },
   sw: {
-    roles: ['Mwanzilishi na CEO wa A2SV', 'Mhandisi wa Machine Learning', 'Mhandisi wa Programu', 'Mvumbuzi wa Elimu', 'Mprogramaji wa Mashindano', 'Mjenzi wa Vipaji vya Teknolojia Afrika'],
+    roles: ['Mwanzilishi na CEO wa A2SV', 'Mhandisi wa AI', 'Mhandisi wa Programu', 'Mvumbuzi wa Elimu', 'Mprogramaji wa Mashindano', 'Mjenzi wa Vipaji vya Teknolojia Afrika'],
     'nav.about': 'Kuhusu', 'nav.experience': 'Uzoefu', 'nav.products': 'Bidhaa ▾',
     'nav.skills': 'Ujuzi', 'nav.awards': 'Tuzo', 'nav.cta': 'Salimiana',
     'hero.desc': 'Mwanzilishi na CEO wa <strong>A2SV</strong>, shirika lisilo la faida linaloundwa na Google linaloibadilisha mfumo wa teknolojia barani Afrika. Miaka 8+ katika <strong>Google · Palantir · Liftoff</strong>. Kwa jukumu la kuunganisha vipaji na fursa.',
@@ -2198,7 +2232,7 @@ const translations = {
     'resources.h': 'Nyaraka za <em>A2SV</em>', 'resources.link1': 'Ripoti ya Athari ya A2SV miaka 5', 'resources.link2': 'Muhtasari wa A2SV',
     'footer.purpose': 'Imejengwa kwa kusudi 🌍', 'about.badge.t': 'Miaka huko Silicon Valley',
     'exp.a2sv.role': 'Mwanzilishi &amp; CEO',
-    'exp.liftoff.role': 'Mhandisi wa Machine Learning',
+    'exp.liftoff.role': 'Mhandisi wa AI',
     'exp.google.role': 'Mhandisi wa Programu, Google Research',
     'exp.palantir.role': 'Mhandisi wa Programu',
     'exp.yahoo.role': 'Mkufunzi wa Utafiti',
@@ -2226,6 +2260,10 @@ const translations = {
     'pub.t1': 'Usambazaji wa maswali katika injini za utafutaji wa mtandao zilizosambazwa kijiografia',
     'pub.t2': 'CoDet: Ugunduzi wa maudhui unaotegemea sentensi katika mkusanyo wa habari',
     'media.label': 'Katika Vyombo vya Habari',
+    'media.vid1.badge': 'Majadiliano', 'media.vid1.title': 'AI inabadilisha kazi — Afrika iko wapi?',
+    'media.vid2.badge': 'Muhtasari wa Mwaka', 'media.vid2.title': 'A2SV mwaka 2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV kwenye TRT World',
+    'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Malezi, Imani, Kazi na A2SV',
     'prod.cat.health': 'Afya ya Uzazi', 'prod.cat.ai': 'Msaidizi wa AI', 'prod.cat.youth': 'Kazi za Vijana', 'prod.cat.fin': 'FinTech · Uhamisho', 'prod.cat.talent': 'Vipaji · Outsourcing', 'prod.cat.food': 'Chakula · Jamii', 'prod.cat.edu': 'Elimu · AI',
     'gs.h': 'Galatasaray', 'gs.p': 'Nilizaliwa <strong>Ankara</strong>, moyo wangu mwekundu na manjano. Mpira na msimbo vimeniandama kwa muda sawa.',
     'skills.cat1': '<span class="s-tag">Usimamizi wa Mashirika</span><span class="s-tag">Uongozi wa Startup</span><span class="s-tag">Ukusanyaji Fedha</span><span class="s-tag">Ushirikiano wa Kimataifa</span><span class="s-tag">Mawasiliano ya Kimkakati</span><span class="s-tag">Kukuza EdTech</span><span class="s-tag">Usimamizi wa Fedha</span><span class="s-tag">Timu za Tamaduni Mbalimbali</span>',
@@ -2236,7 +2274,7 @@ const translations = {
     'skills.cat6': '<span class="s-tag">AI kwa Ustawi</span><span class="s-tag">Ubunifu wa EdTech</span><span class="s-tag">Gitaa 🎸</span><span class="s-tag">Mpira ⚽</span><span class="s-tag">Kutembea 🥾</span><span class="s-tag">Kusoma 📚</span><span class="s-tag">Chess ♟️</span>',
   },
   am: {
-    roles: ['የ A2SV መስራችና ዋና ስራ አስፈፃሚ', 'የማሽን ሌርኒንግ መሃንዲስ', 'የሶፍትዌር መሃንዲስ', 'የትምህርት ፈጠራ ሰው', 'ተወዳዳሪ ፕሮግራመር', 'የአፍሪካ ቴክ ችሎታ ገንቢ'],
+    roles: ['የ A2SV መስራችና ዋና ስራ አስፈፃሚ', 'የAI መሃንዲስ', 'የሶፍትዌር መሃንዲስ', 'የትምህርት ፈጠራ ሰው', 'ተወዳዳሪ ፕሮግራመር', 'የአፍሪካ ቴክ ችሎታ ገንቢ'],
     'nav.about': 'ስለ እኔ', 'nav.experience': 'ልምድ', 'nav.products': 'ምርቶች ▾',
     'nav.skills': 'ክህሎቶች', 'nav.awards': 'ሽልማቶች', 'nav.cta': 'ሰላም በሉ',
     'hero.desc': 'የ<strong>A2SV</strong> መስራችና ዋና ስራ አስፈፃሚ። A2SV የጎግል ድጋፍ ያለው ለትርፍ ያልተቋቋመ ድርጅት ሲሆን የአፍሪካን ቴክ ሥነ-ምህዳር እየቀየረ ነው። <strong>Google · Palantir · Liftoff</strong> ውስጥ ከ8 ዓመታት በላይ። ችሎታን ከዕድል ጋር ለማጣመር ያቀኑ።',
@@ -2275,7 +2313,7 @@ const translations = {
     'resources.h': 'A2SV <em>ሰነዶች</em>', 'resources.link1': 'A2SV 5 ዓመት ተጽዕኖ ሪፖርት', 'resources.link2': 'A2SV ማጠቃለያ',
     'footer.purpose': 'በዓላማ ተሠርቷል 🌍', 'about.badge.t': 'ዓመታት ሲሊኮን ቫሊ ውስጥ',
     'exp.a2sv.role': 'መስራች &amp; ዋና ስራ አስፈፃሚ',
-    'exp.liftoff.role': 'የማሽን ሌርኒንግ መሃንዲስ',
+    'exp.liftoff.role': 'የAI መሃንዲስ',
     'exp.google.role': 'የሶፍትዌር መሃንዲስ፣ Google Research',
     'exp.palantir.role': 'የሶፍትዌር መሃንዲስ',
     'exp.yahoo.role': 'የምርምር ተልሐሽ',
@@ -2303,6 +2341,10 @@ const translations = {
     'pub.t1': 'በጂኦግራፊያዊ ስርጭት ያላቸው ድህረ-ገጽ ፍለጋ ሞተሮች ውስጥ ጥያቄ ማስተላለፍ',
     'pub.t2': 'CoDet: በዜና ምንጮች ውስጥ ዓረፍተ-ነገር ላይ የተመሰረተ ይዘት ማወቂያ',
     'media.label': 'በመገናኛ ብዙሃን',
+    'media.vid1.badge': 'ውይይት', 'media.vid1.title': 'AI ስራን እየቀየረ ነው — አፍሪካ የት ቆማለች?',
+    'media.vid2.badge': 'የዓመት ማጠቃለያ', 'media.vid2.title': 'A2SV በ2023',
+    'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV በTRT World',
+    'media.vid4.badge': 'ፖድካስት', 'media.vid4.title': 'ኤምሬ ቫሮል — አስተዳደግ፣ እምነት፣ ሙያ እና A2SV',
     'prod.cat.health': 'የእናቶች ጤና', 'prod.cat.ai': 'AI ረዳት', 'prod.cat.youth': 'የወጣቶች ሙያ', 'prod.cat.fin': 'FinTech · ማስተላለፊያ', 'prod.cat.talent': 'ችሎታ · ውጫዊ ሰጭ', 'prod.cat.food': 'ምግብ · ማህበራዊ', 'prod.cat.edu': 'ትምህርት · AI',
     'gs.h': 'Galatasaray', 'gs.p': '<strong>አንካራ</strong> ተወለድኩ፣ ልቤ ቀይና ቢጫ። እግር ኳስና ኮድ እኩል ተጓዘውኛል።',
     'skills.cat1': '<span class="s-tag">ለትርፍ ያልተቋቋመ አስተዳደር</span><span class="s-tag">ስታርትአፕ አመራር</span><span class="s-tag">ፈንድ ማሰባሰብ</span><span class="s-tag">ዓለምዓቀፍ ሽርክናዎች</span><span class="s-tag">ስትራቴጂያዊ ግንኙነት</span><span class="s-tag">EdTech ማስፋፋት</span><span class="s-tag">የፋይናንስ ቁጥጥር</span><span class="s-tag">ብዝሃ-ባህል ቡድኖች</span>',
