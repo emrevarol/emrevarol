@@ -358,7 +358,7 @@
       display: flex; align-items: center; gap: .6rem;
     }
     .vid-row-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .vid-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .vid-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; max-width: 700px; }
     .vid-card {
       position: relative; border-radius: 12px; overflow: hidden;
       aspect-ratio: 16/9; display: block;
@@ -579,10 +579,12 @@
     .gallery-item:hover img { transform: scale(1.05); }
     .gallery-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.5) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.1) 55%, transparent 100%);
       opacity: 0; transition: opacity .3s;
+      display: flex; align-items: flex-end; padding: .8rem 1rem;
     }
     .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-cap { font-size: .74rem; color: rgba(255,255,255,.95); font-weight: 500; line-height: 1.4; text-shadow: 0 1px 4px rgba(0,0,0,.7); }
     /* lightbox */
     .lightbox {
       display: none; position: fixed; inset: 0; z-index: 999;
@@ -630,7 +632,7 @@
       .about-grid { grid-template-columns: 1fr; }
       .about-photo { aspect-ratio: 4/3; }
       .a2sv-top { grid-template-columns: 1fr; }
-      .vid-grid { grid-template-columns: 1fr 1fr; }
+      .vid-grid { grid-template-columns: 1fr; }
       .products-grid { grid-template-columns: 1fr 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .edu-grid { grid-template-columns: 1fr; }
@@ -640,7 +642,7 @@
     }
     @media (max-width: 600px) {
       .stats-grid { grid-template-columns: 1fr 1fr; }
-      .vid-grid { grid-template-columns: 1fr 1fr; }
+      .vid-grid { grid-template-columns: 1fr; }
       .products-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
     }
@@ -983,9 +985,30 @@
       </div>
     </div>
 
+    <!-- A2SV Documents (moved above In the Media) -->
+    <div class="vid-row anim" style="margin-top:2.5rem">
+      <div class="vid-row-label" data-i18n-html="resources.h">A2SV <em>Documents</em></div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:.2rem">
+        <a href="https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/view?usp=sharing" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.75rem 1.35rem;border-radius:12px;text-decoration:none;font-size:.88rem;font-weight:600;transition:all .25s"
+           onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
+           onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span data-i18n="resources.link1">A2SV 5 Years of Impact Report</span>
+        </a>
+        <a href="https://drive.google.com/file/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX/view?usp=sharing" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.75rem 1.35rem;border-radius:12px;text-decoration:none;font-size:.88rem;font-weight:600;transition:all .25s"
+           onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
+           onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <span data-i18n="resources.link2">A2SV 2-Pager</span>
+        </a>
+      </div>
+    </div>
+
     <!-- Video row -->
     <div class="vid-row anim">
-      <div class="vid-row-label">In the Media</div>
+      <div class="vid-row-label" data-i18n="media.label">In the Media</div>
       <div class="vid-grid">
 
         <a class="vid-card" href="https://www.youtube.com/watch?v=52ELtLxgMto" target="_blank" rel="noopener">
@@ -1050,7 +1073,7 @@
           </div>
         </div>
         <div class="prod-desc" data-i18n="prod.adot">A comprehensive maternity companion for African mothers. Personalized health insights from medical experts, vital and cycle tracking, appointment reminders, and direct access to healthcare professionals. 200+ mothers, 4 partner hospitals, 20+ medical experts.</div>
-        <span class="prod-cat cat-health">Maternal Health</span>
+        <span class="prod-cat cat-health" data-i18n="prod.cat.health">Maternal Health</span>
       </a>
 
       <a class="product-card anim" href="https://afrochat.app" target="_blank" rel="noopener" data-tilt>
@@ -1064,7 +1087,7 @@
           </div>
         </div>
         <div class="prod-desc" data-i18n="prod.afrochat">AI-powered assistant giving Africans affordable access to multiple generative AI models, image generation, and persona creation in one place. Integrated with Telegram, localized for African contexts. 2.6k+ users across 85 countries.</div>
-        <span class="prod-cat cat-ai">AI Assistant</span>
+        <span class="prod-cat cat-ai" data-i18n="prod.cat.ai">AI Assistant</span>
       </a>
 
       <a class="product-card anim" href="https://akilconnect.org" target="_blank" rel="noopener" data-tilt>
@@ -1078,7 +1101,7 @@
           </div>
         </div>
         <div class="prod-desc" data-i18n="prod.akil">A career platform connecting African youth with jobs, internships, and volunteer roles. AI-powered matching helps young people find opportunities aligned to their skills, while organizations streamline recruitment and access top talent.</div>
-        <span class="prod-cat cat-talent">Youth Careers</span>
+        <span class="prod-cat cat-talent" data-i18n="prod.cat.youth">Youth Careers</span>
       </a>
 
       <a class="product-card anim" href="https://dime.gold" target="_blank" rel="noopener" data-tilt>
@@ -1091,7 +1114,7 @@
           </div>
         </div>
         <div class="prod-desc" data-i18n="prod.dime">The easiest way to transfer money to Africa. Best exchange rates from multiple local banks, flexible bank deposits, and low transparent fees, built for the African diaspora sending money home.</div>
-        <span class="prod-cat cat-fin">FinTech · Remittance</span>
+        <span class="prod-cat cat-fin" data-i18n="prod.cat.fin">FinTech · Remittance</span>
       </a>
 
       <a class="product-card anim" href="https://eskalate.io" target="_blank" rel="noopener" data-tilt>
@@ -1105,7 +1128,7 @@
           </div>
         </div>
         <div class="prod-desc" data-i18n="prod.eskalate">IT outsourcing powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.</div>
-        <span class="prod-cat cat-talent">Talent · Outsourcing</span>
+        <span class="prod-cat cat-talent" data-i18n="prod.cat.talent">Talent · Outsourcing</span>
       </a>
 
       <a class="product-card anim" href="https://rateeat.app" target="_blank" rel="noopener" data-tilt>
@@ -1119,7 +1142,7 @@
           </div>
         </div>
         <div class="prod-desc" data-i18n="prod.rateeat">Africa's restaurant discovery platform. Visual menus, item-specific reviews, smart filters by location, price, and rating, plus real-time order tracking. 500+ diners, 400+ restaurants, 1,400+ reviews.</div>
-        <span class="prod-cat cat-food">Food · Social</span>
+        <span class="prod-cat cat-food" data-i18n="prod.cat.food">Food · Social</span>
       </a>
 
       <a class="product-card anim" href="https://skillbridge.academy" target="_blank" rel="noopener" data-tilt>
@@ -1133,7 +1156,7 @@
           </div>
         </div>
         <div class="prod-desc" data-i18n="prod.skillbridge">AI-powered learning platform for African high school students. Expert-verified study materials aligned to national exams, gamified learning, personalized AI tutoring, and past exam solutions. 2,700+ students, 75K+ questions solved.</div>
-        <span class="prod-cat cat-edu">Education · AI</span>
+        <span class="prod-cat cat-edu" data-i18n="prod.cat.edu">Education · AI</span>
       </a>
 
     </div>
@@ -1148,7 +1171,7 @@
     <div class="skills-grid">
       <div class="skill-cat anim">
         <div class="skill-cat-h" data-i18n-html="skill1.h">🧭 Leadership &amp; Strategy</div>
-        <div class="s-tags">
+        <div class="s-tags" data-i18n-html="skills.cat1">
           <span class="s-tag">Nonprofit Management</span><span class="s-tag">Startup Leadership</span>
           <span class="s-tag">Fundraising</span><span class="s-tag">Global Partnerships</span>
           <span class="s-tag">Strategic Comms</span><span class="s-tag">Scaling EdTech</span>
@@ -1157,7 +1180,7 @@
       </div>
       <div class="skill-cat anim">
         <div class="skill-cat-h" data-i18n="skill2.h">💻 Software Engineering</div>
-        <div class="s-tags">
+        <div class="s-tags" data-i18n-html="skills.cat2">
           <span class="s-tag">Distributed Systems</span><span class="s-tag">Backend Architecture</span>
           <span class="s-tag">Scalable ML Pipelines</span><span class="s-tag">Algorithm Design</span>
           <span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span>
@@ -1166,7 +1189,7 @@
       </div>
       <div class="skill-cat anim">
         <div class="skill-cat-h" data-i18n-html="skill3.h">🤖 AI &amp; Data Science</div>
-        <div class="s-tags">
+        <div class="s-tags" data-i18n-html="skills.cat3">
           <span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span>
           <span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span>
           <span class="s-tag">Ad Tech ML</span><span class="s-tag">Conversion Optimization</span>
@@ -1174,14 +1197,14 @@
       </div>
       <div class="skill-cat anim">
         <div class="skill-cat-h" data-i18n-html="skill4.h">☁️ Cloud &amp; Tools</div>
-        <div class="s-tags">
+        <div class="s-tags" data-i18n-html="skills.cat4">
           <span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span>
           <span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>
         </div>
       </div>
       <div class="skill-cat anim">
         <div class="skill-cat-h" data-i18n-html="skill5.h">📚 Teaching &amp; Mentorship</div>
-        <div class="s-tags">
+        <div class="s-tags" data-i18n-html="skills.cat5">
           <span class="s-tag">Curriculum Design</span><span class="s-tag">Competitive Programming</span>
           <span class="s-tag">Public Speaking</span><span class="s-tag">Mentorship Programs</span>
           <span class="s-tag">Technical Coaching</span>
@@ -1189,7 +1212,7 @@
       </div>
       <div class="skill-cat anim">
         <div class="skill-cat-h" data-i18n="skill6.h">✨ Interests</div>
-        <div class="s-tags">
+        <div class="s-tags" data-i18n-html="skills.cat6">
           <span class="s-tag">AI for Social Good</span><span class="s-tag">EdTech Innovation</span>
           <span class="s-tag">Guitar 🎸</span><span class="s-tag">Football ⚽</span>
           <span class="s-tag">Hiking 🥾</span><span class="s-tag">Reading 📚</span><span class="s-tag">Chess ♟️</span>
@@ -1260,12 +1283,12 @@
       <h3 style="font-size:1.25rem;font-weight:700;margin:.5rem 0 1.25rem" data-i18n="pub.h">Publications</h3>
       <div class="pubs-list">
         <div class="pub-card anim">
-          <div class="pub-t">Query forwarding in geographically distributed web search engines</div>
+          <div class="pub-t" data-i18n="pub.t1">Query forwarding in geographically distributed web search engines</div>
           <div class="pub-a">Cambazoglu B. B., <strong>Varol E.</strong>, Kayaaslan E., Aykanat C., Baeza-Yates R.</div>
           <span class="pub-v">SIGIR '10 · ACM SIGIR 2010</span>
         </div>
         <div class="pub-card anim">
-          <div class="pub-t">CoDet: Sentence-based containment detection in news corpora</div>
+          <div class="pub-t" data-i18n="pub.t2">CoDet: Sentence-based containment detection in news corpora</div>
           <div class="pub-a"><strong>Varol E.</strong>, Can F., Aykanat C., Kaya O.</div>
           <span class="pub-v">CIKM '11 · ACM CIKM 2011</span>
         </div>
@@ -1281,8 +1304,8 @@
       <img src="images/galatasaray-logo.svg" alt="Galatasaray" style="width:90px;height:90px;object-fit:contain;" />
     </div>
     <div class="gs-text">
-      <h3>Galatasaray</h3>
-      <p>
+      <h3 data-i18n="gs.h">Galatasaray</h3>
+      <p data-i18n-html="gs.p">
         Born in <strong>Ankara</strong>, heart red and yellow.
         Football and code have been with me equally long.
       </p>
@@ -1332,44 +1355,44 @@
     <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)" data-i18n-html="gallery.h">Moments &amp; <em>Memories</em></h2>
     <div class="gallery-grid">
       <div class="gallery-item" onclick="openLightbox('images/gallery-1.jpg')">
-        <img src="images/gallery-1.jpg" alt="GITEX 2024 Africa" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-1.jpg" alt="GITEX 2024 Morocco" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap1">GITEX 2024 · Morocco</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-2.jpg')">
-        <img src="images/gallery-2.jpg" alt="Ghana School of Engineering" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-2.jpg" alt="University of Ghana Legon with A2SV students" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap2">University of Ghana, Legon · With A2SV students</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-3.jpg')">
-        <img src="images/gallery-3.jpg" alt="A2SV Hackathon 2023 with Ricardo Baeza-Yates" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-3.jpg" alt="A2SV AI Hackathon 2023 Finals" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap3">A2SV AI Hackathon 2023 · Finals</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-4.jpg')">
         <img src="images/gallery-4.jpg" alt="With Karim Beguir" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap4">With Karim Beguir · A2SV advisor &amp; InstaDeep founder</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-5.jpg')">
-        <img src="images/gallery-5.jpg" alt="Night out in Kigali" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-5.jpg" alt="With Anand Raju in Qatar" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap5">With Anand Raju · Qatar Investment Authority. Bilkent roommate, reunited in Qatar 2025</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-6.jpg')">
-        <img src="images/gallery-6.jpg" alt="Ethiopia Startup 2024" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-6.jpg" alt="With KOICA manager in Ethiopia" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap6">With KOICA manager · Ethiopia</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-7.jpg')">
-        <img src="images/gallery-7.jpg" alt="A2SV Hackathon 2023 Project Visit" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-7.jpg" alt="A2SV AI Hackathon 2023 finalist team" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap7">With finalist team · A2SV AI Hackathon 2023</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-8.jpg')">
-        <img src="images/gallery-8.jpg" alt="Global AI Summit on Africa 2025" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-8.jpg" alt="Global AI Summit on Africa 2025 speaker" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap8">Global AI Summit on Africa 2025 · Speaker, with fellow panelists</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-9.jpg')">
-        <img src="images/gallery-9.jpg" alt="Global AI Summit on Africa 2025 Panel" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-9.jpg" alt="Global AI Summit on Africa 2025 team" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap9">Global AI Summit on Africa 2025 · The team</span></div>
       </div>
       <div class="gallery-item" onclick="openLightbox('images/gallery-10.jpg')">
-        <img src="images/gallery-10.jpg" alt="Google at Work" loading="lazy" />
-        <div class="gallery-overlay"></div>
+        <img src="images/gallery-10.jpg" alt="Google MTV Googleplex 2015" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap10">Google years · MTV Googleplex, 2015</span></div>
       </div>
     </div>
   </div>
@@ -1380,29 +1403,6 @@
   <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
 </div>
 
-<!-- ═══ RESOURCES ═══ -->
-<section style="border-top:1px solid var(--border)">
-  <div class="container" style="padding-top:3rem;padding-bottom:3rem">
-    <div class="section-tag">resources</div>
-    <h2 class="section-h" style="margin-bottom:1.5rem" data-i18n-html="resources.h">A2SV <em>Documents</em></h2>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap">
-      <a href="https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/view?usp=sharing" target="_blank" rel="noopener"
-         style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1.5rem;border-radius:12px;text-decoration:none;font-size:.9rem;font-weight:600;transition:all .25s"
-         onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
-         onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        <span data-i18n="resources.link1">A2SV 5 Years of Impact Report</span>
-      </a>
-      <a href="https://drive.google.com/file/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX/view?usp=sharing" target="_blank" rel="noopener"
-         style="display:inline-flex;align-items:center;gap:.65rem;background:var(--card);border:1px solid var(--border);color:var(--text);padding:.85rem 1.5rem;border-radius:12px;text-decoration:none;font-size:.9rem;font-weight:600;transition:all .25s"
-         onmouseover="this.style.borderColor='rgba(0,229,184,.35)';this.style.color='var(--teal)'"
-         onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='var(--text)'">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        <span data-i18n="resources.link2">A2SV 2-Pager</span>
-      </a>
-    </div>
-  </div>
-</section>
 
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
@@ -1605,11 +1605,23 @@ const translations = {
     'award.7': '<strong>Ranked 82nd / 500,000+</strong>, National High School Entrance Exam, Turkey (2002)',
     'pub.tag': 'research',
     'pub.h': 'Publications',
+    'pub.t1': 'Query forwarding in geographically distributed web search engines',
+    'pub.t2': 'CoDet: Sentence-based containment detection in news corpora',
+    'skills.cat1': '<span class="s-tag">Nonprofit Management</span><span class="s-tag">Startup Leadership</span><span class="s-tag">Fundraising</span><span class="s-tag">Global Partnerships</span><span class="s-tag">Strategic Comms</span><span class="s-tag">Scaling EdTech</span><span class="s-tag">Financial Oversight</span><span class="s-tag">Cross-Cultural Teams</span>',
+    'skills.cat2': '<span class="s-tag">Distributed Systems</span><span class="s-tag">Backend Architecture</span><span class="s-tag">Scalable ML Pipelines</span><span class="s-tag">Algorithm Design</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span><span class="s-tag">Ad Tech ML</span><span class="s-tag">Conversion Optimization</span>',
+    'skills.cat5': '<span class="s-tag">Curriculum Design</span><span class="s-tag">Competitive Programming</span><span class="s-tag">Public Speaking</span><span class="s-tag">Mentorship Programs</span><span class="s-tag">Technical Coaching</span>',
+    'skills.cat6': '<span class="s-tag">AI for Social Good</span><span class="s-tag">EdTech Innovation</span><span class="s-tag">Guitar 🎸</span><span class="s-tag">Football ⚽</span><span class="s-tag">Hiking 🥾</span><span class="s-tag">Reading 📚</span><span class="s-tag">Chess ♟️</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'media.label': 'In the Media',
+    'prod.cat.health': 'Maternal Health', 'prod.cat.ai': 'AI Assistant', 'prod.cat.youth': 'Youth Careers', 'prod.cat.fin': 'FinTech · Remittance', 'prod.cat.talent': 'Talent · Outsourcing', 'prod.cat.food': 'Food · Social', 'prod.cat.edu': 'Education · AI',
+    'gs.h': 'Galatasaray', 'gs.p': 'Born in <strong>Ankara</strong>, heart red and yellow. Football and code have been with me equally long.',
+    'gallery.cap1': 'GITEX 2024 · Morocco', 'gallery.cap2': 'University of Ghana, Legon · With A2SV students', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Finals', 'gallery.cap4': 'With Karim Beguir · A2SV advisor & InstaDeep founder', 'gallery.cap5': 'With Anand Raju · Qatar Investment Authority. Bilkent roommate, reunited in Qatar 2025', 'gallery.cap6': 'With KOICA manager · Ethiopia', 'gallery.cap7': 'With finalist team · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Speaker, with fellow panelists', 'gallery.cap9': 'Global AI Summit on Africa 2025 · The team', 'gallery.cap10': 'Google years · MTV Googleplex, 2015',
   },
   tr: {
     roles: ["A2SV'nin Kurucusu ve CEO'su", 'Makine Öğrenmesi Mühendisi', 'Yazılım Mühendisi', 'Eğitim Vizyoneri', 'Rekabetçi Programcı', "Afrika'nın Teknoloji Yeteneğini İnşa Eden"],
     'nav.about': 'Hakkımda', 'nav.experience': 'Deneyim', 'nav.products': 'Ürünler ▾',
-    'nav.skills': 'Beceriler', 'nav.awards': 'Ödüller', 'nav.cta': 'Merhaba De',
+    'nav.skills': 'Beceriler', 'nav.awards': 'Ödüller', 'nav.cta': 'İletişime Geç',
     'hero.desc': "<strong>A2SV</strong>'nin kurucusu ve CEO'yum. Google destekli bu sivil toplum kuruluşuyla Afrika'nın teknoloji ekosistemini dönüştürüyoruz. <strong>Google · Palantir · Liftoff</strong>'ta 8 yılı aşkın deneyimimin ardından şimdi tek bir misyon var: yeteneği fırsatla buluşturmak.",
     'hero.btn1': "A2SV'yi Keşfet", 'hero.btn2': 'Yazın Bana',
     'about.tag': 'hakkımda', 'about.h': 'Kurucu. Öğretmen. <em>Değişim Yaratan.</em>',
@@ -1622,7 +1634,7 @@ const translations = {
     'skills.tag': 'beceriler', 'skills.h': '<em>Neler Biliyorum</em>',
     'edu.tag': 'eğitim', 'edu.h': 'Akademik <em>Köklerim</em>',
     'awards.tag': 'başarılar', 'awards.h': 'Ödüller &amp; <em>Takdirler</em>',
-    'contact.h': `Hadi <em style="${EM}">Tanışalım</em>`,
+    'contact.h': `Seninle <em style="${EM}">Konuşalım</em>`,
     'contact.desc': "A2SV ile iş birliği yapmak, Eskalate üzerinden Afrika'dan yetenek işe almak ya da sadece selam vermek için bana yazabilirsiniz. Haberleşmeyi çok severim.",
     'stat1.label': 'Yetiştirilen Mühendis', 'stat1.sub': '22 Afrika ülkesinden',
     'stat2.label': 'İş Teklifi Alındı', 'stat2.sub': 'Google · Amazon · Bloomberg',
@@ -1671,6 +1683,18 @@ const translations = {
     'award.7': '<strong>500.000+ içinde 82. sıra</strong>, Ulusal Lise Giriş Sınavı, Türkiye (2002)',
     'pub.tag': 'araştırma',
     'pub.h': 'Yayınlar',
+    'pub.t1': 'Coğrafi olarak dağıtık web arama motorlarında sorgu yönlendirme',
+    'pub.t2': 'CoDet: Haber metinlerinde cümle bazlı içerik tespiti',
+    'skills.cat1': '<span class="s-tag">Sivil Toplum Yönetimi</span><span class="s-tag">Girişim Liderliği</span><span class="s-tag">Fon Toplama</span><span class="s-tag">Küresel Ortaklıklar</span><span class="s-tag">Stratejik İletişim</span><span class="s-tag">EdTech Büyütme</span><span class="s-tag">Mali Denetim</span><span class="s-tag">Çok Kültürlü Takımlar</span>',
+    'skills.cat2': '<span class="s-tag">Dağıtık Sistemler</span><span class="s-tag">Backend Mimarisi</span><span class="s-tag">Ölçeklenebilir ML Pipeline</span><span class="s-tag">Algoritma Tasarımı</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">Makine Öğrenmesi</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Özellik Mühendisliği</span><span class="s-tag">Reklam Teknolojisi ML</span><span class="s-tag">Dönüşüm Optimizasyonu</span>',
+    'skills.cat5': '<span class="s-tag">Müfredat Tasarımı</span><span class="s-tag">Rekabetçi Programlama</span><span class="s-tag">Halka Açık Konuşma</span><span class="s-tag">Mentorluk Programları</span><span class="s-tag">Teknik Koçluk</span>',
+    'skills.cat6': '<span class="s-tag">Toplumsal Fayda için AI</span><span class="s-tag">EdTech İnovasyonu</span><span class="s-tag">Gitar 🎸</span><span class="s-tag">Futbol ⚽</span><span class="s-tag">Yürüyüş 🥾</span><span class="s-tag">Okuma 📚</span><span class="s-tag">Satranç ♟️</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'media.label': 'Medyada',
+    'prod.cat.health': 'Anne Sağlığı', 'prod.cat.ai': 'Yapay Zeka Asistanı', 'prod.cat.youth': 'Gençlik Kariyer', 'prod.cat.fin': 'FinTek · Havale', 'prod.cat.talent': 'Yetenek · Dış Kaynak', 'prod.cat.food': 'Yemek · Sosyal', 'prod.cat.edu': 'Eğitim · Yapay Zeka',
+    'gs.h': 'Galatasaray', 'gs.p': '<strong>Ankara</strong>\'da doğdum, kalbim kırmızı ve sarı. Futbol ve kod hayatımda hep eşit yer tuttu.',
+    'gallery.cap1': 'GITEX 2024 · Fas', 'gallery.cap2': 'Ghana Üniversitesi, Legon · A2SV öğrencileriyle', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Final', 'gallery.cap4': 'Karim Beguir ile · A2SV danışmanımız ve InstaDeep kurucusu', 'gallery.cap5': 'Anand Raju ile · Qatar Investment Authority. Bilkent\'te oda arkadaşım, 2025\'te Qatar\'da buluştuk', 'gallery.cap6': 'KOICA yöneticisi ile · Etiyopya', 'gallery.cap7': 'Finalist takımla · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Konuşmacı, panelistlerle', 'gallery.cap9': 'Global AI Summit on Africa 2025 · Ekip', 'gallery.cap10': 'Google yılları · MTV Googleplex, 2015',
   },
   es: {
     roles: ['Fundador y CEO de A2SV', 'Ingeniero de Machine Learning', 'Ingeniero de Software', 'Innovador en Educación', 'Programador Competitivo', 'Constructor del Talento Tecnológico Africano'],
@@ -1737,6 +1761,17 @@ const translations = {
     'award.7': '<strong>82º / 500.000+</strong>, Examen Nacional de Ingreso a la Preparatoria, Turquía (2002)',
     'pub.tag': 'investigación',
     'pub.h': 'Publicaciones',
+    'pub.t1': 'Reenvío de consultas en motores de búsqueda web geográficamente distribuidos',
+    'pub.t2': 'CoDet: Detección de contención basada en oraciones en corpus de noticias',
+    'media.label': 'En los Medios',
+    'prod.cat.health': 'Salud Materna', 'prod.cat.ai': 'Asistente IA', 'prod.cat.youth': 'Carreras Juveniles', 'prod.cat.fin': 'FinTech · Remesas', 'prod.cat.talent': 'Talento · Outsourcing', 'prod.cat.food': 'Comida · Social', 'prod.cat.edu': 'Educación · IA',
+    'gs.h': 'Galatasaray', 'gs.p': 'Nacido en <strong>Ankara</strong>, corazón rojo y amarillo. El fútbol y el código me han acompañado por igual.',
+    'skills.cat1': '<span class="s-tag">Gestión de ONGs</span><span class="s-tag">Liderazgo Startup</span><span class="s-tag">Recaudación de Fondos</span><span class="s-tag">Alianzas Globales</span><span class="s-tag">Comunicación Estratégica</span><span class="s-tag">Escalar EdTech</span><span class="s-tag">Supervisión Financiera</span><span class="s-tag">Equipos Multiculturales</span>',
+    'skills.cat2': '<span class="s-tag">Sistemas Distribuidos</span><span class="s-tag">Arquitectura Backend</span><span class="s-tag">Pipelines ML Escalables</span><span class="s-tag">Diseño de Algoritmos</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span><span class="s-tag">ML para Publicidad</span><span class="s-tag">Optimización de Conversión</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'skills.cat5': '<span class="s-tag">Diseño Curricular</span><span class="s-tag">Programación Competitiva</span><span class="s-tag">Oratoria</span><span class="s-tag">Programas de Mentoría</span><span class="s-tag">Coaching Técnico</span>',
+    'skills.cat6': '<span class="s-tag">IA para el Bien Social</span><span class="s-tag">Innovación EdTech</span><span class="s-tag">Guitarra 🎸</span><span class="s-tag">Fútbol ⚽</span><span class="s-tag">Senderismo 🥾</span><span class="s-tag">Lectura 📚</span><span class="s-tag">Ajedrez ♟️</span>',
   },
   rw: {
     roles: ["Umushinga n'Umuyobozi wa A2SV", 'Injeniyeri ya Machine Learning', 'Injeniyeri ya Logiciel', 'Umutsindagira mu Burezi', 'Umukinnyi wa Gahunda', "Umubuza Inzobere za Teknoloji muri Afurika"],
@@ -1803,6 +1838,17 @@ const translations = {
     'award.7': '<strong>Umwanya wa 82 / 500.000+</strong>, Ikizamini cy\'Igihugu cyo Kwinjira mu Ishuri Ryo Hejuru, Turukiya (2002)',
     'pub.tag': 'ubushakashatsi',
     'pub.h': 'Ibikorwa by\'Ubushakashatsi',
+    'pub.t1': 'Kohereza ibibazo muri moteri zishakisha ku rubuga zisaranganyijwe ku isi',
+    'pub.t2': 'CoDet: Gukurura ibikubiye mu nkuru hashingiwe ku nteruro',
+    'media.label': 'Mu Itangazamakuru',
+    'prod.cat.health': 'Ubuzima bw\'Ababyeyi', 'prod.cat.ai': 'Umufasha wa AI', 'prod.cat.youth': 'Imyuga y\'Urubyiruko', 'prod.cat.fin': 'FinTech · Kohereza', 'prod.cat.talent': 'Impano · Outsourcing', 'prod.cat.food': 'Ibiryo · Social', 'prod.cat.edu': 'Uburezi · AI',
+    'gs.h': 'Galatasaray', 'gs.p': 'Navukiye i <strong>Ankara</strong>, umutima wanjye umutuku n\'umuhondo. Umupira w\'amaguru na code byabaye nanjye ku buryo bungana.',
+    'skills.cat1': '<span class="s-tag">Gucunga ONG</span><span class="s-tag">Ubuyobozi bwa Startup</span><span class="s-tag">Gushaka Inkunga</span><span class="s-tag">Ubufatanye bw\'Isi</span><span class="s-tag">Itumanaho rya Ingamba</span><span class="s-tag">Gukura EdTech</span><span class="s-tag">Kugenzura Imari</span><span class="s-tag">Amatsinda Mpuzamahanga</span>',
+    'skills.cat2': '<span class="s-tag">Distributed Systems</span><span class="s-tag">Backend Architecture</span><span class="s-tag">Scalable ML Pipelines</span><span class="s-tag">Algorithm Design</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span><span class="s-tag">Ad Tech ML</span><span class="s-tag">Conversion Optimization</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'skills.cat5': '<span class="s-tag">Gutegura Gahunda y\'Isomo</span><span class="s-tag">Guhatanira mu Porogaramu</span><span class="s-tag">Kuvuga mu Ruhame</span><span class="s-tag">Gahunda zo Gutoza</span><span class="s-tag">Kwigisha Ikoranabuhanga</span>',
+    'skills.cat6': '<span class="s-tag">AI ku Bw\'Inyungu z\'Abaturage</span><span class="s-tag">Ibishya muri EdTech</span><span class="s-tag">Ikirangirire 🎸</span><span class="s-tag">Umupira w\'amaguru ⚽</span><span class="s-tag">Urugendo ku musozi 🥾</span><span class="s-tag">Gusoma 📚</span><span class="s-tag">Chess ♟️</span>',
   },
   fr: {
     roles: ["Fondateur et PDG d'A2SV", 'Ingénieur en Machine Learning', 'Ingénieur Logiciel', 'Innovateur en Éducation', 'Programmeur Compétitif', "Développeur du Talent Tech Africain"],
@@ -1869,6 +1915,17 @@ const translations = {
     'award.7': '<strong>82e / 500 000+</strong>, Examen National d\'Entrée au Lycée, Turquie (2002)',
     'pub.tag': 'recherche',
     'pub.h': 'Publications',
+    'pub.t1': 'Acheminement de requêtes dans les moteurs de recherche web géographiquement distribués',
+    'pub.t2': 'CoDet: Détection de contenance basée sur les phrases dans les corpus de nouvelles',
+    'media.label': 'Dans les Médias',
+    'prod.cat.health': 'Santé Maternelle', 'prod.cat.ai': 'Assistant IA', 'prod.cat.youth': 'Carrières Jeunesse', 'prod.cat.fin': 'FinTech · Transferts', 'prod.cat.talent': 'Talent · Externalisation', 'prod.cat.food': 'Alimentation · Social', 'prod.cat.edu': 'Éducation · IA',
+    'gs.h': 'Galatasaray', 'gs.p': 'Né à <strong>Ankara</strong>, cœur rouge et jaune. Le football et le code m\'accompagnent depuis aussi longtemps.',
+    'skills.cat1': '<span class="s-tag">Gestion d\'ONG</span><span class="s-tag">Leadership Startup</span><span class="s-tag">Collecte de Fonds</span><span class="s-tag">Partenariats Mondiaux</span><span class="s-tag">Communication Stratégique</span><span class="s-tag">Croissance EdTech</span><span class="s-tag">Supervision Financière</span><span class="s-tag">Équipes Multiculturelles</span>',
+    'skills.cat2': '<span class="s-tag">Systèmes Distribués</span><span class="s-tag">Architecture Backend</span><span class="s-tag">Pipelines ML Évolutifs</span><span class="s-tag">Conception d\'Algorithmes</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span><span class="s-tag">ML Publicitaire</span><span class="s-tag">Optimisation de Conversion</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'skills.cat5': '<span class="s-tag">Conception de Programme</span><span class="s-tag">Programmation Compétitive</span><span class="s-tag">Prise de Parole</span><span class="s-tag">Programmes de Mentorat</span><span class="s-tag">Coaching Technique</span>',
+    'skills.cat6': '<span class="s-tag">IA pour le Bien Social</span><span class="s-tag">Innovation EdTech</span><span class="s-tag">Guitare 🎸</span><span class="s-tag">Football ⚽</span><span class="s-tag">Randonnée 🥾</span><span class="s-tag">Lecture 📚</span><span class="s-tag">Échecs ♟️</span>',
   },
   de: {
     roles: ['Gründer & CEO von A2SV', 'Machine-Learning-Ingenieur', 'Softwareingenieur', 'Bildungsinnovator', 'Wettbewerbsprogrammierer', "Aufbauer von Afrikas Tech-Talenten"],
@@ -1935,6 +1992,17 @@ const translations = {
     'award.7': '<strong>Platz 82 / 500.000+</strong>, Nationales Gymnasiums-Aufnahmeexamen, Türkei (2002)',
     'pub.tag': 'forschung',
     'pub.h': 'Publikationen',
+    'pub.t1': 'Query-Weiterleitung in geographisch verteilten Web-Suchmaschinen',
+    'pub.t2': 'CoDet: Satzbasierte Inhalts-Erkennung in Nachrichtenkorpora',
+    'media.label': 'In den Medien',
+    'prod.cat.health': 'Muttergesundheit', 'prod.cat.ai': 'KI-Assistent', 'prod.cat.youth': 'Jugendkarrieren', 'prod.cat.fin': 'FinTech · Überweisungen', 'prod.cat.talent': 'Talent · Outsourcing', 'prod.cat.food': 'Essen · Sozial', 'prod.cat.edu': 'Bildung · KI',
+    'gs.h': 'Galatasaray', 'gs.p': 'Geboren in <strong>Ankara</strong>, Herz rot und gelb. Fußball und Code begleiten mich gleich lang.',
+    'skills.cat1': '<span class="s-tag">Non-Profit-Management</span><span class="s-tag">Startup-Führung</span><span class="s-tag">Fundraising</span><span class="s-tag">Globale Partnerschaften</span><span class="s-tag">Strategische Kommunikation</span><span class="s-tag">EdTech Skalierung</span><span class="s-tag">Finanzaufsicht</span><span class="s-tag">Interkulturelle Teams</span>',
+    'skills.cat2': '<span class="s-tag">Verteilte Systeme</span><span class="s-tag">Backend-Architektur</span><span class="s-tag">Skalierbare ML-Pipelines</span><span class="s-tag">Algorithmen-Design</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span><span class="s-tag">Ad-Tech ML</span><span class="s-tag">Conversion-Optimierung</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'skills.cat5': '<span class="s-tag">Curriculumgestaltung</span><span class="s-tag">Wettbewerbsprogrammierung</span><span class="s-tag">Öffentliches Sprechen</span><span class="s-tag">Mentoring-Programme</span><span class="s-tag">Technisches Coaching</span>',
+    'skills.cat6': '<span class="s-tag">KI für Soziales</span><span class="s-tag">EdTech Innovation</span><span class="s-tag">Gitarre 🎸</span><span class="s-tag">Fußball ⚽</span><span class="s-tag">Wandern 🥾</span><span class="s-tag">Lesen 📚</span><span class="s-tag">Schach ♟️</span>',
   },
   ar: {
     roles: ['مؤسس ورئيس تنفيذي لـ A2SV', 'مهندس تعلم آلي', 'مهندس برمجيات', 'مبتكر في التعليم', 'مبرمج تنافسي', 'بانٍ للمواهب التقنية الأفريقية'],
@@ -2001,6 +2069,17 @@ const translations = {
     'award.7': '<strong>المرتبة 82 / أكثر من 500,000</strong>، امتحان القبول الوطني للمدارس الثانوية، تركيا (2002)',
     'pub.tag': 'بحث',
     'pub.h': 'المنشورات',
+    'pub.t1': 'إعادة توجيه الاستعلامات في محركات البحث الموزعة جغرافياً',
+    'pub.t2': 'CoDet: كشف الاحتواء المبني على الجمل في مجموعات الأخبار',
+    'media.label': 'في الإعلام',
+    'prod.cat.health': 'صحة الأم', 'prod.cat.ai': 'مساعد ذكاء اصطناعي', 'prod.cat.youth': 'وظائف الشباب', 'prod.cat.fin': 'تكنولوجيا مالية · تحويلات', 'prod.cat.talent': 'مواهب · استعانة خارجية', 'prod.cat.food': 'طعام · اجتماعي', 'prod.cat.edu': 'تعليم · ذكاء اصطناعي',
+    'gs.h': 'Galatasaray', 'gs.p': 'وُلدتُ في <strong>أنقرة</strong>، قلبي أحمر وأصفر. كرة القدم والبرمجة رافقتاني بنفس القدر.',
+    'skills.cat1': '<span class="s-tag">إدارة غير ربحية</span><span class="s-tag">قيادة الشركات الناشئة</span><span class="s-tag">جمع التبرعات</span><span class="s-tag">شراكات عالمية</span><span class="s-tag">تواصل استراتيجي</span><span class="s-tag">توسيع EdTech</span><span class="s-tag">رقابة مالية</span><span class="s-tag">فرق متعددة الثقافات</span>',
+    'skills.cat2': '<span class="s-tag">أنظمة موزعة</span><span class="s-tag">هندسة Backend</span><span class="s-tag">أنابيب ML قابلة للتوسع</span><span class="s-tag">تصميم خوارزميات</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">تعلم آلي</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">هندسة الميزات</span><span class="s-tag">ML إعلانات</span><span class="s-tag">تحسين التحويل</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'skills.cat5': '<span class="s-tag">تصميم المناهج</span><span class="s-tag">البرمجة التنافسية</span><span class="s-tag">الخطابة</span><span class="s-tag">برامج الإرشاد</span><span class="s-tag">التدريب التقني</span>',
+    'skills.cat6': '<span class="s-tag">ذكاء اصطناعي للخير</span><span class="s-tag">ابتكار EdTech</span><span class="s-tag">غيتار 🎸</span><span class="s-tag">كرة قدم ⚽</span><span class="s-tag">مشي 🥾</span><span class="s-tag">قراءة 📚</span><span class="s-tag">شطرنج ♟️</span>',
   },
   pt: {
     roles: ['Fundador e CEO da A2SV', 'Engenheiro de Machine Learning', 'Engenheiro de Software', 'Inovador em Educação', 'Programador Competitivo', 'Construtor do Talento Tech Africano'],
@@ -2067,6 +2146,17 @@ const translations = {
     'award.7': '<strong>82º / 500.000+</strong>, Exame Nacional de Ingresso ao Ensino Médio, Turquia (2002)',
     'pub.tag': 'pesquisa',
     'pub.h': 'Publicações',
+    'pub.t1': 'Encaminhamento de consultas em motores de busca web distribuídos geograficamente',
+    'pub.t2': 'CoDet: Detecção de contenção baseada em sentenças em corpus de notícias',
+    'media.label': 'Na Mídia',
+    'prod.cat.health': 'Saúde Materna', 'prod.cat.ai': 'Assistente IA', 'prod.cat.youth': 'Carreiras Juvenis', 'prod.cat.fin': 'FinTech · Remessas', 'prod.cat.talent': 'Talento · Terceirização', 'prod.cat.food': 'Alimentação · Social', 'prod.cat.edu': 'Educação · IA',
+    'gs.h': 'Galatasaray', 'gs.p': 'Nascido em <strong>Ankara</strong>, coração vermelho e amarelo. Futebol e código me acompanham há o mesmo tempo.',
+    'skills.cat1': '<span class="s-tag">Gestão sem Fins Lucrativos</span><span class="s-tag">Liderança Startup</span><span class="s-tag">Captação de Recursos</span><span class="s-tag">Parcerias Globais</span><span class="s-tag">Comunicação Estratégica</span><span class="s-tag">Escalar EdTech</span><span class="s-tag">Supervisão Financeira</span><span class="s-tag">Equipes Multiculturais</span>',
+    'skills.cat2': '<span class="s-tag">Sistemas Distribuídos</span><span class="s-tag">Arquitetura Backend</span><span class="s-tag">Pipelines ML Escaláveis</span><span class="s-tag">Design de Algoritmos</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span><span class="s-tag">ML para Publicidade</span><span class="s-tag">Otimização de Conversão</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'skills.cat5': '<span class="s-tag">Design Curricular</span><span class="s-tag">Programação Competitiva</span><span class="s-tag">Oratória</span><span class="s-tag">Programas de Mentoria</span><span class="s-tag">Coaching Técnico</span>',
+    'skills.cat6': '<span class="s-tag">IA para o Bem Social</span><span class="s-tag">Inovação EdTech</span><span class="s-tag">Violão 🎸</span><span class="s-tag">Futebol ⚽</span><span class="s-tag">Trilhas 🥾</span><span class="s-tag">Leitura 📚</span><span class="s-tag">Xadrez ♟️</span>',
   },
   sw: {
     roles: ['Mwanzilishi na CEO wa A2SV', 'Mhandisi wa Machine Learning', 'Mhandisi wa Programu', 'Mvumbuzi wa Elimu', 'Mprogramaji wa Mashindano', 'Mjenzi wa Vipaji vya Teknolojia Afrika'],
@@ -2133,6 +2223,17 @@ const translations = {
     'award.7': '<strong>Nafasi ya 82 / 500,000+</strong>, Mtihani wa Kitaifa wa Kuingia Shule ya Sekondari, Uturuki (2002)',
     'pub.tag': 'utafiti',
     'pub.h': 'Machapisho',
+    'pub.t1': 'Usambazaji wa maswali katika injini za utafutaji wa mtandao zilizosambazwa kijiografia',
+    'pub.t2': 'CoDet: Ugunduzi wa maudhui unaotegemea sentensi katika mkusanyo wa habari',
+    'media.label': 'Katika Vyombo vya Habari',
+    'prod.cat.health': 'Afya ya Uzazi', 'prod.cat.ai': 'Msaidizi wa AI', 'prod.cat.youth': 'Kazi za Vijana', 'prod.cat.fin': 'FinTech · Uhamisho', 'prod.cat.talent': 'Vipaji · Outsourcing', 'prod.cat.food': 'Chakula · Jamii', 'prod.cat.edu': 'Elimu · AI',
+    'gs.h': 'Galatasaray', 'gs.p': 'Nilizaliwa <strong>Ankara</strong>, moyo wangu mwekundu na manjano. Mpira na msimbo vimeniandama kwa muda sawa.',
+    'skills.cat1': '<span class="s-tag">Usimamizi wa Mashirika</span><span class="s-tag">Uongozi wa Startup</span><span class="s-tag">Ukusanyaji Fedha</span><span class="s-tag">Ushirikiano wa Kimataifa</span><span class="s-tag">Mawasiliano ya Kimkakati</span><span class="s-tag">Kukuza EdTech</span><span class="s-tag">Usimamizi wa Fedha</span><span class="s-tag">Timu za Tamaduni Mbalimbali</span>',
+    'skills.cat2': '<span class="s-tag">Mifumo Iliyosambazwa</span><span class="s-tag">Usanifu wa Backend</span><span class="s-tag">ML Pipelines Zinazopanuka</span><span class="s-tag">Muundo wa Algoriti</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">Machine Learning</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span><span class="s-tag">ML ya Matangazo</span><span class="s-tag">Uboreshaji wa Ubadilishaji</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'skills.cat5': '<span class="s-tag">Usanifu wa Mtaala</span><span class="s-tag">Programu ya Mashindano</span><span class="s-tag">Kuzungumza Hadharani</span><span class="s-tag">Programu za Ushauri</span><span class="s-tag">Ufundishaji wa Teknolojia</span>',
+    'skills.cat6': '<span class="s-tag">AI kwa Ustawi</span><span class="s-tag">Ubunifu wa EdTech</span><span class="s-tag">Gitaa 🎸</span><span class="s-tag">Mpira ⚽</span><span class="s-tag">Kutembea 🥾</span><span class="s-tag">Kusoma 📚</span><span class="s-tag">Chess ♟️</span>',
   },
   am: {
     roles: ['የ A2SV መስራችና ዋና ስራ አስፈፃሚ', 'የማሽን ሌርኒንግ መሃንዲስ', 'የሶፍትዌር መሃንዲስ', 'የትምህርት ፈጠራ ሰው', 'ተወዳዳሪ ፕሮግራመር', 'የአፍሪካ ቴክ ችሎታ ገንቢ'],
@@ -2199,6 +2300,17 @@ const translations = {
     'award.7': '<strong>82ኛ / 500,000+</strong>፣ ብሄራዊ ሁለተኛ ደረጃ ትምህርት ቤት ፈተና፣ ቱርክ (2002)',
     'pub.tag': 'ምርምር',
     'pub.h': 'ህትመቶች',
+    'pub.t1': 'በጂኦግራፊያዊ ስርጭት ያላቸው ድህረ-ገጽ ፍለጋ ሞተሮች ውስጥ ጥያቄ ማስተላለፍ',
+    'pub.t2': 'CoDet: በዜና ምንጮች ውስጥ ዓረፍተ-ነገር ላይ የተመሰረተ ይዘት ማወቂያ',
+    'media.label': 'በመገናኛ ብዙሃን',
+    'prod.cat.health': 'የእናቶች ጤና', 'prod.cat.ai': 'AI ረዳት', 'prod.cat.youth': 'የወጣቶች ሙያ', 'prod.cat.fin': 'FinTech · ማስተላለፊያ', 'prod.cat.talent': 'ችሎታ · ውጫዊ ሰጭ', 'prod.cat.food': 'ምግብ · ማህበራዊ', 'prod.cat.edu': 'ትምህርት · AI',
+    'gs.h': 'Galatasaray', 'gs.p': '<strong>አንካራ</strong> ተወለድኩ፣ ልቤ ቀይና ቢጫ። እግር ኳስና ኮድ እኩል ተጓዘውኛል።',
+    'skills.cat1': '<span class="s-tag">ለትርፍ ያልተቋቋመ አስተዳደር</span><span class="s-tag">ስታርትአፕ አመራር</span><span class="s-tag">ፈንድ ማሰባሰብ</span><span class="s-tag">ዓለምዓቀፍ ሽርክናዎች</span><span class="s-tag">ስትራቴጂያዊ ግንኙነት</span><span class="s-tag">EdTech ማስፋፋት</span><span class="s-tag">የፋይናንስ ቁጥጥር</span><span class="s-tag">ብዝሃ-ባህል ቡድኖች</span>',
+    'skills.cat2': '<span class="s-tag">ተሰራጭ ስርዓቶች</span><span class="s-tag">Backend አርክቴክቸር</span><span class="s-tag">ሊያድግ የሚችል ML Pipeline</span><span class="s-tag">አልጎሪዝም ዲዛይን</span><span class="s-tag">Python</span><span class="s-tag">Java</span><span class="s-tag">C/C++</span><span class="s-tag">Go</span><span class="s-tag">Clojure</span><span class="s-tag">SQL</span>',
+    'skills.cat3': '<span class="s-tag">ማሽን ሌርኒንግ</span><span class="s-tag">NLP</span><span class="s-tag">GBDT</span><span class="s-tag">Feature Engineering</span><span class="s-tag">የማስታወቂያ ML</span><span class="s-tag">ኮንቨርዥን ማሻሻል</span>',
+    'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
+    'skills.cat5': '<span class="s-tag">ሥርዓተ ትምህርት ዲዛይን</span><span class="s-tag">ተወዳዳሪ ፕሮግራሚንግ</span><span class="s-tag">ሕዝባዊ ንግግር</span><span class="s-tag">ማማከር ፕሮግራሞች</span><span class="s-tag">ቴክኒካል ኮቺንግ</span>',
+    'skills.cat6': '<span class="s-tag">ለማህበራዊ ጥቅም AI</span><span class="s-tag">EdTech ፈጠራ</span><span class="s-tag">ጊታር 🎸</span><span class="s-tag">እግር ኳስ ⚽</span><span class="s-tag">ሃይኪንግ 🥾</span><span class="s-tag">ማንበብ 📚</span><span class="s-tag">ቼዝ ♟️</span>',
   }
 };
 
