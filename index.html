@@ -741,13 +741,16 @@
     }
     .pdf-viewer.open { opacity: 1; pointer-events: all; }
     .pdf-viewer-inner {
-      width: 90vw; max-width: 900px; height: 85vh;
-      border-radius: 14px; overflow: hidden;
+      width: 90vw; max-width: 900px; max-height: 85vh;
+      border-radius: 14px; overflow-y: auto; overflow-x: hidden;
       border: 1px solid var(--border);
       box-shadow: 0 25px 80px rgba(0,0,0,.6);
+      display: flex; flex-direction: column; align-items: center;
+      gap: 2px; background: #1a1a2e;
+      scroll-behavior: smooth;
     }
-    .pdf-viewer-inner iframe {
-      width: 100%; height: 100%; border: none; background: white;
+    .pdf-viewer-inner img {
+      width: 100%; display: block;
     }
     .pdf-viewer-bar {
       display: flex; gap: .75rem; margin-top: .75rem;
@@ -1094,7 +1097,7 @@
             <li><strong>70% Google SWE interview success rate</strong> in 2021 (vs. ~2% global average)</li>
             <li>Organized Africa's largest AI hackathon: <strong>8,500+ participants from 48 countries</strong></li>
             <li>Secured backing from <strong>Google, Jeff Dean</strong> (Google Chief Scientist), Karim Beguir (InstaDeep)</li>
-            <li>Co-founded <strong>Eskalate</strong> (<a href="https://eskalate.io" target="_blank" style="color:var(--teal)">eskalate.io</a>), a for-profit IT outsourcing company connecting A2SV-trained engineers with global companies</li>
+            <li>Co-founded <strong>Eskalate</strong> (<a href="https://eskalate.io" target="_blank" style="color:var(--teal)">eskalate.io</a>), an IT outsourcing company connecting A2SV-trained engineers with global companies</li>
           </ul>
         </div>
       </div>
@@ -1372,7 +1375,7 @@
             <div class="prod-tag">eskalate.io</div>
           </div>
         </div>
-        <div class="prod-desc" data-i18n="prod.eskalate">A for-profit IT outsourcing company powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.</div>
+        <div class="prod-desc" data-i18n="prod.eskalate">A2SV's IT outsourcing company powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.</div>
         <span class="prod-cat cat-talent" data-i18n="prod.cat.talent">Talent · Outsourcing</span>
       </a>
 
@@ -1656,11 +1659,60 @@
   </div>
 </div>
 
-<!-- PDF Viewer (5 Years Report) -->
-<div class="pdf-viewer" id="pdfViewer" onclick="closePdf()" role="dialog" aria-modal="true" aria-label="PDF viewer">
-  <button class="pdf-viewer-close" onclick="closePdf()" aria-label="Close PDF">&#x2715;</button>
+<!-- PDF Viewer (5 Years Report — 50 pages hosted on-site) -->
+<div class="pdf-viewer" id="pdfViewer" onclick="closePdf()" role="dialog" aria-modal="true" aria-label="5 Years of Impact Report viewer">
+  <button class="pdf-viewer-close" onclick="closePdf()" aria-label="Close report">&#x2715;</button>
   <div class="pdf-viewer-inner" onclick="event.stopPropagation()">
-    <iframe id="pdfFrame" src="" loading="lazy"></iframe>
+    <img src="images/impact-report/page-01.jpg" alt="5 Years of Impact Report — Page 1" />
+    <img src="images/impact-report/page-02.jpg" alt="Page 2" loading="lazy" />
+    <img src="images/impact-report/page-03.jpg" alt="Page 3" loading="lazy" />
+    <img src="images/impact-report/page-04.jpg" alt="Page 4" loading="lazy" />
+    <img src="images/impact-report/page-05.jpg" alt="Page 5" loading="lazy" />
+    <img src="images/impact-report/page-06.jpg" alt="Page 6" loading="lazy" />
+    <img src="images/impact-report/page-07.jpg" alt="Page 7" loading="lazy" />
+    <img src="images/impact-report/page-08.jpg" alt="Page 8" loading="lazy" />
+    <img src="images/impact-report/page-09.jpg" alt="Page 9" loading="lazy" />
+    <img src="images/impact-report/page-10.jpg" alt="Page 10" loading="lazy" />
+    <img src="images/impact-report/page-11.jpg" alt="Page 11" loading="lazy" />
+    <img src="images/impact-report/page-12.jpg" alt="Page 12" loading="lazy" />
+    <img src="images/impact-report/page-13.jpg" alt="Page 13" loading="lazy" />
+    <img src="images/impact-report/page-14.jpg" alt="Page 14" loading="lazy" />
+    <img src="images/impact-report/page-15.jpg" alt="Page 15" loading="lazy" />
+    <img src="images/impact-report/page-16.jpg" alt="Page 16" loading="lazy" />
+    <img src="images/impact-report/page-17.jpg" alt="Page 17" loading="lazy" />
+    <img src="images/impact-report/page-18.jpg" alt="Page 18" loading="lazy" />
+    <img src="images/impact-report/page-19.jpg" alt="Page 19" loading="lazy" />
+    <img src="images/impact-report/page-20.jpg" alt="Page 20" loading="lazy" />
+    <img src="images/impact-report/page-21.jpg" alt="Page 21" loading="lazy" />
+    <img src="images/impact-report/page-22.jpg" alt="Page 22" loading="lazy" />
+    <img src="images/impact-report/page-23.jpg" alt="Page 23" loading="lazy" />
+    <img src="images/impact-report/page-24.jpg" alt="Page 24" loading="lazy" />
+    <img src="images/impact-report/page-25.jpg" alt="Page 25" loading="lazy" />
+    <img src="images/impact-report/page-26.jpg" alt="Page 26" loading="lazy" />
+    <img src="images/impact-report/page-27.jpg" alt="Page 27" loading="lazy" />
+    <img src="images/impact-report/page-28.jpg" alt="Page 28" loading="lazy" />
+    <img src="images/impact-report/page-29.jpg" alt="Page 29" loading="lazy" />
+    <img src="images/impact-report/page-30.jpg" alt="Page 30" loading="lazy" />
+    <img src="images/impact-report/page-31.jpg" alt="Page 31" loading="lazy" />
+    <img src="images/impact-report/page-32.jpg" alt="Page 32" loading="lazy" />
+    <img src="images/impact-report/page-33.jpg" alt="Page 33" loading="lazy" />
+    <img src="images/impact-report/page-34.jpg" alt="Page 34" loading="lazy" />
+    <img src="images/impact-report/page-35.jpg" alt="Page 35" loading="lazy" />
+    <img src="images/impact-report/page-36.jpg" alt="Page 36" loading="lazy" />
+    <img src="images/impact-report/page-37.jpg" alt="Page 37" loading="lazy" />
+    <img src="images/impact-report/page-38.jpg" alt="Page 38" loading="lazy" />
+    <img src="images/impact-report/page-39.jpg" alt="Page 39" loading="lazy" />
+    <img src="images/impact-report/page-40.jpg" alt="Page 40" loading="lazy" />
+    <img src="images/impact-report/page-41.jpg" alt="Page 41" loading="lazy" />
+    <img src="images/impact-report/page-42.jpg" alt="Page 42" loading="lazy" />
+    <img src="images/impact-report/page-43.jpg" alt="Page 43" loading="lazy" />
+    <img src="images/impact-report/page-44.jpg" alt="Page 44" loading="lazy" />
+    <img src="images/impact-report/page-45.jpg" alt="Page 45" loading="lazy" />
+    <img src="images/impact-report/page-46.jpg" alt="Page 46" loading="lazy" />
+    <img src="images/impact-report/page-47.jpg" alt="Page 47" loading="lazy" />
+    <img src="images/impact-report/page-48.jpg" alt="Page 48" loading="lazy" />
+    <img src="images/impact-report/page-49.jpg" alt="Page 49" loading="lazy" />
+    <img src="images/impact-report/page-50.jpg" alt="Page 50" loading="lazy" />
   </div>
   <div class="pdf-viewer-bar" onclick="event.stopPropagation()">
     <a href="https://drive.google.com/uc?export=download&id=1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z" target="_blank">
@@ -1879,7 +1931,7 @@ const translations = {
     'prod.afrochat': 'AI-powered assistant giving Africans affordable access to multiple generative AI models, image generation, and persona creation in one place. Integrated with Telegram, localized for African contexts. 2.6k+ users across 85 countries.',
     'prod.akil': 'A career platform connecting African youth with jobs, internships, and volunteer roles. AI-powered matching helps young people find opportunities aligned to their skills, while organizations streamline recruitment and access top talent.',
     'prod.dime': "The easiest way to transfer money to Africa. Best exchange rates from multiple local banks, flexible bank deposits, and low transparent fees, built for the African diaspora sending money home.",
-    'prod.eskalate': 'A for-profit IT outsourcing company powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.',
+    'prod.eskalate': 'A2SV's IT outsourcing company powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.',
     'prod.rateeat': "Africa's restaurant discovery platform. Visual menus, item-specific reviews, smart filters by location, price, and rating, plus real-time order tracking. 500+ diners, 400+ restaurants, 1,400+ reviews.",
     'prod.skillbridge': 'AI-powered learning platform for African high school students. Expert-verified study materials aligned to national exams, gamified learning, personalized AI tutoring, and past exam solutions. 2,700+ students, 75K+ questions solved.',
     'skill1.h': '🧭 Leadership &amp; Strategy', 'skill2.h': '💻 Software Engineering', 'skill3.h': '🤖 AI &amp; Data Science', 'skill4.h': '☁️ Cloud &amp; Tools', 'skill5.h': '📚 Teaching &amp; Mentorship', 'skill6.h': '✨ Interests',
@@ -1961,7 +2013,7 @@ const translations = {
     'prod.afrochat': "Birden fazla üretici yapay zeka modeline, görsel üretimine ve persona oluşturmaya uygun fiyatla erişim sunan yapay zeka asistanı. Telegram entegrasyonu ve Afrika odaklı yerelleştirme. 85 ülkeden 2.600+ kullanıcı.",
     'prod.akil': "Afrika gençlerini iş, staj ve gönüllü fırsatlarıyla buluşturan kariyer platformu. Yapay zeka destekli eşleştirme sayesinde herkes becerilerine uygun fırsatları kolayca buluyor.",
     'prod.dime': "Afrika'ya para göndermenin en kolay yolu. Birden fazla yerel bankadan en iyi döviz kurları, esnek banka transferleri ve şeffaf düşük komisyonlar. Yurt dışındaki Afrika diasporası için.",
-    'prod.eskalate': "A2SV mezunlarıyla güçlendirilmiş, kâr amacı güden IT dış kaynak şirketi. 2 haftalık ücretsiz deneme ile Google kalitesinde Afrika geliştiricilerini işe alın ya da ekibinizi büyütün. 90+ geliştirici yerleştirildi.",
+    'prod.eskalate': "A2SV'nin IT dış kaynak şirketi, A2SV mezunlarıyla güçlendirilmiş. 2 haftalık ücretsiz deneme ile Google kalitesinde Afrika geliştiricilerini işe alın ya da ekibinizi büyütün. 90+ geliştirici yerleştirildi.",
     'prod.rateeat': "Afrika'nın restoran keşif platformu. Görsel menüler, ürüne özel yorumlar, konum-fiyat-puan filtreleri ve gerçek zamanlı sipariş takibi. 500+ müşteri, 400+ restoran, 1.400+ yorum.",
     'prod.skillbridge': "Afrika'nın lise öğrencileri için yapay zeka destekli öğrenme platformu. Ulusal sınavlara uyumlu ders materyalleri, gamification ve kişisel yapay zeka öğretmeni. 2.700+ öğrenci, 75.000+ çözülen soru.",
     'skill1.h': '🧭 Liderlik &amp; Strateji', 'skill2.h': '💻 Yazılım Mühendisliği', 'skill3.h': '🤖 Yapay Zeka &amp; Veri Bilimi', 'skill4.h': '☁️ Bulut &amp; Araçlar', 'skill5.h': '📚 Eğitim &amp; Mentorluk', 'skill6.h': '✨ İlgi Alanları',
@@ -2743,15 +2795,14 @@ function closeDoc() {
   document.body.style.overflow = '';
 }
 
-// ═══ PDF VIEWER ═══
+// ═══ PDF VIEWER (image-based) ═══
 function openPdfViewer() {
-  document.getElementById('pdfFrame').src = 'https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/preview';
   document.getElementById('pdfViewer').classList.add('open');
   document.body.style.overflow = 'hidden';
+  document.querySelector('.pdf-viewer-inner').scrollTop = 0;
 }
 function closePdf() {
   document.getElementById('pdfViewer').classList.remove('open');
-  document.getElementById('pdfFrame').src = '';
   document.body.style.overflow = '';
 }
 
