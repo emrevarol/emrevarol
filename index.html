@@ -3,7 +3,75 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Emre Varol | Founder, Engineer, Builder</title>
+  <title>Emre Varol | Founder & CEO of A2SV, Engineer, Builder</title>
+  <meta name="description" content="Emre Varol — Founder & CEO of A2SV, a Google-backed nonprofit transforming Africa's tech ecosystem. 8+ years at Google, Palantir & Liftoff. Building world-class engineering talent across 22 African countries." />
+  <meta name="author" content="Emre Varol" />
+  <meta name="keywords" content="Emre Varol, A2SV, Africa to Silicon Valley, Google, software engineer, AI, nonprofit, tech education, competitive programming, African tech talent" />
+  <link rel="canonical" href="https://emrevarol.com/" />
+  <meta name="theme-color" content="#06060f" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://emrevarol.com/" />
+  <meta property="og:title" content="Emre Varol | Founder & CEO of A2SV" />
+  <meta property="og:description" content="Founder & CEO of A2SV, a Google-backed nonprofit transforming Africa's tech ecosystem. 8+ years at Google, Palantir & Liftoff." />
+  <meta property="og:image" content="https://emrevarol.com/images/emre-hero.jpeg" />
+  <meta property="og:site_name" content="Emre Varol" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Emre Varol | Founder & CEO of A2SV" />
+  <meta name="twitter:description" content="Founder & CEO of A2SV, transforming Africa's tech ecosystem. 8+ years at Google, Palantir & Liftoff." />
+  <meta name="twitter:image" content="https://emrevarol.com/images/emre-hero.jpeg" />
+
+  <!-- Hreflang for multilingual -->
+  <link rel="alternate" hreflang="en" href="https://emrevarol.com/" />
+  <link rel="alternate" hreflang="tr" href="https://emrevarol.com/?lang=tr" />
+  <link rel="alternate" hreflang="es" href="https://emrevarol.com/?lang=es" />
+  <link rel="alternate" hreflang="rw" href="https://emrevarol.com/?lang=rw" />
+  <link rel="alternate" hreflang="fr" href="https://emrevarol.com/?lang=fr" />
+  <link rel="alternate" hreflang="de" href="https://emrevarol.com/?lang=de" />
+  <link rel="alternate" hreflang="ar" href="https://emrevarol.com/?lang=ar" />
+  <link rel="alternate" hreflang="pt" href="https://emrevarol.com/?lang=pt" />
+  <link rel="alternate" hreflang="sw" href="https://emrevarol.com/?lang=sw" />
+  <link rel="alternate" hreflang="am" href="https://emrevarol.com/?lang=am" />
+  <link rel="alternate" hreflang="x-default" href="https://emrevarol.com/" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Emre Varol",
+    "url": "https://emrevarol.com",
+    "image": "https://emrevarol.com/images/emre-hero.jpeg",
+    "jobTitle": "Founder & CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "A2SV (Africa to Silicon Valley)",
+      "url": "https://a2sv.org",
+      "description": "Google-backed nonprofit transforming Africa's tech ecosystem"
+    },
+    "alumniOf": [
+      {
+        "@type": "CollegeOrUniversity",
+        "name": "Bilkent University",
+        "department": "Computer Engineering"
+      }
+    ],
+    "knowsAbout": ["Artificial Intelligence", "Software Engineering", "Nonprofit Leadership", "Competitive Programming", "Machine Learning", "Tech Education"],
+    "sameAs": [
+      "https://linkedin.com/in/emre-varol",
+      "https://instagram.com/varolemre",
+      "https://a2sv.org"
+    ],
+    "email": "emre@a2sv.org",
+    "description": "Founder & CEO of A2SV, a Google-backed nonprofit that has trained 1,200+ engineers across 22 African countries. Former engineer at Google, Palantir, and Liftoff with 8+ years in Silicon Valley."
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
@@ -177,7 +245,7 @@
       filter: brightness(1.05);
     }
     .hero-photo-badge {
-      position: absolute; bottom: 8px; right: -18px; z-index: 2;
+      position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); z-index: 2;
       background: linear-gradient(135deg, var(--gold), #e58c00);
       color: #000; padding: .45rem .9rem; border-radius: 10px;
       font-size: .72rem; font-weight: 800; white-space: nowrap;
@@ -599,6 +667,29 @@
       opacity: .7; transition: opacity .2s;
     }
     .lightbox-close:hover { opacity: 1; }
+
+    /* ═══ VIDEO MODAL ═══ */
+    .video-modal {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.92); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+    }
+    .video-modal.open { opacity: 1; pointer-events: all; }
+    .video-modal-inner {
+      position: relative; width: 90vw; max-width: 960px; aspect-ratio: 16/9;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 0 80px rgba(0,229,184,.15);
+    }
+    .video-modal-inner iframe {
+      width: 100%; height: 100%; border: none;
+    }
+    .video-modal-close {
+      position: absolute; top: -48px; right: 0;
+      background: none; border: none; color: white;
+      font-size: 2rem; cursor: pointer; opacity: .7; transition: opacity .2s;
+    }
+    .video-modal-close:hover { opacity: 1; }
     @media (max-width: 700px) {
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       .gallery-item:nth-child(1),
@@ -672,10 +763,10 @@
         <a class="dropdown-item" href="https://adot.life" target="_blank"><img src="https://www.google.com/s2/favicons?domain=adot.life&sz=32" alt="">Adot</a>
         <a class="dropdown-item" href="https://afrochat.app" target="_blank"><img src="https://www.google.com/s2/favicons?domain=afrochat.app&sz=32" alt="">AfroChat</a>
         <a class="dropdown-item" href="https://akilconnect.org" target="_blank"><img src="https://www.google.com/s2/favicons?domain=akilconnect.org&sz=32" alt="">Akil</a>
-        <a class="dropdown-item" href="https://dime.gold" target="_blank"><img src="https://www.google.com/s2/favicons?domain=dime.gold&sz=32" alt="">Dime</a>
+        <a class="dropdown-item" href="https://dime.gold" target="_blank"><img src="images/dime-logo.svg" alt="Dime">Dime</a>
         <a class="dropdown-item" href="https://eskalate.io" target="_blank"><img src="https://www.google.com/s2/favicons?domain=eskalate.io&sz=32" alt="">Eskalate</a>
         <a class="dropdown-item" href="https://rateeat.app" target="_blank"><img src="https://www.google.com/s2/favicons?domain=rateeat.app&sz=32" alt="">RateEat</a>
-        <a class="dropdown-item" href="https://skillbridge.academy" target="_blank"><img src="https://www.google.com/s2/favicons?domain=skillbridge.academy&sz=32" alt="">SkillBridge</a>
+        <a class="dropdown-item" href="https://skillbridge.academy" target="_blank"><img src="images/skillbridge-logo.svg" alt="SkillBridge">SkillBridge</a>
       </div>
     </li>
     <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
@@ -694,7 +785,7 @@
     <button class="lang-btn" onclick="setLang('am')">🇪🇹 AM</button>
   </div>
   <a href="mailto:emre@a2sv.org" class="nav-cta" data-i18n="nav.cta">Say Hello</a>
-  <div class="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  <div class="hamburger" onclick="toggleNav()" role="button" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
@@ -1013,41 +1104,41 @@
       <div class="vid-row-label" data-i18n="media.label">In the Media</div>
       <div class="vid-grid">
 
-        <a class="vid-card" href="https://www.youtube.com/watch?v=52ELtLxgMto" target="_blank" rel="noopener">
+        <div class="vid-card" onclick="openVideo('52ELtLxgMto')" style="cursor:pointer">
           <img class="vid-thumb" src="https://img.youtube.com/vi/52ELtLxgMto/hqdefault.jpg" alt="Global AI Summit on Africa 2025" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
             <div class="vid-badge" data-i18n="media.vid1.badge">Panel</div>
             <div class="vid-title" data-i18n="media.vid1.title">AI is Reshaping Work — Where Does Africa Stand?</div>
           </div>
-        </a>
+        </div>
 
-        <a class="vid-card" href="https://www.youtube.com/watch?v=meUHhneJRiE" target="_blank" rel="noopener">
+        <div class="vid-card" onclick="openVideo('meUHhneJRiE')" style="cursor:pointer">
           <img class="vid-thumb" src="https://img.youtube.com/vi/meUHhneJRiE/hqdefault.jpg" alt="A2SV in 2023" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
             <div class="vid-badge" data-i18n="media.vid2.badge">Year in Review</div>
             <div class="vid-title" data-i18n="media.vid2.title">A2SV in 2023</div>
           </div>
-        </a>
+        </div>
 
-        <a class="vid-card" href="https://www.youtube.com/watch?v=nnbEglsSLZw" target="_blank" rel="noopener">
+        <div class="vid-card" onclick="openVideo('nnbEglsSLZw')" style="cursor:pointer">
           <img class="vid-thumb" src="https://img.youtube.com/vi/nnbEglsSLZw/hqdefault.jpg" alt="A2SV on TRT World" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
             <div class="vid-badge" data-i18n="media.vid3.badge">TRT World</div>
             <div class="vid-title" data-i18n="media.vid3.title">A2SV on TRT World</div>
           </div>
-        </a>
+        </div>
 
-        <a class="vid-card" href="https://www.youtube.com/watch?v=yg59HhjeVWc" target="_blank" rel="noopener">
+        <div class="vid-card" onclick="openVideo('yg59HhjeVWc')" style="cursor:pointer">
           <img class="vid-thumb" src="https://img.youtube.com/vi/yg59HhjeVWc/hqdefault.jpg" alt="Emre Varol — Upbringings, Faith, Career, A2SV and more" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
             <div class="vid-badge" data-i18n="media.vid4.badge">Podcast</div>
             <div class="vid-title" data-i18n="media.vid4.title">Emre Varol — Upbringings, Faith, Career &amp; A2SV</div>
           </div>
-        </a>
+        </div>
 
       </div>
     </div>
@@ -1108,7 +1199,8 @@
 
       <a class="product-card anim" href="https://dime.gold" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
-          <div class="prod-icon" style="background:rgba(245,158,11,.15);font-size:1.5rem;">💸
+          <div class="prod-icon" style="background:rgba(245,158,11,.15);padding:5px;">
+            <img src="images/dime-logo.svg" alt="Dime" />
           </div>
           <div>
             <div class="prod-name">Dime</div>
@@ -1150,7 +1242,7 @@
       <a class="product-card anim" href="https://skillbridge.academy" target="_blank" rel="noopener" data-tilt>
         <div class="prod-header">
           <div class="prod-icon" style="background:rgba(59,130,246,.12);padding:5px;">
-            <img src="https://www.google.com/s2/favicons?domain=skillbridge.academy&sz=64" alt="SkillBridge" />
+            <img src="images/skillbridge-logo.svg" alt="SkillBridge" />
           </div>
           <div>
             <div class="prod-name">SkillBridge</div>
@@ -1303,7 +1395,7 @@
 <section class="gs-section">
   <div class="gs-inner">
     <div class="gs-badge">
-      <img src="images/galatasaray-logo.svg" alt="Galatasaray" style="width:90px;height:90px;object-fit:contain;" />
+      <img src="images/galatasaray-logo.png" alt="Galatasaray" style="width:90px;height:90px;object-fit:contain;" />
     </div>
     <div class="gs-text">
       <h3 data-i18n="gs.h">Galatasaray</h3>
@@ -1400,9 +1492,17 @@
   </div>
 </section>
 <!-- Lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <button class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">&#x2715;</button>
-  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+<div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox-close" onclick="event.stopPropagation();closeLightbox()" aria-label="Close image">&#x2715;</button>
+  <img id="lightbox-img" src="" alt="Gallery image" onclick="event.stopPropagation()" />
+</div>
+
+<!-- Video Modal -->
+<div class="video-modal" id="videoModal" onclick="closeVideo()" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="video-modal-inner" onclick="event.stopPropagation()">
+    <button class="video-modal-close" onclick="closeVideo()" aria-label="Close video">&#x2715;</button>
+    <iframe id="videoFrame" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 </div>
 
 
@@ -2403,7 +2503,19 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeLightbox(); closeVideo(); } });
+
+// ═══ VIDEO MODAL ═══
+function openVideo(videoId) {
+  document.getElementById('videoFrame').src = 'https://www.youtube-nocookie.com/embed/' + videoId + '?autoplay=1&rel=0';
+  document.getElementById('videoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideo() {
+  document.getElementById('videoModal').classList.remove('open');
+  document.getElementById('videoFrame').src = '';
+  document.body.style.overflow = '';
+}
 </script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://emrevarol.com/</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/?lang=tr" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/?lang=es" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/?lang=rw" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/?lang=fr" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/?lang=de" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/?lang=pt" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/?lang=sw" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/?lang=am" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://emrevarol.com/" />
+  </url>
+</urlset>

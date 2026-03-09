@@ -1,0 +1,58 @@
+# Emre Varol
+
+> Founder & CEO of A2SV (Africa to Silicon Valley), a Google-backed nonprofit transforming Africa's tech ecosystem.
+
+## About
+
+Emre Varol is a Turkish-born software engineer, AI researcher, and social entrepreneur based between Palo Alto, Kigali, and Ankara. He founded A2SV in 2019 after 8+ years in Silicon Valley working at Google, Palantir, and Liftoff.
+
+## A2SV Impact
+
+- 1,200+ engineers trained across 22 African countries
+- 120+ job offers at companies like Google, Amazon, and Bloomberg
+- 8,500+ hackathon participants from 48 countries
+- 20+ products incubated addressing African challenges
+- 70% Google interview pass rate for A2SV graduates
+
+## Career Timeline
+
+- **A2SV Foundation & Eskalate** (2019–Present): Founder & CEO
+- **Liftoff Mobile** (2016–2019): AI Engineer — ML pipelines, 15% revenue uplift
+- **Google Research** (2014–2016): Software Engineer — NLP, ad relevance
+- **Palantir** (2012–2014): Software Engineer — Git migration, database optimization
+- **Yahoo! Research** (2009–2011): Research Intern — distributed systems
+
+## Education
+
+- M.S. Computer Engineering, Bilkent University (2010–2012, GPA 3.61)
+- B.S. Computer Engineering, Bilkent University (2006–2010, GPA 3.64)
+
+## A2SV Products
+
+- **Adot** (adot.life): Maternity companion for African mothers
+- **AfroChat** (afrochat.app): AI assistant localized for Africa, 2.6k+ users in 85 countries
+- **Akil** (akilconnect.org): Career platform connecting African youth with opportunities
+- **Dime** (dime.gold): Money transfer to Africa with best exchange rates
+- **Eskalate** (eskalate.io): IT outsourcing with Google-caliber African developers
+- **RateEat** (rateeat.app): Restaurant discovery platform for Africa
+- **SkillBridge** (skillbridge.academy): AI-powered learning for African high school students
+
+## Awards & Publications
+
+- TOYP (Ten Outstanding Young Persons) 2024
+- International Olympiad in Informatics (IOI) participant, 2005
+- National Informatics Olympiad champion, Turkey
+- IEEEXtreme global top 10
+- Published at SIGIR '10 and CIKM '11 (ACM conferences)
+
+## Contact
+
+- Email: emre@a2sv.org
+- Website: https://emrevarol.com
+- Organization: https://a2sv.org
+- LinkedIn: https://linkedin.com/in/emre-varol
+- Instagram: @varolemre
+
+## Languages
+
+This website is available in 10 languages: English, Turkish, Spanish, Kinyarwanda, French, German, Arabic, Portuguese, Swahili, and Amharic.
