@@ -245,7 +245,7 @@
       filter: brightness(1.05);
     }
     .hero-photo-badge {
-      position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); z-index: 2;
+      position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); z-index: 2;
       background: linear-gradient(135deg, var(--gold), #e58c00);
       color: #000; padding: .45rem .9rem; border-radius: 10px;
       font-size: .72rem; font-weight: 800; white-space: nowrap;
@@ -922,7 +922,7 @@
       <button class="lang-item" onclick="setLang('am')">🇪🇹 AM</button>
     </div>
   </div>
-  <a href="mailto:emre@a2sv.org" class="nav-cta" data-i18n="nav.cta">Say Hello</a>
+  <a href="#contact" class="nav-cta" data-i18n="nav.cta">Say Hello</a>
   <div class="hamburger" onclick="toggleNav()" role="button" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></div>
 </nav>
 
@@ -944,6 +944,16 @@
         <a href="#contact" class="btn-ghost">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <span data-i18n="hero.btn2">Get in Touch</span>
+        </a>
+      </div>
+      <div class="hero-actions" style="margin-top:.75rem">
+        <a href="https://a2sv.org/donate" target="_blank" class="btn-ghost" style="font-size:.82rem;padding:.55rem 1.2rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          <span data-i18n="contact.donate">Donate to A2SV</span>
+        </a>
+        <a href="https://eskalate.io/book-a-call" target="_blank" class="btn-ghost" style="font-size:.82rem;padding:.55rem 1.2rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+          <span data-i18n="contact.hire">Hire African Talent</span>
         </a>
       </div>
     </div>
@@ -1069,11 +1079,14 @@
             <div>
               <div class="tl-co">
                 <div class="co-icon" style="background:rgba(0,229,184,.12)">🌍</div>
-                <span class="co-name">A2SV Foundation &amp; Eskalate · CA 501(c)(3) · Palo Alto / Kigali</span>
+                <span class="co-name">A2SV Foundation · 501(c)(3) Nonprofit · Palo Alto / Kigali</span>
               </div>
               <div class="tl-role" data-i18n="exp.a2sv.role">Founder &amp; CEO</div>
             </div>
-            <span class="tl-period">Nov 2019 → Present</span> <span style="font-size:.68rem;color:var(--muted2);margin-left:.25rem">incorp. 2021</span>
+            <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+              <span class="tl-period">Nov 2019 → Present</span>
+              <span class="tl-period" style="background:var(--purple-dim);border-color:rgba(168,85,247,.2);color:var(--purple)">Incorporated 2021</span>
+            </div>
           </div>
           <ul class="tl-bullets" data-i18n-html="exp.a2sv.bullets">
             <li>Founded and scaled a nonprofit training <strong>1,200+ elite African engineers</strong> from 20+ countries</li>
@@ -1081,7 +1094,7 @@
             <li><strong>70% Google SWE interview success rate</strong> in 2021 (vs. ~2% global average)</li>
             <li>Organized Africa's largest AI hackathon: <strong>8,500+ participants from 48 countries</strong></li>
             <li>Secured backing from <strong>Google, Jeff Dean</strong> (Google Chief Scientist), Karim Beguir (InstaDeep)</li>
-            <li>Co-founded <strong>Eskalate</strong>, a talent marketplace connecting A2SV grads with global companies</li>
+            <li>Co-founded <strong>Eskalate</strong> (<a href="https://eskalate.io" target="_blank" style="color:var(--teal)">eskalate.io</a>), a for-profit IT outsourcing company connecting A2SV-trained engineers with global companies</li>
           </ul>
         </div>
       </div>
@@ -1359,7 +1372,7 @@
             <div class="prod-tag">eskalate.io</div>
           </div>
         </div>
-        <div class="prod-desc" data-i18n="prod.eskalate">IT outsourcing powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.</div>
+        <div class="prod-desc" data-i18n="prod.eskalate">A for-profit IT outsourcing company powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.</div>
         <span class="prod-cat cat-talent" data-i18n="prod.cat.talent">Talent · Outsourcing</span>
       </a>
 
@@ -1681,7 +1694,7 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         <span data-i18n="contact.donate">Donate to A2SV</span>
       </a>
-      <a href="https://eskalate.io" target="_blank" class="btn-ghost" style="font-size:.82rem;padding:.65rem 1.4rem;">
+      <a href="https://eskalate.io/book-a-call" target="_blank" class="btn-ghost" style="font-size:.82rem;padding:.65rem 1.4rem;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
         <span data-i18n="contact.hire">Hire African Talent</span>
       </a>
@@ -1866,7 +1879,7 @@ const translations = {
     'prod.afrochat': 'AI-powered assistant giving Africans affordable access to multiple generative AI models, image generation, and persona creation in one place. Integrated with Telegram, localized for African contexts. 2.6k+ users across 85 countries.',
     'prod.akil': 'A career platform connecting African youth with jobs, internships, and volunteer roles. AI-powered matching helps young people find opportunities aligned to their skills, while organizations streamline recruitment and access top talent.',
     'prod.dime': "The easiest way to transfer money to Africa. Best exchange rates from multiple local banks, flexible bank deposits, and low transparent fees, built for the African diaspora sending money home.",
-    'prod.eskalate': 'IT outsourcing powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.',
+    'prod.eskalate': 'A for-profit IT outsourcing company powered by A2SV-trained engineers. Hire Google-caliber African developers for project outsourcing or team scaling, with a 2-week free trial. 90+ developers placed at top tech companies.',
     'prod.rateeat': "Africa's restaurant discovery platform. Visual menus, item-specific reviews, smart filters by location, price, and rating, plus real-time order tracking. 500+ diners, 400+ restaurants, 1,400+ reviews.",
     'prod.skillbridge': 'AI-powered learning platform for African high school students. Expert-verified study materials aligned to national exams, gamified learning, personalized AI tutoring, and past exam solutions. 2,700+ students, 75K+ questions solved.',
     'skill1.h': '🧭 Leadership &amp; Strategy', 'skill2.h': '💻 Software Engineering', 'skill3.h': '🤖 AI &amp; Data Science', 'skill4.h': '☁️ Cloud &amp; Tools', 'skill5.h': '📚 Teaching &amp; Mentorship', 'skill6.h': '✨ Interests',
@@ -1948,7 +1961,7 @@ const translations = {
     'prod.afrochat': "Birden fazla üretici yapay zeka modeline, görsel üretimine ve persona oluşturmaya uygun fiyatla erişim sunan yapay zeka asistanı. Telegram entegrasyonu ve Afrika odaklı yerelleştirme. 85 ülkeden 2.600+ kullanıcı.",
     'prod.akil': "Afrika gençlerini iş, staj ve gönüllü fırsatlarıyla buluşturan kariyer platformu. Yapay zeka destekli eşleştirme sayesinde herkes becerilerine uygun fırsatları kolayca buluyor.",
     'prod.dime': "Afrika'ya para göndermenin en kolay yolu. Birden fazla yerel bankadan en iyi döviz kurları, esnek banka transferleri ve şeffaf düşük komisyonlar. Yurt dışındaki Afrika diasporası için.",
-    'prod.eskalate': "A2SV mezunlarıyla güçlendirilmiş IT dış kaynak platformu. 2 haftalık ücretsiz deneme ile Google kalitesinde Afrika geliştiricilerini işe alın ya da ekibinizi büyütün. 90+ geliştirici yerleştirildi.",
+    'prod.eskalate': "A2SV mezunlarıyla güçlendirilmiş, kâr amacı güden IT dış kaynak şirketi. 2 haftalık ücretsiz deneme ile Google kalitesinde Afrika geliştiricilerini işe alın ya da ekibinizi büyütün. 90+ geliştirici yerleştirildi.",
     'prod.rateeat': "Afrika'nın restoran keşif platformu. Görsel menüler, ürüne özel yorumlar, konum-fiyat-puan filtreleri ve gerçek zamanlı sipariş takibi. 500+ müşteri, 400+ restoran, 1.400+ yorum.",
     'prod.skillbridge': "Afrika'nın lise öğrencileri için yapay zeka destekli öğrenme platformu. Ulusal sınavlara uyumlu ders materyalleri, gamification ve kişisel yapay zeka öğretmeni. 2.700+ öğrenci, 75.000+ çözülen soru.",
     'skill1.h': '🧭 Liderlik &amp; Strateji', 'skill2.h': '💻 Yazılım Mühendisliği', 'skill3.h': '🤖 Yapay Zeka &amp; Veri Bilimi', 'skill4.h': '☁️ Bulut &amp; Araçlar', 'skill5.h': '📚 Eğitim &amp; Mentorluk', 'skill6.h': '✨ İlgi Alanları',
@@ -1961,7 +1974,7 @@ const translations = {
     'exp.google.role': 'Yazılım Mühendisi, Google Research',
     'exp.palantir.role': 'Yazılım Mühendisi',
     'exp.yahoo.role': 'Araştırma Stajyeri',
-    'exp.a2sv.bullets': '<li>20\'den fazla ülkeden <strong>1.200\'den fazla elit Afrika mühendisini</strong> yetiştiren kâr amacı gütmeyen kuruluşu kurdum ve büyüttüm</li><li>Google, Amazon, Bloomberg, LinkedIn, Databricks, Palantir\'de <strong>120\'den fazla iş teklifi</strong> sağladım</li><li>2022\'de <strong>%70 Google SWE mülakat başarı oranı</strong> (global ~%2\'ye karşı)</li><li>Afrika\'nın en büyük AI hackathon\'unu organize ettim: <strong>48 ülkeden 8.500\'den fazla katılımcı</strong></li><li><strong>Google, Jeff Dean</strong> (Google Baş Bilim İnsanı) ve Karim Beguir (InstaDeep)\'in desteğini kazandım</li><li>A2SV mezunlarını global şirketlerle buluşturan yetenek platformu <strong>Eskalate</strong>\'i kurdum</li>',
+    'exp.a2sv.bullets': '<li>20\'den fazla ülkeden <strong>1.200\'den fazla elit Afrika mühendisini</strong> yetiştiren kâr amacı gütmeyen kuruluşu kurdum ve büyüttüm</li><li>Google, Amazon, Bloomberg, LinkedIn, Databricks, Palantir\'de <strong>120\'den fazla iş teklifi</strong> sağladım</li><li>2021\'de <strong>%70 Google SWE mülakat başarı oranı</strong> (global ~%2\'ye karşı)</li><li>Afrika\'nın en büyük AI hackathon\'unu organize ettim: <strong>48 ülkeden 8.500\'den fazla katılımcı</strong></li><li><strong>Google, Jeff Dean</strong> (Google Baş Bilim İnsanı) ve Karim Beguir (InstaDeep)\'in desteğini kazandım</li><li>A2SV mezunlarını global şirketlerle buluşturan IT dış kaynak şirketi <strong>Eskalate</strong>\'i (<a href="https://eskalate.io" target="_blank" style="color:var(--teal)">eskalate.io</a>) kurdum</li>',
     'exp.liftoff.bullets': '<li>Mobil reklam hedeflemesi için temel ML pipeline\'larını tasarladım: yeniden etkileşim ve görüntülenme optimizasyonu</li><li><strong>Gradyan Arttırmalı Karar Ağaçları (GBDT)</strong> ile özellik seçimini otomatize ettim</li><li><strong>100 milyon dolar+</strong> iş kolunda <strong>~%15 gelir artışı</strong> sağladım</li>',
     'exp.google.bullets': '<li>Gelişmiş NLP kullanarak <strong>arama reklamı alaka düzeyi ve kalitesini</strong> iyileştirdim</li><li>Reklam açıklaması oluşturmak için otomatik sistem kurdum</li><li>Reklam içeriği doğruluğunu artırmak için olumsuzlama ve koşul ifadesi dedektörleri geliştirdim</li>',
     'exp.palantir.bullets': '<li>Belge kalıcılayıcısını dosya tabanlıdan <strong>Git tabanlı sisteme</strong> taşıyarak ölçeklenebilirliği artırdım</li><li>Fark tabanlı güncellemelerle veritabanı işlemeyi <strong>saatlerden saniyelere</strong> indirdim</li>',
