@@ -150,7 +150,7 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo { font-size: 1.15rem; font-weight: 900; color: var(--text); text-decoration: none; letter-spacing: -1px; }
-    .nav-logo span { color: var(--teal); }
+    .nav-logo span { background: linear-gradient(135deg, var(--teal) 0%, var(--purple) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .nav-links { display: flex; gap: 2rem; list-style: none; }
     .nav-links a { color: var(--muted); text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--teal); }
@@ -245,7 +245,7 @@
       filter: brightness(1.05);
     }
     .hero-photo-badge {
-      position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); z-index: 2;
+      position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); z-index: 2;
       background: linear-gradient(135deg, var(--gold), #e58c00);
       color: #000; padding: .45rem .9rem; border-radius: 10px;
       font-size: .72rem; font-weight: 800; white-space: nowrap;
@@ -451,6 +451,10 @@
     .vid-play svg { width: 13px; height: 13px; fill: white; margin-left: 2px; }
     .vid-badge { font-size: .62rem; text-transform: uppercase; letter-spacing: .1em; color: var(--teal); margin-bottom: .25rem; font-weight: 700; }
     .vid-title { font-size: .78rem; color: white; font-weight: 600; line-height: 1.3; }
+    /* Vertical document cards */
+    .doc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .doc-grid .vid-card { aspect-ratio: 3/4; }
+    .doc-grid .vid-thumb { object-position: center top; }
 
     /* ═══ PRODUCTS ═══ */
     #products { border-top: 1px solid var(--border); }
@@ -727,6 +731,43 @@
     }
     .doc-viewer-close:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
 
+    /* ═══ PDF VIEWER ═══ */
+    .pdf-viewer {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.85); backdrop-filter: blur(8px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+      padding: 1rem;
+    }
+    .pdf-viewer.open { opacity: 1; pointer-events: all; }
+    .pdf-viewer-inner {
+      width: 90vw; max-width: 900px; height: 85vh;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 25px 80px rgba(0,0,0,.6);
+    }
+    .pdf-viewer-inner iframe {
+      width: 100%; height: 100%; border: none; background: white;
+    }
+    .pdf-viewer-bar {
+      display: flex; gap: .75rem; margin-top: .75rem;
+    }
+    .pdf-viewer-bar a {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); padding: .5rem 1rem; border-radius: 9px;
+      text-decoration: none; font-size: .82rem; font-weight: 600; transition: all .2s;
+    }
+    .pdf-viewer-bar a:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
+    .pdf-viewer-close {
+      position: fixed; top: 1rem; right: 1rem;
+      background: var(--card); border: 1px solid var(--border); color: var(--muted);
+      width: 40px; height: 40px; border-radius: 10px;
+      font-size: 1.3rem; cursor: pointer; transition: all .2s; z-index: 10001;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pdf-viewer-close:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
+
     /* ═══ CONTACT FORM ═══ */
     .contact-form {
       max-width: 520px; margin: 0 auto; text-align: left;
@@ -825,6 +866,7 @@
     @media (max-width: 600px) {
       .stats-grid { grid-template-columns: 1fr 1fr; }
       .vid-grid { grid-template-columns: 1fr; }
+      .doc-grid { grid-template-columns: 1fr 1fr; gap: .75rem; }
       .products-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr; }
     }
@@ -1036,7 +1078,7 @@
           <ul class="tl-bullets" data-i18n-html="exp.a2sv.bullets">
             <li>Founded and scaled a nonprofit training <strong>1,200+ elite African engineers</strong> from 20+ countries</li>
             <li>Secured <strong>120+ job offers</strong> at Google, Amazon, Bloomberg, LinkedIn, Databricks, Palantir</li>
-            <li><strong>70% Google SWE interview success rate</strong> (vs. ~2% global average) in 2022</li>
+            <li><strong>70% Google SWE interview success rate</strong> in 2021 (vs. ~2% global average)</li>
             <li>Organized Africa's largest AI hackathon: <strong>8,500+ participants from 48 countries</strong></li>
             <li>Secured backing from <strong>Google, Jeff Dean</strong> (Google Chief Scientist), Karim Beguir (InstaDeep)</li>
             <li>Co-founded <strong>Eskalate</strong>, a talent marketplace connecting A2SV grads with global companies</li>
@@ -1167,7 +1209,7 @@
         <div class="a2sv-mini span2">
           <div class="ico">🏆</div>
           <div class="big-pct">70%</div>
-          <div class="lbl" data-i18n="a2sv.mini5">Google Interview Success Rate (vs ~2% global avg)</div>
+          <div class="lbl" data-i18n="a2sv.mini5">Google Interview Success Rate in 2021 (vs ~2% global avg)</div>
         </div>
       </div>
     </div>
@@ -1175,17 +1217,17 @@
     <!-- A2SV Documents (moved above In the Media) -->
     <div class="vid-row anim" style="margin-top:2.5rem">
       <div class="vid-row-label" data-i18n-html="resources.h">A2SV <em>Documents</em></div>
-      <div class="vid-grid" style="margin-top:.5rem">
-        <a class="vid-card" href="https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/view?usp=sharing" target="_blank" rel="noopener">
-          <img class="vid-thumb" src="images/a2sv-5years-cover.jpg" alt="A2SV 5 Years of Impact Report" loading="lazy" style="object-position:center top" />
+      <div class="doc-grid" style="margin-top:.5rem">
+        <div class="vid-card" onclick="openPdfViewer()" style="cursor:pointer">
+          <img class="vid-thumb" src="images/a2sv-5years-cover.jpg" alt="A2SV 5 Years of Impact Report" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
             <div class="vid-badge">PDF</div>
             <div class="vid-title" data-i18n="resources.link1">A2SV 5 Years of Impact Report</div>
           </div>
-        </a>
+        </div>
         <div class="vid-card" onclick="openDoc()" style="cursor:pointer">
-          <img class="vid-thumb" src="images/a2sv-2pager-1.jpg" alt="A2SV 2-Pager" loading="lazy" style="object-position:center top" />
+          <img class="vid-thumb" src="images/a2sv-2pager-1.jpg" alt="A2SV 2-Pager" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
             <div class="vid-badge" data-i18n="resources.view">View</div>
@@ -1197,7 +1239,7 @@
 
     <!-- Video row -->
     <div class="vid-row anim">
-      <div class="vid-row-label" data-i18n="media.label">In the Media</div>
+      <div class="vid-row-label" data-i18n="media.label">Videos</div>
       <div class="vid-grid">
 
         <div class="vid-card" onclick="openVideo('52ELtLxgMto')" style="cursor:pointer">
@@ -1601,7 +1643,21 @@
   </div>
 </div>
 
-<!-- Document Viewer -->
+<!-- PDF Viewer (5 Years Report) -->
+<div class="pdf-viewer" id="pdfViewer" onclick="closePdf()" role="dialog" aria-modal="true" aria-label="PDF viewer">
+  <button class="pdf-viewer-close" onclick="closePdf()" aria-label="Close PDF">&#x2715;</button>
+  <div class="pdf-viewer-inner" onclick="event.stopPropagation()">
+    <iframe id="pdfFrame" src="" loading="lazy"></iframe>
+  </div>
+  <div class="pdf-viewer-bar" onclick="event.stopPropagation()">
+    <a href="https://drive.google.com/uc?export=download&id=1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z" target="_blank">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download PDF
+    </a>
+  </div>
+</div>
+
+<!-- Document Viewer (2-Pager) -->
 <div class="doc-viewer" id="docViewer" onclick="closeDoc()" role="dialog" aria-modal="true" aria-label="Document viewer">
   <button class="doc-viewer-close" onclick="closeDoc()" aria-label="Close document">&#x2715;</button>
   <div class="doc-viewer-inner" onclick="event.stopPropagation()">
@@ -1617,9 +1673,19 @@
     <div class="section-tag" style="justify-content:center">contact</div>
     <h2 data-i18n-html="contact.h">Let's <em style="font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Connect</em></h2>
     <p data-i18n="contact.desc">
-      Interested in partnering with A2SV, hiring African talent through Eskalate,
-      or just want to say hello? I'd love to hear from you.
+      Interested in partnering with A2SV, hiring world-class African engineers through Eskalate,
+      outsourcing your next IT project, or just want to say hello? I'd love to hear from you.
     </p>
+    <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
+      <a href="https://a2sv.org/donate" target="_blank" class="btn-primary" style="font-size:.82rem;padding:.65rem 1.4rem;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        <span data-i18n="contact.donate">Donate to A2SV</span>
+      </a>
+      <a href="https://eskalate.io" target="_blank" class="btn-ghost" style="font-size:.82rem;padding:.65rem 1.4rem;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+        <span data-i18n="contact.hire">Hire African Talent</span>
+      </a>
+    </div>
     <div class="contact-links">
       <a href="mailto:emre@a2sv.org" class="c-link primary">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
@@ -1643,7 +1709,11 @@
       </a>
     </div>
 
-    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+    <form class="contact-form" action="https://formsubmit.co/emre@a2sv.org" method="POST">
+      <input type="hidden" name="_subject" value="New message from emrevarol.com" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_next" value="https://emrevarol.com/?sent=1" />
+      <input type="text" name="_honey" style="display:none" />
       <div class="form-row">
         <div class="form-group">
           <label for="contactName" data-i18n="form.name">Name</label>
@@ -1664,7 +1734,7 @@
 </section>
 
 <footer>
-  <p>© 2025 Emre Varol &nbsp;·&nbsp; Founder &amp; CEO, <a href="https://a2sv.org" target="_blank">A2SV</a> &nbsp;·&nbsp; <span data-i18n="footer.purpose">Built with purpose 🌍</span></p>
+  <p>© 2026 Emre Varol &nbsp;·&nbsp; Founder &amp; CEO, <a href="https://a2sv.org" target="_blank">A2SV</a> &nbsp;·&nbsp; <span data-i18n="footer.purpose">Built with purpose 🌍</span></p>
   <p style="margin-top:.5rem">
     <img src="https://visitor-badge.laobi.icu/badge?page_id=emrevarol.emrevarol&left_color=%2306060f&right_color=%2300e5b8&left_text=visitors" alt="visitor count" style="height:20px;border-radius:4px;" />
   </p>
@@ -1773,7 +1843,7 @@ const translations = {
     'hero.btn1': 'Explore A2SV', 'hero.btn2': 'Get in Touch',
     'about.tag': 'about me', 'about.h': 'Builder. Teacher. <em>Changemaker.</em>',
     'about.p1': 'I grew up in <strong>Ankara, Turkey</strong>, earned a B.S. &amp; M.S. in Computer Engineering from <strong>Bilkent University</strong>, and competed at the <strong>International Olympiad in Informatics</strong> before spending 8+ years building production systems at <strong>Palantir, Google, and Liftoff</strong>.',
-    'about.p2': "But a promise I made to myself in my master\'s thesis — dedicating it to the children of Africa — never faded. In 2019, I flew to Addis Ababa with one idea: Africa\'s engineers can compete with anyone in the world. They just needed the right structure.",
+    'about.p2': "But a promise I made in my master\'s thesis — dedicating it to the children of Africa — never faded. In 2019, I flew to Addis Ababa with one conviction: Africa is home to engineers who can stand shoulder to shoulder with the world\'s best. All they needed was the right foundation.",
     'about.p3': 'That idea became <strong>A2SV</strong>. Today, 1,200+ engineers from 22 African countries have gone through our program. Students who had never heard of Google are now at Google. That never gets old.',
     'exp.tag': 'career', 'exp.h': "Where I've <em>Built</em>", 'exp.sub': "From academic research to Silicon Valley to building Africa's tech future.",
     'a2sv.h': 'Africa to <em>Silicon Valley</em>',
@@ -1782,7 +1852,7 @@ const translations = {
     'edu.tag': 'education', 'edu.h': 'Academic <em>Roots</em>',
     'awards.tag': 'recognition', 'awards.h': 'Honors &amp; <em>Awards</em>',
     'contact.h': `Let's <em style="${EM}">Connect</em>`,
-    'contact.desc': "Interested in partnering with A2SV, hiring African talent through Eskalate, or just want to say hello? I'd love to hear from you.",
+    'contact.desc': "Interested in partnering with A2SV, hiring world-class African engineers through Eskalate, outsourcing your next IT project, or just want to say hello? I'd love to hear from you.",
     'stat1.label': 'Engineers Trained', 'stat1.sub': 'from 22 African countries',
     'stat2.label': 'Top Tech Job Offers', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon Participants', 'stat3.sub': "Africa's largest AI hackathon",
@@ -1791,7 +1861,7 @@ const translations = {
     'a2sv.p2': "We run a rigorous <strong>1,000+ hour annual curriculum</strong>: data structures, algorithms, system design, soft skills, completely free for every student. Then we connect them to the world's top companies.",
     'a2sv.p3': "Our program now spans <strong>22 African countries</strong>. Our incubator launched <strong>20+ digital products</strong> tackling healthcare, education, and financial inclusion. Our hackathon is the <strong>largest student tech competition in Africa</strong>.",
     'a2sv.featured': '<em>Featured in: Financial Times · Yahoo Finance · Business Insider Africa</em>',
-    'a2sv.mini1': 'Engineers Trained', 'a2sv.mini2': 'Job Offers Secured', 'a2sv.mini3': 'Products Incubated', 'a2sv.mini4': 'Hackathon Countries', 'a2sv.mini5': 'Google Interview Success Rate (vs ~2% global avg)',
+    'a2sv.mini1': 'Engineers Trained', 'a2sv.mini2': 'Job Offers Secured', 'a2sv.mini3': 'Products Incubated', 'a2sv.mini4': 'Hackathon Countries', 'a2sv.mini5': 'Google Interview Success in 2021 (vs ~2% global avg)',
     'prod.adot': 'A comprehensive maternity companion for African mothers. Personalized health insights from medical experts, vital and cycle tracking, appointment reminders, and direct access to healthcare professionals. 200+ mothers, 4 partner hospitals, 20+ medical experts.',
     'prod.afrochat': 'AI-powered assistant giving Africans affordable access to multiple generative AI models, image generation, and persona creation in one place. Integrated with Telegram, localized for African contexts. 2.6k+ users across 85 countries.',
     'prod.akil': 'A career platform connecting African youth with jobs, internships, and volunteer roles. AI-powered matching helps young people find opportunities aligned to their skills, while organizations streamline recruitment and access top talent.',
@@ -1809,7 +1879,7 @@ const translations = {
     'exp.google.role': 'Software Engineer, Google Research',
     'exp.palantir.role': 'Software Engineer',
     'exp.yahoo.role': 'Research Intern',
-    'exp.a2sv.bullets': '<li>Founded and scaled a nonprofit training <strong>1,200+ elite African engineers</strong> from 20+ countries</li><li>Secured <strong>120+ job offers</strong> at Google, Amazon, Bloomberg, LinkedIn, Databricks, Palantir</li><li><strong>70% Google SWE interview success rate</strong> (vs. ~2% global average) in 2022</li><li>Organized Africa\'s largest AI hackathon: <strong>8,500+ participants from 48 countries</strong></li><li>Secured backing from <strong>Google, Jeff Dean</strong> (Google Chief Scientist), Karim Beguir (InstaDeep)</li><li>Co-founded <strong>Eskalate</strong>, a talent marketplace connecting A2SV grads with global companies</li>',
+    'exp.a2sv.bullets': '<li>Founded and scaled a nonprofit training <strong>1,200+ elite African engineers</strong> from 20+ countries</li><li>Secured <strong>120+ job offers</strong> at Google, Amazon, Bloomberg, LinkedIn, Databricks, Palantir</li><li><strong>70% Google SWE interview success rate</strong> in 2021 (vs. ~2% global average)</li><li>Organized Africa\'s largest AI hackathon: <strong>8,500+ participants from 48 countries</strong></li><li>Secured backing from <strong>Google, Jeff Dean</strong> (Google Chief Scientist), Karim Beguir (InstaDeep)</li><li>Co-founded <strong>Eskalate</strong>, a talent marketplace connecting A2SV grads with global companies</li>',
     'exp.liftoff.bullets': '<li>Architected core ML pipelines for mobile ad targeting: re-engagement &amp; view-through optimization</li><li>Automated feature selection with <strong>Gradient Boosted Decision Trees (GBDT)</strong></li><li>Delivered <strong>~15% revenue uplift</strong> on a <strong>$100M+ business line</strong></li>',
     'exp.google.bullets': '<li>Enhanced <strong>search ad relevance &amp; quality</strong> using advanced NLP</li><li>Built automated system for generating ad callouts</li><li>Developed negation &amp; conditional statement detectors to improve ad content accuracy</li>',
     'exp.palantir.bullets': '<li>Migrated document persister from file-based to <strong>Git-based system</strong>, improving scalability</li><li>Reduced database processing from <strong>hours to seconds</strong> via diff-based updates</li>',
@@ -1838,7 +1908,7 @@ const translations = {
     'skills.cat5': '<span class="s-tag">Curriculum Design</span><span class="s-tag">Competitive Programming</span><span class="s-tag">Public Speaking</span><span class="s-tag">Mentorship Programs</span><span class="s-tag">Technical Coaching</span>',
     'skills.cat6': '<span class="s-tag">AI for Social Good</span><span class="s-tag">EdTech Innovation</span><span class="s-tag">Guitar 🎸</span><span class="s-tag">Football ⚽</span><span class="s-tag">Hiking 🥾</span><span class="s-tag">Reading 📚</span><span class="s-tag">Chess ♟️</span>',
     'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
-    'media.label': 'In the Media',
+    'media.label': 'Videos',
     'media.vid1.badge': 'Panel', 'media.vid1.title': 'AI is Reshaping Work — Where Does Africa Stand?',
     'media.vid2.badge': 'Year in Review', 'media.vid2.title': 'A2SV in 2023',
     'media.vid3.badge': 'TRT World', 'media.vid3.title': 'A2SV on TRT World',
@@ -1852,10 +1922,10 @@ const translations = {
     'nav.about': 'Hakkımda', 'nav.experience': 'Deneyim', 'nav.products': 'Ürünler ▾',
     'nav.skills': 'Beceriler', 'nav.awards': 'Ödüller', 'nav.cta': 'İletişime Geç',
     'hero.desc': "<strong>A2SV</strong>'nin kurucusu ve CEO'yum. Google destekli bu sivil toplum kuruluşuyla Afrika'nın teknoloji ekosistemini dönüştürüyoruz. <strong>Google · Palantir · Liftoff</strong>'ta 8 yılı aşkın deneyimimin ardından şimdi tek bir misyon var: yeteneği fırsatla buluşturmak.",
-    'hero.btn1': "A2SV'yi Keşfet", 'hero.btn2': 'Yazın Bana',
+    'hero.btn1': "A2SV'yi Keşfet", 'hero.btn2': 'Bana Yazın',
     'about.tag': 'hakkımda', 'about.h': 'Kurucu. Öğretmen. <em>Değişim Yaratan.</em>',
     'about.p1': '<strong>Ankara</strong>\'da büyüdüm. <strong>Bilkent Üniversitesi</strong>\'nde bilgisayar mühendisliği okudum, <strong>Uluslararası Bilişim Olimpiyatı</strong>\'nda Türkiye\'yi temsil ettim. Ardından yıllarca <strong>Palantir, Google ve Liftoff</strong>\'ta kod yazdım.',
-    'about.p2': "Ama yüksek lisans tezimi Afrika çocuklarına ithaf ettiğimde verdiğim söz hiç aklımdan çıkmadı. 2019'da tek bir fikirle Addis Ababa'ya uçtum: Afrika'nın mühendisleri dünyanın herhangi biriyle yarışabilir. Tek eksiği doğru yapıydı.",
+    'about.p2': "Ama yüksek lisans tezimi Afrika çocuklarına ithaf ettiğimde verdiğim söz hiç aklımdan çıkmadı. 2019'da tek bir fikirle Addis Ababa'ya uçtum: Afrika'da dünyanın en iyileriyle omuz omuza yarışabilecek mühendisler var — tek ihtiyaçları doğru altyapıydı.",
     'about.p3': 'O fikir bugün <strong>A2SV</strong> oldu. 22 Afrika ülkesinden 1.200\'den fazla mühendis programımızdan geçti. Google\'ı hiç duymamış gençler şimdi Google\'da çalışıyor. Bu duygu hiç eskimiyor.',
     'exp.tag': 'kariyer', 'exp.h': 'Nerede <em>Ürettim</em>', 'exp.sub': "Akademik araştırmadan Silikon Vadisi'ne, oradan Afrika'nın geleceğini kurmaya.",
     'a2sv.h': "Afrika'dan <em>Silikon Vadisi'ne</em>",
@@ -1863,8 +1933,8 @@ const translations = {
     'skills.tag': 'beceriler', 'skills.h': '<em>Neler Biliyorum</em>',
     'edu.tag': 'eğitim', 'edu.h': 'Akademik <em>Köklerim</em>',
     'awards.tag': 'başarılar', 'awards.h': 'Ödüller &amp; <em>Takdirler</em>',
-    'contact.h': `Seninle <em style="${EM}">Konuşalım</em>`,
-    'contact.desc': "A2SV ile iş birliği yapmak, Eskalate üzerinden Afrika'dan yetenek işe almak ya da sadece selam vermek için bana yazabilirsiniz. Haberleşmeyi çok severim.",
+    'contact.h': `<em style="${EM}">İletişime</em> Geçin`,
+    'contact.desc': "A2SV ile iş birliği yapmak, Eskalate üzerinden dünya standartlarında Afrika mühendislerini işe almak, IT projenizi outsource etmek ya da sadece merhaba demek isterseniz — bana ulaşın.",
     'stat1.label': 'Yetiştirilen Mühendis', 'stat1.sub': '22 Afrika ülkesinden',
     'stat2.label': 'İş Teklifi Alındı', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon Katılımcısı', 'stat3.sub': "Afrika'nın en büyük AI yarışması",
@@ -1873,7 +1943,7 @@ const translations = {
     'a2sv.p2': "Her öğrenciye tamamen ücretsiz <strong>yıllık 1.000+ saatlik müfredat</strong> sunuyoruz: veri yapıları, algoritmalar, sistem tasarımı, yazılım becerileri. Ardından onları dünyanın en iyi şirketlerine bağlıyoruz.",
     'a2sv.p3': "Programımız artık <strong>22 Afrika ülkesine</strong> yayıldı. Kuluçka merkezimiz sağlık, eğitim ve finansal kapsayıcılık alanında <strong>20'den fazla dijital ürün</strong> çıkardı. Hackathon'umuz <strong>Afrika'nın en büyük öğrenci teknoloji yarışması</strong>.",
     'a2sv.featured': '<em>Haber yapıldık: Financial Times · Yahoo Finance · Business Insider Africa</em>',
-    'a2sv.mini1': 'Yetiştirilen Mühendis', 'a2sv.mini2': 'Alınan İş Teklifi', 'a2sv.mini3': 'Kuluçkadaki Ürün', 'a2sv.mini4': 'Hackathon Ülkesi', 'a2sv.mini5': "Google Mülakat Başarısı (global ~%2'ye karşı)",
+    'a2sv.mini1': 'Yetiştirilen Mühendis', 'a2sv.mini2': 'Alınan İş Teklifi', 'a2sv.mini3': 'Kuluçkadaki Ürün', 'a2sv.mini4': 'Hackathon Ülkesi', 'a2sv.mini5': "2021'de Google Mülakat Başarısı (global ~%2'ye karşı)",
     'prod.adot': "Afrika'daki anneler için kapsamlı bir hamilelik rehberi. Kişisel sağlık takibi, döngü ve vital ölçümü, randevu hatırlatmaları ve 20+ tıp uzmanına doğrudan erişim. 200+ anne, 4 ortak hastane.",
     'prod.afrochat': "Birden fazla üretici yapay zeka modeline, görsel üretimine ve persona oluşturmaya uygun fiyatla erişim sunan yapay zeka asistanı. Telegram entegrasyonu ve Afrika odaklı yerelleştirme. 85 ülkeden 2.600+ kullanıcı.",
     'prod.akil': "Afrika gençlerini iş, staj ve gönüllü fırsatlarıyla buluşturan kariyer platformu. Yapay zeka destekli eşleştirme sayesinde herkes becerilerine uygun fırsatları kolayca buluyor.",
@@ -1920,7 +1990,7 @@ const translations = {
     'skills.cat5': '<span class="s-tag">Müfredat Tasarımı</span><span class="s-tag">Rekabetçi Programlama</span><span class="s-tag">Halka Açık Konuşma</span><span class="s-tag">Mentorluk Programları</span><span class="s-tag">Teknik Koçluk</span>',
     'skills.cat6': '<span class="s-tag">Toplumsal Fayda için AI</span><span class="s-tag">EdTech İnovasyonu</span><span class="s-tag">Gitar 🎸</span><span class="s-tag">Futbol ⚽</span><span class="s-tag">Yürüyüş 🥾</span><span class="s-tag">Okuma 📚</span><span class="s-tag">Satranç ♟️</span>',
     'skills.cat4': '<span class="s-tag">GCP</span><span class="s-tag">AWS</span><span class="s-tag">PostgreSQL</span><span class="s-tag">Git</span><span class="s-tag">Docker</span><span class="s-tag">CI/CD</span>',
-    'media.label': 'Medyada',
+    'media.label': 'Videolar',
     'media.vid1.badge': 'Panel', 'media.vid1.title': 'Yapay Zeka İşi Yeniden Şekillendiriyor — Afrika Nerede Duruyor?',
     'media.vid2.badge': 'Yıl Özeti', 'media.vid2.title': '2023\'te A2SV',
     'media.vid3.badge': 'TRT World', 'media.vid3.title': 'TRT World\'de A2SV',
@@ -2636,7 +2706,7 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeLightbox(); closeVideo(); closeDoc(); } });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeLightbox(); closeVideo(); closeDoc(); closePdf(); } });
 
 // ═══ VIDEO MODAL ═══
 function openVideo(videoId) {
@@ -2660,27 +2730,25 @@ function closeDoc() {
   document.body.style.overflow = '';
 }
 
-// ═══ CONTACT FORM ═══
-function handleContactSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('.btn-send');
-  const name = form.querySelector('#contactName').value;
-  const email = form.querySelector('#contactEmail').value;
-  const msg = form.querySelector('#contactMsg').value;
+// ═══ PDF VIEWER ═══
+function openPdfViewer() {
+  document.getElementById('pdfFrame').src = 'https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/preview';
+  document.getElementById('pdfViewer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePdf() {
+  document.getElementById('pdfViewer').classList.remove('open');
+  document.getElementById('pdfFrame').src = '';
+  document.body.style.overflow = '';
+}
 
-  // Open mailto with pre-filled content
-  const subject = encodeURIComponent('Message from ' + name + ' via emrevarol.com');
-  const body = encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + msg);
-  window.location.href = 'mailto:emre@a2sv.org?subject=' + subject + '&body=' + body;
-
-  btn.textContent = 'Opening mail client...';
-  btn.classList.add('sent');
+// ═══ SENT CONFIRMATION ═══
+if (window.location.search.includes('sent=1')) {
+  window.history.replaceState({}, '', '/');
   setTimeout(() => {
-    btn.textContent = translations[document.documentElement.lang]?.['form.send'] || 'Send Message';
-    btn.classList.remove('sent');
-    form.reset();
-  }, 3000);
+    const btn = document.querySelector('.btn-send');
+    if (btn) { btn.textContent = 'Message Sent!'; btn.classList.add('sent'); setTimeout(() => { btn.textContent = 'Send Message'; btn.classList.remove('sent'); }, 4000); }
+  }, 500);
 }
 </script>
 </body>
