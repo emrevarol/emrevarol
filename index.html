@@ -671,25 +671,97 @@
     /* ═══ VIDEO MODAL ═══ */
     .video-modal {
       position: fixed; inset: 0; z-index: 9999;
-      background: rgba(0,0,0,.92); backdrop-filter: blur(12px);
+      background: rgba(0,0,0,.75); backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity .3s;
     }
     .video-modal.open { opacity: 1; pointer-events: all; }
     .video-modal-inner {
-      position: relative; width: 90vw; max-width: 960px; aspect-ratio: 16/9;
-      border-radius: 16px; overflow: hidden;
-      box-shadow: 0 0 80px rgba(0,229,184,.15);
+      position: relative; width: 72vw; max-width: 820px; aspect-ratio: 16/9;
+      border-radius: 14px; overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 25px 80px rgba(0,0,0,.6), 0 0 40px rgba(0,229,184,.08);
     }
     .video-modal-inner iframe {
       width: 100%; height: 100%; border: none;
     }
     .video-modal-close {
-      position: absolute; top: -48px; right: 0;
-      background: none; border: none; color: white;
-      font-size: 2rem; cursor: pointer; opacity: .7; transition: opacity .2s;
+      position: absolute; top: -44px; right: 0;
+      background: var(--card); border: 1px solid var(--border); color: var(--muted);
+      width: 36px; height: 36px; border-radius: 10px;
+      font-size: 1.2rem; cursor: pointer; transition: all .2s;
+      display: flex; align-items: center; justify-content: center;
     }
-    .video-modal-close:hover { opacity: 1; }
+    .video-modal-close:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
+    @media (max-width: 768px) {
+      .video-modal-inner { width: 92vw; }
+    }
+
+    /* ═══ DOCUMENT VIEWER ═══ */
+    .doc-viewer {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.85); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .3s;
+      padding: 2rem;
+    }
+    .doc-viewer.open { opacity: 1; pointer-events: all; }
+    .doc-viewer-inner {
+      position: relative; max-width: 700px; width: 100%;
+      max-height: 90vh; overflow-y: auto; border-radius: 14px;
+      background: var(--bg2); border: 1px solid var(--border);
+      box-shadow: 0 25px 80px rgba(0,0,0,.6);
+      scrollbar-width: thin; scrollbar-color: var(--teal) var(--bg);
+    }
+    .doc-viewer-inner::-webkit-scrollbar { width: 4px; }
+    .doc-viewer-inner::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 4px; }
+    .doc-viewer-inner img {
+      width: 100%; display: block;
+    }
+    .doc-viewer-close {
+      position: fixed; top: 1.5rem; right: 1.5rem;
+      background: var(--card); border: 1px solid var(--border); color: var(--muted);
+      width: 40px; height: 40px; border-radius: 10px;
+      font-size: 1.3rem; cursor: pointer; transition: all .2s; z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .doc-viewer-close:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
+
+    /* ═══ CONTACT FORM ═══ */
+    .contact-form {
+      max-width: 520px; margin: 0 auto; text-align: left;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      margin-top: 2rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: .72rem; font-weight: 700; color: var(--muted);
+      margin-bottom: .4rem; letter-spacing: .5px; text-transform: uppercase;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%; padding: .75rem .9rem; border: 1px solid var(--border);
+      border-radius: 10px; font-family: 'Inter', sans-serif; font-size: .88rem;
+      color: var(--text); background: rgba(255,255,255,.03);
+      transition: all .25s;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none; border-color: rgba(0,229,184,.4);
+      background: rgba(0,229,184,.04);
+      box-shadow: 0 0 0 3px rgba(0,229,184,.08);
+    }
+    .form-group textarea { height: 110px; resize: vertical; }
+    .btn-send {
+      width: 100%; padding: .85rem;
+      background: linear-gradient(135deg, var(--teal), #00b894);
+      color: #000; border: none; border-radius: 10px;
+      font-family: 'Inter', sans-serif; font-size: .88rem;
+      font-weight: 700; cursor: pointer; transition: all .25s;
+      box-shadow: 0 4px 20px var(--teal-glow);
+    }
+    .btn-send:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--teal-glow); }
+    .btn-send.sent { background: #059669; box-shadow: 0 4px 20px rgba(5,150,105,.3); }
     @media (max-width: 700px) {
       .gallery-grid { grid-template-columns: 1fr 1fr; }
       .gallery-item:nth-child(1),
@@ -697,16 +769,35 @@
     }
 
     /* ═══ LANG SWITCHER ═══ */
-    .lang-switcher {
-      display: flex; gap: .3rem; align-items: center; margin-right: .75rem;
-    }
-    .lang-btn {
+    .lang-dropdown { position: relative; }
+    .lang-dropdown-toggle {
       background: none; border: 1px solid var(--border);
-      color: var(--muted); padding: .2rem .5rem; border-radius: 6px;
-      font-size: .72rem; font-weight: 700; cursor: pointer;
-      transition: all .2s; letter-spacing: .5px;
+      color: var(--muted); padding: .35rem .7rem; border-radius: 8px;
+      font-size: .8rem; font-weight: 700; cursor: pointer;
+      transition: all .2s; letter-spacing: .5px; display: flex; align-items: center; gap: .35rem;
     }
-    .lang-btn:hover, .lang-btn.active { color: var(--teal); border-color: rgba(0,229,184,.35); background: var(--teal-dim); }
+    .lang-dropdown-toggle:hover, .lang-dropdown.open .lang-dropdown-toggle { color: var(--teal); border-color: rgba(0,229,184,.35); background: var(--teal-dim); }
+    .lang-dropdown-menu {
+      display: none; position: absolute; top: calc(100% + 8px); right: 0;
+      background: rgba(9,9,26,.97); border: 1px solid var(--border);
+      border-radius: 12px; padding: .5rem; min-width: 140px;
+      backdrop-filter: blur(20px); box-shadow: 0 20px 60px rgba(0,0,0,.5);
+      z-index: 300;
+      display: grid; grid-template-columns: 1fr 1fr; gap: .2rem;
+    }
+    .lang-dropdown-menu { display: none; }
+    .lang-dropdown.open .lang-dropdown-menu { display: grid; }
+    .lang-dropdown::after {
+      content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 12px;
+    }
+    .lang-item {
+      background: none; border: none;
+      color: var(--muted); padding: .4rem .55rem; border-radius: 7px;
+      font-size: .75rem; font-weight: 600; cursor: pointer;
+      transition: all .15s; text-align: left; white-space: nowrap;
+    }
+    .lang-item:hover { background: var(--teal-dim); color: var(--teal); }
+    .lang-item.active { color: var(--teal); background: var(--teal-dim); }
 
     /* ═══ SCROLL ANIMATION ═══ */
     .anim { opacity: 0; transform: translateY(35px); transition: opacity .65s ease, transform .65s ease; }
@@ -772,17 +863,22 @@
     <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
     <li><a href="#awards" data-i18n="nav.awards">Awards</a></li>
   </ul>
-  <div class="lang-switcher">
-    <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
-    <button class="lang-btn" onclick="setLang('tr')">🇹🇷 TR</button>
-    <button class="lang-btn" onclick="setLang('es')">🇪🇸 ES</button>
-    <button class="lang-btn" onclick="setLang('rw')">🇷🇼 RW</button>
-    <button class="lang-btn" onclick="setLang('fr')">🇫🇷 FR</button>
-    <button class="lang-btn" onclick="setLang('de')">🇩🇪 DE</button>
-    <button class="lang-btn" onclick="setLang('ar')">🇸🇦 AR</button>
-    <button class="lang-btn" onclick="setLang('pt')">🇧🇷 PT</button>
-    <button class="lang-btn" onclick="setLang('sw')">🇹🇿 SW</button>
-    <button class="lang-btn" onclick="setLang('am')">🇪🇹 AM</button>
+  <div class="lang-dropdown" id="langDropdown">
+    <button class="lang-dropdown-toggle" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Change language">
+      <span id="currentLangFlag">🇬🇧</span> <span id="currentLangCode">EN</span> ▾
+    </button>
+    <div class="lang-dropdown-menu">
+      <button class="lang-item active" onclick="setLang('en')">🇬🇧 EN</button>
+      <button class="lang-item" onclick="setLang('tr')">🇹🇷 TR</button>
+      <button class="lang-item" onclick="setLang('es')">🇪🇸 ES</button>
+      <button class="lang-item" onclick="setLang('rw')">🇷🇼 RW</button>
+      <button class="lang-item" onclick="setLang('fr')">🇫🇷 FR</button>
+      <button class="lang-item" onclick="setLang('de')">🇩🇪 DE</button>
+      <button class="lang-item" onclick="setLang('ar')">🇸🇦 AR</button>
+      <button class="lang-item" onclick="setLang('pt')">🇧🇷 PT</button>
+      <button class="lang-item" onclick="setLang('sw')">🇹🇿 SW</button>
+      <button class="lang-item" onclick="setLang('am')">🇪🇹 AM</button>
+    </div>
   </div>
   <a href="mailto:emre@a2sv.org" class="nav-cta" data-i18n="nav.cta">Say Hello</a>
   <div class="hamburger" onclick="toggleNav()" role="button" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></div>
@@ -1081,21 +1177,21 @@
       <div class="vid-row-label" data-i18n-html="resources.h">A2SV <em>Documents</em></div>
       <div class="vid-grid" style="margin-top:.5rem">
         <a class="vid-card" href="https://drive.google.com/file/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z/view?usp=sharing" target="_blank" rel="noopener">
-          <img class="vid-thumb" src="https://lh3.googleusercontent.com/d/1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z=w800" alt="A2SV 5 Years of Impact Report" loading="lazy" style="object-position:center top" />
+          <img class="vid-thumb" src="images/a2sv-5years-cover.jpg" alt="A2SV 5 Years of Impact Report" loading="lazy" style="object-position:center top" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
             <div class="vid-badge">PDF</div>
             <div class="vid-title" data-i18n="resources.link1">A2SV 5 Years of Impact Report</div>
           </div>
         </a>
-        <a class="vid-card" href="https://drive.google.com/file/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX/view?usp=sharing" target="_blank" rel="noopener">
-          <img class="vid-thumb" src="https://lh3.googleusercontent.com/d/1zgyhaUMNpf9aFH7sj4mQJOz189ybY2IX=w800" alt="A2SV 2-Pager" loading="lazy" style="object-position:center top" />
+        <div class="vid-card" onclick="openDoc()" style="cursor:pointer">
+          <img class="vid-thumb" src="images/a2sv-2pager-1.jpg" alt="A2SV 2-Pager" loading="lazy" style="object-position:center top" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-            <div class="vid-badge">PDF</div>
+            <div class="vid-badge" data-i18n="resources.view">View</div>
             <div class="vid-title" data-i18n="resources.link2">A2SV 2-Pager</div>
           </div>
-        </a>
+        </div>
       </div>
     </div>
 
@@ -1505,6 +1601,15 @@
   </div>
 </div>
 
+<!-- Document Viewer -->
+<div class="doc-viewer" id="docViewer" onclick="closeDoc()" role="dialog" aria-modal="true" aria-label="Document viewer">
+  <button class="doc-viewer-close" onclick="closeDoc()" aria-label="Close document">&#x2715;</button>
+  <div class="doc-viewer-inner" onclick="event.stopPropagation()">
+    <img src="images/a2sv-2pager-1.jpg" alt="A2SV 2-Pager Page 1" />
+    <img src="images/a2sv-2pager-2.jpg" alt="A2SV 2-Pager Page 2" loading="lazy" />
+  </div>
+</div>
+
 
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
@@ -1537,6 +1642,24 @@
         @varolemre
       </a>
     </div>
+
+    <form class="contact-form" onsubmit="handleContactSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contactName" data-i18n="form.name">Name</label>
+          <input type="text" id="contactName" name="name" required placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="contactEmail" data-i18n="form.email">Email</label>
+          <input type="email" id="contactEmail" name="email" required placeholder="you@example.com" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="contactMsg" data-i18n="form.message">Message</label>
+        <textarea id="contactMsg" name="message" required placeholder="Write your message..."></textarea>
+      </div>
+      <button type="submit" class="btn-send" data-i18n="form.send">Send Message</button>
+    </form>
   </div>
 </section>
 
@@ -2481,10 +2604,20 @@ function setLang(lang) {
     ri = 0; ci = 0; del = false;
     el.textContent = '';
   }
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+  // Update language dropdown
+  const flags = {en:'🇬🇧',tr:'🇹🇷',es:'🇪🇸',rw:'🇷🇼',fr:'🇫🇷',de:'🇩🇪',ar:'🇸🇦',pt:'🇧🇷',sw:'🇹🇿',am:'🇪🇹'};
+  document.getElementById('currentLangFlag').textContent = flags[lang] || '🌐';
+  document.getElementById('currentLangCode').textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-item').forEach(btn => btn.classList.remove('active'));
+  document.querySelector(`.lang-item[onclick="setLang('${lang}')"]`)?.classList.add('active');
+  document.getElementById('langDropdown').classList.remove('open');
   document.documentElement.lang = lang;
 }
+// Close lang dropdown when clicking outside
+document.addEventListener('click', e => {
+  const dd = document.getElementById('langDropdown');
+  if (dd && !dd.contains(e.target)) dd.classList.remove('open');
+});
 
 // ═══ PARALLAX HERO ═══
 window.addEventListener('scroll', ()=>{
@@ -2503,7 +2636,7 @@ function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
-document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeLightbox(); closeVideo(); } });
+document.addEventListener('keydown', e => { if(e.key === 'Escape') { closeLightbox(); closeVideo(); closeDoc(); } });
 
 // ═══ VIDEO MODAL ═══
 function openVideo(videoId) {
@@ -2515,6 +2648,39 @@ function closeVideo() {
   document.getElementById('videoModal').classList.remove('open');
   document.getElementById('videoFrame').src = '';
   document.body.style.overflow = '';
+}
+
+// ═══ DOCUMENT VIEWER ═══
+function openDoc() {
+  document.getElementById('docViewer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeDoc() {
+  document.getElementById('docViewer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ═══ CONTACT FORM ═══
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('.btn-send');
+  const name = form.querySelector('#contactName').value;
+  const email = form.querySelector('#contactEmail').value;
+  const msg = form.querySelector('#contactMsg').value;
+
+  // Open mailto with pre-filled content
+  const subject = encodeURIComponent('Message from ' + name + ' via emrevarol.com');
+  const body = encodeURIComponent('From: ' + name + ' (' + email + ')\n\n' + msg);
+  window.location.href = 'mailto:emre@a2sv.org?subject=' + subject + '&body=' + body;
+
+  btn.textContent = 'Opening mail client...';
+  btn.classList.add('sent');
+  setTimeout(() => {
+    btn.textContent = translations[document.documentElement.lang]?.['form.send'] || 'Send Message';
+    btn.classList.remove('sent');
+    form.reset();
+  }, 3000);
 }
 </script>
 </body>
