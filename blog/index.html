@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Emre Varol</title>
+  <meta name="description" content="Insights on African tech talent, A2SV's journey, and the engineers shaping the future." />
+  <meta property="og:title" content="Blog — Emre Varol" />
+  <meta property="og:description" content="Insights on African tech talent, A2SV's journey, and the engineers shaping the future." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://emrevarol.com/blog/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #06060f;
+      --text: #f0f4ff;
+      --muted: #94a3b8;
+      --teal: #00e5b8;
+      --purple: #a855f7;
+      --card-bg: rgba(255,255,255,0.04);
+      --border: rgba(255,255,255,0.08);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Nav */
+    nav {
+      padding: 28px 0;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--teal); }
+
+    /* Header */
+    header {
+      text-align: center;
+      padding: 60px 0 48px;
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      max-width: 540px;
+      margin: 0 auto 28px;
+    }
+
+    .subscribe-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--teal);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border: 1px solid rgba(0,229,184,0.3);
+      padding: 10px 22px;
+      border-radius: 999px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .subscribe-link:hover {
+      background: rgba(0,229,184,0.08);
+      border-color: var(--teal);
+    }
+
+    /* Grid */
+    .articles {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding-bottom: 80px;
+    }
+
+    @media (min-width: 640px) {
+      .articles { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* Card */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.16);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--teal);
+      background: rgba(0,229,184,0.1);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
+    .date {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      transition: background-size 0.3s;
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: var(--text);
+    }
+
+    .card:hover h2 {
+      -webkit-text-fill-color: transparent;
+    }
+
+    .card .excerpt {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .read-link {
+      color: var(--teal);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: gap 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .read-link:hover { gap: 8px; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">&larr; Back to emrevarol.com</a>
+    </nav>
+
+    <header>
+      <h1>From the <span class="gradient-text">Newsletter</span></h1>
+      <p>Insights on African tech talent, A2SV's journey, and the engineers shaping the future.</p>
+      <a class="subscribe-link" href="https://www.linkedin.com/newsletters/7043597876379172864/" target="_blank" rel="noopener">Subscribe on LinkedIn &rarr;</a>
+    </header>
+
+    <div class="articles">
+
+      <a class="card" href="partner-with-us.html">
+        <div class="card-meta">
+          <span class="tag">Newsletter</span>
+          <span class="date">August 31, 2024</span>
+        </div>
+        <h2>Partner with Us to Cultivate the Next Generation of African Innovators</h2>
+        <p class="excerpt">From training 5 students to 800+ across 20 countries &mdash; the full A2SV origin story, our expansion to Ghana, and how you can join the mission.</p>
+        <span class="read-link">Read article &rarr;</span>
+      </a>
+
+      <a class="card" href="ai-for-impact-hackathon.html">
+        <div class="card-meta">
+          <span class="tag">Newsletter</span>
+          <span class="date">July 14, 2024</span>
+        </div>
+        <h2>Bringing African Tech Talent Together through the AI for Impact Hackathon</h2>
+        <p class="excerpt">How A2SV's 3-month hackathon reached 3,700+ participants across 47 African countries, with mentors from Google, Meta, and LinkedIn.</p>
+        <span class="read-link">Read article &rarr;</span>
+      </a>
+
+      <a class="card" href="mahlet-dereje-haile.html">
+        <div class="card-meta">
+          <span class="tag">Newsletter</span>
+          <span class="date">April 15, 2024</span>
+        </div>
+        <h2>Mahlet Dereje Haile: Working at Google and Databricks</h2>
+        <p class="excerpt">From a small town 200km from Addis Ababa to internships at Google London and Databricks Amsterdam &mdash; an A2SV first-cohort success story.</p>
+        <span class="read-link">Read article &rarr;</span>
+      </a>
+
+      <a class="card" href="a2sv-2023-year-in-review.html">
+        <div class="card-meta">
+          <span class="tag">Newsletter</span>
+          <span class="date">February 8, 2024</span>
+        </div>
+        <h2>A2SV 2023: A Year of Inspiring Innovation and Pioneering Tech Education in Africa</h2>
+        <p class="excerpt">484 students educated, expansion to Ghana, 55 global job offers, Africa's largest AI hackathon, and 5 new products launched.</p>
+        <span class="read-link">Read article &rarr;</span>
+      </a>
+
+      <a class="card" href="generative-ai-hackathon.html">
+        <div class="card-meta">
+          <span class="tag">Newsletter</span>
+          <span class="date">December 4, 2023</span>
+        </div>
+        <h2>A2SV's Generative AI for Africa Hackathon: Weaving Dreams, Transforming Futures</h2>
+        <p class="excerpt">47 nations, 500+ project ideas, 8 finalist teams &mdash; inside A2SV's continent-wide hackathon from virtual workshops to the Grand Finale in Addis Ababa.</p>
+        <span class="read-link">Read article &rarr;</span>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">&copy; 2026 Emre Varol &middot; Founder &amp; CEO, A2SV</div>
+  </footer>
+</body>
+</html>

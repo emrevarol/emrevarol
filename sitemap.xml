@@ -19,6 +19,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://emrevarol.com/" />
   </url>
   <url>
+    <loc>https://emrevarol.com/blog/</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://emrevarol.com/blog/partner-with-us.html</loc>
     <lastmod>2024-08-31</lastmod>
     <changefreq>yearly</changefreq>
