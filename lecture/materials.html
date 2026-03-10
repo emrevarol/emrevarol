@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecture Materials — Best Coding Practices and Effective Code Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRL2RJSF51"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-PRL2RJSF51');
+    </script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #06060f;
+            --bg-card: #0d0d1a;
+            --bg-card-hover: #12122a;
+            --text: #f0f4ff;
+            --text-muted: #8892b0;
+            --teal: #00e5b8;
+            --purple: #a855f7;
+            --red: #ef4444;
+            --red-muted: rgba(239, 68, 68, 0.15);
+            --teal-muted: rgba(0, 229, 184, 0.1);
+            --purple-muted: rgba(168, 85, 247, 0.1);
+            --border: rgba(240, 244, 255, 0.08);
+            --border-accent: rgba(0, 229, 184, 0.2);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        code, pre, .code-block {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        .header {
+            padding: 48px 0 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--teal); }
+        .back-link svg { width: 16px; height: 16px; }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--teal), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.25rem;
+            color: var(--text);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .header .meta {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .presentation-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border: 1px solid var(--border-accent);
+            border-radius: 8px;
+            background: var(--teal-muted);
+            transition: all 0.2s;
+        }
+        .presentation-link:hover {
+            background: rgba(0, 229, 184, 0.2);
+            border-color: var(--teal);
+        }
+
+        /* Sections */
+        .section {
+            padding: 56px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, var(--teal), var(--purple));
+            border-radius: 2px;
+            margin-bottom: 40px;
+            opacity: 0.6;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+        }
+
+        /* Accordion */
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-card);
+            transition: border-color 0.2s;
+        }
+        .accordion-item:hover { border-color: var(--border-accent); }
+        .accordion-item.open { border-color: rgba(0, 229, 184, 0.3); }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 20px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+        .accordion-header:hover { background: var(--bg-card-hover); }
+
+        .accordion-number {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--teal), var(--purple));
+            color: var(--bg);
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .accordion-title {
+            flex: 1;
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .accordion-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+        }
+        .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .accordion-content {
+            padding: 0 20px 20px 66px;
+        }
+
+        .ask-block {
+            margin-bottom: 16px;
+        }
+        .ask-label {
+            font-weight: 600;
+            color: var(--teal);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .ask-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .ask-list li {
+            color: var(--text);
+            font-size: 0.925rem;
+            padding-left: 18px;
+            position: relative;
+        }
+        .ask-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--teal);
+            opacity: 0.6;
+        }
+
+        .redflags-block {
+            background: var(--red-muted);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 8px;
+            padding: 14px 16px;
+        }
+        .redflags-label {
+            font-weight: 600;
+            color: var(--red);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        .redflags-text {
+            color: rgba(240, 244, 255, 0.8);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Comment Templates */
+        .template-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .template-category {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: var(--bg-card);
+            padding: 24px;
+        }
+
+        .template-cat-title {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--purple);
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-size: 0.85rem;
+        }
+
+        .template-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .template-comment {
+            padding: 12px 16px;
+            background: rgba(168, 85, 247, 0.06);
+            border-left: 3px solid var(--purple);
+            border-radius: 0 8px 8px 0;
+            font-size: 0.925rem;
+            color: rgba(240, 244, 255, 0.9);
+            font-style: italic;
+        }
+
+        /* Code Blocks */
+        .code-block-wrapper {
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .code-block-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 16px;
+            background: rgba(13, 13, 26, 0.8);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .code-block-filename {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .code-block-dot {
+            display: flex;
+            gap: 6px;
+        }
+        .code-block-dot span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(240, 244, 255, 0.15);
+        }
+
+        .code-block {
+            background: var(--bg-card);
+            padding: 20px;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.65;
+            tab-size: 4;
+        }
+
+        .code-block code {
+            white-space: pre;
+        }
+
+        /* Python syntax highlighting */
+        .kw { color: var(--purple); font-weight: 500; }
+        .fn { color: #60a5fa; }
+        .st { color: var(--teal); }
+        .cm { color: #4a5568; font-style: italic; }
+        .nb { color: #fbbf24; }
+        .op { color: var(--text-muted); }
+        .num { color: #f97316; }
+
+        /* Info Box */
+        .info-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+        }
+
+        .info-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 6px;
+            font-size: 0.925rem;
+        }
+        .info-label {
+            color: var(--text-muted);
+            min-width: 100px;
+        }
+        .info-value {
+            color: var(--text);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+        }
+
+        /* Collapsible / Spoiler */
+        .spoiler {
+            margin: 24px 0;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .spoiler-header {
+            padding: 16px 20px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            background: var(--bg-card);
+            transition: background 0.15s;
+        }
+        .spoiler-header:hover { background: var(--bg-card-hover); }
+
+        .spoiler-icon {
+            width: 18px;
+            height: 18px;
+            color: var(--teal);
+            transition: transform 0.3s ease;
+        }
+        .spoiler.open .spoiler-icon { transform: rotate(90deg); }
+
+        .spoiler-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .spoiler-content {
+            padding: 20px 24px;
+            background: rgba(13, 13, 26, 0.5);
+        }
+
+        .problem-category {
+            margin-bottom: 20px;
+        }
+        .problem-cat-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--teal);
+        }
+        .problem-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .problem-list li {
+            font-size: 0.9rem;
+            padding-left: 18px;
+            position: relative;
+            color: rgba(240, 244, 255, 0.85);
+        }
+        .problem-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--red);
+            opacity: 0.7;
+        }
+
+        /* Homework */
+        .hw-requirements {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .hw-requirements li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.925rem;
+        }
+        .hw-req-badge {
+            flex-shrink: 0;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: var(--teal-muted);
+            color: var(--teal);
+            border: 1px solid rgba(0, 229, 184, 0.2);
+        }
+
+        .submission-example {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .submission-example h4 {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 12px;
+        }
+        .submission-example pre {
+            font-size: 0.85rem;
+            color: rgba(240, 244, 255, 0.85);
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        /* Closing */
+        .closing-quote {
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .closing-quote blockquote {
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto 40px;
+            letter-spacing: -0.01em;
+        }
+
+        .qotd-card {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 28px 32px;
+            border-radius: 16px;
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        .qotd-card::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--teal), var(--purple));
+            z-index: -1;
+        }
+        .qotd-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .qotd-text {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: rgba(240, 244, 255, 0.9);
+            line-height: 1.65;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer p { margin-bottom: 4px; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .header h1 { font-size: 1.75rem; }
+            .header .subtitle { font-size: 1.05rem; }
+            .section-title { font-size: 1.35rem; }
+            .accordion-content { padding-left: 20px; }
+            .code-block { font-size: 0.78rem; padding: 14px; }
+            .closing-quote blockquote { font-size: 1.1rem; }
+            .container { padding: 0 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+        <a href="https://emrevarol.com" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+            emrevarol.com
+        </a>
+        <h1>Lecture Materials</h1>
+        <p class="subtitle">Best Coding Practices and Effective Code Review</p>
+        <p class="meta">A2SV &mdash; University of Rwanda</p>
+        <a href="best-coding-practices.html" class="presentation-link">
+            View Presentation
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+        </a>
+    </header>
+
+    <!-- SECTION 1: CODE REVIEW CHECKLIST -->
+    <section class="section" id="checklist">
+        <div class="section-divider"></div>
+        <h2 class="section-title">A2SV Code Review Checklist</h2>
+        <p class="section-desc">The gold standard. Ten categories to evaluate every pull request you review.</p>
+
+        <div class="accordion">
+
+            <!-- 1 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">1</span>
+                    <span class="accordion-title">Clarity and Readability</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Are function and variable names clear?</li>
+                                <li>Can I understand the code without guessing?</li>
+                                <li>Is the intent obvious?</li>
+                                <li>Is the logic easy to follow?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Names like <code>x</code>, <code>tmp</code>, <code>data</code>, <code>calc</code>, <code>process</code>; deeply nested logic; large unclear functions</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">2</span>
+                    <span class="accordion-title">Function and Design Quality</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Does each function do one clear thing?</li>
+                                <li>Is business logic separated from side effects?</li>
+                                <li>Is the design easy to test?</li>
+                                <li>Is any function doing too much?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Validation + saving + email + logging in one function; printing inside logic functions; hardcoded behavior spread across the file</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">3</span>
+                    <span class="accordion-title">Correctness</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Does the code actually solve the problem correctly?</li>
+                                <li>Are assumptions explicit?</li>
+                                <li>Are all cases handled?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Missing input validation; dictionary key assumptions; magic values; silent failure</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">4</span>
+                    <span class="accordion-title">Edge Cases</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>What happens with empty input?</li>
+                                <li>What happens with invalid input?</li>
+                                <li>What happens with missing keys?</li>
+                                <li>What happens with zero or negative values?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Only happy path considered; no defensive checks where needed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">5</span>
+                    <span class="accordion-title">Tests</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Are tests included?</li>
+                                <li>Do tests check exact outcomes?</li>
+                                <li>Are edge cases covered?</li>
+                                <li>Would these tests catch regressions?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Only one test; weak assertions like <code>&gt; 0</code>; no invalid input cases; no tests for changed logic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">6</span>
+                    <span class="accordion-title">Duplication</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Is logic repeated?</li>
+                                <li>Can shared logic be extracted?</li>
+                                <li>Are business rules duplicated in multiple places?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Repeated formulas; repeated condition blocks; repeated hardcoded values</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">7</span>
+                    <span class="accordion-title">Error Handling</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Are errors handled clearly?</li>
+                                <li>Does the code fail in an understandable way?</li>
+                                <li>Are invalid states visible?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Returning <code>None</code> without explanation; swallowed exceptions; hidden failure modes</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">8</span>
+                    <span class="accordion-title">Maintainability</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Will this be easy to extend later?</li>
+                                <li>Will another engineer be able to modify this safely?</li>
+                                <li>Does this make the codebase cleaner or messier?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Hardcoded rules; overly large PR; tightly coupled logic</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">9</span>
+                    <span class="accordion-title">Repository Quality</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Is the repo structure clear?</li>
+                                <li>Is the README useful?</li>
+                                <li>Can a new engineer run the project easily?</li>
+                                <li>Are dependencies visible?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">No setup instructions; weak README; confusing layout; missing tests directory</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span class="accordion-number">10</span>
+                    <span class="accordion-title">PR Quality</span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                </div>
+                <div class="accordion-body">
+                    <div class="accordion-content">
+                        <div class="ask-block">
+                            <div class="ask-label">Ask</div>
+                            <ul class="ask-list">
+                                <li>Is the PR focused?</li>
+                                <li>Is the title descriptive?</li>
+                                <li>Is the description helpful?</li>
+                                <li>Is the change size reasonable?</li>
+                            </ul>
+                        </div>
+                        <div class="redflags-block">
+                            <div class="redflags-label">Red Flags</div>
+                            <div class="redflags-text">Vague titles; no explanation; mixed unrelated changes; giant PRs</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: REVIEW COMMENT TEMPLATES -->
+    <section class="section" id="templates">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Review Comment Templates</h2>
+        <p class="section-desc">Professional phrasing for common review scenarios. Use these as starting points.</p>
+
+        <div class="template-grid">
+            <div class="template-category">
+                <div class="template-cat-title">Naming</div>
+                <div class="template-list">
+                    <div class="template-comment">"Could we rename this function to better reflect its purpose?"</div>
+                    <div class="template-comment">"This variable name feels too generic. Can we make it more descriptive?"</div>
+                </div>
+            </div>
+
+            <div class="template-category">
+                <div class="template-cat-title">Logic</div>
+                <div class="template-list">
+                    <div class="template-comment">"Could we simplify this condition to improve readability?"</div>
+                    <div class="template-comment">"Would it make sense to extract this logic into a helper function?"</div>
+                </div>
+            </div>
+
+            <div class="template-category">
+                <div class="template-cat-title">Tests</div>
+                <div class="template-list">
+                    <div class="template-comment">"Can we add a test for the empty input case?"</div>
+                    <div class="template-comment">"Could we assert the exact expected value here instead of using a broad check?"</div>
+                </div>
+            </div>
+
+            <div class="template-category">
+                <div class="template-cat-title">Structure</div>
+                <div class="template-list">
+                    <div class="template-comment">"This function seems to be doing multiple things. Can we separate responsibilities?"</div>
+                    <div class="template-comment">"Would splitting this into smaller functions make it easier to test and review?"</div>
+                </div>
+            </div>
+
+            <div class="template-category">
+                <div class="template-cat-title">Edge Cases</div>
+                <div class="template-list">
+                    <div class="template-comment">"What happens if this key is missing?"</div>
+                    <div class="template-comment">"Should we validate the input before processing it?"</div>
+                </div>
+            </div>
+
+            <div class="template-category">
+                <div class="template-cat-title">PR Quality</div>
+                <div class="template-list">
+                    <div class="template-comment">"Could you add a short PR description explaining the change and how it should be tested?"</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: LIVE DEMO -->
+    <section class="section" id="demo">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Live Demo: Review This Pull Request</h2>
+        <p class="section-desc">A deliberately flawed PR for practice. Can you spot the problems?</p>
+
+        <div class="info-box">
+            <div class="info-row">
+                <span class="info-label">Branch:</span>
+                <span class="info-value">feature/cart-total-update</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Title:</span>
+                <span class="info-value">"Update cart calculation logic"</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Description:</span>
+                <span class="info-value">"Updated the cart calculation logic and added support for discount."</span>
+            </div>
+        </div>
+
+        <!-- cart.py -->
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span class="code-block-filename">src/cart.py</span>
+                <div class="code-block-dot"><span></span><span></span><span></span></div>
+            </div>
+            <div class="code-block"><code><span class="kw">def</span> <span class="fn">calc</span>(items, user, d=<span class="nb">False</span>):
+    t = <span class="num">0</span>
+
+    <span class="kw">for</span> i <span class="kw">in</span> items:
+        <span class="kw">if</span> i[<span class="st">"type"</span>] == <span class="st">"book"</span>:
+            t += i[<span class="st">"price"</span>] * <span class="num">0.9</span>
+        <span class="kw">else</span>:
+            t += i[<span class="st">"price"</span>]
+
+    <span class="kw">if</span> d:
+        t = t - t * <span class="num">0.1</span>
+
+    <span class="kw">if</span> user <span class="kw">is not</span> <span class="nb">None</span>:
+        <span class="kw">if</span> <span class="st">"is_premium"</span> <span class="kw">in</span> user:
+            <span class="kw">if</span> user[<span class="st">"is_premium"</span>] == <span class="nb">True</span>:
+                t = t - t * <span class="num">0.05</span>
+
+    <span class="kw">return</span> t
+
+
+<span class="kw">def</span> <span class="fn">process_cart</span>(items, user):
+    total = calc(items, user, <span class="nb">True</span>)
+    <span class="nb">print</span>(<span class="st">"cart processed"</span>)
+    <span class="kw">return</span> total</code></div>
+        </div>
+
+        <!-- test_cart.py -->
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span class="code-block-filename">tests/test_cart.py</span>
+                <div class="code-block-dot"><span></span><span></span><span></span></div>
+            </div>
+            <div class="code-block"><code><span class="kw">from</span> src.cart <span class="kw">import</span> calc
+
+
+<span class="kw">def</span> <span class="fn">test_calc</span>():
+    items = [{<span class="st">"type"</span>: <span class="st">"book"</span>, <span class="st">"price"</span>: <span class="num">100</span>}]
+    user = {<span class="st">"is_premium"</span>: <span class="nb">True</span>}
+    <span class="kw">assert</span> calc(items, user, <span class="nb">True</span>) > <span class="num">0</span></code></div>
+        </div>
+
+        <!-- README.md -->
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span class="code-block-filename">README.md</span>
+                <div class="code-block-dot"><span></span><span></span><span></span></div>
+            </div>
+            <div class="code-block"><code><span class="cm"># Cart Project</span>
+
+cart logic</code></div>
+        </div>
+
+        <!-- Review Guide (Spoiler) -->
+        <div class="spoiler" id="review-guide">
+            <div class="spoiler-header" onclick="toggleSpoiler(this)">
+                <svg class="spoiler-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                Review Guide &mdash; Problems to Find
+            </div>
+            <div class="spoiler-body">
+                <div class="spoiler-content">
+                    <div class="problem-category">
+                        <div class="problem-cat-title">PR-Level Problems</div>
+                        <ul class="problem-list">
+                            <li>Vague PR title: "Update cart calculation logic" does not describe what changed</li>
+                            <li>Description is generic and unhelpful</li>
+                            <li>No test plan or instructions for reviewers</li>
+                        </ul>
+                    </div>
+                    <div class="problem-category">
+                        <div class="problem-cat-title">Code-Level Problems</div>
+                        <ul class="problem-list">
+                            <li>Function name <code>calc</code> is too generic &mdash; should be <code>calculate_cart_total</code></li>
+                            <li>Parameter <code>d</code> is unclear &mdash; should be <code>discount_enabled</code></li>
+                            <li>Variables <code>t</code> and <code>i</code> are not descriptive</li>
+                            <li>Magic numbers: <code>0.9</code>, <code>0.1</code>, <code>0.05</code> should be named constants</li>
+                            <li>Deeply nested <code>if</code> blocks for premium check &mdash; use <code>.get()</code></li>
+                            <li><code>process_cart</code> has a side effect (<code>print</code>) mixed with business logic</li>
+                            <li>No input validation for items or user</li>
+                            <li>Boolean parameter <code>d=False</code> passed positionally as <code>True</code> is confusing</li>
+                        </ul>
+                    </div>
+                    <div class="problem-category">
+                        <div class="problem-cat-title">Test-Level Problems</div>
+                        <ul class="problem-list">
+                            <li>Only one test case for the entire module</li>
+                            <li>Weak assertion: <code>&gt; 0</code> does not verify correctness</li>
+                            <li>No edge case tests (empty list, missing keys, non-premium user)</li>
+                            <li>Does not test <code>process_cart</code></li>
+                        </ul>
+                    </div>
+                    <div class="problem-category">
+                        <div class="problem-cat-title">Repo-Level Problems</div>
+                        <ul class="problem-list">
+                            <li>README is essentially empty &mdash; no setup instructions, no description</li>
+                            <li>No information on how to run tests</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Improved Version (Spoiler) -->
+        <div class="spoiler" id="improved-version">
+            <div class="spoiler-header" onclick="toggleSpoiler(this)">
+                <svg class="spoiler-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                Improved Version &mdash; cart_improved.py
+            </div>
+            <div class="spoiler-body">
+                <div class="spoiler-content">
+                    <div class="code-block-wrapper">
+                        <div class="code-block-header">
+                            <span class="code-block-filename">src/cart_improved.py</span>
+                            <div class="code-block-dot"><span></span><span></span><span></span></div>
+                        </div>
+                        <div class="code-block"><code><span class="fn">BOOK_DISCOUNT_RATE</span> = <span class="num">0.10</span>
+<span class="fn">GENERAL_DISCOUNT_RATE</span> = <span class="num">0.10</span>
+<span class="fn">PREMIUM_DISCOUNT_RATE</span> = <span class="num">0.05</span>
+
+
+<span class="kw">def</span> <span class="fn">calculate_item_price</span>(item):
+    item_type = item[<span class="st">"type"</span>]
+    price = item[<span class="st">"price"</span>]
+
+    <span class="kw">if</span> item_type == <span class="st">"book"</span>:
+        <span class="kw">return</span> price * (<span class="num">1</span> - BOOK_DISCOUNT_RATE)
+
+    <span class="kw">return</span> price
+
+
+<span class="kw">def</span> <span class="fn">apply_general_discount</span>(total_price, discount_enabled):
+    <span class="kw">if not</span> discount_enabled:
+        <span class="kw">return</span> total_price
+
+    <span class="kw">return</span> total_price * (<span class="num">1</span> - GENERAL_DISCOUNT_RATE)
+
+
+<span class="kw">def</span> <span class="fn">apply_premium_discount</span>(total_price, user):
+    <span class="kw">if not</span> user <span class="kw">or not</span> user.get(<span class="st">"is_premium"</span>, <span class="nb">False</span>):
+        <span class="kw">return</span> total_price
+
+    <span class="kw">return</span> total_price * (<span class="num">1</span> - PREMIUM_DISCOUNT_RATE)
+
+
+<span class="kw">def</span> <span class="fn">calculate_cart_total</span>(items, user, discount_enabled=<span class="nb">False</span>):
+    total_price = <span class="num">0</span>
+
+    <span class="kw">for</span> item <span class="kw">in</span> items:
+        total_price += calculate_item_price(item)
+
+    total_price = apply_general_discount(total_price, discount_enabled)
+    total_price = apply_premium_discount(total_price, user)
+
+    <span class="kw">return</span> total_price
+
+
+<span class="kw">def</span> <span class="fn">process_cart</span>(items, user):
+    total_price = calculate_cart_total(items, user, discount_enabled=<span class="nb">True</span>)
+    <span class="kw">return</span> total_price</code></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- SECTION 4: HOMEWORK -->
+    <section class="section" id="homework">
+        <div class="section-divider"></div>
+        <h2 class="section-title">Homework Assignment</h2>
+        <p class="section-desc">PR Review Assignment: Review Like a Professional Engineer</p>
+
+        <div class="info-box">
+            <p style="margin-bottom: 16px; font-weight: 600; font-size: 1.05rem;">Your submission must include:</p>
+            <ul class="hw-requirements">
+                <li><span class="hw-req-badge">10 total</span> Review comments minimum</li>
+                <li><span class="hw-req-badge">3 min</span> Naming-related comments</li>
+                <li><span class="hw-req-badge">2 min</span> Testing-related comments</li>
+                <li><span class="hw-req-badge">2 min</span> Design or function responsibility comments</li>
+                <li><span class="hw-req-badge">1 min</span> Repository quality comment</li>
+                <li><span class="hw-req-badge">1 min</span> Refactoring suggestion</li>
+            </ul>
+        </div>
+
+        <div class="submission-example">
+            <h4>Submission Format</h4>
+            <pre>File: src/orders.py
+Line/Area: calc function
+Comment: The function name is too generic. Could we rename
+it to calculate_order_total for clarity?
+
+File: tests/test_orders.py
+Line/Area: test_calc
+Comment: This test only checks that the result is greater
+than zero. Could we assert the exact expected value instead?</pre>
+        </div>
+
+        <p style="color: var(--text-muted); margin: 24px 0 8px; font-size: 0.9rem;">Review the following files:</p>
+
+        <!-- orders.py -->
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span class="code-block-filename">src/orders.py</span>
+                <div class="code-block-dot"><span></span><span></span><span></span></div>
+            </div>
+            <div class="code-block"><code><span class="kw">def</span> <span class="fn">calc</span>(items, vip=<span class="nb">False</span>):
+    total = <span class="num">0</span>
+
+    <span class="kw">for</span> i <span class="kw">in</span> items:
+        <span class="kw">if</span> i[<span class="st">"type"</span>] == <span class="st">"book"</span>:
+            total += i[<span class="st">"price"</span>] * <span class="num">0.9</span>
+        <span class="kw">elif</span> i[<span class="st">"type"</span>] == <span class="st">"electronics"</span>:
+            total += i[<span class="st">"price"</span>]
+        <span class="kw">else</span>:
+            total += i[<span class="st">"price"</span>]
+
+    <span class="kw">if</span> vip == <span class="nb">True</span>:
+        total = total - total * <span class="num">0.05</span>
+
+    <span class="kw">return</span> total
+
+
+<span class="kw">def</span> <span class="fn">checkout</span>(items, user):
+    total = calc(items, user[<span class="st">"vip"</span>])
+    <span class="nb">print</span>(<span class="st">"checking out order..."</span>)
+    <span class="nb">print</span>(<span class="st">"total is"</span>, total)
+    <span class="kw">return</span> {<span class="st">"ok"</span>: <span class="nb">True</span>, <span class="st">"total"</span>: total}</code></div>
+        </div>
+
+        <!-- utils.py -->
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span class="code-block-filename">src/utils.py</span>
+                <div class="code-block-dot"><span></span><span></span><span></span></div>
+            </div>
+            <div class="code-block"><code><span class="kw">def</span> <span class="fn">f</span>(x):
+    <span class="kw">if</span> x == <span class="nb">None</span>:
+        <span class="kw">return</span> <span class="nb">False</span>
+    <span class="kw">return</span> <span class="nb">True</span></code></div>
+        </div>
+
+        <!-- test_orders.py -->
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span class="code-block-filename">tests/test_orders.py</span>
+                <div class="code-block-dot"><span></span><span></span><span></span></div>
+            </div>
+            <div class="code-block"><code><span class="kw">from</span> src.orders <span class="kw">import</span> calc
+
+
+<span class="kw">def</span> <span class="fn">test_calc</span>():
+    items = [{<span class="st">"type"</span>: <span class="st">"book"</span>, <span class="st">"price"</span>: <span class="num">100</span>}]
+    <span class="kw">assert</span> calc(items, <span class="nb">False</span>) > <span class="num">0</span></code></div>
+        </div>
+
+        <!-- README.md -->
+        <div class="code-block-wrapper">
+            <div class="code-block-header">
+                <span class="code-block-filename">README.md</span>
+                <div class="code-block-dot"><span></span><span></span><span></span></div>
+            </div>
+            <div class="code-block"><code><span class="cm"># Orders</span>
+
+Run it with python.</code></div>
+        </div>
+
+    </section>
+
+    <!-- SECTION 5: CLOSING -->
+    <section class="section" style="border-bottom: none;">
+        <div class="section-divider"></div>
+        <div class="closing-quote">
+            <blockquote>Great engineers do not just make code work. They make code understandable, testable, reviewable, and trustworthy.</blockquote>
+
+            <div class="qotd-card">
+                <div class="qotd-label">Quote of the Day</div>
+                <div class="qotd-text">"The code you are too busy to clean today becomes the problem that owns your team tomorrow."</div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Emre Varol</p>
+        <p>A2SV &mdash; University of Rwanda</p>
+    </div>
+</footer>
+
+<script>
+function toggleAccordion(header) {
+    const item = header.parentElement;
+    const body = header.nextElementSibling;
+    const isOpen = item.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.accordion-item').forEach(el => {
+        el.classList.remove('open');
+        el.querySelector('.accordion-body').style.maxHeight = null;
+    });
+
+    // Open clicked (if it was closed)
+    if (!isOpen) {
+        item.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+    }
+}
+
+function toggleSpoiler(header) {
+    const spoiler = header.parentElement;
+    const body = header.nextElementSibling;
+    const isOpen = spoiler.classList.contains('open');
+
+    if (isOpen) {
+        spoiler.classList.remove('open');
+        body.style.maxHeight = null;
+    } else {
+        spoiler.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+    }
+}
+</script>
+
+</body>
+</html>
