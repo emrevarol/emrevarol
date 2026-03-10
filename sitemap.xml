@@ -18,4 +18,34 @@
     <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/?lang=am" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://emrevarol.com/" />
   </url>
+  <url>
+    <loc>https://emrevarol.com/blog/partner-with-us.html</loc>
+    <lastmod>2024-08-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://emrevarol.com/blog/ai-for-impact-hackathon.html</loc>
+    <lastmod>2024-07-14</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://emrevarol.com/blog/mahlet-dereje-haile.html</loc>
+    <lastmod>2024-04-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://emrevarol.com/blog/a2sv-2023-year-in-review.html</loc>
+    <lastmod>2024-02-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://emrevarol.com/blog/generative-ai-hackathon.html</loc>
+    <lastmod>2023-12-04</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

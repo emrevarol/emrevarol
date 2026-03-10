@@ -92,6 +92,18 @@ Eskalate (eskalate.io) is A2SV's talent marketplace for companies looking to:
 
 Financial Times, Yahoo Finance, Business Insider Africa, TRT World
 
+## Blog / Newsletter
+
+Emre publishes a newsletter called "Meet top-tech African talent" (5,900+ subscribers). Articles are hosted on emrevarol.com:
+
+| Date | Title | URL |
+|------|-------|-----|
+| Aug 2024 | Partner with Us to Cultivate the Next Generation of African Innovators | https://emrevarol.com/blog/partner-with-us.html |
+| Jul 2024 | Bringing African Tech Talent Together through the AI for Impact Hackathon | https://emrevarol.com/blog/ai-for-impact-hackathon.html |
+| Apr 2024 | Mahlet Dereje Haile: Working at Google and Databricks | https://emrevarol.com/blog/mahlet-dereje-haile.html |
+| Feb 2024 | A2SV 2023: A Year of Inspiring Innovation and Pioneering Tech Education | https://emrevarol.com/blog/a2sv-2023-year-in-review.html |
+| Dec 2023 | A2SV's Generative AI for Africa Hackathon: Weaving Dreams, Transforming Futures | https://emrevarol.com/blog/generative-ai-hackathon.html |
+
 ## Contact
 
 - Email: emre@a2sv.org

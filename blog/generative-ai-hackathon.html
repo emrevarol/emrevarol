@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A2SV's Generative AI for Africa Hackathon: Weaving Dreams, Transforming Futures | Emre Varol</title>
+    <meta name="description" content="A2SV's Generative AI hackathon initiative spanned 47 African nations, reaching over 3,700 students and generating more than 500 project ideas.">
+    <meta property="og:title" content="A2SV's Generative AI for Africa Hackathon: Weaving Dreams, Transforming Futures">
+    <meta property="og:description" content="A2SV's Generative AI hackathon initiative spanned 47 African nations, reaching over 3,700 students and generating more than 500 project ideas.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://emrevarol.com/blog/generative-ai-hackathon.html">
+    <meta property="article:published_time" content="2023-12-04">
+    <meta property="article:author" content="Emre Varol">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #06060f;
+            color: #f0f4ff;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: #00e5b8;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /* Nav */
+        .nav {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 0;
+        }
+
+        .nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+
+        /* Article */
+        .article {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.25rem;
+            background: linear-gradient(135deg, #f0f4ff 0%, #c4b5fd 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(0, 229, 184, 0.12);
+            color: #00e5b8;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            padding: 0.25rem 0.7rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(0, 229, 184, 0.25);
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        .article-body h2 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #f0f4ff;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-body ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-body li {
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-body li::marker {
+            color: #a855f7;
+        }
+
+        .article-body strong {
+            color: #f0f4ff;
+            font-weight: 600;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(0, 229, 184, 0.08));
+            border-left: 3px solid #a855f7;
+            border-radius: 0 8px 8px 0;
+            padding: 1.5rem 1.75rem;
+            margin: 2rem 0;
+        }
+
+        .highlight-box p {
+            color: #e2e8f0;
+            margin-bottom: 0;
+            font-style: italic;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Fira Code', monospace;
+            background: linear-gradient(135deg, #00e5b8, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            margin-top: 0.25rem;
+            display: block;
+        }
+
+        /* Divider */
+        .divider {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.3), transparent);
+            margin: 3rem 0;
+        }
+
+        /* Footer */
+        .footer {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: #94a3b8;
+        }
+
+        .footer a:hover {
+            color: #00e5b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .article-title {
+                font-size: 1.75rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 0.75rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/">&larr; Back to emrevarol.com</a>
+    </nav>
+
+    <article class="article">
+        <header class="article-header">
+            <h1 class="article-title">A2SV's Generative AI for Africa Hackathon: Weaving Dreams, Transforming Futures</h1>
+            <div class="article-meta">
+                <span class="tag">Newsletter</span>
+                <time datetime="2023-12-04">December 4, 2023</time>
+            </div>
+        </header>
+
+        <div class="article-body">
+            <p>A2SV's Generative AI hackathon initiative spanned 47 African nations. The program progressed from virtual beginnings in August through a Grand Finale in Addis Ababa, Ethiopia, emphasizing technological advancement across the continent.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">3,700+</span>
+                    <span class="stat-label">African Students Reached</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Project Ideas</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Finalist Teams</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">Countries Represented</span>
+                </div>
+            </div>
+
+            <p>The eight finalist teams represented six African countries: <strong>Tunisia, Kenya, Namibia, Ethiopia, Algeria,</strong> and <strong>Cameroon</strong>. Together, they showcased 9 finalist projects and 5 Core Development projects.</p>
+
+            <hr class="divider">
+
+            <h2>From Workshops to the Grand Finale</h2>
+
+            <p>The hackathon began with a series of workshops introducing participants to generative AI tools, techniques, and best practices. Industry experts from leading tech companies guided participants through the fundamentals, helping them envision how AI could solve real-world problems unique to the African context.</p>
+
+            <p>From there, participants formed teams and began developing their project ideas. The quarterfinals narrowed the field, with the most promising projects advancing to the semifinals. During this intensive phase, teams received dedicated mentorship from advisors with deep domain expertise &mdash; helping them refine their solutions, strengthen their technical architecture, and prepare compelling presentations.</p>
+
+            <p>The eight finalist teams earned their place at the Grand Finale in Addis Ababa. There, they pitched their solutions to a distinguished jury panel that included <strong>UC Berkeley Professor Jelani Nelson</strong> and <strong>Northeastern University's Ricardo Baeza-Yates</strong>. The event was a celebration of African ingenuity, with teams presenting solutions spanning healthcare, education, agriculture, and financial inclusion.</p>
+
+            <p>Participants demonstrated a resilient spirit despite facing infrastructure obstacles. The hackathon functioned as a bridge connecting dreams to tangible digital solutions, nurturing emerging African tech leaders.</p>
+
+            <h2>Notable Partnerships</h2>
+
+            <ul>
+                <li><strong>Google</strong> provided sponsorship support</li>
+                <li>Distinguished jury from <strong>UC Berkeley</strong> and <strong>Northeastern University</strong></li>
+                <li>A2SV signed Memoranda of Understanding with <strong>Abrehot Library</strong> and <strong>Ethiopia's Artificial Intelligence Institute</strong></li>
+            </ul>
+
+            <h2>Core Development Projects</h2>
+
+            <p>The five Core Development projects &mdash; <strong>Adot</strong>, <strong>Akil</strong>, <strong>SkillBridge</strong>, <strong>AfroChat</strong>, and <strong>RateEat</strong> &mdash; were also showcased during the event, demonstrating the breadth of A2SV's innovation ecosystem.</p>
+
+            <div class="highlight-box">
+                <p>This hackathon is more than a competition. It's a movement &mdash; one that invites philanthropies, investors, and tech leaders to support young African innovators and their startups. Every contribution is an investment in the continent's technological transformation and in the brilliant minds driving it forward.</p>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer">
+        <span>&copy; 2026 Emre Varol</span>
+        <a href="https://www.linkedin.com/pulse/a2svs-generative-ai-africa-hackathon-weaving-dreams-futures-varol-7upnf" target="_blank" rel="noopener">Originally published on LinkedIn &nearr;</a>
+    </footer>
+</body>
+</html>
