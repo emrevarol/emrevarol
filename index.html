@@ -719,11 +719,30 @@
       background: var(--bg2); border: 1px solid var(--border);
       box-shadow: 0 25px 80px rgba(0,0,0,.6);
       scrollbar-width: thin; scrollbar-color: var(--teal) var(--bg);
+      display: flex; flex-direction: column; gap: 12px; padding: 12px;
     }
     .doc-viewer-inner::-webkit-scrollbar { width: 4px; }
     .doc-viewer-inner::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 4px; }
     .doc-viewer-inner img {
-      width: 100%; display: block;
+      width: 100%; display: block; border-radius: 4px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.4);
+    }
+    .doc-viewer-nav {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: .6rem; z-index: 10001;
+      background: rgba(9,9,26,.9); border: 1px solid var(--border);
+      padding: .4rem .8rem; border-radius: 10px; backdrop-filter: blur(8px);
+    }
+    .doc-viewer-nav button {
+      background: var(--card); border: 1px solid var(--border); color: var(--muted);
+      width: 34px; height: 34px; border-radius: 8px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s; font-size: 1rem;
+    }
+    .doc-viewer-nav button:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
+    .doc-viewer-nav span {
+      font-size: .78rem; font-weight: 600; color: var(--muted);
+      font-family: 'Fira Code', monospace; min-width: 50px; text-align: center;
     }
     .doc-viewer-close {
       position: fixed; top: 1.5rem; right: 1.5rem;
@@ -749,19 +768,32 @@
       border: 1px solid var(--border);
       box-shadow: 0 25px 80px rgba(0,0,0,.6);
       display: flex; flex-direction: column; align-items: center;
-      gap: 2px; background: #1a1a2e;
+      gap: 12px; padding: 12px; background: #1a1a2e;
       scroll-behavior: smooth;
+      scrollbar-width: thin; scrollbar-color: var(--teal) #1a1a2e;
     }
+    .pdf-viewer-inner::-webkit-scrollbar { width: 5px; }
+    .pdf-viewer-inner::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 4px; }
     .pdf-viewer-inner img {
-      width: 100%; display: block;
+      width: 100%; display: block; border-radius: 4px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.4);
     }
     .pdf-viewer-bar {
-      display: flex; gap: .75rem; margin-top: .75rem;
+      display: flex; gap: .75rem; margin-top: .75rem; align-items: center;
     }
-    .pdf-viewer-bar a {
+    .pdf-viewer-bar a, .pdf-viewer-bar button {
       display: inline-flex; align-items: center; gap: .4rem;
       background: var(--card); border: 1px solid var(--border);
       color: var(--muted); padding: .5rem 1rem; border-radius: 9px;
+      font-family: inherit; font-size: .82rem; font-weight: 600;
+      cursor: pointer; transition: all .2s; text-decoration: none;
+    }
+    .pdf-viewer-bar a:hover, .pdf-viewer-bar button:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
+    .pdf-viewer-page {
+      font-size: .82rem; font-weight: 600; color: var(--muted);
+      font-family: 'Fira Code', monospace; min-width: 80px; text-align: center;
+    }
+    .pdf-viewer-bar a {
       text-decoration: none; font-size: .82rem; font-weight: 600; transition: all .2s;
     }
     .pdf-viewer-bar a:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
@@ -1759,9 +1791,16 @@
     <img src="images/impact-report/page-50.jpg" alt="Page 50" loading="lazy" />
   </div>
   <div class="pdf-viewer-bar" onclick="event.stopPropagation()">
+    <button onclick="pdfGoTo(-1)" aria-label="Previous page">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <span class="pdf-viewer-page" id="pdfPageIndicator">1 / 50</span>
+    <button onclick="pdfGoTo(1)" aria-label="Next page">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
     <a href="https://drive.google.com/uc?export=download&id=1LyKJBb1D5w8Kw_LV_2ybksCTS0w2zq6Z" target="_blank">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      Download PDF
+      PDF
     </a>
   </div>
 </div>
@@ -1769,9 +1808,18 @@
 <!-- Document Viewer (2-Pager) -->
 <div class="doc-viewer" id="docViewer" onclick="closeDoc()" role="dialog" aria-modal="true" aria-label="Document viewer">
   <button class="doc-viewer-close" onclick="closeDoc()" aria-label="Close document">&#x2715;</button>
-  <div class="doc-viewer-inner" onclick="event.stopPropagation()">
+  <div class="doc-viewer-inner" id="docViewerInner" onclick="event.stopPropagation()">
     <img src="images/a2sv-2pager-1.jpg" alt="A2SV 2-Pager Page 1" />
     <img src="images/a2sv-2pager-2.jpg" alt="A2SV 2-Pager Page 2" loading="lazy" />
+  </div>
+  <div class="doc-viewer-nav" onclick="event.stopPropagation()">
+    <button onclick="docGoTo(-1)" aria-label="Previous page">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <span id="docPageIndicator">1 / 2</span>
+    <button onclick="docGoTo(1)" aria-label="Next page">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
   </div>
 </div>
 
@@ -2887,6 +2935,8 @@ function closeVideo() {
 function openDoc() {
   document.getElementById('docViewer').classList.add('open');
   document.body.style.overflow = 'hidden';
+  document.getElementById('docViewerInner').scrollTop = 0;
+  setTimeout(updateDocPage, 100);
 }
 function closeDoc() {
   document.getElementById('docViewer').classList.remove('open');
@@ -2897,12 +2947,64 @@ function closeDoc() {
 function openPdfViewer() {
   document.getElementById('pdfViewer').classList.add('open');
   document.body.style.overflow = 'hidden';
-  document.querySelector('.pdf-viewer-inner').scrollTop = 0;
+  const inner = document.querySelector('.pdf-viewer-inner');
+  inner.scrollTop = 0;
+  updatePdfPage();
 }
 function closePdf() {
   document.getElementById('pdfViewer').classList.remove('open');
   document.body.style.overflow = '';
 }
+function getPdfCurrentPage() {
+  const inner = document.querySelector('.pdf-viewer-inner');
+  const imgs = inner.querySelectorAll('img');
+  const scrollTop = inner.scrollTop + inner.clientHeight / 3;
+  let current = 1;
+  imgs.forEach((img, i) => { if (img.offsetTop <= scrollTop) current = i + 1; });
+  return current;
+}
+function updatePdfPage() {
+  const p = getPdfCurrentPage();
+  document.getElementById('pdfPageIndicator').textContent = p + ' / 50';
+}
+function pdfGoTo(dir) {
+  const inner = document.querySelector('.pdf-viewer-inner');
+  const imgs = inner.querySelectorAll('img');
+  let target = getPdfCurrentPage() + dir;
+  target = Math.max(1, Math.min(50, target));
+  imgs[target - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(updatePdfPage, 350);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const inner = document.querySelector('.pdf-viewer-inner');
+  if (inner) inner.addEventListener('scroll', updatePdfPage);
+});
+
+// ═══ DOC VIEWER NAV ═══
+function getDocCurrentPage() {
+  const inner = document.getElementById('docViewerInner');
+  const imgs = inner.querySelectorAll('img');
+  const scrollTop = inner.scrollTop + inner.clientHeight / 3;
+  let current = 1;
+  imgs.forEach((img, i) => { if (img.offsetTop <= scrollTop) current = i + 1; });
+  return current;
+}
+function updateDocPage() {
+  const total = document.getElementById('docViewerInner').querySelectorAll('img').length;
+  document.getElementById('docPageIndicator').textContent = getDocCurrentPage() + ' / ' + total;
+}
+function docGoTo(dir) {
+  const inner = document.getElementById('docViewerInner');
+  const imgs = inner.querySelectorAll('img');
+  let target = getDocCurrentPage() + dir;
+  target = Math.max(1, Math.min(imgs.length, target));
+  imgs[target - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setTimeout(updateDocPage, 350);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const inner = document.getElementById('docViewerInner');
+  if (inner) inner.addEventListener('scroll', updateDocPage);
+});
 
 // ═══ SENT CONFIRMATION ═══
 if (window.location.search.includes('sent=1')) {
