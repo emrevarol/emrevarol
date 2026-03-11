@@ -807,14 +807,15 @@
     .pdf-viewer-close:hover { color: var(--teal); border-color: rgba(0,229,184,.3); background: var(--teal-dim); }
 
     /* ═══ BLOG ═══ */
+    #blog { text-align: center; }
     .blog-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem; margin-top: 1.5rem;
+      gap: 1.5rem; margin-top: 1.5rem; max-width: 1080px; margin-left: auto; margin-right: auto;
     }
     .blog-card {
       background: var(--card); border: 1px solid var(--border); border-radius: 16px;
       padding: 1.75rem; transition: all .3s; text-decoration: none; color: var(--text);
-      display: flex; flex-direction: column; gap: .75rem;
+      display: flex; flex-direction: column; gap: .75rem; text-align: left;
     }
     .blog-card:hover {
       border-color: var(--border-hover); background: var(--card-hover);
@@ -983,6 +984,7 @@
     <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
     <li><a href="#awards" data-i18n="nav.awards">Awards</a></li>
     <li><a href="#blog" data-i18n="nav.blog">Blog</a></li>
+    <li><a href="/lecture/materials.html" data-i18n="nav.lectures">Lectures</a></li>
   </ul>
   <div class="lang-dropdown" id="langDropdown">
     <button class="lang-dropdown-toggle" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Change language">
@@ -1718,6 +1720,22 @@
         <img src="images/gallery-10.jpg" alt="Google MTV Googleplex 2015" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap10">Google years · MTV Googleplex, 2015</span></div>
       </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-11.jpg')">
+        <img src="images/gallery-11.jpg" alt="With H.E. Dr. Abiy Ahmed, Prime Minister of Ethiopia" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap11">With PM Abiy Ahmed · Startup Ethiopia 2024</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-12.jpg')">
+        <img src="images/gallery-12.jpg" alt="With Jeff Dean, Google Chief Scientist" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap12">With Jeff Dean, Google Chief Scientist · Silicon Valley</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-13.jpg')">
+        <img src="images/gallery-13.jpg" alt="With Hon. Paula Ingabire, Rwanda Minister of ICT" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap13">With Hon. Paula Ingabire · Rwanda Minister of ICT</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/gallery-14.jpg')">
+        <img src="images/gallery-14.jpg" alt="With Hon. Haruna Iddrisu, Ghana Minister of Education" loading="lazy" />
+        <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap14">With Hon. Haruna Iddrisu · Ghana Minister of Education</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1825,8 +1843,9 @@
 
 <!-- ═══ BLOG ═══ -->
 <section id="blog" class="anim">
+  <div class="container">
   <div class="section-tag">blog</div>
-  <h2 data-i18n-html="blog.h">From the <em>Newsletter</em></h2>
+  <h2 class="section-h" data-i18n-html="blog.h">From the <em>Newsletter</em></h2>
   <p style="color:var(--muted);max-width:600px;margin:0 auto .5rem;text-align:center" data-i18n="blog.desc">Insights on African tech talent, A2SV's journey, and the engineers shaping the future.</p>
 
   <div class="blog-grid">
@@ -1865,6 +1884,7 @@
 
   <div style="text-align:center;margin-top:1.5rem">
     <a href="blog/" style="display:inline-flex;align-items:center;gap:.4rem;color:var(--teal);font-weight:600;font-size:.95rem;text-decoration:none;padding:.6rem 1.4rem;border:1px solid rgba(0,229,184,.25);border-radius:10px;transition:all .2s" onmouseover="this.style.background='rgba(0,229,184,.08)';this.style.borderColor='rgba(0,229,184,.5)'" onmouseout="this.style.background='';this.style.borderColor='rgba(0,229,184,.25)'" data-i18n="blog.viewall">View all articles <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg></a>
+  </div>
   </div>
 </section>
 
@@ -2039,7 +2059,7 @@ const translations = {
   en: {
     roles: ['Founder & CEO of A2SV','AI Engineer','Software Engineer','Education Innovator','Competitive Programmer','Builder of African Tech Talent'],
     'nav.about': 'About', 'nav.experience': 'Experience', 'nav.products': 'Products ▾',
-    'nav.skills': 'Skills', 'nav.awards': 'Awards', 'nav.blog': 'Blog', 'nav.cta': 'Say Hello',
+    'nav.skills': 'Skills', 'nav.awards': 'Awards', 'nav.blog': 'Blog', 'nav.lectures': 'Lectures', 'nav.cta': 'Say Hello',
     'hero.desc': 'Founder &amp; CEO of <strong>A2SV</strong>, a Google-backed nonprofit transforming Africa\'s tech ecosystem. 8+ years at <strong>Google · Palantir · Liftoff</strong>. On a mission to bridge talent and opportunity.',
     'hero.btn1': 'Explore A2SV', 'hero.btn2': 'Get in Touch',
     'about.tag': 'about me', 'about.h': 'Builder. Teacher. <em>Changemaker.</em>',
@@ -2117,12 +2137,12 @@ const translations = {
     'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Upbringings, Faith, Career & A2SV',
     'prod.cat.health': 'Maternal Health', 'prod.cat.ai': 'AI Assistant', 'prod.cat.youth': 'Youth Careers', 'prod.cat.fin': 'FinTech · Remittance', 'prod.cat.talent': 'Talent · Outsourcing', 'prod.cat.food': 'Food · Social', 'prod.cat.edu': 'Education · AI',
     'gs.h': 'Galatasaray', 'gs.p': 'Born in <strong>Ankara</strong>, heart yellow and red. Football and code have been with me equally long.',
-    'gallery.cap1': 'GITEX 2024 · Morocco', 'gallery.cap2': 'University of Ghana, Legon · With A2SV students', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Finals', 'gallery.cap4': 'With Karim Beguir · A2SV advisor & InstaDeep founder', 'gallery.cap5': 'With Anand Raju · Qatar Investment Authority. Bilkent roommate, reunited in Qatar 2025', 'gallery.cap6': 'With KOICA manager · Ethiopia', 'gallery.cap7': 'With finalist team · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Speaker, with fellow panelists', 'gallery.cap9': 'Global AI Summit on Africa 2025 · The team', 'gallery.cap10': 'Google years · MTV Googleplex, 2015',
+    'gallery.cap1': 'GITEX 2024 · Morocco', 'gallery.cap2': 'University of Ghana, Legon · With A2SV students', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Finals', 'gallery.cap4': 'With Karim Beguir · A2SV advisor & InstaDeep founder', 'gallery.cap5': 'With Anand Raju · Qatar Investment Authority. Bilkent roommate, reunited in Qatar 2025', 'gallery.cap6': 'With KOICA manager · Ethiopia', 'gallery.cap7': 'With finalist team · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Speaker, with fellow panelists', 'gallery.cap9': 'Global AI Summit on Africa 2025 · The team', 'gallery.cap10': 'Google years · MTV Googleplex, 2015', 'gallery.cap11': 'With PM Abiy Ahmed · Startup Ethiopia 2024', 'gallery.cap12': 'With Jeff Dean, Google Chief Scientist · Silicon Valley', 'gallery.cap13': 'With Hon. Paula Ingabire · Rwanda Minister of ICT', 'gallery.cap14': 'With Hon. Haruna Iddrisu · Ghana Minister of Education',
   },
   tr: {
     roles: ["A2SV'nin Kurucusu ve CEO'su", 'Yapay Zeka Mühendisi', 'Yazılım Mühendisi', 'Eğitim Vizyoneri', 'Rekabetçi Programcı', "Afrika'nın Teknoloji Yeteneğini İnşa Eden"],
     'nav.about': 'Hakkımda', 'nav.experience': 'Deneyim', 'nav.products': 'Ürünler ▾',
-    'nav.skills': 'Beceriler', 'nav.awards': 'Ödüller', 'nav.blog': 'Blog', 'nav.cta': 'İletişime Geç',
+    'nav.skills': 'Beceriler', 'nav.awards': 'Ödüller', 'nav.blog': 'Blog', 'nav.lectures': 'Dersler', 'nav.cta': 'İletişime Geç',
     'hero.desc': "<strong>A2SV</strong>'nin kurucusu ve CEO'yum. Google destekli bu sivil toplum kuruluşuyla Afrika'nın teknoloji ekosistemini dönüştürüyoruz. <strong>Google · Palantir · Liftoff</strong>'ta 8 yılı aşkın deneyimimin ardından şimdi tek bir misyon var: yeteneği fırsatla buluşturmak.",
     'hero.btn1': "A2SV'yi Keşfet", 'hero.btn2': 'Bana Yazın',
     'about.tag': 'hakkımda', 'about.h': 'Kurucu. Öğretmen. <em>Değişim Yaratan.</em>',
@@ -2200,12 +2220,12 @@ const translations = {
     'media.vid4.badge': 'Podcast', 'media.vid4.title': 'Emre Varol — Yetişme, İnanç, Kariyer ve A2SV',
     'prod.cat.health': 'Anne Sağlığı', 'prod.cat.ai': 'Yapay Zeka Asistanı', 'prod.cat.youth': 'Gençlik Kariyer', 'prod.cat.fin': 'FinTek · Havale', 'prod.cat.talent': 'Yetenek · Dış Kaynak', 'prod.cat.food': 'Yemek · Sosyal', 'prod.cat.edu': 'Eğitim · Yapay Zeka',
     'gs.h': 'Galatasaray', 'gs.p': '<strong>Ankara</strong>\'da doğdum, kalbim sarı ve kırmızı. Futbol ve kod hayatımda hep eşit yer tuttu.',
-    'gallery.cap1': 'GITEX 2024 · Fas', 'gallery.cap2': 'Ghana Üniversitesi, Legon · A2SV öğrencileriyle', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Final', 'gallery.cap4': 'Karim Beguir ile · A2SV danışmanımız ve InstaDeep kurucusu', 'gallery.cap5': 'Anand Raju ile · Qatar Investment Authority. Bilkent\'te oda arkadaşım, 2025\'te Qatar\'da buluştuk', 'gallery.cap6': 'KOICA yöneticisi ile · Etiyopya', 'gallery.cap7': 'Finalist takımla · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Konuşmacı, panelistlerle', 'gallery.cap9': 'Global AI Summit on Africa 2025 · Ekip', 'gallery.cap10': 'Google yılları · MTV Googleplex, 2015',
+    'gallery.cap1': 'GITEX 2024 · Fas', 'gallery.cap2': 'Ghana Üniversitesi, Legon · A2SV öğrencileriyle', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Final', 'gallery.cap4': 'Karim Beguir ile · A2SV danışmanımız ve InstaDeep kurucusu', 'gallery.cap5': 'Anand Raju ile · Qatar Investment Authority. Bilkent\'te oda arkadaşım, 2025\'te Qatar\'da buluştuk', 'gallery.cap6': 'KOICA yöneticisi ile · Etiyopya', 'gallery.cap7': 'Finalist takımla · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Konuşmacı, panelistlerle', 'gallery.cap9': 'Global AI Summit on Africa 2025 · Ekip', 'gallery.cap10': 'Google yılları · MTV Googleplex, 2015', 'gallery.cap11': 'Başbakan Abiy Ahmed ile · Startup Ethiopia 2024', 'gallery.cap12': 'Jeff Dean, Google Baş Bilim İnsanı ile · Silikon Vadisi', 'gallery.cap13': 'Hon. Paula Ingabire ile · Ruanda BİT Bakanı', 'gallery.cap14': 'Hon. Haruna Iddrisu ile · Gana Eğitim Bakanı',
   },
   es: {
     roles: ['Fundador y CEO de A2SV', 'Ingeniero de IA', 'Ingeniero de Software', 'Innovador en Educación', 'Programador Competitivo', 'Constructor del Talento Tecnológico Africano'],
     'nav.about': 'Sobre mí', 'nav.experience': 'Experiencia', 'nav.products': 'Productos ▾',
-    'nav.skills': 'Habilidades', 'nav.awards': 'Premios', 'nav.blog': 'Blog', 'nav.cta': 'Escríbeme',
+    'nav.skills': 'Habilidades', 'nav.awards': 'Premios', 'nav.blog': 'Blog', 'nav.lectures': 'Clases', 'nav.cta': 'Escríbeme',
     'hero.desc': 'Fundador y CEO de <strong>A2SV</strong>, una ONG respaldada por Google que está transformando el ecosistema tecnológico de África. Más de 8 años en <strong>Google · Palantir · Liftoff</strong>. Mi misión: conectar talento con oportunidad.',
     'hero.btn1': 'Conoce A2SV', 'hero.btn2': 'Contáctame',
     'about.tag': 'sobre mí', 'about.h': 'Constructor. Maestro. <em>Agente de Cambio.</em>',
@@ -2239,7 +2259,7 @@ const translations = {
     'skill1.h': '🧭 Liderazgo &amp; Estrategia', 'skill2.h': '💻 Ingeniería de Software', 'skill3.h': '🤖 IA &amp; Ciencia de Datos', 'skill4.h': '☁️ Cloud &amp; Herramientas', 'skill5.h': '📚 Docencia &amp; Mentoría', 'skill6.h': '✨ Intereses',
     'personal.h': 'Cuando <em>no</em> estoy construyendo', 'personal.p': 'Me encuentras con la guitarra, en una ruta de senderismo, viendo a Galatasaray dominar, o sumergido en un libro de psicología, liderazgo o estrategia. Creo que los mejores ingenieros también son personas curiosas.',
     'gallery.h': 'Momentos y <em>Recuerdos</em>',
-    'gallery.cap1': 'GITEX 2024 · Marruecos', 'gallery.cap2': 'Universidad de Ghana, Legon · Con estudiantes de A2SV', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Final', 'gallery.cap4': 'Con Karim Beguir · Asesor de A2SV y fundador de InstaDeep', 'gallery.cap5': 'Con Anand Raju · Qatar Investment Authority. Compañero de cuarto en Bilkent, reunidos en Qatar 2025', 'gallery.cap6': 'Con el gerente de KOICA · Etiopía', 'gallery.cap7': 'Con el equipo finalista · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Ponente, con panelistas', 'gallery.cap9': 'Global AI Summit on Africa 2025 · El equipo', 'gallery.cap10': 'Años en Google · MTV Googleplex, 2015',
+    'gallery.cap1': 'GITEX 2024 · Marruecos', 'gallery.cap2': 'Universidad de Ghana, Legon · Con estudiantes de A2SV', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Final', 'gallery.cap4': 'Con Karim Beguir · Asesor de A2SV y fundador de InstaDeep', 'gallery.cap5': 'Con Anand Raju · Qatar Investment Authority. Compañero de cuarto en Bilkent, reunidos en Qatar 2025', 'gallery.cap6': 'Con el gerente de KOICA · Etiopía', 'gallery.cap7': 'Con el equipo finalista · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Ponente, con panelistas', 'gallery.cap9': 'Global AI Summit on Africa 2025 · El equipo', 'gallery.cap10': 'Años en Google · MTV Googleplex, 2015', 'gallery.cap11': 'Con el PM Abiy Ahmed · Startup Ethiopia 2024', 'gallery.cap12': 'Con Jeff Dean, Científico Jefe de Google · Silicon Valley', 'gallery.cap13': 'Con Hon. Paula Ingabire · Ministra de TIC de Ruanda', 'gallery.cap14': 'Con Hon. Haruna Iddrisu · Ministro de Educación de Ghana',
     'resources.h': 'Documentos <em>A2SV</em>', 'resources.link1': 'Informe de Impacto: 5 Años de A2SV', 'resources.link2': 'Dossier de 2 Páginas',
     'blog.h': 'Desde el <em>Boletín</em>', 'blog.desc': 'Ideas sobre el talento tecnológico africano, el viaje de A2SV y los ingenieros que dan forma al futuro.', 'blog.viewall': 'Ver todos los artículos',
     'footer.purpose': 'Construido con propósito 🌍', 'about.badge.t': 'Años en Silicon Valley',
@@ -2288,7 +2308,7 @@ const translations = {
   rw: {
     roles: ["Umushinga n'Umuyobozi wa A2SV", 'Injeniyeri ya AI', 'Injeniyeri ya Logiciel', 'Umutsindagira mu Burezi', 'Umukinnyi wa Gahunda', "Umubuza Inzobere za Teknoloji muri Afurika"],
     'nav.about': 'Ibyerekeye', 'nav.experience': 'Uburambe', 'nav.products': 'Ibicuruzwa ▾',
-    'nav.skills': 'Ubumenyi', 'nav.awards': 'Ibihembo', 'nav.blog': 'Blog', 'nav.cta': 'Vugana Nawe',
+    'nav.skills': 'Ubumenyi', 'nav.awards': 'Ibihembo', 'nav.blog': 'Blog', 'nav.lectures': 'Amasomo', 'nav.cta': 'Vugana Nawe',
     'hero.desc': 'Umushingatsi n\'Umuyobozi Mukuru wa <strong>A2SV</strong>, umuryango wunganiwe na Google ugamije guhindura ejo hazaza h\'ikoranabuhanga muri Afurika. Imyaka 8+ muri <strong>Google · Palantir · Liftoff</strong>. Intego: guhuza inzobere n\'amahirwe.',
     'hero.btn1': 'Menya A2SV', 'hero.btn2': 'Vugana Nawe',
     'about.tag': 'ibyerekeye', 'about.h': 'Umubatsi. Umwarimu. <em>Umuturutsi.</em>',
@@ -2322,7 +2342,7 @@ const translations = {
     'skill1.h': '🧭 Ubuyobozi &amp; Ingamba', 'skill2.h': '💻 Ubuhanga bw\'Ikoranabuhanga', 'skill3.h': '🤖 AI &amp; Siyanse y\'Amakuru', 'skill4.h': '☁️ Cloud &amp; Ibikoresho', 'skill5.h': '📚 Kwigisha &amp; Gutuza', 'skill6.h': '✨ Ibyifuzo',
     'personal.h': "Igihe <em>ntubaka</em>", 'personal.p': "Uramfite nkurikije: ikirangirire mu ntoki, urugendo ku musozi, kureba Galatasaray, cyangwa gusoma igitabo cy'ubuyobozi cyangwa ingamba. Nziko inzobere nziza ziba abantu b'ubushake.",
     'gallery.h': "Ibihe n'<em>Inzira</em>",
-    'gallery.cap1': 'GITEX 2024 · Maroke', 'gallery.cap2': "Kaminuza ya Ghana, Legon · Hamwe n'abanyeshuri ba A2SV", 'gallery.cap3': 'A2SV AI Hackathon 2023 · Iherezo', 'gallery.cap4': "Hamwe na Karim Beguir · Umujyanama wa A2SV n'umuhuza wa InstaDeep", 'gallery.cap5': "Hamwe na Anand Raju · Qatar Investment Authority. Mugenzi wo mu cyumba muri Bilkent, twongeye guhura muri Qatar 2025", 'gallery.cap6': "Hamwe n'umuyobozi wa KOICA · Etiyopiya", 'gallery.cap7': "Hamwe n'ikipe yageze mu iherezo · A2SV AI Hackathon 2023", 'gallery.cap8': "Global AI Summit on Africa 2025 · Umuvugizi, hamwe n'abagize panel", 'gallery.cap9': 'Global AI Summit on Africa 2025 · Ikipe', 'gallery.cap10': "Imyaka muri Google · MTV Googleplex, 2015",
+    'gallery.cap1': 'GITEX 2024 · Maroke', 'gallery.cap2': "Kaminuza ya Ghana, Legon · Hamwe n'abanyeshuri ba A2SV", 'gallery.cap3': 'A2SV AI Hackathon 2023 · Iherezo', 'gallery.cap4': "Hamwe na Karim Beguir · Umujyanama wa A2SV n'umuhuza wa InstaDeep", 'gallery.cap5': "Hamwe na Anand Raju · Qatar Investment Authority. Mugenzi wo mu cyumba muri Bilkent, twongeye guhura muri Qatar 2025", 'gallery.cap6': "Hamwe n'umuyobozi wa KOICA · Etiyopiya", 'gallery.cap7': "Hamwe n'ikipe yageze mu iherezo · A2SV AI Hackathon 2023", 'gallery.cap8': "Global AI Summit on Africa 2025 · Umuvugizi, hamwe n'abagize panel", 'gallery.cap9': 'Global AI Summit on Africa 2025 · Ikipe', 'gallery.cap10': "Imyaka muri Google · MTV Googleplex, 2015", 'gallery.cap11': "Hamwe na PM Abiy Ahmed · Startup Ethiopia 2024", 'gallery.cap12': "Hamwe na Jeff Dean, Umushakashatsi Mukuru wa Google · Silicon Valley", 'gallery.cap13': "Hamwe na Hon. Paula Ingabire · Minisitiri w'ITK w'u Rwanda", 'gallery.cap14': "Hamwe na Hon. Haruna Iddrisu · Minisitiri w'Uburezi wa Ghana",
     'resources.h': "Inyandiko <em>za A2SV</em>", 'resources.link1': "Raporo y'Ingaruka: Imyaka 5 ya A2SV", 'resources.link2': "Inyandiko y'Intangiriro (2 Pager)",
     'blog.h': "Mu <em>Itangazamakuru</em>", 'blog.desc': "Ibitekerezo ku mpano z'ikoranabuhanga z'Afurika, urugendo rwa A2SV, n'abahanga bahindura ejo hazaza.", 'blog.viewall': "Reba inyandiko zose",
     'footer.purpose': "Ubatswe n'intego 🌍", 'about.badge.t': 'Imyaka i Silicon Valley',
@@ -2371,7 +2391,7 @@ const translations = {
   fr: {
     roles: ["Fondateur et PDG d'A2SV", 'Ingénieur en IA', 'Ingénieur Logiciel', 'Innovateur en Éducation', 'Programmeur Compétitif', "Développeur du Talent Tech Africain"],
     'nav.about': 'À propos', 'nav.experience': 'Expérience', 'nav.products': 'Produits ▾',
-    'nav.skills': 'Compétences', 'nav.awards': 'Distinctions', 'nav.blog': 'Blog', 'nav.cta': 'Me contacter',
+    'nav.skills': 'Compétences', 'nav.awards': 'Distinctions', 'nav.blog': 'Blog', 'nav.lectures': 'Cours', 'nav.cta': 'Me contacter',
     'hero.desc': "Fondateur et PDG d'<strong>A2SV</strong>, une ONG soutenue par Google qui transforme l'écosystème tech africain. 8+ ans chez <strong>Google · Palantir · Liftoff</strong>. En mission pour relier talent et opportunité.",
     'hero.btn1': 'Explorer A2SV', 'hero.btn2': 'Me contacter',
     'about.tag': 'à propos', 'about.h': 'Bâtisseur. Enseignant. <em>Changeur de monde.</em>',
@@ -2405,7 +2425,7 @@ const translations = {
     'skill1.h': '🧭 Leadership &amp; Stratégie', 'skill2.h': '💻 Ingénierie Logicielle', 'skill3.h': '🤖 IA &amp; Data Science', 'skill4.h': '☁️ Cloud &amp; Outils', 'skill5.h': '📚 Enseignement &amp; Mentorat', 'skill6.h': '✨ Intérêts',
     'personal.h': 'Quand je ne <em>construis</em> pas', 'personal.p': "Vous me trouverez avec une guitare, sur un sentier, regardant Galatasaray dominer, ou plongé dans un livre sur la psychologie, le leadership ou la stratégie.",
     'gallery.h': 'Moments &amp; <em>Souvenirs</em>',
-    'gallery.cap1': 'GITEX 2024 · Maroc', 'gallery.cap2': "Université du Ghana, Legon · Avec les étudiants d'A2SV", 'gallery.cap3': 'A2SV AI Hackathon 2023 · Finale', 'gallery.cap4': "Avec Karim Beguir · Conseiller d'A2SV et fondateur d'InstaDeep", 'gallery.cap5': "Avec Anand Raju · Qatar Investment Authority. Colocataire à Bilkent, retrouvailles au Qatar 2025", 'gallery.cap6': 'Avec le responsable KOICA · Éthiopie', 'gallery.cap7': "Avec l'équipe finaliste · A2SV AI Hackathon 2023", 'gallery.cap8': 'Global AI Summit on Africa 2025 · Intervenant, avec les panélistes', 'gallery.cap9': "Global AI Summit on Africa 2025 · L'équipe", 'gallery.cap10': 'Années chez Google · MTV Googleplex, 2015',
+    'gallery.cap1': 'GITEX 2024 · Maroc', 'gallery.cap2': "Université du Ghana, Legon · Avec les étudiants d'A2SV", 'gallery.cap3': 'A2SV AI Hackathon 2023 · Finale', 'gallery.cap4': "Avec Karim Beguir · Conseiller d'A2SV et fondateur d'InstaDeep", 'gallery.cap5': "Avec Anand Raju · Qatar Investment Authority. Colocataire à Bilkent, retrouvailles au Qatar 2025", 'gallery.cap6': 'Avec le responsable KOICA · Éthiopie', 'gallery.cap7': "Avec l'équipe finaliste · A2SV AI Hackathon 2023", 'gallery.cap8': 'Global AI Summit on Africa 2025 · Intervenant, avec les panélistes', 'gallery.cap9': "Global AI Summit on Africa 2025 · L'équipe", 'gallery.cap10': 'Années chez Google · MTV Googleplex, 2015', 'gallery.cap11': 'Avec le PM Abiy Ahmed · Startup Ethiopia 2024', 'gallery.cap12': 'Avec Jeff Dean, Directeur Scientifique de Google · Silicon Valley', 'gallery.cap13': 'Avec Hon. Paula Ingabire · Ministre des TIC du Rwanda', 'gallery.cap14': 'Avec Hon. Haruna Iddrisu · Ministre de l\'Éducation du Ghana',
     'resources.h': 'Documents <em>A2SV</em>', 'resources.link1': "Rapport d'Impact A2SV 5 ans", 'resources.link2': 'Synthèse A2SV',
     'blog.h': 'De la <em>Newsletter</em>', 'blog.desc': "Perspectives sur les talents tech africains, le parcours d'A2SV et les ingénieurs qui façonnent l'avenir.", 'blog.viewall': 'Voir tous les articles',
     'footer.purpose': 'Construit avec intention 🌍', 'about.badge.t': 'Ans en Silicon Valley',
@@ -2454,7 +2474,7 @@ const translations = {
   de: {
     roles: ['Gründer & CEO von A2SV', 'KI-Ingenieur', 'Softwareingenieur', 'Bildungsinnovator', 'Wettbewerbsprogrammierer', "Aufbauer von Afrikas Tech-Talenten"],
     'nav.about': 'Über mich', 'nav.experience': 'Erfahrung', 'nav.products': 'Produkte ▾',
-    'nav.skills': 'Fähigkeiten', 'nav.awards': 'Auszeichnungen', 'nav.blog': 'Blog', 'nav.cta': 'Hallo sagen',
+    'nav.skills': 'Fähigkeiten', 'nav.awards': 'Auszeichnungen', 'nav.blog': 'Blog', 'nav.lectures': 'Vorlesungen', 'nav.cta': 'Hallo sagen',
     'hero.desc': 'Gründer &amp; CEO von <strong>A2SV</strong>, einer von Google unterstützten gemeinnützigen Organisation, die Afrikas Tech-Ökosystem transformiert. 8+ Jahre bei <strong>Google · Palantir · Liftoff</strong>. Mit der Mission, Talent und Chance zu verbinden.',
     'hero.btn1': 'A2SV entdecken', 'hero.btn2': 'Kontakt aufnehmen',
     'about.tag': 'über mich', 'about.h': 'Baumeister. Lehrer. <em>Veränderer.</em>',
@@ -2488,7 +2508,7 @@ const translations = {
     'skill1.h': '🧭 Führung &amp; Strategie', 'skill2.h': '💻 Software-Engineering', 'skill3.h': '🤖 KI &amp; Data Science', 'skill4.h': '☁️ Cloud &amp; Tools', 'skill5.h': '📚 Lehren &amp; Mentoring', 'skill6.h': '✨ Interessen',
     'personal.h': 'Wenn ich <em>nicht</em> baue', 'personal.p': 'Mich findet man mit einer Gitarre, auf einem Wanderweg, beim Galatasaray-Spiel oder tief in einem Buch über Psychologie, Führung oder Strategie.',
     'gallery.h': 'Momente &amp; <em>Erinnerungen</em>',
-    'gallery.cap1': 'GITEX 2024 · Marokko', 'gallery.cap2': 'Universität Ghana, Legon · Mit A2SV-Studenten', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Finale', 'gallery.cap4': 'Mit Karim Beguir · A2SV-Berater und InstaDeep-Gründer', 'gallery.cap5': 'Mit Anand Raju · Qatar Investment Authority. Bilkent-Mitbewohner, Wiedersehen in Katar 2025', 'gallery.cap6': 'Mit dem KOICA-Manager · Äthiopien', 'gallery.cap7': 'Mit dem Finalisten-Team · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Redner, mit Panelisten', 'gallery.cap9': 'Global AI Summit on Africa 2025 · Das Team', 'gallery.cap10': 'Google-Jahre · MTV Googleplex, 2015',
+    'gallery.cap1': 'GITEX 2024 · Marokko', 'gallery.cap2': 'Universität Ghana, Legon · Mit A2SV-Studenten', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Finale', 'gallery.cap4': 'Mit Karim Beguir · A2SV-Berater und InstaDeep-Gründer', 'gallery.cap5': 'Mit Anand Raju · Qatar Investment Authority. Bilkent-Mitbewohner, Wiedersehen in Katar 2025', 'gallery.cap6': 'Mit dem KOICA-Manager · Äthiopien', 'gallery.cap7': 'Mit dem Finalisten-Team · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Redner, mit Panelisten', 'gallery.cap9': 'Global AI Summit on Africa 2025 · Das Team', 'gallery.cap10': 'Google-Jahre · MTV Googleplex, 2015', 'gallery.cap11': 'Mit PM Abiy Ahmed · Startup Ethiopia 2024', 'gallery.cap12': 'Mit Jeff Dean, Google Chief Scientist · Silicon Valley', 'gallery.cap13': 'Mit Hon. Paula Ingabire · Ruandas ICT-Ministerin', 'gallery.cap14': 'Mit Hon. Haruna Iddrisu · Ghanas Bildungsminister',
     'resources.h': 'A2SV <em>Dokumente</em>', 'resources.link1': 'A2SV 5-Jahres-Impact-Bericht', 'resources.link2': 'A2SV-Kurzprofil',
     'blog.h': 'Aus dem <em>Newsletter</em>', 'blog.desc': 'Einblicke in afrikanische Tech-Talente, die Reise von A2SV und die Ingenieure, die die Zukunft gestalten.', 'blog.viewall': 'Alle Artikel ansehen',
     'footer.purpose': 'Mit Zweck gebaut 🌍', 'about.badge.t': 'Jahre im Silicon Valley',
@@ -2537,7 +2557,7 @@ const translations = {
   ar: {
     roles: ['مؤسس ورئيس تنفيذي لـ A2SV', 'مهندس ذكاء اصطناعي', 'مهندس برمجيات', 'مبتكر في التعليم', 'مبرمج تنافسي', 'بانٍ للمواهب التقنية الأفريقية'],
     'nav.about': 'عني', 'nav.experience': 'الخبرة', 'nav.products': 'المنتجات ▾',
-    'nav.skills': 'المهارات', 'nav.awards': 'الجوائز', 'nav.blog': 'مدونة', 'nav.cta': 'تواصل معي',
+    'nav.skills': 'المهارات', 'nav.awards': 'الجوائز', 'nav.blog': 'مدونة', 'nav.lectures': 'محاضرات', 'nav.cta': 'تواصل معي',
     'hero.desc': 'مؤسس ورئيس تنفيذي لـ <strong>A2SV</strong>، منظمة غير ربحية مدعومة من Google تحوّل منظومة التكنولوجيا الأفريقية. أكثر من 8 سنوات في <strong>Google · Palantir · Liftoff</strong>. في مهمة لربط المواهب بالفرص.',
     'hero.btn1': 'استكشف A2SV', 'hero.btn2': 'تواصل معي',
     'about.tag': 'عني', 'about.h': 'بانٍ. معلم. <em>صانع تغيير.</em>',
@@ -2571,7 +2591,7 @@ const translations = {
     'skill1.h': '🧭 القيادة &amp; الاستراتيجية', 'skill2.h': '💻 هندسة البرمجيات', 'skill3.h': '🤖 الذكاء الاصطناعي &amp; البيانات', 'skill4.h': '☁️ السحابة &amp; الأدوات', 'skill5.h': '📚 التدريس &amp; الإرشاد', 'skill6.h': '✨ الاهتمامات',
     'personal.h': 'حين لا <em>أبني</em>', 'personal.p': 'ستجدني بالغيتار، في مسار مشي، أشاهد غلطة سراي، أو منغمسًا في كتاب عن علم النفس والقيادة والاستراتيجية.',
     'gallery.h': 'لحظات &amp; <em>ذكريات</em>',
-    'gallery.cap1': 'GITEX 2024 · المغرب', 'gallery.cap2': 'جامعة غانا، ليغون · مع طلاب A2SV', 'gallery.cap3': 'A2SV AI Hackathon 2023 · النهائي', 'gallery.cap4': 'مع كريم بقير · مستشار A2SV ومؤسس InstaDeep', 'gallery.cap5': 'مع أناند راجو · هيئة الاستثمار القطرية. زميل سكن في بيلكنت، لقاء مجدد في قطر 2025', 'gallery.cap6': 'مع مدير KOICA · إثيوبيا', 'gallery.cap7': 'مع الفريق النهائي · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · متحدث، مع المشاركين', 'gallery.cap9': 'Global AI Summit on Africa 2025 · الفريق', 'gallery.cap10': 'سنوات جوجل · MTV Googleplex، 2015',
+    'gallery.cap1': 'GITEX 2024 · المغرب', 'gallery.cap2': 'جامعة غانا، ليغون · مع طلاب A2SV', 'gallery.cap3': 'A2SV AI Hackathon 2023 · النهائي', 'gallery.cap4': 'مع كريم بقير · مستشار A2SV ومؤسس InstaDeep', 'gallery.cap5': 'مع أناند راجو · هيئة الاستثمار القطرية. زميل سكن في بيلكنت، لقاء مجدد في قطر 2025', 'gallery.cap6': 'مع مدير KOICA · إثيوبيا', 'gallery.cap7': 'مع الفريق النهائي · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · متحدث، مع المشاركين', 'gallery.cap9': 'Global AI Summit on Africa 2025 · الفريق', 'gallery.cap10': 'سنوات جوجل · MTV Googleplex، 2015', 'gallery.cap11': 'مع رئيس الوزراء أبي أحمد · Startup Ethiopia 2024', 'gallery.cap12': 'مع جيف دين، كبير العلماء في جوجل · وادي السيليكون', 'gallery.cap13': 'مع معالي باولا إنغابيري · وزيرة تكنولوجيا المعلومات في رواندا', 'gallery.cap14': 'مع معالي هارونا إدريسو · وزير التعليم في غانا',
     'resources.h': 'وثائق <em>A2SV</em>', 'resources.link1': 'تقرير أثر A2SV لـ 5 سنوات', 'resources.link2': 'ملخص A2SV',
     'blog.h': 'من <em>النشرة الإخبارية</em>', 'blog.desc': 'رؤى حول المواهب التقنية الأفريقية ورحلة A2SV والمهندسين الذين يصنعون المستقبل.', 'blog.viewall': 'عرض جميع المقالات',
     'footer.purpose': 'مبني بهدف 🌍', 'about.badge.t': 'سنوات في Silicon Valley',
@@ -2620,7 +2640,7 @@ const translations = {
   pt: {
     roles: ['Fundador e CEO da A2SV', 'Engenheiro de IA', 'Engenheiro de Software', 'Inovador em Educação', 'Programador Competitivo', 'Construtor do Talento Tech Africano'],
     'nav.about': 'Sobre mim', 'nav.experience': 'Experiência', 'nav.products': 'Produtos ▾',
-    'nav.skills': 'Habilidades', 'nav.awards': 'Prêmios', 'nav.blog': 'Blog', 'nav.cta': 'Diga Olá',
+    'nav.skills': 'Habilidades', 'nav.awards': 'Prêmios', 'nav.blog': 'Blog', 'nav.lectures': 'Aulas', 'nav.cta': 'Diga Olá',
     'hero.desc': 'Fundador e CEO da <strong>A2SV</strong>, uma ONG apoiada pelo Google que transforma o ecossistema tech africano. 8+ anos no <strong>Google · Palantir · Liftoff</strong>. Em missão para conectar talento e oportunidade.',
     'hero.btn1': 'Explorar A2SV', 'hero.btn2': 'Entrar em contato',
     'about.tag': 'sobre mim', 'about.h': 'Construtor. Professor. <em>Transformador.</em>',
@@ -2654,7 +2674,7 @@ const translations = {
     'skill1.h': '🧭 Liderança &amp; Estratégia', 'skill2.h': '💻 Engenharia de Software', 'skill3.h': '🤖 IA &amp; Ciência de Dados', 'skill4.h': '☁️ Cloud &amp; Ferramentas', 'skill5.h': '📚 Ensino &amp; Mentoria', 'skill6.h': '✨ Interesses',
     'personal.h': 'Quando não <em>construo</em>', 'personal.p': 'Você me encontra com violão, numa trilha, assistindo Galatasaray, ou mergulhado num livro sobre psicologia, liderança ou estratégia.',
     'gallery.h': 'Momentos &amp; <em>Memórias</em>',
-    'gallery.cap1': 'GITEX 2024 · Marrocos', 'gallery.cap2': 'Universidade de Gana, Legon · Com estudantes da A2SV', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Final', 'gallery.cap4': 'Com Karim Beguir · Conselheiro da A2SV e fundador da InstaDeep', 'gallery.cap5': 'Com Anand Raju · Qatar Investment Authority. Colega de quarto em Bilkent, reencontro no Qatar 2025', 'gallery.cap6': 'Com o gerente da KOICA · Etiópia', 'gallery.cap7': 'Com a equipe finalista · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Palestrante, com painelistas', 'gallery.cap9': 'Global AI Summit on Africa 2025 · A equipe', 'gallery.cap10': 'Anos no Google · MTV Googleplex, 2015',
+    'gallery.cap1': 'GITEX 2024 · Marrocos', 'gallery.cap2': 'Universidade de Gana, Legon · Com estudantes da A2SV', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Final', 'gallery.cap4': 'Com Karim Beguir · Conselheiro da A2SV e fundador da InstaDeep', 'gallery.cap5': 'Com Anand Raju · Qatar Investment Authority. Colega de quarto em Bilkent, reencontro no Qatar 2025', 'gallery.cap6': 'Com o gerente da KOICA · Etiópia', 'gallery.cap7': 'Com a equipe finalista · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Palestrante, com painelistas', 'gallery.cap9': 'Global AI Summit on Africa 2025 · A equipe', 'gallery.cap10': 'Anos no Google · MTV Googleplex, 2015', 'gallery.cap11': 'Com o PM Abiy Ahmed · Startup Ethiopia 2024', 'gallery.cap12': 'Com Jeff Dean, Cientista-Chefe do Google · Silicon Valley', 'gallery.cap13': 'Com Hon. Paula Ingabire · Ministra de TIC de Ruanda', 'gallery.cap14': 'Com Hon. Haruna Iddrisu · Ministro da Educação de Gana',
     'resources.h': 'Documentos <em>A2SV</em>', 'resources.link1': 'Relatório de Impacto A2SV 5 Anos', 'resources.link2': 'Síntese A2SV',
     'blog.h': 'Do <em>Boletim</em>', 'blog.desc': 'Insights sobre talentos tech africanos, a jornada da A2SV e os engenheiros que moldam o futuro.', 'blog.viewall': 'Ver todos os artigos',
     'footer.purpose': 'Construído com propósito 🌍', 'about.badge.t': 'Anos no Silicon Valley',
@@ -2703,7 +2723,7 @@ const translations = {
   sw: {
     roles: ['Mwanzilishi na CEO wa A2SV', 'Mhandisi wa AI', 'Mhandisi wa Programu', 'Mvumbuzi wa Elimu', 'Mprogramaji wa Mashindano', 'Mjenzi wa Vipaji vya Teknolojia Afrika'],
     'nav.about': 'Kuhusu', 'nav.experience': 'Uzoefu', 'nav.products': 'Bidhaa ▾',
-    'nav.skills': 'Ujuzi', 'nav.awards': 'Tuzo', 'nav.blog': 'Blog', 'nav.cta': 'Salimiana',
+    'nav.skills': 'Ujuzi', 'nav.awards': 'Tuzo', 'nav.blog': 'Blog', 'nav.lectures': 'Mihadhara', 'nav.cta': 'Salimiana',
     'hero.desc': 'Mwanzilishi na CEO wa <strong>A2SV</strong>, shirika lisilo la faida linaloundwa na Google linaloibadilisha mfumo wa teknolojia barani Afrika. Miaka 8+ katika <strong>Google · Palantir · Liftoff</strong>. Kwa jukumu la kuunganisha vipaji na fursa.',
     'hero.btn1': 'Gundua A2SV', 'hero.btn2': 'Wasiliana',
     'about.tag': 'kuhusu mimi', 'about.h': 'Mjenzi. Mwalimu. <em>Mbadilishaji.</em>',
@@ -2737,7 +2757,7 @@ const translations = {
     'skill1.h': '🧭 Uongozi &amp; Mkakati', 'skill2.h': '💻 Uhandisi wa Programu', 'skill3.h': '🤖 AI &amp; Sayansi ya Data', 'skill4.h': '☁️ Cloud &amp; Zana', 'skill5.h': '📚 Kufundisha &amp; Ushauri', 'skill6.h': '✨ Maslahi',
     'personal.h': 'Ninapokuwa <em>sibuni</em>', 'personal.p': 'Utanipata na gitaa, kwenye njia ya kutembea, nikiangalia Galatasaray, au nikisoma kitabu cha saikolojia, uongozi au mkakati.',
     'gallery.h': 'Nyakati &amp; <em>Kumbukumbu</em>',
-    'gallery.cap1': 'GITEX 2024 · Moroko', 'gallery.cap2': 'Chuo Kikuu cha Ghana, Legon · Na wanafunzi wa A2SV', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Fainali', 'gallery.cap4': 'Na Karim Beguir · Mshauri wa A2SV na mwanzilishi wa InstaDeep', 'gallery.cap5': 'Na Anand Raju · Qatar Investment Authority. Mwenzake wa chumba Bilkent, tukakutana tena Qatar 2025', 'gallery.cap6': 'Na meneja wa KOICA · Ethiopia', 'gallery.cap7': 'Na timu ya fainali · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Mzungumzaji, na wanajopo', 'gallery.cap9': 'Global AI Summit on Africa 2025 · Timu', 'gallery.cap10': 'Miaka ya Google · MTV Googleplex, 2015',
+    'gallery.cap1': 'GITEX 2024 · Moroko', 'gallery.cap2': 'Chuo Kikuu cha Ghana, Legon · Na wanafunzi wa A2SV', 'gallery.cap3': 'A2SV AI Hackathon 2023 · Fainali', 'gallery.cap4': 'Na Karim Beguir · Mshauri wa A2SV na mwanzilishi wa InstaDeep', 'gallery.cap5': 'Na Anand Raju · Qatar Investment Authority. Mwenzake wa chumba Bilkent, tukakutana tena Qatar 2025', 'gallery.cap6': 'Na meneja wa KOICA · Ethiopia', 'gallery.cap7': 'Na timu ya fainali · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · Mzungumzaji, na wanajopo', 'gallery.cap9': 'Global AI Summit on Africa 2025 · Timu', 'gallery.cap10': 'Miaka ya Google · MTV Googleplex, 2015', 'gallery.cap11': 'Na PM Abiy Ahmed · Startup Ethiopia 2024', 'gallery.cap12': 'Na Jeff Dean, Mwanasayansi Mkuu wa Google · Silicon Valley', 'gallery.cap13': 'Na Mh. Paula Ingabire · Waziri wa TEHAMA wa Rwanda', 'gallery.cap14': 'Na Mh. Haruna Iddrisu · Waziri wa Elimu wa Ghana',
     'resources.h': 'Nyaraka za <em>A2SV</em>', 'resources.link1': 'Ripoti ya Athari ya A2SV miaka 5', 'resources.link2': 'Muhtasari wa A2SV',
     'blog.h': 'Kutoka <em>Jarida</em>', 'blog.desc': 'Maoni kuhusu talanta za teknolojia za Afrika, safari ya A2SV, na wahandisi wanaounda siku zijazo.', 'blog.viewall': 'Tazama makala zote',
     'footer.purpose': 'Imejengwa kwa kusudi 🌍', 'about.badge.t': 'Miaka huko Silicon Valley',
@@ -2786,7 +2806,7 @@ const translations = {
   am: {
     roles: ['የ A2SV መስራችና ዋና ስራ አስፈፃሚ', 'የAI መሃንዲስ', 'የሶፍትዌር መሃንዲስ', 'የትምህርት ፈጠራ ሰው', 'ተወዳዳሪ ፕሮግራመር', 'የአፍሪካ ቴክ ችሎታ ገንቢ'],
     'nav.about': 'ስለ እኔ', 'nav.experience': 'ልምድ', 'nav.products': 'ምርቶች ▾',
-    'nav.skills': 'ክህሎቶች', 'nav.awards': 'ሽልማቶች', 'nav.blog': 'ብሎግ', 'nav.cta': 'ሰላም በሉ',
+    'nav.skills': 'ክህሎቶች', 'nav.awards': 'ሽልማቶች', 'nav.blog': 'ብሎግ', 'nav.lectures': 'ትምህርቶች', 'nav.cta': 'ሰላም በሉ',
     'hero.desc': 'የ<strong>A2SV</strong> መስራችና ዋና ስራ አስፈፃሚ። A2SV የጎግል ድጋፍ ያለው ለትርፍ ያልተቋቋመ ድርጅት ሲሆን የአፍሪካን ቴክ ሥነ-ምህዳር እየቀየረ ነው። <strong>Google · Palantir · Liftoff</strong> ውስጥ ከ8 ዓመታት በላይ። ችሎታን ከዕድል ጋር ለማጣመር ያቀኑ።',
     'hero.btn1': 'A2SVን ዳስስ', 'hero.btn2': 'ያናግሩኝ',
     'about.tag': 'ስለ እኔ', 'about.h': 'ሰሪ። መምህር። <em>ቀያሪ።</em>',
@@ -2820,7 +2840,7 @@ const translations = {
     'skill1.h': '🧭 አመራር &amp; ስትራቴጂ', 'skill2.h': '💻 ሶፍትዌር ምህንድስና', 'skill3.h': '🤖 AI &amp; ዳታ ሳይንስ', 'skill4.h': '☁️ ክላውድ &amp; ቀምሶዎች', 'skill5.h': '📚 ማስተማር &amp; አማካሪ', 'skill6.h': '✨ ፍላጎቶች',
     'personal.h': 'ስገነባ <em>ስሆን</em>', 'personal.p': 'ጊታር ይዤ፣ ጉዞ ላይ፣ Galatasaray ጨዋታ ላይ ወይም ስነ-ልቦና፣ አመራር ወይም ስትራቴጂ ኪዳን ላይ ታገኘኛለህ።',
     'gallery.h': 'ቅፅበቶች &amp; <em>ትዝታዎች</em>',
-    'gallery.cap1': 'GITEX 2024 · ሞሮኮ', 'gallery.cap2': 'የጋና ዩኒቨርሲቲ፣ ሌጎን · ከA2SV ተማሪዎች ጋር', 'gallery.cap3': 'A2SV AI Hackathon 2023 · ፍፃሜ', 'gallery.cap4': 'ከካሪም ቤጊር ጋር · የA2SV አማካሪ እና የInstaDeep መስራች', 'gallery.cap5': 'ከአናንድ ራጁ ጋር · Qatar Investment Authority። በBilkent የክፍል ጓደኛ፣ በ2025 ቃታር ተገናኘን', 'gallery.cap6': 'ከKOICA ሥራ አስኪያጅ ጋር · ኢትዮጵያ', 'gallery.cap7': 'ከፍፃሜ ቡድን ጋር · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · ተናጋሪ፣ ከፓነሊስቶች ጋር', 'gallery.cap9': 'Global AI Summit on Africa 2025 · ቡድኑ', 'gallery.cap10': 'የGoogle ዓመታት · MTV Googleplex፣ 2015',
+    'gallery.cap1': 'GITEX 2024 · ሞሮኮ', 'gallery.cap2': 'የጋና ዩኒቨርሲቲ፣ ሌጎን · ከA2SV ተማሪዎች ጋር', 'gallery.cap3': 'A2SV AI Hackathon 2023 · ፍፃሜ', 'gallery.cap4': 'ከካሪም ቤጊር ጋር · የA2SV አማካሪ እና የInstaDeep መስራች', 'gallery.cap5': 'ከአናንድ ራጁ ጋር · Qatar Investment Authority። በBilkent የክፍል ጓደኛ፣ በ2025 ቃታር ተገናኘን', 'gallery.cap6': 'ከKOICA ሥራ አስኪያጅ ጋር · ኢትዮጵያ', 'gallery.cap7': 'ከፍፃሜ ቡድን ጋር · A2SV AI Hackathon 2023', 'gallery.cap8': 'Global AI Summit on Africa 2025 · ተናጋሪ፣ ከፓነሊስቶች ጋር', 'gallery.cap9': 'Global AI Summit on Africa 2025 · ቡድኑ', 'gallery.cap10': 'የGoogle ዓመታት · MTV Googleplex፣ 2015', 'gallery.cap11': 'ከጠቅላይ ሚኒስትር አብይ አህመድ ጋር · Startup Ethiopia 2024', 'gallery.cap12': 'ከጄፍ ዲን፣ የጎግል ዋና ሳይንቲስት ጋር · ሲሊከን ቫሊ', 'gallery.cap13': 'ከክብርት ፓውላ ኢንጋቢሬ ጋር · የሩዋንዳ የICT ሚኒስትር', 'gallery.cap14': 'ከክቡር ሃሩና ኢድሪሱ ጋር · የጋና የትምህርት ሚኒስትር',
     'resources.h': 'A2SV <em>ሰነዶች</em>', 'resources.link1': 'A2SV 5 ዓመት ተጽዕኖ ሪፖርት', 'resources.link2': 'A2SV ማጠቃለያ',
     'blog.h': 'ከ<em>ጋዜጣ</em>', 'blog.desc': 'ስለ አፍሪካ የቴክ ችሎታዎች፣ የA2SV ጉዞ እና የወደፊቱን የሚቀርጹ መሃንዲሶች ግንዛቤዎች።', 'blog.viewall': 'ሁሉንም ጽሑፎች ይመልከቱ',
     'footer.purpose': 'በዓላማ ተሠርቷል 🌍', 'about.badge.t': 'ዓመታት ሲሊኮን ቫሊ ውስጥ',

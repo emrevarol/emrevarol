@@ -120,11 +120,16 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 28px;
+      overflow: hidden;
       transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
       display: flex;
       flex-direction: column;
     }
+    .card-img {
+      width: 100%; aspect-ratio: 16/9; object-fit: cover;
+      display: block;
+    }
+    .card-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
 
     .card:hover {
       transform: translateY(-4px);
@@ -136,7 +141,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .tag {
@@ -175,7 +180,7 @@
       color: var(--muted);
       font-size: 0.9rem;
       line-height: 1.6;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       flex: 1;
     }
 
@@ -216,53 +221,53 @@
     <div class="articles">
 
       <a class="card" href="partner-with-us.html">
-        <div class="card-meta">
-          <span class="tag">Newsletter</span>
-          <span class="date">August 31, 2024</span>
+        <img class="card-img" src="../images/blog/partner-with-us.jpg" alt="Team A2SV at GITEX Africa 2024" loading="lazy">
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">Newsletter</span><span class="date">August 31, 2024</span></div>
+          <h2>Partner with Us to Cultivate the Next Generation of African Innovators</h2>
+          <p class="excerpt">From training 5 students to 800+ across 20 countries &mdash; the full A2SV origin story, our expansion to Ghana, and how you can join the mission.</p>
+          <span class="read-link">Read article &rarr;</span>
         </div>
-        <h2>Partner with Us to Cultivate the Next Generation of African Innovators</h2>
-        <p class="excerpt">From training 5 students to 800+ across 20 countries &mdash; the full A2SV origin story, our expansion to Ghana, and how you can join the mission.</p>
-        <span class="read-link">Read article &rarr;</span>
       </a>
 
       <a class="card" href="ai-for-impact-hackathon.html">
-        <div class="card-meta">
-          <span class="tag">Newsletter</span>
-          <span class="date">July 14, 2024</span>
+        <img class="card-img" src="../images/blog/ai-for-impact-hackathon.jpg" alt="A2SV AI for Impact Hackathon" loading="lazy">
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">Newsletter</span><span class="date">July 14, 2024</span></div>
+          <h2>Bringing African Tech Talent Together through the AI for Impact Hackathon</h2>
+          <p class="excerpt">How A2SV's 3-month hackathon reached 3,700+ participants across 47 African countries, with mentors from Google, Meta, and LinkedIn.</p>
+          <span class="read-link">Read article &rarr;</span>
         </div>
-        <h2>Bringing African Tech Talent Together through the AI for Impact Hackathon</h2>
-        <p class="excerpt">How A2SV's 3-month hackathon reached 3,700+ participants across 47 African countries, with mentors from Google, Meta, and LinkedIn.</p>
-        <span class="read-link">Read article &rarr;</span>
       </a>
 
       <a class="card" href="mahlet-dereje-haile.html">
-        <div class="card-meta">
-          <span class="tag">Newsletter</span>
-          <span class="date">April 15, 2024</span>
+        <img class="card-img" src="../images/blog/mahlet-dereje-haile.jpg" alt="Mahlet Dereje Haile" loading="lazy">
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">Newsletter</span><span class="date">April 15, 2024</span></div>
+          <h2>Mahlet Dereje Haile: Working at Google and Databricks</h2>
+          <p class="excerpt">From a small town 200km from Addis Ababa to internships at Google London and Databricks Amsterdam &mdash; an A2SV first-cohort success story.</p>
+          <span class="read-link">Read article &rarr;</span>
         </div>
-        <h2>Mahlet Dereje Haile: Working at Google and Databricks</h2>
-        <p class="excerpt">From a small town 200km from Addis Ababa to internships at Google London and Databricks Amsterdam &mdash; an A2SV first-cohort success story.</p>
-        <span class="read-link">Read article &rarr;</span>
       </a>
 
       <a class="card" href="a2sv-2023-year-in-review.html">
-        <div class="card-meta">
-          <span class="tag">Newsletter</span>
-          <span class="date">February 8, 2024</span>
+        <img class="card-img" src="../images/blog/a2sv-2023-year-in-review.jpg" alt="A2SV 2023 Year in Review" loading="lazy">
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">Newsletter</span><span class="date">February 8, 2024</span></div>
+          <h2>A2SV 2023: A Year of Inspiring Innovation and Pioneering Tech Education in Africa</h2>
+          <p class="excerpt">484 students educated, expansion to Ghana, 55 global job offers, Africa's largest AI hackathon, and 5 new products launched.</p>
+          <span class="read-link">Read article &rarr;</span>
         </div>
-        <h2>A2SV 2023: A Year of Inspiring Innovation and Pioneering Tech Education in Africa</h2>
-        <p class="excerpt">484 students educated, expansion to Ghana, 55 global job offers, Africa's largest AI hackathon, and 5 new products launched.</p>
-        <span class="read-link">Read article &rarr;</span>
       </a>
 
       <a class="card" href="generative-ai-hackathon.html">
-        <div class="card-meta">
-          <span class="tag">Newsletter</span>
-          <span class="date">December 4, 2023</span>
+        <img class="card-img" src="../images/blog/generative-ai-hackathon.jpg" alt="A2SV Generative AI Hackathon" loading="lazy">
+        <div class="card-body">
+          <div class="card-meta"><span class="tag">Newsletter</span><span class="date">December 4, 2023</span></div>
+          <h2>A2SV's Generative AI for Africa Hackathon: Weaving Dreams, Transforming Futures</h2>
+          <p class="excerpt">47 nations, 500+ project ideas, 8 finalist teams &mdash; inside A2SV's continent-wide hackathon from virtual workshops to the Grand Finale in Addis Ababa.</p>
+          <span class="read-link">Read article &rarr;</span>
         </div>
-        <h2>A2SV's Generative AI for Africa Hackathon: Weaving Dreams, Transforming Futures</h2>
-        <p class="excerpt">47 nations, 500+ project ideas, 8 finalist teams &mdash; inside A2SV's continent-wide hackathon from virtual workshops to the Grand Finale in Addis Ababa.</p>
-        <span class="read-link">Read article &rarr;</span>
       </a>
 
     </div>
