@@ -1943,10 +1943,10 @@
       </a>
     </div>
 
-    <form class="contact-form" action="https://formsubmit.co/ajax/emre@a2sv.org" method="POST">
+    <form class="contact-form" action="https://formsubmit.co/emre@a2sv.org" method="POST">
       <input type="hidden" name="_subject" value="New message from emrevarol.com" />
       <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_next" value="https://emrevarol.com/?sent=1" />
+      <input type="hidden" name="_next" value="https://emrevarol.com/?sent=1#contact" />
       <input type="text" name="_honey" style="display:none" />
       <div class="form-row">
         <div class="form-group">
@@ -3039,35 +3039,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (inner) inner.addEventListener('scroll', updateDocPage);
 });
 
-// ═══ CONTACT FORM (AJAX) ═══
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const btn = form.querySelector('.btn-send');
-  const origText = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = '...';
-  fetch(form.action, {
-    method: 'POST',
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-  }).then(r => {
-    if (r.ok) {
-      btn.textContent = translations[currentLang]?.['form.sent'] || 'Message Sent!';
-      btn.classList.add('sent');
-      form.reset();
-      setTimeout(() => { btn.textContent = origText; btn.classList.remove('sent'); btn.disabled = false; }, 4000);
-    } else {
-      btn.textContent = 'Error - try again';
-      btn.disabled = false;
-      setTimeout(() => { btn.textContent = origText; }, 3000);
-    }
-  }).catch(() => {
-    btn.textContent = 'Error - try again';
-    btn.disabled = false;
-    setTimeout(() => { btn.textContent = origText; }, 3000);
-  });
-});
+// ═══ SENT CONFIRMATION ═══
+if (window.location.search.includes('sent=1')) {
+  window.history.replaceState({}, '', '/#contact');
+  setTimeout(() => {
+    const btn = document.querySelector('.btn-send');
+    if (btn) { btn.textContent = 'Message Sent!'; btn.classList.add('sent'); setTimeout(() => { btn.textContent = 'Send Message'; btn.classList.remove('sent'); }, 4000); }
+  }, 500);
+}
 </script>
 </body>
 </html>
