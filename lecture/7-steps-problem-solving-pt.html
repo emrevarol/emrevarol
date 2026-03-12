@@ -1,0 +1,3139 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 Passos para uma Resolução de Problemas Altamente Eficaz - Aula A2SV por Emre Varol</title>
+  <meta name="description" content="O Manual da Entrevista: 7 Passos para uma Resolução de Problemas Altamente Eficaz. Uma aula A2SV por Emre Varol.">
+  <meta property="og:title" content="7 Passos para uma Resolução de Problemas Altamente Eficaz">
+  <meta property="og:description" content="O Manual da Entrevista - Aula A2SV por Emre Varol">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRL2RJSF51"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PRL2RJSF51');
+  </script>
+  <style>
+    :root {
+      --bg: #06060f;
+      --text: #f0f4ff;
+      --text-dim: #8892b0;
+      --text-muted: #5a6380;
+      --teal: #00e5b8;
+      --purple: #a855f7;
+      --red: #ef4444;
+      --green: #22c55e;
+      --orange: #f59e0b;
+      --blue: #3b82f6;
+      --code-bg: #0d1117;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 50% 100%; }
+      50% { background-position: 100% 50%; }
+      75% { background-position: 50% 0%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.15;
+        text-shadow: 0 0 40px rgba(0, 229, 184, 0.2);
+      }
+      50% {
+        opacity: 0.25;
+        text-shadow: 0 0 80px rgba(168, 85, 247, 0.3);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 229, 184, 0);
+      }
+      50% {
+        box-shadow: 0 0 20px 2px rgba(0, 229, 184, 0.15);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulseBorder {
+      0%, 100% {
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      50% {
+        border-color: rgba(239, 68, 68, 0.5);
+      }
+    }
+
+    @keyframes orbMove1 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(60px, -40px) scale(1.1); }
+      66% { transform: translate(-30px, 30px) scale(0.95); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes orbMove2 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-50px, 50px) scale(0.9); }
+      66% { transform: translate(40px, -20px) scale(1.05); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes orbMove3 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, 60px) scale(1.08); }
+      66% { transform: translate(-60px, -30px) scale(0.92); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1.5rem;
+      background: rgba(6, 6, 15, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.85rem;
+    }
+
+    .top-bar a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .top-bar a:hover {
+      color: var(--teal);
+    }
+
+    .top-bar .back-link::before {
+      content: '\2190 ';
+    }
+
+    .top-bar .materials-link::after {
+      content: ' \2192';
+    }
+
+    .a2sv-badge {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    /* ===== SLIDES CONTAINER ===== */
+    .slides-wrapper {
+      flex: 1;
+      position: relative;
+      margin-top: 42px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2.5rem 4rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slide.active .slide-inner {
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    .slide-inner {
+      max-width: 960px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* ===== DOT PATTERN BACKGROUND ===== */
+    .slides-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      );
+      background-size: 30px 30px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .slide {
+      z-index: 1;
+    }
+
+    /* ===== AURORA ORBS (title slide) ===== */
+    .aurora-orbs {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+    }
+
+    .aurora-orb:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 229, 184, 0.4), transparent 70%);
+      top: 10%;
+      left: 15%;
+      animation: orbMove1 12s ease-in-out infinite;
+    }
+
+    .aurora-orb:nth-child(2) {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.35), transparent 70%);
+      top: 40%;
+      right: 10%;
+      animation: orbMove2 15s ease-in-out infinite;
+    }
+
+    .aurora-orb:nth-child(3) {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+      bottom: 10%;
+      left: 40%;
+      animation: orbMove3 18s ease-in-out infinite;
+    }
+
+    /* ===== SECTION DIVIDER ANIMATED BG ===== */
+    .section-bg-animated {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 229, 184, 0.04),
+        rgba(168, 85, 247, 0.04),
+        rgba(59, 130, 246, 0.04),
+        rgba(0, 229, 184, 0.04)
+      );
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-dim);
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .big-text {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+      max-width: 800px;
+    }
+
+    .huge-text {
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .medium-text {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      text-align: center;
+      line-height: 1.7;
+      max-width: 700px;
+    }
+
+    .teal { color: var(--teal); }
+    .purple { color: var(--purple); }
+    .red { color: var(--red); }
+    .green { color: var(--green); }
+    .orange { color: var(--orange); }
+    .blue { color: var(--blue); }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 100%;
+      transition: border-color 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .problem-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 229, 184, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-dim);
+      max-width: 800px;
+      background: linear-gradient(135deg, rgba(0, 229, 184, 0.03), rgba(168, 85, 247, 0.03));
+    }
+
+    /* ===== GOOD/BAD COMPARISON ===== */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .compare-bad {
+      background: rgba(239, 68, 68, 0.06);
+      border-left: 3px solid var(--red);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-bad::before {
+      content: '\2717';
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 1.4rem;
+      color: rgba(239, 68, 68, 0.15);
+      font-weight: 900;
+    }
+
+    .compare-good {
+      background: rgba(34, 197, 94, 0.06);
+      border-left: 3px solid var(--green);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-good::before {
+      content: '\2713';
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 1.4rem;
+      color: rgba(34, 197, 94, 0.15);
+      font-weight: 900;
+    }
+
+    .compare-bad h4 {
+      color: var(--red);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .compare-good h4 {
+      color: var(--green);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .compare-bad ul,
+    .compare-good ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .compare-bad li::before {
+      content: '\2717 ';
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .compare-good li::before {
+      content: '\2713 ';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .compare-bad li,
+    .compare-good li {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-dim);
+    }
+
+    /* ===== BULLETS ===== */
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .bullets li {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-dim);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .bullets li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .bullets.red-bullets li::before {
+      color: var(--red);
+      content: '\2717';
+    }
+
+    .bullets.green-bullets li::before {
+      color: var(--green);
+      content: '\2713';
+    }
+
+    /* ===== ICON BULLETS ===== */
+    .icon-bullets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      max-width: 600px;
+    }
+
+    .icon-bullet {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      color: var(--text-dim);
+      padding: 0.6rem 1rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .icon-bullet:hover {
+      border-color: rgba(0, 229, 184, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .icon-bullet .ib-icon {
+      font-size: 1.2rem;
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    .code-block {
+      background: var(--code-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 229, 184, 0.03), 0 0 60px rgba(168, 85, 247, 0.03);
+    }
+
+    .code-block .kw { color: var(--purple); font-weight: 500; }
+    .code-block .fn { color: #60a5fa; }
+    .code-block .st { color: var(--teal); }
+    .code-block .cm { color: var(--text-muted); font-style: italic; }
+    .code-block .nb { color: var(--orange); }
+    .code-block .op { color: var(--text-dim); }
+    .code-block .var { color: var(--text); }
+
+    /* ===== SECTION DIVIDER ===== */
+    .section-divider {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .section-divider .big-number {
+      font-size: 12rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, rgba(0, 229, 184, 0.15), rgba(168, 85, 247, 0.15));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      user-select: none;
+      animation: glow 4s ease-in-out infinite;
+    }
+
+    .section-divider .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-top: -1rem;
+    }
+
+    .section-divider .section-quote {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      font-style: italic;
+      margin-top: 0.5rem;
+      max-width: 600px;
+    }
+
+    .section-divider .section-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .section-divider .section-bullets li {
+      font-size: 1rem;
+      color: var(--text-dim);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .section-divider .section-bullets li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    /* ===== STAIRCASE ===== */
+    .staircase {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .stair {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .stair:hover {
+      transform: translateX(8px) scale(1.02);
+      border-color: rgba(0, 229, 184, 0.3);
+      box-shadow: 0 0 20px rgba(0, 229, 184, 0.08);
+    }
+
+    .stair:nth-child(1) { margin-left: 0; }
+    .stair:nth-child(2) { margin-left: 1.5rem; }
+    .stair:nth-child(3) { margin-left: 3rem; }
+    .stair:nth-child(4) { margin-left: 4.5rem; }
+    .stair:nth-child(5) { margin-left: 3rem; }
+    .stair:nth-child(6) { margin-left: 1.5rem; }
+    .stair:nth-child(7) { margin-left: 0; }
+
+    .stair-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      color: #fff;
+    }
+
+    .stair-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ===== WARNING BOX ===== */
+    .warning-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 600px;
+      width: 100%;
+      animation: pulseBorder 3s ease-in-out infinite;
+    }
+
+    .warning-box h4 {
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .warning-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .warning-box li {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .warning-box li::before {
+      content: '\2717';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+    }
+
+    /* ===== ARRAY VIZ ===== */
+    .array-viz {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .array-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .array-cell {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--text-dim);
+      border-radius: 8px;
+      font-family: 'Fira Code', monospace;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .array-cell.highlight {
+      border-color: var(--teal);
+      background: rgba(0, 229, 184, 0.1);
+      color: var(--teal);
+    }
+
+    .array-cell.red-highlight {
+      border-color: var(--red);
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+    }
+
+    .array-index {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* ===== GRID VIZ ===== */
+    .grid-viz {
+      display: inline-grid;
+      grid-template-columns: repeat(3, 50px);
+      gap: 3px;
+    }
+
+    .grid-cell {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--text-dim);
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .grid-cell.center {
+      border-color: var(--teal);
+      background: rgba(0, 229, 184, 0.15);
+      color: var(--teal);
+    }
+
+    .grid-cell.neighbor {
+      background: rgba(168, 85, 247, 0.08);
+    }
+
+    .grid-cell.invalid {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-bar {
+      display: flex;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 48px;
+    }
+
+    .timeline-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #fff;
+      padding: 0 0.3rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .timeline-labels {
+      display: flex;
+      width: 100%;
+      margin-top: 0.3rem;
+    }
+
+    .timeline-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ===== BADGE CARDS ===== */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .badge-card {
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-dim);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .badge-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .badge-card.green-badge {
+      border-color: rgba(34, 197, 94, 0.3);
+      background: rgba(34, 197, 94, 0.06);
+    }
+
+    .badge-card.green-badge:hover {
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.1);
+    }
+
+    .badge-card.red-badge {
+      border-color: rgba(239, 68, 68, 0.3);
+      background: rgba(239, 68, 68, 0.06);
+    }
+
+    .badge-card.red-badge:hover {
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
+    }
+
+    .badge-card.teal-badge {
+      border-color: rgba(0, 229, 184, 0.3);
+      background: rgba(0, 229, 184, 0.06);
+    }
+
+    .badge-card.teal-badge:hover {
+      box-shadow: 0 0 15px rgba(0, 229, 184, 0.1);
+    }
+
+    /* ===== DIRECTION ARROWS ===== */
+    .direction-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 56px);
+      grid-template-rows: repeat(3, 56px);
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .dir-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      color: var(--text-muted);
+    }
+
+    .dir-cell.dir-center {
+      background: rgba(0, 229, 184, 0.15);
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .dir-cell.dir-active {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: var(--purple);
+    }
+
+    /* ===== REFERENCE CARD ===== */
+    .ref-card {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .ref-card li {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 2;
+      list-style: none;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .ref-card li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    /* ===== SPEECH BUBBLES ===== */
+    .speech-bubble {
+      position: relative;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .speech-bubble.bad-bubble {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: var(--text-dim);
+    }
+
+    .speech-bubble.good-bubble {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: var(--text-dim);
+    }
+
+    /* ===== TWO COL LAYOUT ===== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      align-items: start;
+    }
+
+    /* ===== COMPLEXITY BADGE ===== */
+    .complexity-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .complexity-badge.bad-c {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--red);
+    }
+
+    .complexity-badge.good-c {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+    }
+
+    /* ===== CODE TEXTURE (slide 1) ===== */
+    .code-texture {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.04;
+      pointer-events: none;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      line-height: 1.8;
+      color: var(--text);
+      white-space: pre;
+      padding: 2rem;
+      z-index: 0;
+    }
+
+    /* ===== TWO SIDE VIZ (slide 2) ===== */
+    .two-side-viz {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .viz-box {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    .viz-box.random-box {
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .viz-box.struct-box {
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .viz-label {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .chaos-arrows {
+      font-size: 1.6rem;
+      line-height: 2;
+      letter-spacing: 0.3rem;
+      color: var(--red);
+    }
+
+    .clean-steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .clean-step {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--green);
+    }
+
+    /* ===== GATE BOX ===== */
+    .gate-box {
+      background: rgba(168, 85, 247, 0.06);
+      border: 2px solid rgba(168, 85, 247, 0.3);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .gate-box h4 {
+      color: var(--purple);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===== EDGE CASE CARDS ===== */
+    .edge-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      max-width: 700px;
+    }
+
+    .edge-card {
+      background: rgba(0, 229, 184, 0.06);
+      border: 1px solid rgba(0, 229, 184, 0.2);
+      border-radius: 10px;
+      padding: 0.75rem 1.2rem;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      max-width: 300px;
+      transition: transform 0.2s, border-color 0.3s;
+    }
+
+    .edge-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 229, 184, 0.4);
+    }
+
+    /* ===== EDGE CASE GRID ===== */
+    .edge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .edge-category {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+
+    .edge-category h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .edge-category ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .edge-category li {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .edge-category li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    @media (max-width: 768px) {
+      .edge-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== NAV ===== */
+    .nav-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-dim);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .nav-arrow:hover {
+      background: rgba(0, 229, 184, 0.1);
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .nav-prev { left: 1rem; }
+    .nav-next { right: 1rem; }
+
+    /* ===== BOTTOM BAR ===== */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .progress-bar {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--purple));
+      transition: width 0.3s ease;
+    }
+
+    .slide-counter {
+      text-align: center;
+      padding: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+      background: rgba(6, 6, 15, 0.9);
+    }
+
+    /* ===== TOC OVERLAY ===== */
+    .toc-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(6, 6, 15, 0.96);
+      backdrop-filter: blur(16px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 2rem;
+      overflow-y: auto;
+    }
+
+    .toc-overlay.open {
+      display: flex;
+    }
+
+    .toc-overlay h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .toc-list li {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .toc-list li:hover {
+      background: rgba(0, 229, 184, 0.08);
+      color: var(--teal);
+    }
+
+    .toc-list li .toc-num {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      min-width: 2rem;
+      text-align: right;
+    }
+
+    .toc-list li.toc-section {
+      font-weight: 700;
+      color: var(--teal);
+      margin-top: 0.5rem;
+    }
+
+    .toc-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    /* ===== CODE ANNOTATION ===== */
+    .code-with-notes {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      width: 100%;
+      align-items: start;
+    }
+
+    .code-annotations {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .annotation {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .annotation.red-ann {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+    }
+
+    .annotation.green-ann {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      background: rgba(0, 229, 184, 0.08);
+      border: 1px solid rgba(0, 229, 184, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      max-width: 600px;
+      font-size: 1rem;
+      color: var(--teal);
+      font-weight: 500;
+      text-align: center;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    /* ===== BEFORE/AFTER ===== */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .ba-box {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .ba-box.before {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .ba-box.after {
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .ba-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .ba-code {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    /* ===== 3 BULLET RULE ===== */
+    .three-giant {
+      font-size: 10rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .three-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .three-box {
+      padding: 0.75rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      font-size: 1rem;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    /* ===== PIVOT ===== */
+    .pivot-text {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== TEST CARDS ===== */
+    .test-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .test-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+    }
+
+    .test-card .tc-input {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--teal);
+      flex: 1;
+    }
+
+    .test-card .tc-reason {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ===== QUOTE OF THE DAY ===== */
+    .quote-slide {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .quote-mark {
+      font-size: 8rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      user-select: none;
+      opacity: 0.6;
+      margin-bottom: -2rem;
+    }
+
+    .quote-text {
+      font-size: 2rem;
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.5;
+      max-width: 750px;
+      background: linear-gradient(135deg, var(--text), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .quote-attribution {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.4rem; }
+      .big-text { font-size: 1.5rem; }
+      .huge-text { font-size: 2rem; }
+      .slide { padding: 2.5rem 1.2rem 3.5rem; }
+      .comparison { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .two-side-viz { grid-template-columns: 1fr; }
+      .code-with-notes { grid-template-columns: 1fr; }
+      .icon-bullets { grid-template-columns: 1fr; }
+      .badge-grid { grid-template-columns: 1fr 1fr; }
+      .before-after { grid-template-columns: 1fr; }
+      .section-divider .big-number { font-size: 6rem; }
+      .three-giant { font-size: 6rem; }
+      .nav-arrow { width: 36px; height: 36px; font-size: 1rem; }
+      .nav-prev { left: 0.5rem; }
+      .nav-next { right: 0.5rem; }
+      .code-block { font-size: 0.75rem; padding: 1rem; }
+      .stair { margin-left: 0 !important; }
+      .timeline-bar { height: 36px; }
+      .timeline-seg { font-size: 0.55rem; }
+      .top-bar { font-size: 0.75rem; padding: 0.5rem 0.8rem; }
+      .quote-text { font-size: 1.4rem; }
+      .quote-mark { font-size: 5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .badge-grid { grid-template-columns: 1fr; }
+      .edge-cards { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="https://emrevarol.com" class="back-link">emrevarol.com</a>
+  <a href="materials-7-steps.html" class="materials-link">Materials</a>
+  <span class="a2sv-badge">A2SV</span>
+</div>
+
+<!-- NAV ARROWS -->
+<button class="nav-arrow nav-prev" onclick="goSlide(current-1)" aria-label="Previous">&lsaquo;</button>
+<button class="nav-arrow nav-next" onclick="goSlide(current+1)" aria-label="Next">&rsaquo;</button>
+
+<!-- SLIDES -->
+<div class="slides-wrapper" id="slidesWrapper">
+
+  <!-- SLIDE 1: Title -->
+  <div class="slide" data-slide="1">
+    <div class="aurora-orbs">
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+    </div>
+    <div class="code-texture">def solve(problem):
+    understand(problem)
+    manual_solve(example)
+    design_algorithm()
+    attack_own_idea()
+    implement()
+    test_comprehensively()
+    simplify()
+    return solution
+
+class Interview:
+    def __init__(self):
+        self.steps = 7
+        self.clarity = True
+        self.speed = False
+
+# The Playbook
+for step in range(1, 8):
+    execute(step)
+    communicate(step)
+    verify(step)</div>
+    <div class="slide-inner">
+      <h1 style="font-size: 3.2rem">
+        7 Passos para uma<br>
+        <span class="gradient-text">Resolução de Problemas</span> Altamente Eficaz
+      </h1>
+      <p class="subtitle" style="margin-top: 0.5rem">O Manual da Entrevista</p>
+      <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted)">A2SV - Emre Varol</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Why a Playbook? -->
+  <div class="slide" data-slide="2">
+    <div class="slide-inner">
+      <h2>Por que um Manual?</h2>
+      <ul class="bullets">
+        <li>Entrevistas criam pressão</li>
+        <li>Pressão destrói o pensamento aleatório</li>
+        <li>Um manual cria consistência</li>
+        <li>Consistência supera brilhantismo ocasional</li>
+      </ul>
+      <div class="two-side-viz" style="margin-top: 1rem">
+        <div class="viz-box random-box">
+          <div class="viz-label red">Aleatório</div>
+          <div class="chaos-arrows">
+            &nearr; &swarr; &nwarr; &searr;<br>
+            &darr; &uarr; &rarr; &larr;<br>
+            &swarr; &nearr; &searr; &nwarr;
+          </div>
+        </div>
+        <div class="viz-box struct-box">
+          <div class="viz-label green">Estruturado</div>
+          <div class="clean-steps">
+            <span class="clean-step">1. Entender</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">2. Manual</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">3. Projetar</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">4. Atacar</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">5. Codificar</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">6. Testar</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">7. Limpar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: The Goal -->
+  <div class="slide" data-slide="3">
+    <div class="slide-inner">
+      <p class="big-text" style="margin-bottom: 2rem">
+        Não apenas resolver problemas -<br>
+        mas resolvê-los <span class="gradient-text">de forma confiável sob pressão</span>
+      </p>
+      <div class="icon-bullets">
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> Melhor julgamento
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> Menos erros evitáveis
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> Comunicação mais clara
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> Mais aprovações em entrevistas
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: The 7 Steps -->
+  <div class="slide" data-slide="4">
+    <div class="slide-inner">
+      <h2>Os 7 Passos</h2>
+      <div class="staircase">
+        <div class="stair">
+          <div class="stair-num">1</div>
+          <div class="stair-text">Entenda o problema</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">2</div>
+          <div class="stair-text">Resolva o problema manualmente</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">3</div>
+          <div class="stair-text">Elabore uma ideia de solução</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">4</div>
+          <div class="stair-text">Ataque sua própria ideia</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">5</div>
+          <div class="stair-text">Implemente</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">6</div>
+          <div class="stair-text">Teste de forma abrangente</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">7</div>
+          <div class="stair-text">Simplifique e limpe o código</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Biggest Mistake -->
+  <div class="slide" data-slide="5">
+    <div class="slide-inner">
+      <h2>O Maior Erro do Candidato</h2>
+      <p class="huge-text red" style="margin: 1rem 0">Começar a programar cedo demais</p>
+      <div class="warning-box">
+        <h4>Consequências</h4>
+        <ul>
+          <li>Entendimento errado</li>
+          <li>Algoritmo errado</li>
+          <li>Complexidade errada</li>
+          <li>Tempo desperdiçado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Section Divider Step 1 -->
+  <div class="slide" data-slide="6">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">01</div>
+        <div class="section-title">Entenda o Problema</div>
+        <ul class="section-bullets">
+          <li>Leia devagar</li>
+          <li>Processe cada frase</li>
+          <li>Extraia as restrições</li>
+          <li>Reformule com suas próprias palavras</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Good vs Bad Step 1 -->
+  <div class="slide" data-slide="7">
+    <div class="slide-inner">
+      <h2>Passo 1: Bom vs Ruim</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Ruim</h4>
+          <ul>
+            <li>Lê o problema por cima</li>
+            <li>Supõe o que está sendo pedido</li>
+            <li>Começa a programar após ler uma vez</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Bom</h4>
+          <ul>
+            <li>Reformula entrada e saída</li>
+            <li>Identifica restrições</li>
+            <li>Confirma exatamente o que deve ser retornado</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Two Sum Problem -->
+  <div class="slide" data-slide="8">
+    <div class="slide-inner">
+      <h2>Exemplo de Problema: Two Sum</h2>
+      <div class="problem-card">
+        Dado um array de inteiros <code>nums</code> e um inteiro <code>target</code>,
+        retorne os <strong>índices</strong> dos dois números cuja soma é igual ao target.
+        Assuma que exatamente uma resposta válida existe e que o mesmo elemento não pode ser usado duas vezes.
+      </div>
+      <div style="margin-top: 1rem; text-align: center">
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem">
+          target = <span class="teal" style="font-weight: 700">9</span>
+        </div>
+        <div class="array-viz">
+          <div class="array-col">
+            <div class="array-cell highlight">2</div>
+            <div class="array-index">0</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell highlight">7</div>
+            <div class="array-index">1</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell">11</div>
+            <div class="array-index">2</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell">15</div>
+            <div class="array-index">3</div>
+          </div>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--teal); margin-top: 0.5rem; font-weight: 500">
+          2 + 7 = 9 &rarr; return [0, 1]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: Good Step 1 on Two Sum -->
+  <div class="slide" data-slide="9">
+    <div class="slide-inner">
+      <h2>Bom Passo 1 no Two Sum</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">Candidato diz:</h3>
+          <ul class="bullets green-bullets">
+            <li>Entrada: array + target</li>
+            <li>Saída: dois índices</li>
+            <li>Retornamos posições, não valores</li>
+            <li>Exatamente uma resposta existe</li>
+            <li>Não pode reutilizar o mesmo elemento</li>
+          </ul>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="highlight-box">
+            Nenhuma ambiguidade restante.<br>
+            Restrições importantes capturadas.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Bad Step 1 on Two Sum -->
+  <div class="slide" data-slide="10">
+    <div class="slide-inner">
+      <h2>Passo 1 Ruim no Two Sum</h2>
+      <div class="warning-box" style="max-width: 700px">
+        <h4>Comportamento Ruim do Candidato</h4>
+        <ul>
+          <li>"Eu só preciso de dois números que somem"</li>
+          <li>Esquece índices vs valores</li>
+          <li>Ignora a restrição de exatamente-uma-resposta</li>
+          <li>Ignora a regra de não-reutilizar-o-mesmo-elemento</li>
+        </ul>
+      </div>
+      <p style="margin-top: 1rem; color: var(--orange); font-weight: 600; font-size: 0.95rem">
+        Código que parece correto ainda pode estar errado.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: Section Divider Step 2 -->
+  <div class="slide" data-slide="11">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">02</div>
+        <div class="section-title">Resolva o Problema Manualmente</div>
+        <div class="section-quote">"Se você não consegue fazer à mão, não consegue automatizar."</div>
+        <ul class="section-bullets">
+          <li>Comece com o exemplo</li>
+          <li>Acompanhe suas decisões</li>
+          <li>Procure por repetição</li>
+          <li>Extraia o padrão</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Good vs Bad Step 2 -->
+  <div class="slide" data-slide="12">
+    <div class="slide-inner">
+      <h2>Passo 2: Bom vs Ruim</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Ruim</h4>
+          <ul>
+            <li>Pula da leitura para o código</li>
+            <li>Diz "Acho que sei o truque"</li>
+            <li>Nunca verifica um exemplo pequeno</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Bom</h4>
+          <ul>
+            <li>Trabalha com a entrada de exemplo</li>
+            <li>Percebe ações repetitivas</li>
+            <li>Extrai quais informações ajudariam</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: Manual Walkthrough Two Sum -->
+  <div class="slide" data-slide="13">
+    <div class="slide-inner">
+      <h2>Passo a Passo Manual: Two Sum</h2>
+      <div style="font-family: 'Fira Code', monospace; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1rem">
+        nums = [2, 7, 11, 15], target = 9
+      </div>
+      <div class="array-viz" style="margin-bottom: 1rem">
+        <div class="array-col">
+          <div class="array-cell highlight">2</div>
+          <div class="array-index">0</div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--text-muted); display: flex; align-items: center">
+          &rarr;
+        </div>
+        <div class="array-col" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center">
+          <div style="font-size: 0.85rem; color: var(--text-dim)">
+            Precisa de <span class="teal" style="font-weight: 600">7</span>
+          </div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--text-muted); display: flex; align-items: center">
+          &rarr;
+        </div>
+        <div class="array-col">
+          <div class="array-cell highlight">7</div>
+          <div class="array-index">1</div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--green); display: flex; align-items: center">
+          &check;
+        </div>
+      </div>
+      <div style="font-size: 0.95rem; color: var(--teal); font-weight: 600; margin-bottom: 1rem">
+        Resposta: [0, 1]
+      </div>
+      <div class="highlight-box">
+        Padrão descoberto: Para cada número, preciso do seu complemento.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: Key Question Step 2 -->
+  <div class="slide" data-slide="14">
+    <div class="slide-inner">
+      <p class="big-text">
+        "O que estou <span class="gradient-text">verificando repetidamente</span> à mão?"
+      </p>
+      <p class="medium-text" style="margin-top: 1.5rem">
+        Para Two Sum: "O número necessário já existe?"
+      </p>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center">
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">hash map</span>
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">busca rápida</span>
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">O(n) solution</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: Section Divider Step 3 -->
+  <div class="slide" data-slide="15">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">03</div>
+        <div class="section-title">Elabore uma Ideia de Solução</div>
+        <ul class="section-bullets">
+          <li>Generalize seu processo manual</li>
+          <li>Escolha a estrutura de dados certa</li>
+          <li>Verifique a complexidade de tempo</li>
+          <li>Verifique a complexidade de espaço</li>
+          <li>Preencha lacunas lógicas antes de programar</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: The Complexity Gate -->
+  <div class="slide" data-slide="16">
+    <div class="slide-inner">
+      <h2>O Portão da Complexidade</h2>
+      <div class="gate-box">
+        <h4>Antes de escrever código, pergunte:</h4>
+        <ul class="bullets" style="max-width: 100%">
+          <li>A força bruta é boa o suficiente?</li>
+          <li>O que as restrições permitem?</li>
+          <li>Funções auxiliares escondem custo extra?</li>
+          <li>Tenho certeza de que isso pode passar?</li>
+        </ul>
+      </div>
+      <p style="margin-top: 1.5rem; font-weight: 700; font-size: 1.15rem; color: var(--purple)">
+        Nenhum código antes deste portão.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: Good vs Bad Step 3 -->
+  <div class="slide" data-slide="17">
+    <div class="slide-inner">
+      <h2>Passo 3: Bom vs Ruim</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Ruim <span class="complexity-badge bad-c" style="margin-left: 0.5rem">O(n&sup2;)</span></h4>
+          <ul>
+            <li>"Vou só programar e ver"</li>
+            <li>Sem discussão de complexidade</li>
+            <li>Lógica vaga</li>
+            <li>Estrutura de dados escolhida aleatoriamente</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Bom <span class="complexity-badge good-c" style="margin-left: 0.5rem">O(n)</span></h4>
+          <ul>
+            <li>Apresenta a força bruta primeiro</li>
+            <li>Melhora intencionalmente</li>
+            <li>Escolhe estrutura baseada na necessidade</li>
+            <li>Explica por que se encaixa nas restrições</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 18: Two Sum Good Design -->
+  <div class="slide" data-slide="18">
+    <div class="slide-inner">
+      <h2>Two Sum: Bom Design</h2>
+      <div class="two-col">
+        <div class="card" style="border-color: var(--text-muted); opacity: 0.6">
+          <h3 style="font-size: 1rem; color: var(--text-muted)">Força Bruta</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem">Tente todos os pares</p>
+          <p class="complexity-badge bad-c" style="margin-top: 0.5rem">O(n&sup2;)</p>
+        </div>
+        <div class="card" style="border-color: rgba(0, 229, 184, 0.3)">
+          <h3 style="font-size: 1rem; color: var(--teal)">Melhor</h3>
+          <p style="font-size: 0.95rem; color: var(--text-dim); margin-top: 0.5rem">
+            Armazene números vistos em dict, verifique o complemento
+          </p>
+          <p class="complexity-badge good-c" style="margin-top: 0.5rem">O(n)</p>
+        </div>
+      </div>
+      <div style="margin-top: 1rem; display: flex; align-items: center; gap: 1rem; color: var(--text-muted)">
+        <span style="font-size: 2rem">&rarr;</span>
+        <span style="font-style: italic; font-size: 0.95rem">melhoria</span>
+        <span style="font-size: 2rem">&rarr;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 19: Python Two Sum Core -->
+  <div class="slide" data-slide="19">
+    <div class="slide-inner">
+      <h2>Python: Ideia Central do Two Sum</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">two_sum</span>(nums, target):
+    seen = {}
+
+    <span class="kw">for</span> i, num <span class="kw">in</span> <span class="fn">enumerate</span>(nums):
+        need = target - num
+        <span class="kw">if</span> need <span class="kw">in</span> seen:
+            <span class="kw">return</span> [seen[need], i]
+        seen[num] = i</div>
+        <div class="code-annotations">
+          <div class="annotation green-ann">Curto</div>
+          <div class="annotation green-ann">Legível</div>
+          <div class="annotation green-ann">Estrutura corresponde à necessidade</div>
+          <div class="annotation green-ann">Complexidade é clara</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 20: Section Divider Step 4 -->
+  <div class="slide" data-slide="20">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">04</div>
+        <div class="section-title">Ataque Sua Própria Ideia</div>
+        <div class="section-quote">
+          "Faça o papel de advogado do diabo. Imagine que seu pior inimigo teve essa ideia. Você faria o seu melhor para destruí-la."
+        </div>
+        <ul class="section-bullets">
+          <li>Faça o advogado do diabo com sua própria solução</li>
+          <li>Tente quebrá-la com entradas adversárias</li>
+          <li>Encontre suposições ocultas</li>
+          <li>Procure por casos extremos</li>
+          <li>Refute sua própria solução antes que o entrevistador o faça</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 21: Good vs Bad Step 4 -->
+  <div class="slide" data-slide="21">
+    <div class="slide-inner">
+      <h2>Passo 4: Bom vs Ruim</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Ruim</h4>
+          <ul>
+            <li>"Isso deveria funcionar"</li>
+            <li>Sem pensamento sobre casos extremos</li>
+            <li>Emocionalmente apegado à primeira ideia</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Bom</h4>
+          <ul>
+            <li>Busca ativamente por falhas</li>
+            <li>Verifica suposições</li>
+            <li>Pergunta qual entrada quebraria a lógica</li>
+            <li>Faz o advogado do diabo contra a própria solução</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 22: Edge-Case Questions -->
+  <div class="slide" data-slide="22">
+    <div class="slide-inner">
+      <h2>Perguntas sobre Casos Extremos</h2>
+      <div class="edge-grid">
+        <div class="edge-category" style="border-color: rgba(0, 229, 184, 0.2)">
+          <h4 class="teal">Limites de Entrada</h4>
+          <ul>
+            <li>Entrada vazia</li>
+            <li>Elemento único</li>
+            <li>Tamanho máximo</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(168, 85, 247, 0.2)">
+          <h4 class="purple">Casos Extremos de Valor</h4>
+          <ul>
+            <li>Duplicatas</li>
+            <li>Negativos</li>
+            <li>Zeros</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(59, 130, 246, 0.2)">
+          <h4 class="blue">Verificação de Suposições</h4>
+          <ul>
+            <li>Ordenado vs desordenado</li>
+            <li>Único vs repetido</li>
+            <li>Overflow</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 23: Hidden Assumption Example -->
+  <div class="slide" data-slide="23">
+    <div class="slide-inner">
+      <h2>Exemplo de uma Suposição Oculta</h2>
+      <div class="warning-box" style="max-width: 700px">
+        <h4>Suposição ruim: "A entrada está ordenada."</h4>
+        <ul>
+          <li style="list-style: none; padding-left: 0">Isso foi garantido?</li>
+        </ul>
+      </div>
+      <p style="color: var(--orange); font-weight: 600; margin-top: 0.75rem; font-size: 0.95rem">
+        Se não, uma ideia de dois ponteiros pode falhar completamente.
+      </p>
+      <div class="two-col" style="max-width: 500px; margin-top: 1rem">
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--green); font-weight: 600; margin-bottom: 0.5rem">Ordenado</div>
+          <div class="array-viz">
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">1</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">2</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">3</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">4</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">5</div></div>
+          </div>
+        </div>
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--red); font-weight: 600; margin-bottom: 0.5rem">Desordenado</div>
+          <div class="array-viz">
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">3</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">1</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">4</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">2</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">5</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 24: Section Divider Step 5 -->
+  <div class="slide" data-slide="24">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">05</div>
+        <div class="section-title">Implemente</div>
+        <div class="section-quote">"Agora programe. Mas programe com disciplina:"</div>
+        <ul class="section-bullets">
+          <li>Escreva em blocos</li>
+          <li>Use nomes claros</li>
+          <li>Use funções auxiliares quando útil</li>
+          <li>Explique o que cada bloco faz</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 25: Good vs Bad Step 5 -->
+  <div class="slide" data-slide="25">
+    <div class="slide-inner">
+      <h2>Passo 5: Bom vs Ruim</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Ruim</h4>
+          <ul>
+            <li>Bloco gigante de código</li>
+            <li>Nomes ruins de variáveis</li>
+            <li>Sem estrutura</li>
+            <li>Difícil de explicar</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Bom</h4>
+          <ul>
+            <li>Nomes limpos</li>
+            <li>Funções auxiliares onde necessário</li>
+            <li>Implementação bloco a bloco</li>
+            <li>Fácil de explicar</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 26: Bad Python Example -->
+  <div class="slide" data-slide="26">
+    <div class="slide-inner">
+      <h2 class="red">Implementação Ruim</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">f</span>(a, t):
+    d = {}
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(a)):
+        x = t - a[i]
+        <span class="kw">if</span> x <span class="kw">in</span> d:
+            <span class="kw">return</span> [d[x], i]
+        d[a[i]] = i</div>
+        <div class="code-annotations">
+          <div class="annotation red-ann">f?</div>
+          <div class="annotation red-ann">a?</div>
+          <div class="annotation red-ann">t?</div>
+          <div class="annotation red-ann">d?</div>
+          <div class="annotation red-ann">x?</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; text-align: center; max-width: 600px">
+        Nomes vagos &rarr; mais difícil de explicar &rarr; menor legibilidade &rarr; mais fácil de se confundir
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 27: Better Python Example -->
+  <div class="slide" data-slide="27">
+    <div class="slide-inner">
+      <h2 class="green">Implementação Melhor</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">two_sum</span>(nums, target):
+    value_to_index = {}
+
+    <span class="kw">for</span> index, num <span class="kw">in</span> <span class="fn">enumerate</span>(nums):
+        needed = target - num
+        <span class="kw">if</span> needed <span class="kw">in</span> value_to_index:
+            <span class="kw">return</span> [value_to_index[needed], index]
+
+        value_to_index[num] = index</div>
+        <div class="code-annotations">
+          <div class="annotation green-ann">two_sum &check;</div>
+          <div class="annotation green-ann">value_to_index &check;</div>
+          <div class="annotation green-ann">needed &check;</div>
+          <div class="annotation green-ann">index, num &check;</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; text-align: center; max-width: 600px">
+        Legível &rarr; amigável ao entrevistador &rarr; mais fácil de depurar &rarr; mais fácil de narrar
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 28: Helper Function Example -->
+  <div class="slide" data-slide="28">
+    <div class="slide-inner">
+      <h2>Padrão de Função Auxiliar: Problemas de Grade</h2>
+      <p class="medium-text" style="margin-bottom: 1rem">
+        Dada uma grade 2D, visite vizinhos válidos para calcular ou atualizar um resultado.
+      </p>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">is_valid</span>(row, col, rows, cols):
+    <span class="kw">return</span> <span class="nb">0</span> &lt;= row &lt; rows <span class="kw">and</span> <span class="nb">0</span> &lt;= col &lt; cols</div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="grid-viz">
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&uarr;</div>
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&larr;</div>
+            <div class="grid-cell center">c</div>
+            <div class="grid-cell neighbor">&rarr;</div>
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&darr;</div>
+            <div class="grid-cell neighbor"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 29: Direction Vector Pattern -->
+  <div class="slide" data-slide="29">
+    <div class="slide-inner">
+      <h2>Padrão de Vetor de Direção</h2>
+      <div class="code-with-notes">
+        <div class="code-block">directions = [
+    (<span class="nb">-1</span>, <span class="nb">0</span>),   <span class="cm"># up</span>
+    (<span class="nb">1</span>,  <span class="nb">0</span>),   <span class="cm"># down</span>
+    (<span class="nb">0</span>, <span class="nb">-1</span>),   <span class="cm"># left</span>
+    (<span class="nb">0</span>,  <span class="nb">1</span>),   <span class="cm"># right</span>
+]</div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem">
+          <div class="direction-grid">
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&uarr;</div>
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&larr;</div>
+            <div class="dir-cell dir-center">c</div>
+            <div class="dir-cell dir-active">&rarr;</div>
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&darr;</div>
+            <div class="dir-cell"></div>
+          </div>
+        </div>
+      </div>
+      <ul class="bullets" style="margin-top: 1rem">
+        <li>Menos código repetido</li>
+        <li>Menos erros</li>
+        <li>Lógica de travessia mais limpa</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SLIDE 30: Section Divider Step 6 -->
+  <div class="slide" data-slide="30">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">06</div>
+        <div class="section-title">Teste de Forma Abrangente</div>
+        <div class="section-quote">"Testar não é opcional. Testar é parte da solução."</div>
+        <ul class="section-bullets">
+          <li>Caso de exemplo</li>
+          <li>Caso extremo</li>
+          <li>Caso difícil</li>
+          <li>Caso de fronteira</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 31: Good vs Bad Step 6 -->
+  <div class="slide" data-slide="31">
+    <div class="slide-inner">
+      <h2>Passo 6: Bom vs Ruim</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Ruim - "Aleatório"</h4>
+          <ul>
+            <li>Testa apenas a entrada de exemplo</li>
+            <li>Tenta valores aleatórios</li>
+            <li>Para após o primeiro sucesso</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Bom - "Intencional"</h4>
+          <ul>
+            <li>Cada teste tem um motivo</li>
+            <li>Mira nas suposições</li>
+            <li>Cobre fronteiras e duplicatas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 32: Two Sum Testing -->
+  <div class="slide" data-slide="32">
+    <div class="slide-inner">
+      <h2>Two Sum: Exemplos de Teste</h2>
+      <div class="test-cards">
+        <div class="test-card">
+          <span class="tc-input">[2, 7, 11, 15], target 9</span>
+          <span class="tc-reason">caso básico</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[3, 3], target 6</span>
+          <span class="tc-reason">valores duplicados</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[1, 2, 3, 4], target 7</span>
+          <span class="tc-reason">resposta no final</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[5, 4], target 9</span>
+          <span class="tc-reason">entrada muito pequena</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        A lógica ainda funciona quando o mesmo valor aparece duas vezes?
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 33: What Interviewers Notice -->
+  <div class="slide" data-slide="33">
+    <div class="slide-inner">
+      <h2>O que Entrevistadores Percebem nos Testes</h2>
+      <p class="medium-text">Quando você testa sem ser pedido, você sinaliza:</p>
+      <div class="badge-grid" style="max-width: 500px; margin-top: 1rem">
+        <div class="badge-card green-badge">Disciplina</div>
+        <div class="badge-card green-badge">Responsabilidade</div>
+        <div class="badge-card green-badge">Maturidade</div>
+        <div class="badge-card green-badge">Mentalidade de Engenheiro</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 34: Section Divider Step 7 -->
+  <div class="slide" data-slide="34">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">07</div>
+        <div class="section-title">Simplifique e Limpe</div>
+        <div class="section-quote">"Depois que o código funcionar:"</div>
+        <ul class="section-bullets">
+          <li>Melhore os nomes</li>
+          <li>Remova a desordem</li>
+          <li>Simplifique a lógica</li>
+          <li>Adicione comentários mínimos se útil</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 35: Good vs Bad Step 7 -->
+  <div class="slide" data-slide="35">
+    <div class="slide-inner">
+      <h2>Passo 7: Bom vs Ruim</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Ruim</h4>
+          <ul>
+            <li>Deixa nomes confusos</li>
+            <li>Mantém código morto</li>
+            <li>Não faz revisão final</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Bom</h4>
+          <ul>
+            <li>Remove a desordem</li>
+            <li>Melhora a clareza</li>
+            <li>Facilita a explicação final</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 36: Before and After Naming -->
+  <div class="slide" data-slide="36">
+    <div class="slide-inner">
+      <h2>Antes e Depois da Nomenclatura</h2>
+      <div class="before-after">
+        <div class="ba-box before">
+          <div class="ba-label red">Antes</div>
+          <div class="ba-code red">mp = {}</div>
+        </div>
+        <div class="ba-box after">
+          <div class="ba-label green">Depois</div>
+          <div class="ba-code green">value_to_index = {}</div>
+        </div>
+      </div>
+      <p class="big-text" style="margin-top: 2rem">Clareza é parte da correção.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 37: The 3-Bullet Rule -->
+  <div class="slide" data-slide="37">
+    <div class="slide-inner">
+      <h2>A Regra dos 3 Pontos</h2>
+      <div class="three-giant">3</div>
+      <div class="three-boxes">
+        <div class="three-box">Qual é a ideia</div>
+        <div class="three-box">Por que funciona</div>
+        <div class="three-box">Por que é eficiente o suficiente</div>
+      </div>
+      <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic">
+        Se você precisa de 10 pontos, ainda não entendeu claramente.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 38: The 40-Minute Timeline -->
+  <div class="slide" data-slide="38">
+    <div class="slide-inner">
+      <h2>Linha do Tempo de 40 Minutos da Entrevista</h2>
+      <div style="width: 100%; max-width: 800px">
+        <div class="timeline-bar">
+          <div class="timeline-seg" style="flex: 5; background: var(--teal)">0-5 min</div>
+          <div class="timeline-seg" style="flex: 5; background: var(--blue)">5-10</div>
+          <div class="timeline-seg" style="flex: 8; background: var(--purple)">10-18</div>
+          <div class="timeline-seg" style="flex: 12; background: var(--green)">18-30</div>
+          <div class="timeline-seg" style="flex: 6; background: var(--orange)">30-36</div>
+          <div class="timeline-seg" style="flex: 4; background: var(--text-muted)">36-40</div>
+        </div>
+        <div class="timeline-labels" style="margin-top: 0.5rem">
+          <div class="timeline-label" style="flex: 5">Entender<br>&amp; reformular</div>
+          <div class="timeline-label" style="flex: 5">Resolver<br>manualmente</div>
+          <div class="timeline-label" style="flex: 8">Projetar &amp;<br>complexidade</div>
+          <div class="timeline-label" style="flex: 12">Implementar</div>
+          <div class="timeline-label" style="flex: 6">Testar</div>
+          <div class="timeline-label" style="flex: 4">Limpar<br>&amp; resumir</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 39: The Pivot Rule -->
+  <div class="slide" data-slide="39">
+    <div class="slide-inner">
+      <h2>A Regra do Pivô</h2>
+      <p class="medium-text">Se você gasta 5-7 minutos e:</p>
+      <ul class="bullets red-bullets" style="margin: 0.75rem 0">
+        <li>Não consegue justificar a complexidade</li>
+        <li>Continua falhando nos casos extremos</li>
+        <li>Não consegue explicar por que funciona</li>
+      </ul>
+      <div class="pivot-text">PIVOT</div>
+      <div class="badge-grid" style="max-width: 600px; margin-top: 1rem">
+        <div class="badge-card teal-badge">Nova estrutura de dados</div>
+        <div class="badge-card teal-badge">Nova perspectiva</div>
+        <div class="badge-card teal-badge">Versão mais simples primeiro</div>
+        <div class="badge-card teal-badge">Peça uma dica focada</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 40: Good vs Bad Hint Request -->
+  <div class="slide" data-slide="40">
+    <div class="slide-inner">
+      <h2>Pedido de Dica Bom vs Pedido de Dica Ruim</h2>
+      <div class="two-col" style="max-width: 700px; align-items: center">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem">
+          <div style="font-size: 0.8rem; color: var(--red); font-weight: 700; text-transform: uppercase">Bad</div>
+          <div class="speech-bubble bad-bubble">"Estou travado."</div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem">
+          <div style="font-size: 0.8rem; color: var(--green); font-weight: 700; text-transform: uppercase">Melhor</div>
+          <div class="speech-bubble good-bubble">
+            "Tenho uma solução O(n&sup2;), mas acho que as restrições precisam de algo mais rápido. Devo pensar em hashing ou ordenação?"
+          </div>
+        </div>
+      </div>
+      <p class="medium-text" style="margin-top: 1.5rem">
+        Por que é melhor: mostra progresso, mostra consciência, faz uma pergunta direcionada.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 41: Communication Script -->
+  <div class="slide" data-slide="41">
+    <div class="slide-inner">
+      <h2>Roteiro de Comunicação Reutilizável</h2>
+      <div class="ref-card">
+        <ul>
+          <li>"Deixe-me reformular o problema."</li>
+          <li>"Vou começar com um exemplo pequeno."</li>
+          <li>"A força bruta é O(n&sup2;), mas acho que podemos fazer melhor."</li>
+          <li>"Vou implementar isso em duas partes."</li>
+          <li>"Agora vou testar os casos extremos."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 42: Image Smoother Section Divider -->
+  <div class="slide" data-slide="42">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number" style="font-size: 8rem">II</div>
+        <div class="section-title">Passo a Passo Completo: Image Smoother</div>
+        <div class="section-quote">"Vamos aplicar todos os 7 passos a um segundo problema."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 43: Image Smoother Problem Statement -->
+  <div class="slide" data-slide="43">
+    <div class="slide-inner">
+      <h2>Problema: Image Smoother</h2>
+      <div class="problem-card">
+        Você recebe uma grade de inteiros 2D representando valores de pixels de uma imagem.
+        Para cada célula, calcule o <strong>piso</strong> da média das células
+        vizinhas válidas ao redor dela, incluindo a própria célula.
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center">
+        <div class="grid-viz" style="grid-template-columns: repeat(3, 56px); gap: 4px">
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell center" style="width: 56px; height: 56px">0</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+        </div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
+        Célula central destacada em verde-azulado, vizinhos sombreados
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 44: Step 1 on Image Smoother -->
+  <div class="slide" data-slide="44">
+    <div class="slide-inner">
+      <h2>Passo 1: Entenda &mdash; Image Smoother</h2>
+      <ul class="bullets green-bullets" style="margin-bottom: 1.5rem">
+        <li>Entrada: matriz de inteiros m &times; n</li>
+        <li>Saída: outra matriz m &times; n</li>
+        <li>Use apenas vizinhos válidos (ciente das fronteiras)</li>
+        <li>Inclua a própria célula central na média</li>
+        <li>A média usa divisão inteira (piso)</li>
+      </ul>
+      <div class="two-col" style="max-width: 400px">
+        <div style="text-align: center">
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem">
+            Canto: 3 vizinhos + própria = 4
+          </div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 40px); gap: 3px">
+            <div class="grid-cell center" style="width: 40px; height: 40px; font-size: 0.7rem">c</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+          </div>
+        </div>
+        <div style="text-align: center">
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem">
+            Centro: 8 vizinhos + própria = 9
+          </div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 40px); gap: 3px">
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell center" style="width: 40px; height: 40px; font-size: 0.7rem">c</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 45: Step 2 on Image Smoother - Manual Walkthrough -->
+  <div class="slide" data-slide="45">
+    <div class="slide-inner">
+      <h2>Passo 2: Resolução Manual &mdash; Image Smoother</h2>
+      <p class="medium-text" style="margin-bottom: 1rem">
+        Calcule o valor suavizado para a célula (0,0) à mão:
+      </p>
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 2rem; flex-wrap: wrap">
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem">Grade de entrada</div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 50px); gap: 3px">
+            <div class="grid-cell center" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">0</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; font-family: 'Fira Code', monospace; font-size: 0.9rem; color: var(--text-dim)">
+          <div>Cell (0,0) = <span class="teal">1</span></div>
+          <div>Vizinhos válidos:</div>
+          <div style="padding-left: 1rem">(0,1) = 1</div>
+          <div style="padding-left: 1rem">(1,0) = 1</div>
+          <div style="padding-left: 1rem">(1,1) = 0</div>
+          <div style="margin-top: 0.5rem">Sum = 1 + 1 + 1 + 0 = <span class="teal">3</span></div>
+          <div>Count = <span class="teal">4</span></div>
+          <div style="color: var(--teal); font-weight: 600">floor(3/4) = 0</div>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Padrão: para cada célula, reúna vizinhos válidos, some-os, divida pela contagem.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 46: Step 3 on Image Smoother - Design -->
+  <div class="slide" data-slide="46">
+    <div class="slide-inner">
+      <h2>Passo 3: Projetar &mdash; Image Smoother</h2>
+      <div class="two-col" style="max-width: 700px; align-items: start">
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">Decisões Chave</h3>
+          <ul class="bullets green-bullets">
+            <li>Use 9 offsets de direção (incluindo o centro)</li>
+            <li>Use verificação de limites <code>is_valid</code></li>
+            <li>Aloque uma nova matriz de saída</li>
+            <li>Itere cada célula na grade</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">Complexidade</h3>
+          <ul class="bullets">
+            <li>Cada célula verifica até 9 vizinhos</li>
+            <li>Total: O(m &times; n &times; 9) = <span class="teal" style="font-weight: 600">O(m &times; n)</span></li>
+            <li>Space: <span class="teal" style="font-weight: 600">O(m &times; n)</span> for output</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center">
+        <div class="direction-grid">
+          <div class="dir-cell dir-active">&nwarr;</div>
+          <div class="dir-cell dir-active">&uarr;</div>
+          <div class="dir-cell dir-active">&nearr;</div>
+          <div class="dir-cell dir-active">&larr;</div>
+          <div class="dir-cell dir-center">c</div>
+          <div class="dir-cell dir-active">&rarr;</div>
+          <div class="dir-cell dir-active">&swarr;</div>
+          <div class="dir-cell dir-active">&darr;</div>
+          <div class="dir-cell dir-active">&searr;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 47: Step 4 on Image Smoother - Attack -->
+  <div class="slide" data-slide="47">
+    <div class="slide-inner">
+      <h2>Passo 4: Atacar &mdash; Image Smoother</h2>
+      <div class="edge-grid">
+        <div class="edge-category" style="border-color: rgba(0, 229, 184, 0.2)">
+          <h4 class="teal">Perguntas de Fronteira</h4>
+          <ul>
+            <li>Cantos têm apenas 4 células (incluindo a própria)</li>
+            <li>Bordas têm apenas 6 células</li>
+            <li>E uma grade 1&times;1?</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(168, 85, 247, 0.2)">
+          <h4 class="purple">Perguntas de Valor</h4>
+          <ul>
+            <li>A célula central está incluída na média?</li>
+            <li>Divisão inteira (piso), não arredondamento</li>
+            <li>Todos os mesmos valores &rarr; inalterado?</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(59, 130, 246, 0.2)">
+          <h4 class="blue">Armadilhas de Implementação</h4>
+          <ul>
+            <li>Modificar a entrada no local (corrompe leituras posteriores)</li>
+            <li>Erro de um na verificação de limites</li>
+            <li>Divisão inteira vs ponto flutuante</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Insight chave: precisamos de uma matriz de saída separada porque ler e escrever na mesma grade corrompe os resultados.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 48: Step 5 on Image Smoother - Implement Part 1 -->
+  <div class="slide" data-slide="48">
+    <div class="slide-inner">
+      <h2>Passo 5: Implementar &mdash; Image Smoother (Configuração)</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">image_smoother</span>(img):
+    rows, cols = <span class="fn">len</span>(img), <span class="fn">len</span>(img[<span class="nb">0</span>])
+    output = [[<span class="nb">0</span>] * cols <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(rows)]
+
+    neighbors = [
+        (<span class="nb">-1</span>, <span class="nb">-1</span>), (<span class="nb">-1</span>, <span class="nb">0</span>), (<span class="nb">-1</span>, <span class="nb">1</span>),
+        (<span class="nb">0</span>,  <span class="nb">-1</span>), (<span class="nb">0</span>,  <span class="nb">0</span>), (<span class="nb">0</span>,  <span class="nb">1</span>),
+        (<span class="nb">1</span>,  <span class="nb">-1</span>), (<span class="nb">1</span>,  <span class="nb">0</span>), (<span class="nb">1</span>,  <span class="nb">1</span>),
+    ]</div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 44px); gap: 3px">
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,-1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">0,-1</div>
+            <div class="grid-cell center" style="width: 44px; height: 44px; font-size: 0.65rem">0,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">0,1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,-1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 49: Step 5 on Image Smoother - Implement Part 2 (Full) -->
+  <div class="slide" data-slide="49">
+    <div class="slide-inner">
+      <h2>Passo 5: Implementar &mdash; Solução Completa</h2>
+      <div class="code-block" style="max-width: 900px; font-size: 0.82rem"><span class="kw">def</span> <span class="fn">image_smoother</span>(img):
+    rows, cols = <span class="fn">len</span>(img), <span class="fn">len</span>(img[<span class="nb">0</span>])
+    output = [[<span class="nb">0</span>] * cols <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(rows)]
+
+    neighbors = [
+        (<span class="nb">-1</span>, <span class="nb">-1</span>), (<span class="nb">-1</span>, <span class="nb">0</span>), (<span class="nb">-1</span>, <span class="nb">1</span>),
+        (<span class="nb">0</span>,  <span class="nb">-1</span>), (<span class="nb">0</span>,  <span class="nb">0</span>), (<span class="nb">0</span>,  <span class="nb">1</span>),
+        (<span class="nb">1</span>,  <span class="nb">-1</span>), (<span class="nb">1</span>,  <span class="nb">0</span>), (<span class="nb">1</span>,  <span class="nb">1</span>),
+    ]
+
+    <span class="kw">for</span> row <span class="kw">in</span> <span class="fn">range</span>(rows):
+        <span class="kw">for</span> col <span class="kw">in</span> <span class="fn">range</span>(cols):
+            total = <span class="nb">0</span>
+            count = <span class="nb">0</span>
+
+            <span class="kw">for</span> dr, dc <span class="kw">in</span> neighbors:
+                nr, nc = row + dr, col + dc
+                <span class="kw">if</span> <span class="nb">0</span> &lt;= nr &lt; rows <span class="kw">and</span> <span class="nb">0</span> &lt;= nc &lt; cols:
+                    total += img[nr][nc]
+                    count += <span class="nb">1</span>
+
+            output[row][col] = total // count
+
+    <span class="kw">return</span> output</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 50: Step 6 on Image Smoother - Test -->
+  <div class="slide" data-slide="50">
+    <div class="slide-inner">
+      <h2>Passo 6: Testar &mdash; Image Smoother</h2>
+      <div class="test-cards">
+        <div class="test-card">
+          <span class="tc-input">[[1,1,1],[1,0,1],[1,1,1]]</span>
+          <span class="tc-reason">caso de exemplo &mdash; célula central cercada</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[5,5,5],[5,5,5],[5,5,5]]</span>
+          <span class="tc-reason">todos os mesmos valores &rarr; saída inalterada</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[7]]</span>
+          <span class="tc-reason">1&times;1 grid &rarr; output is [[7]]</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[1,1,1],[1,0,1],[1,1,1]], cell (0,0)</span>
+          <span class="tc-reason">célula de canto: (1+1+1+0)/4 = piso(3/4) = 0</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Cada teste mira uma fronteira ou suposição específica.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 51: Step 7 on Image Smoother - Clean Up -->
+  <div class="slide" data-slide="51">
+    <div class="slide-inner">
+      <h2>Passo 7: Limpeza &mdash; Image Smoother</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Antes da Limpeza</h4>
+          <ul>
+            <li>Nome de variável <code>d</code> para direções</li>
+            <li>Números mágicos como <code>-1</code>, <code>1</code> espalhados</li>
+            <li>Sem comentários na verificação de limites</li>
+            <li>Risco de mutação no local</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Depois da Limpeza</h4>
+          <ul>
+            <li><code>neighbors</code> é autodocumentado</li>
+            <li>Offsets de direção agrupados visualmente</li>
+            <li>Matriz de saída separada é explícita</li>
+            <li>O código lê como o algoritmo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Verificação final: Você consegue explicar cada linha em uma frase?
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 52: Image Smoother Good vs Bad Summary -->
+  <div class="slide" data-slide="52">
+    <div class="slide-inner">
+      <h2>Image Smoother: Bom vs Ruim</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Ruim</h4>
+          <ul>
+            <li>Começa a programar loops imediatamente</li>
+            <li>Esquece a alocação de saída</li>
+            <li>Esquece verificações de fronteira</li>
+            <li>Repete 9 condições manualmente</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Bom</h4>
+          <ul>
+            <li>Identifica problema de vizinhos na grade</li>
+            <li>Usa offsets de vizinhos</li>
+            <li>Aloca saída primeiro</li>
+            <li>Trata limites centralmente</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 53: What Strong Candidates Do -->
+  <div class="slide" data-slide="53">
+    <div class="slide-inner">
+      <h2>O que Candidatos Fortes Fazem</h2>
+      <div class="badge-grid" style="max-width: 600px">
+        <div class="badge-card green-badge">Desaceleram no início</div>
+        <div class="badge-card green-badge">Pensam antes de programar</div>
+        <div class="badge-card green-badge">Desafiam suas próprias ideias</div>
+        <div class="badge-card green-badge">Testam intencionalmente</div>
+        <div class="badge-card green-badge">Comunicam com clareza</div>
+        <div class="badge-card green-badge">Recuperam-se com calma</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 54: What Weak Candidates Do -->
+  <div class="slide" data-slide="54">
+    <div class="slide-inner">
+      <h2>O que Candidatos Fracos Fazem</h2>
+      <div class="badge-grid" style="max-width: 600px">
+        <div class="badge-card red-badge">Correm para o código</div>
+        <div class="badge-card red-badge">Ignoram restrições</div>
+        <div class="badge-card red-badge">Esperam que a ideia funcione</div>
+        <div class="badge-card red-badge">Pulam casos extremos</div>
+        <div class="badge-card red-badge">Entram em pânico quando travados</div>
+        <div class="badge-card red-badge">Nunca limpam o código</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 55: One-Sentence Summary -->
+  <div class="slide" data-slide="55">
+    <div class="slide-inner">
+      <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center">
+        <p class="huge-text gradient-text">Clareza primeiro.</p>
+        <p class="huge-text" style="color: var(--text)">Correção segundo.</p>
+        <p class="huge-text" style="color: var(--text-dim)">Velocidade terceiro.</p>
+      </div>
+      <p class="medium-text" style="margin-top: 2rem">
+        Velocidade sem clareza cria soluções erradas.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 56: Quote of the Day -->
+  <div class="slide" data-slide="56">
+    <div class="aurora-orbs">
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="quote-slide">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="quote-text">
+          O problema não é o problema. O problema é a sua atitude em relação ao problema.
+          Você entende?
+        </div>
+        <div class="quote-attribution">
+          - Capitão Jack Sparrow
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /slides-wrapper -->
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar">
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="slide-counter" id="slideCounter">1 / 56</div>
+</div>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="tocOverlay">
+  <button class="toc-close" onclick="closeToc()">&times;</button>
+  <h2>Índice</h2>
+  <ul class="toc-list" id="tocList"></ul>
+</div>
+
+<script>
+  const TOTAL = 56;
+  let current = 1;
+
+  const slideTitles = {
+    1: 'Título',
+    2: 'Por que um Manual?',
+    3: 'O Objetivo',
+    4: 'Os 7 Passos',
+    5: 'O Maior Erro do Candidato',
+    6: 'Passo 1: Entenda o Problema',
+    7: 'Passo 1: Bom vs Ruim',
+    8: 'Problema: Two Sum',
+    9: 'Bom Passo 1 no Two Sum',
+    10: 'Passo 1 Ruim no Two Sum',
+    11: 'Passo 2: Resolva o Problema Manualmente',
+    12: 'Passo 2: Bom vs Ruim',
+    13: 'Passo a Passo Manual: Two Sum',
+    14: 'Pergunta Chave no Passo 2',
+    15: 'Passo 3: Elabore uma Ideia de Solução',
+    16: 'O Portão da Complexidade',
+    17: 'Passo 3: Bom vs Ruim',
+    18: 'Two Sum: Bom Design',
+    19: 'Python: Ideia Central do Two Sum',
+    20: 'Passo 4: Ataque Sua Própria Ideia',
+    21: 'Passo 4: Bom vs Ruim',
+    22: 'Perguntas sobre Casos Extremos',
+    23: 'Exemplo de Suposição Oculta',
+    24: 'Passo 5: Implemente',
+    25: 'Passo 5: Bom vs Ruim',
+    26: 'Implementação Ruim',
+    27: 'Implementação Melhor',
+    28: 'Padrão de Função Auxiliar',
+    29: 'Padrão de Vetor de Direção',
+    30: 'Passo 6: Teste de Forma Abrangente',
+    31: 'Passo 6: Bom vs Ruim',
+    32: 'Two Sum: Exemplos de Teste',
+    33: 'O que Entrevistadores Percebem',
+    34: 'Passo 7: Simplifique e Limpe',
+    35: 'Passo 7: Bom vs Ruim',
+    36: 'Antes e Depois da Nomenclatura',
+    37: 'A Regra dos 3 Pontos',
+    38: 'Linha do Tempo de 40 Minutos',
+    39: 'A Regra do Pivô',
+    40: 'Pedido de Dica Bom vs Ruim',
+    41: 'Roteiro de Comunicação',
+    42: 'Passo a Passo: Image Smoother',
+    43: 'Problema: Image Smoother',
+    44: 'Passo 1: Entenda - Image Smoother',
+    45: 'Passo 2: Resolução Manual - Image Smoother',
+    46: 'Passo 3: Projetar - Image Smoother',
+    47: 'Passo 4: Atacar - Image Smoother',
+    48: 'Passo 5: Implementar - Image Smoother (Config.)',
+    49: 'Passo 5: Implementar - Solução Completa',
+    50: 'Passo 6: Testar - Image Smoother',
+    51: 'Passo 7: Limpeza - Image Smoother',
+    52: 'Image Smoother: Bom vs Ruim',
+    53: 'O que Candidatos Fortes Fazem',
+    54: 'O que Candidatos Fracos Fazem',
+    55: 'Clareza. Correção. Velocidade.',
+    56: 'Citação do Dia'
+  };
+
+  const sectionSlides = [1, 6, 11, 15, 20, 24, 30, 34, 42, 53];
+
+  // Build TOC
+  (function buildToc() {
+    const list = document.getElementById('tocList');
+    for (let i = 1; i <= TOTAL; i++) {
+      const li = document.createElement('li');
+      if (sectionSlides.includes(i)) li.classList.add('toc-section');
+      li.innerHTML = '<span class="toc-num">' + i + '</span> ' + (slideTitles[i] || '');
+      li.onclick = function () { goSlide(i); closeToc(); };
+      list.appendChild(li);
+    }
+  })();
+
+  function goSlide(n) {
+    if (n < 1 || n > TOTAL) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.getElementById('slideCounter').textContent = current + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = ((current / TOTAL) * 100) + '%';
+    history.replaceState(null, '', '#' + current);
+  }
+
+  function openToc() { document.getElementById('tocOverlay').classList.add('open'); }
+  function closeToc() { document.getElementById('tocOverlay').classList.remove('open'); }
+
+  // Keyboard
+  document.addEventListener('keydown', function (e) {
+    if (document.getElementById('tocOverlay').classList.contains('open')) {
+      if (e.key === 'Escape') closeToc();
+      return;
+    }
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ':
+        e.preventDefault(); goSlide(current + 1); break;
+      case 'ArrowLeft': case 'ArrowUp':
+        e.preventDefault(); goSlide(current - 1); break;
+      case 'Home':
+        e.preventDefault(); goSlide(1); break;
+      case 'End':
+        e.preventDefault(); goSlide(TOTAL); break;
+      case 'Escape':
+        openToc(); break;
+    }
+  });
+
+  // Touch/swipe
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) goSlide(current + 1);
+      else goSlide(current - 1);
+    }
+  }, { passive: true });
+
+  // Init from hash
+  (function init() {
+    const hash = parseInt(location.hash.replace('#', ''), 10);
+    const start = (hash >= 1 && hash <= TOTAL) ? hash : 1;
+    document.querySelector('.slide[data-slide="' + start + '"]').classList.add('active');
+    current = start;
+    document.getElementById('slideCounter').textContent = current + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = ((current / TOTAL) * 100) + '%';
+    history.replaceState(null, '', '#' + current);
+  })();
+
+  // Handle hash change
+  window.addEventListener('hashchange', function () {
+    const hash = parseInt(location.hash.replace('#', ''), 10);
+    if (hash >= 1 && hash <= TOTAL && hash !== current) goSlide(hash);
+  });
+</script>
+</body>
+</html>

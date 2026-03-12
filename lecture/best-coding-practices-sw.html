@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mazoea Bora ya Uandishi wa Msimbo na Ukaguzi Madhubuti wa Msimbo — Emre Varol | A2SV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRL2RJSF51"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PRL2RJSF51');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+--bg:#06060f;--bg2:#0c0c1a;--bg3:#12122a;
+--text:#f0f4ff;--text-muted:#8892b0;--text-dim:#4a5178;
+--teal:#00e5b8;--purple:#a855f7;--red:#ef4444;--orange:#f59e0b;--green:#22c55e;
+--code-bg:#0d1117;--code-border:#1e293b;
+--font-sans:'Inter',system-ui,sans-serif;
+--font-mono:'Fira Code',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font-sans);}
+#deck{position:relative;width:100%;height:100%;}
+.slide{
+position:absolute;top:0;left:0;width:100%;height:100%;
+display:flex;flex-direction:column;justify-content:center;
+padding:60px 80px 80px;
+opacity:0;pointer-events:none;
+transition:opacity .45s ease,transform .45s ease;
+transform:translateX(40px);
+overflow-y:auto;
+}
+.slide.active{opacity:1;pointer-events:auto;transform:translateX(0);}
+.slide.prev{opacity:0;transform:translateX(-40px);}
+.slide.section-divider{
+background:linear-gradient(135deg,rgba(0,229,184,.08) 0%,rgba(168,85,247,.08) 100%);
+border-left:4px solid var(--teal);
+text-align:center;
+justify-content:center;
+align-items:center;
+}
+.slide.section-divider h1{font-size:2.6rem;margin-bottom:24px;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.slide.section-divider .sub{font-size:1.2rem;color:var(--text-muted);max-width:700px;line-height:1.7;}
+h1{font-size:2.2rem;font-weight:800;margin-bottom:28px;letter-spacing:-.02em;line-height:1.2;}
+h2{font-size:1.6rem;font-weight:700;margin-bottom:20px;color:var(--teal);}
+h3{font-size:1.2rem;font-weight:600;margin-bottom:12px;color:var(--purple);}
+p,.bullet{font-size:1.05rem;line-height:1.7;color:var(--text-muted);}
+.bullet{margin-bottom:8px;padding-left:24px;position:relative;}
+.bullet::before{content:'';position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:var(--teal);}
+.bullet.red::before{background:var(--red);}
+.bullet.green::before{background:var(--green);}
+.bullet.orange::before{background:var(--orange);}
+.bullet.purple::before{background:var(--purple);}
+.bullet.dim::before{background:var(--text-dim);}
+.callout{
+background:rgba(0,229,184,.06);border:1px solid rgba(0,229,184,.2);border-left:4px solid var(--teal);
+padding:18px 24px;border-radius:8px;margin-top:24px;font-size:1.05rem;color:var(--text);line-height:1.6;
+}
+.callout.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2);border-left-color:var(--red);}
+.callout.purple{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.2);border-left-color:var(--purple);}
+pre{
+background:var(--code-bg);border:1px solid var(--code-border);border-radius:10px;
+padding:20px 24px;font-family:var(--font-mono);font-size:.88rem;line-height:1.7;
+overflow-x:auto;margin:16px 0;color:#c9d1d9;
+}
+code{font-family:var(--font-mono);font-size:.88rem;}
+.kw{color:var(--purple);font-weight:500;}
+.fn{color:#79c0ff;}
+.str{color:#a5d6ff;}
+.cm{color:#6e7681;font-style:italic;}
+.num{color:var(--orange);}
+.op{color:var(--red);}
+.param{color:var(--orange);}
+.dec{color:var(--teal);}
+.cols{display:flex;gap:40px;margin-top:16px;}
+.col{flex:1;}
+.col h3{margin-bottom:12px;}
+.big-quote{
+font-size:1.8rem;font-weight:700;line-height:1.5;text-align:center;
+max-width:800px;margin:0 auto;
+background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.warn-list .bullet::before{background:var(--red);}
+.ok-list .bullet::before{background:var(--teal);}
+#progress{position:fixed;bottom:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--purple));transition:width .4s ease;z-index:100;}
+#counter{
+position:fixed;bottom:16px;right:24px;font-size:.85rem;color:var(--text-dim);
+font-family:var(--font-mono);z-index:100;
+}
+.nav-arrow{
+position:fixed;top:50%;transform:translateY(-50%);
+width:48px;height:48px;border-radius:50%;
+background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+color:var(--text-muted);font-size:1.2rem;cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+transition:background .2s,color .2s;z-index:100;
+}
+.nav-arrow:hover{background:rgba(0,229,184,.1);color:var(--teal);}
+#prev-btn{left:16px;}
+#next-btn{right:16px;}
+#topbar{
+position:fixed;top:0;left:0;right:0;height:48px;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 24px;z-index:100;
+background:rgba(6,6,15,.85);backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.04);
+}
+#topbar a{color:var(--text-muted);text-decoration:none;font-size:.8rem;font-weight:500;transition:color .2s;}
+#topbar a:hover{color:var(--teal);}
+.a2sv-badge{font-size:.7rem;color:var(--text-dim);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+#toc-overlay{
+position:fixed;inset:0;background:rgba(6,6,15,.95);backdrop-filter:blur(20px);
+z-index:200;display:none;flex-direction:column;align-items:center;
+padding:60px 40px;overflow-y:auto;
+}
+#toc-overlay.open{display:flex;}
+#toc-overlay h2{margin-bottom:30px;font-size:1.6rem;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;width:100%;max-width:1100px;}
+.toc-item{
+padding:10px 16px;border-radius:8px;cursor:pointer;
+font-size:.78rem;color:var(--text-muted);
+background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);
+transition:background .2s,color .2s;display:flex;gap:10px;align-items:center;
+}
+.toc-item:hover{background:rgba(0,229,184,.08);color:var(--text);}
+.toc-item .num{color:var(--teal);font-family:var(--font-mono);font-weight:600;min-width:28px;}
+.toc-item.section{background:rgba(168,85,247,.08);border-color:rgba(168,85,247,.15);color:var(--purple);font-weight:600;}
+#toc-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--text-muted);font-size:1.4rem;cursor:pointer;}
+@media(max-width:768px){
+.slide{padding:60px 28px 70px;}
+h1{font-size:1.6rem;}
+h2{font-size:1.2rem;}
+.cols{flex-direction:column;gap:20px;}
+pre{font-size:.75rem;padding:14px;}
+.big-quote{font-size:1.3rem;}
+.nav-arrow{width:36px;height:36px;font-size:1rem;}
+#prev-btn{left:8px;}
+#next-btn{right:8px;}
+.toc-grid{grid-template-columns:1fr;}
+}
+.slide.title-slide{text-align:center;align-items:center;}
+.slide.title-slide h1{font-size:2.8rem;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.slide.title-slide .subtitle{font-size:1.2rem;color:var(--purple);margin-bottom:32px;font-weight:600;}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:20px 0;}
+.flow-step{
+background:rgba(0,229,184,.08);border:1px solid rgba(0,229,184,.2);
+padding:10px 18px;border-radius:8px;font-size:.85rem;font-weight:500;color:var(--teal);
+}
+.flow-arrow{color:var(--text-dim);font-size:1.2rem;}
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;}
+.badge.red{background:rgba(239,68,68,.12);color:var(--red);}
+.badge.green{background:rgba(34,197,94,.12);color:var(--green);}
+.sp{height:16px;}
+.sp2{height:8px;}
+.compare{display:flex;gap:20px;margin:12px 0;}
+.compare>div{flex:1;}
+.compare h3{font-size:.9rem;margin-bottom:8px;}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <a href="https://emrevarol.com">&larr; emrevarol.com</a>
+  <a href="materials.html" style="color:var(--teal);font-size:.85rem;margin-left:auto;margin-right:1rem;text-decoration:none;opacity:.7;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">Materials &amp; Checklist &rarr;</a>
+  <span class="a2sv-badge">A2SV &middot; University of Rwanda</span>
+</div>
+
+<div id="progress"></div>
+<div id="counter"></div>
+<button class="nav-arrow" id="prev-btn">&#8592;</button>
+<button class="nav-arrow" id="next-btn">&#8594;</button>
+
+<div id="toc-overlay">
+  <button id="toc-close">&times;</button>
+  <h2>Yaliyomo</h2>
+  <div class="toc-grid" id="toc-grid"></div>
+</div>
+
+<div id="deck">
+
+<!-- Slide 1 -->
+<div class="slide title-slide" data-title="Mazoea Bora ya Uandishi wa Msimbo na Ukaguzi Madhubuti wa Msimbo">
+  <h1>Mazoea Bora ya Uandishi wa Msimbo na Ukaguzi Madhubuti wa Msimbo</h1>
+  <div class="subtitle">A2SV &mdash; University of Rwanda</div>
+  <div style="max-width:500px;text-align:left;">
+    <p class="bullet">Kuandika msimbo ni rahisi</p>
+    <p class="bullet">Kuandika msimbo unaodumishika ni ngumu</p>
+    <p class="bullet">Kuandika msimbo ambao timu inaweza kuuamini ni <strong style="color:var(--teal)">uhandisi wa programu</strong></p>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" data-title="Somo Hili Linahusu Nini Hasa">
+  <h1>Somo Hili Linahusu Nini Hasa</h1>
+  <p class="bullet dim">Si sintaksia tu</p>
+  <p class="bullet dim">Si &ldquo;msimbo safi&rdquo; tu</p>
+  <p class="bullet dim">Si taratibu za GitHub tu</p>
+  <p class="bullet" style="color:var(--text);font-weight:600;">Somo hili linahusu <span style="color:var(--teal)">nidhamu ya uhandisi</span></p>
+  <div class="callout" style="margin-top:32px;">
+    Uhandisi mzuri huunda <strong>kasi</strong>. Uhandisi mbaya huunda <strong>machafuko</strong>.
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" data-title="Ukweli Mgumu">
+  <h1>Ukweli Mgumu</h1>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:20px;">Mradi mara chache hushindwa kwa sababu watu hawawezi kuandika msimbo <em>wowote</em>.</p>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:24px;">Mradi mara nyingi hushindwa kwa sababu msimbo unakuwa:</p>
+  <p class="bullet red">Usioeleweka</p>
+  <p class="bullet red">Usiojaribiwa</p>
+  <p class="bullet red">Usiokaguliwa</p>
+  <p class="bullet red">Mgumu kubadilisha</p>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" data-title="Mtazamo Mbaya wa Mwanafunzi">
+  <h1>Mtazamo Mbaya wa Mwanafunzi</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Mawazo hatari ya kawaida:</h3>
+      <p class="bullet red">&ldquo;Inafanya kazi, basi inatosha.&rdquo;</p>
+      <p class="bullet red">&ldquo;Tunaweza kusafisha baadaye.&rdquo;</p>
+      <p class="bullet red">&ldquo;Majaribio yanachukua muda mwingi.&rdquo;</p>
+      <p class="bullet red">&ldquo;Ukaguzi hauhitajiki kwa mabadiliko madogo.&rdquo;</p>
+      <p class="bullet red">&ldquo;Wenzangu wa timu wataelewa.&rdquo;</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--orange);">Kwa nini hii ni hatari:</h3>
+      <p class="bullet orange"><em>Baadaye</em> kwa kawaida haifiki kamwe</p>
+      <p class="bullet orange">Tabia ndogo mbaya zinakuwa utamaduni wa timu</p>
+      <p class="bullet orange">Utamaduni wa timu unakuwa ubora wa bidhaa</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" data-title="Mtazamo Sahihi wa Uhandisi">
+  <h1>Mtazamo Sahihi wa Uhandisi</h1>
+  <p style="font-size:1.1rem;color:var(--text);margin-bottom:20px;">Mhandisi mtaalamu anauliza:</p>
+  <p class="bullet green">Je, mtu mwingine anaweza kuelewa hii haraka?</p>
+  <p class="bullet green">Je, hii inaweza kubadilishwa kwa usalama baadaye?</p>
+  <p class="bullet green">Je, hii inaweza kujaribiwa?</p>
+  <p class="bullet green">Je, hii inaweza kukaguliwa vizuri?</p>
+  <p class="bullet green">Je, hii itafanya timu iwe haraka au polepole zaidi?</p>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide" data-title="Gharama ya Msimbo Mbaya">
+  <h1>Gharama ya Msimbo Mbaya</h1>
+  <p style="font-size:1.1rem;color:var(--red);margin-bottom:20px;font-weight:600;">Msimbo mbaya husababisha:</p>
+  <p class="bullet red">Hitilafu zaidi</p>
+  <p class="bullet red">Ujumuishaji wa wanachama wapya polepole</p>
+  <p class="bullet red">Utatuzi wa matatizo wenye uchungu</p>
+  <p class="bullet red">Kazi iliyorudiwa</p>
+  <p class="bullet red">Vipengele vilivyovunjika baada ya mabadiliko</p>
+  <p class="bullet red">Hofu ya kugusa msimbo</p>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide" data-title="Faida ya Msimbo Mzuri">
+  <h1>Faida ya Msimbo Mzuri</h1>
+  <p style="font-size:1.1rem;color:var(--teal);margin-bottom:20px;font-weight:600;">Msimbo mzuri hutoa:</p>
+  <p class="bullet green">Uendelezaji wa haraka</p>
+  <p class="bullet green">Ushirikiano rahisi</p>
+  <p class="bullet green">Urekebishaji salama</p>
+  <p class="bullet green">Ukaguzi bora</p>
+  <p class="bullet green">Uaminifu zaidi</p>
+  <p class="bullet green">Bidhaa thabiti zaidi</p>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide" data-title="Ujumbe Muhimu">
+  <h1>Ujumbe Muhimu</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <p class="big-quote">&ldquo;Msimbo wako si kwa kompyuta tu. Msimbo wako ni kwa wenzako wa timu, wewe wa baadaye, na bidhaa.&rdquo;</p>
+  </div>
+</div>
+
+<!-- Slide 9 -->
+<div class="slide section-divider" data-title="Sehemu: Uprogramu dhidi ya Uhandisi wa Programu" data-section="Uprogramu dhidi ya Uhandisi wa Programu">
+  <h1>Uprogramu dhidi ya Uhandisi wa Programu</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3>Uprogramu</h3>
+      <p style="color:var(--text-muted);">Kufanya msimbo ufanye kazi</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Uhandisi wa Programu</h3>
+      <p style="color:var(--text-muted);">Kufanya msimbo uwe wa kuaminika, kudumishika, ushirikiano, na tayari kwa uzalishaji</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide" data-title="Hati Inaweza Kufanya Kazi. Mfumo Lazima Udumu.">
+  <h1>Hati Inaweza Kufanya Kazi. Mfumo Lazima Udumu.</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--text-muted);">Hati inaweza kuhitaji tu:</h3>
+      <p class="bullet dim">Mantiki sahihi</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Mfumo unahitaji:</h3>
+      <p class="bullet green">Muundo wazi</p>
+      <p class="bullet green">Majaribio</p>
+      <p class="bullet green">Ukaguzi</p>
+      <p class="bullet green">Udhibiti wa toleo</p>
+      <p class="bullet green">Usambazaji unaotabirika</p>
+      <p class="bullet green">Uelewa wa timu</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 11 -->
+<div class="slide" data-title="Msimbo Husomwa Zaidi Kuliko Unavyoandikwa">
+  <h1>Msimbo Husomwa Zaidi Kuliko Unavyoandikwa</h1>
+  <h2>Ukweli:</h2>
+  <p class="bullet">Unaandika kazi mara moja</p>
+  <p class="bullet">Wenzako wa timu wanaisoma mara nyingi</p>
+  <p class="bullet">Wewe wa baadaye unaisoma miezi baadaye bila kumbukumbu</p>
+  <div class="sp"></div>
+  <h2>Kwa hivyo:</h2>
+  <p class="bullet green">Usomaji si hiari</p>
+  <p class="bullet green">Usomaji ni sehemu ya usahihi</p>
+</div>
+
+<!-- Slide 12 -->
+<div class="slide" data-title='Mfano Mbaya: "Inafanya Kazi" Haitoshi'>
+  <h1>Mfano Mbaya: &ldquo;Inafanya Kazi&rdquo; Haitoshi</h1>
+  <pre><span class="kw">def</span> <span class="fn">f</span>(<span class="param">x</span>, <span class="param">y</span>, <span class="param">z</span>):
+    <span class="kw">if</span> x:
+        <span class="kw">if</span> y &gt; <span class="num">0</span>:
+            <span class="kw">return</span> z * <span class="num">0.2</span>
+    <span class="kw">return</span> <span class="num">0</span></pre>
+  <h3 style="color:var(--red);">Matatizo:</h3>
+  <p class="bullet red"><code>f</code> ni nini? Inahesabu nini?</p>
+  <p class="bullet red"><code>x</code>, <code>y</code>, <code>z</code> ni nini?</p>
+  <p class="bullet red"><code>0.2</code> inawakilisha nini?</p>
+  <p class="bullet red">Hakuna mtu anayeweza kukagua, kujaribu, au kudumisha hii kwa uhakika</p>
+</div>
+
+<!-- Slide 13 -->
+<div class="slide" data-title="Mfano Bora: Maana Lazima Ionekane">
+  <h1>Mfano Bora: Maana Lazima Ionekane</h1>
+  <pre><span class="kw">def</span> <span class="fn">calculate_discount</span>(<span class="param">price</span>, <span class="param">has_membership</span>, <span class="param">loyalty_points</span>):
+    <span class="kw">if not</span> has_membership:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">if</span> loyalty_points &lt;= <span class="num">0</span>:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">return</span> price * <span class="num">0.2</span></pre>
+  <h3 style="color:var(--teal);">Kilichoboreshwa:</h3>
+  <p class="bullet green">Jina la kazi linaeleza madhumuni</p>
+  <p class="bullet green">Vigezo vina maana</p>
+  <p class="bullet green">Mantiki inasomeka kama sentensi</p>
+  <p class="bullet green">Mkaguzi anaweza kuthibitisha usahihi mara moja</p>
+</div>
+
+<!-- Slide 14 -->
+<div class="slide" data-title="Kiwango cha Uhandisi">
+  <h1>Kiwango cha Uhandisi</h1>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:24px;">Usiulize tu: <span style="color:var(--text-muted);">&ldquo;Je, inafanya kazi?&rdquo;</span></p>
+  <p style="font-size:1.15rem;color:var(--teal);margin-bottom:24px;font-weight:600;">Uliza pia:</p>
+  <p class="bullet green">Je, inasomeka?</p>
+  <p class="bullet green">Je, inajaribiwa?</p>
+  <p class="bullet green">Je, ni salama kubadilisha?</p>
+  <p class="bullet green">Je, ningeidhinisha hii katika PR?</p>
+</div>
+
+<!-- Slide 15 -->
+<div class="slide section-divider" data-title="Sehemu: Kanuni ya 1 — Utoaji Majina ni Zana ya Muundo" data-section="Mazoea Bora ya Uandishi wa Msimbo">
+  <h1>Kanuni ya 1: Utoaji Majina ni Zana ya Muundo</h1>
+  <div class="sub">
+    <p>Utoaji majina mbaya huunda mkanganyiko. Utoaji majina mazuri huunda uwazi.</p>
+    <div class="sp"></div>
+    <p>Majina yanapaswa kufichua: kitu <strong>ni nini</strong>, <strong>kinafanya nini</strong>, <strong>kwa nini</strong> kipo.</p>
+  </div>
+</div>
+
+<!-- Slide 16 -->
+<div class="slide" data-title="Mfano wa Utoaji Majina Mbaya">
+  <h1>Mfano wa Utoaji Majina Mbaya</h1>
+  <pre><span class="kw">def</span> <span class="fn">calc</span>(<span class="param">a</span>, <span class="param">b</span>):
+    <span class="kw">return</span> a * b</pre>
+  <h3 style="color:var(--red);">Matatizo:</h3>
+  <p class="bullet red"><code>calc</code> inahesabu nini?</p>
+  <p class="bullet red"><code>a</code> na <code>b</code> ni nini?</p>
+  <p class="bullet red">Inaweza kuwa eneo, bei, chochote &mdash; haiwezekani kujua</p>
+  <p class="bullet red">Mkaguzi hawezi kuthibitisha usahihi</p>
+</div>
+
+<!-- Slide 17 -->
+<div class="slide" data-title="Mfano Bora wa Utoaji Majina">
+  <h1>Mfano Bora wa Utoaji Majina</h1>
+  <pre><span class="kw">def</span> <span class="fn">calculate_total_price</span>(<span class="param">unit_price</span>, <span class="param">quantity</span>):
+    <span class="kw">return</span> unit_price * quantity</pre>
+  <h3 style="color:var(--teal);">Faida:</h3>
+  <p class="bullet green">Madhumuni yako wazi mara moja</p>
+  <p class="bullet green">Vigezo vinajieleza vyenyewe</p>
+  <p class="bullet green">Mkaguzi anaweza kuthibitisha: &ldquo;Ndiyo, bei jumla = bei ya kila kipande &times; wingi&rdquo;</p>
+  <p class="bullet green">Waendelezaji wa baadaye hawatatumia vibaya kazi hii</p>
+</div>
+
+<!-- Slide 18 -->
+<div class="slide" data-title="Utoaji Majina Mazuri Unazuia Nini">
+  <h1>Utoaji Majina Mazuri Unazuia Nini</h1>
+  <p class="bullet green">Hupunguza mkanganyiko wakati wa kusoma msimbo usiojulikana</p>
+  <p class="bullet green">Huzuia dhana potofu kuhusu tabia ya kazi</p>
+  <p class="bullet green">Huzuia matumizi mabaya ya vigezo</p>
+  <p class="bullet green">Huzuia hitilafu za baadaye kutokana na kutoelewana</p>
+  <div class="callout" style="margin-top:24px;">
+    Ikiwa unahitaji maoni kueleza kibadilishaji ni nini, jina labda ni baya.
+  </div>
+</div>
+
+<!-- Slide 19 -->
+<div class="slide section-divider" data-title="Sehemu: Kanuni ya 2 — Kitu Kimoja Wazi">
+  <h1>Kanuni ya 2: Kazi Inapaswa Kufanya Kitu Kimoja Wazi</h1>
+  <div class="sub">
+    <p>Wakati kazi inafanya mambo mengi sana, kujaribu kunakuwa ngumu, kutumia tena kunakuwa haiwezekani, na kutatua matatizo kunakuwa na uchungu.</p>
+  </div>
+</div>
+
+<!-- Slide 20 -->
+<div class="slide" data-title="Mfano Mbaya: Majukumu Mengi Sana">
+  <h1>Mfano Mbaya: Majukumu Mengi Sana</h1>
+  <pre><span class="kw">def</span> <span class="fn">register_user</span>(<span class="param">user</span>):
+    validate_user(user)
+    save_user_to_database(user)
+    send_welcome_email(user)
+    log_activity(user)
+    notify_admin(user)</pre>
+  <h3 style="color:var(--red);">Matatizo:</h3>
+  <p class="bullet red">Majukumu matano katika kazi moja</p>
+  <p class="bullet red">Haiwezekani kujaribu usajili bila kutuma barua pepe</p>
+  <p class="bullet red">Barua pepe ikishindwa, mtumiaji bado anahifadhiwa?</p>
+  <p class="bullet red">Haiwezekani kutumia tena hatua yoyote peke yake</p>
+</div>
+
+<!-- Slide 21 -->
+<div class="slide" data-title="Mfano Bora: Tenganisha Majukumu">
+  <h1>Mfano Bora: Tenganisha Majukumu</h1>
+  <pre><span class="kw">def</span> <span class="fn">register_user</span>(<span class="param">user</span>):
+    validate_user(user)
+    save_user_to_database(user)
+
+<span class="kw">def</span> <span class="fn">onboard_user</span>(<span class="param">user</span>):
+    send_welcome_email(user)
+    log_activity(user)
+
+<span class="kw">def</span> <span class="fn">handle_registration</span>(<span class="param">user</span>):
+    register_user(user)
+    onboard_user(user)
+    notify_admin(user)</pre>
+  <h3 style="color:var(--teal);">Faida:</h3>
+  <p class="bullet green">Kila kazi ina madhumuni wazi, moja</p>
+  <p class="bullet green">Kila moja inaweza kujaribiwa kwa kujitegemea</p>
+  <p class="bullet green">Kushughulikia kushindwa kunakuwa rahisi</p>
+</div>
+
+<!-- Slide 22 -->
+<div class="slide section-divider" data-title="Sehemu: Kanuni ya 3 — Kurudia ni Kiwanda cha Hitilafu">
+  <h1>Kanuni ya 3: Kurudia ni Kiwanda cha Hitilafu</h1>
+  <div class="sub">
+    <p>Mantiki iliyorudiwa inamaanisha marekebisho yaliyokosekana, kutokuwa na msimamo katika msimbo, na matengenezo ghali.</p>
+  </div>
+</div>
+
+<!-- Slide 23 -->
+<div class="slide" data-title="Mfano Mbaya: Mantiki Iliyorudiwa">
+  <h1>Mfano Mbaya: Mantiki Iliyorudiwa</h1>
+  <pre><span class="cm"># In checkout.py</span>
+final_price = price - price * <span class="num">0.1</span>
+
+<span class="cm"># In invoice.py</span>
+final_price = price - price * <span class="num">0.1</span>
+
+<span class="cm"># In report.py</span>
+final_price = price - price * <span class="num">0.1</span></pre>
+  <div class="callout red" style="margin-top:16px;">
+    Ikiwa hii inaonekana katika sehemu 7 na kiwango cha punguzo kinabadilika kuwa 0.15, lazima upate na usasishe <strong>zote 7</strong>. Ukikosa moja? Una hitilafu ya kimya.
+  </div>
+</div>
+
+<!-- Slide 24 -->
+<div class="slide" data-title="Mfano Bora: Weka Mantiki ya Pamoja Katikati">
+  <h1>Mfano Bora: Weka Mantiki ya Pamoja Katikati</h1>
+  <pre><span class="kw">def</span> <span class="fn">apply_discount</span>(<span class="param">price</span>, <span class="param">discount_rate</span>):
+    <span class="kw">return</span> price * (<span class="num">1</span> - discount_rate)
+
+<span class="cm"># Kila mahali:</span>
+final_price = apply_discount(price, <span class="num">0.1</span>)</pre>
+  <h3 style="color:var(--teal);">Faida:</h3>
+  <p class="bullet green">Chanzo kimoja cha ukweli</p>
+  <p class="bullet green">Badilisha mara moja, sahihisha kila mahali</p>
+  <p class="bullet green">Rahisi kujaribu</p>
+  <p class="bullet green">Rahisi kupata na kukagua</p>
+</div>
+
+<!-- Slide 25 -->
+<div class="slide section-divider" data-title="Sehemu: Kanuni ya 4 — Ujaribifu Unapaswa Kuathiri Muundo">
+  <h1>Kanuni ya 4: Ujaribifu Unapaswa Kuathiri Muundo</h1>
+  <div class="sub">
+    <p>Ikiwa msimbo wako ni mgumu kujaribu, labda umeundwa vibaya.</p>
+    <div class="sp"></div>
+    <p>Msimbo unaojaribiwa ni wa vipande, wazi, na una pembejeo na matokeo wazi.</p>
+  </div>
+</div>
+
+<!-- Slide 26 -->
+<div class="slide" data-title="Mfano wa Msimbo Mgumu Kujaribu">
+  <h1>Mfano wa Msimbo Mgumu Kujaribu</h1>
+  <pre><span class="kw">def</span> <span class="fn">process_order</span>(<span class="param">order_id</span>):
+    order = db.get_order(order_id)         <span class="cm"># database call</span>
+    user = db.get_user(order.user_id)      <span class="cm"># database call</span>
+    send_email(user.email, order.summary)  <span class="cm"># side effect</span>
+    db.mark_processed(order_id)            <span class="cm"># database call</span></pre>
+  <h3 style="color:var(--red);">Matatizo:</h3>
+  <p class="bullet red">Haiwezekani kujaribu bila hifadhidata halisi</p>
+  <p class="bullet red">Haiwezekani kujaribu bila kutuma barua pepe halisi</p>
+  <p class="bullet red">Athari zote za pembeni zimeunganishwa kwa nguvu</p>
+</div>
+
+<!-- Slide 27 -->
+<div class="slide" data-title="Muundo Unaojaribiwa Zaidi">
+  <h1>Muundo Unaojaribiwa Zaidi</h1>
+  <pre><span class="kw">def</span> <span class="fn">process_order</span>(<span class="param">order</span>, <span class="param">user</span>, <span class="param">email_sender</span>, <span class="param">db</span>):
+    email_sender.send(user.email, order.summary)
+    db.mark_processed(order.id)</pre>
+  <h3 style="color:var(--teal);">Faida:</h3>
+  <p class="bullet green">Vitegemezi vinaingizwa &mdash; rahisi kuiga</p>
+  <p class="bullet green">Kila kitegemezi kinaweza kujaribiwa kwa kujitegemea</p>
+  <p class="bullet green">Mantiki imetenganishwa na miundombinu</p>
+  <p class="bullet green">Saini ya kazi inakuambia haswa kinachohitajika</p>
+</div>
+
+<!-- Slide 28 -->
+<div class="slide section-divider" data-title="Sehemu: Kanuni ya 5 — Shindwa kwa Uwazi, Si kwa Kimya">
+  <h1>Kanuni ya 5: Shindwa kwa Uwazi, Si kwa Kimya</h1>
+  <div class="sub">
+    <p>Kushindwa kwa kimya ni aina hatari zaidi ya hitilafu.</p>
+    <div class="sp"></div>
+    <p>Kitu kinapokwenda vibaya, ifanye kuwa <strong>kubwa</strong> na <strong>dhahiri</strong>.</p>
+  </div>
+</div>
+
+<!-- Slide 29 -->
+<div class="slide" data-title="Ushughulikiaji Mbaya wa Hitilafu">
+  <h1>Ushughulikiaji Mbaya wa Hitilafu</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_user_age</span>(<span class="param">user</span>):
+    <span class="kw">if</span> user <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">return</span> <span class="kw">None</span>
+    <span class="kw">if</span> user.birthday <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">return</span> <span class="kw">None</span>
+    <span class="kw">return</span> calculate_age(user.birthday)</pre>
+  <h3 style="color:var(--red);">Hatari:</h3>
+  <p class="bullet red">Mwenye kuita anapata <code>None</code> na hajui kwa nini</p>
+  <p class="bullet red">Hitilafu imefichwa na inaenea kwa kimya</p>
+  <p class="bullet red">Kutatua matatizo kunakuwa mchezo wa kubahatisha</p>
+</div>
+
+<!-- Slide 30 -->
+<div class="slide" data-title="Ushughulikiaji Bora wa Hitilafu">
+  <h1>Ushughulikiaji Bora wa Hitilafu</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_user_age</span>(<span class="param">user</span>):
+    <span class="kw">if</span> user <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"User must not be None"</span>)
+    <span class="kw">if</span> user.birthday <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"User birthday is missing"</span>)
+    <span class="kw">return</span> calculate_age(user.birthday)</pre>
+  <h3 style="color:var(--teal);">Faida:</h3>
+  <p class="bullet green">Hitilafu inaonekana mara moja</p>
+  <p class="bullet green">Ujumbe unakuambia haswa kilicho kibaya</p>
+  <p class="bullet green">Hitilafu inashikwa mapema, si mbali zaidi</p>
+</div>
+
+<!-- Slide 31 -->
+<div class="slide section-divider" data-title="Sehemu: Kanuni ya 6 — Ugumu ni Ghali">
+  <h1>Kanuni ya 6: Ugumu ni Ghali</h1>
+  <div class="sub">
+    <p>Msimbo mgumu si wa busara. Ni ghali kudumisha, kukagua, na kutatua matatizo.</p>
+  </div>
+</div>
+
+<!-- Slide 32 -->
+<div class="slide" data-title="Mfano Mgumu">
+  <h1>Mfano Mgumu</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_price</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">if</span> user.is_member:
+        <span class="kw">if</span> product.on_sale:
+            <span class="kw">if</span> user.loyalty_points &gt; <span class="num">100</span>:
+                <span class="kw">return</span> product.price * <span class="num">0.7</span>
+            <span class="kw">else</span>:
+                <span class="kw">return</span> product.price * <span class="num">0.8</span>
+        <span class="kw">else</span>:
+            <span class="kw">return</span> product.price * <span class="num">0.9</span>
+    <span class="kw">else</span>:
+        <span class="kw">if</span> product.on_sale:
+            <span class="kw">return</span> product.price * <span class="num">0.95</span>
+        <span class="kw">else</span>:
+            <span class="kw">return</span> product.price</pre>
+  <p class="bullet red" style="margin-top:12px;">Umeingizwa ndani sana, mgumu kufuata, rahisi kuanzisha hitilafu</p>
+</div>
+
+<!-- Slide 33 -->
+<div class="slide" data-title="Mfano Rahisi">
+  <h1>Mfano Rahisi</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_discount_rate</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">if not</span> user.is_member <span class="kw">and not</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">if not</span> user.is_member <span class="kw">and</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0.05</span>
+    <span class="kw">if</span> user.is_member <span class="kw">and not</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0.1</span>
+    <span class="kw">if</span> user.loyalty_points &gt; <span class="num">100</span>:
+        <span class="kw">return</span> <span class="num">0.3</span>
+    <span class="kw">return</span> <span class="num">0.2</span>
+
+<span class="kw">def</span> <span class="fn">get_price</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">return</span> product.price * (<span class="num">1</span> - get_discount_rate(user, product))</pre>
+  <p class="bullet green" style="margin-top:12px;">Tambarare, inasomeka, kila kesi ni wazi na inajaribiwa</p>
+</div>
+
+<!-- Slide 34 -->
+<div class="slide" data-title="Mabadiliko Madogo Yanashinda Mabadiliko Makubwa Yenye Fujo">
+  <h1>Kanuni ya 7: Mabadiliko Madogo Yanashinda Mabadiliko Makubwa Yenye Fujo</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Mabadiliko makubwa:</h3>
+      <p class="bullet red">Magumu kukagua</p>
+      <p class="bullet red">Hatari kubwa ya hitilafu</p>
+      <p class="bullet red">Yenye uchungu kuunganisha</p>
+      <p class="bullet red">Historia ya git yenye mkanganyiko</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Mabadiliko madogo:</h3>
+      <p class="bullet green">Rahisi kukagua</p>
+      <p class="bullet green">Hatari ndogo</p>
+      <p class="bullet green">Haraka kuunganisha</p>
+      <p class="bullet green">Historia wazi</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 35 -->
+<div class="slide" data-title="Kanuni ya Uhandisi">
+  <h1>Kanuni ya Uhandisi</h1>
+  <p style="font-size:1.15rem;color:var(--teal);margin-bottom:24px;font-weight:600;">Pendelea:</p>
+  <p class="bullet green">Kazi ndogo</p>
+  <p class="bullet green">Commits ndogo</p>
+  <p class="bullet green">PRs ndogo</p>
+  <p class="bullet green">Vitengo vidogo vya ukaguzi</p>
+  <div class="callout" style="margin-top:28px;">
+    Mabadiliko madogo yenye lengo ni rahisi kuelewa, kukagua, kujaribu, na kurudisha nyuma.
+  </div>
+</div>
+
+<!-- Slide 36 -->
+<div class="slide section-divider" data-title="Sehemu: Mtiririko wa Kazi wa Git na GitHub" data-section="Mtiririko wa Kazi wa Git na GitHub">
+  <h1>Mtiririko wa Kazi wa Git na GitHub</h1>
+  <div class="sub">
+    <p>Bila mtiririko wa kazi, timu huunda:<br>
+    msimbo ulioandikiwa juu, mabadiliko yasiyokaguliwa, matawi ya main yaliyovunjika, mkanganyiko.</p>
+  </div>
+</div>
+
+<!-- Slide 37 -->
+<div class="slide" data-title="Mtiririko Sahihi wa Msingi">
+  <h1>Mtiririko Sahihi wa Msingi</h1>
+  <div class="flow">
+    <span class="flow-step">main</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">unda tawi la kipengele</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">andika msimbo</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">tuma mabadiliko madogo</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">fungua PR</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">ukaguzi</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">boresha</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step" style="background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.3);color:var(--purple);">unganisha kwenye main</span>
+  </div>
+  <div class="callout" style="margin-top:24px;">
+    Hii si hiari. Huu ni mtiririko wa kazi wa kiwango cha chini cha kitaalamu.
+  </div>
+</div>
+
+<!-- Slide 38 -->
+<div class="slide" data-title="Usifanye Kazi Moja kwa Moja kwenye Main">
+  <h1>Usifanye Kazi Moja kwa Moja kwenye Main</h1>
+  <p class="bullet red">Main inapaswa kuwa tayari kusambazwa kila wakati</p>
+  <p class="bullet red">Commits za moja kwa moja zinaruka ukaguzi</p>
+  <p class="bullet red">Migongano ya kuunganisha inakuwa ya uharibifu</p>
+  <p class="bullet red">Hakuna njia ya kurudisha nyuma kwa usafi</p>
+  <p class="bullet red">Timu inapoteza uaminifu katika msimbo</p>
+  <div class="callout red" style="margin-top:24px;">
+    Main ikivunjika, <strong>kila mtu</strong> anazuiliwa. Ilinde.
+  </div>
+</div>
+
+<!-- Slide 39 -->
+<div class="slide" data-title="Tawi Linawakilisha Nini">
+  <h1>Tawi Linawakilisha Nini</h1>
+  <h3 style="color:var(--red);">Majina mabaya ya tawi:</h3>
+  <pre style="border-color:rgba(239,68,68,.3);">fix
+my-branch
+test123
+update</pre>
+  <h3 style="color:var(--teal);margin-top:20px;">Majina bora ya tawi:</h3>
+  <pre style="border-color:rgba(0,229,184,.3);">feature/user-registration
+fix/login-redirect-bug
+chore/update-dependencies
+refactor/split-order-service</pre>
+  <p class="bullet green" style="margin-top:12px;">Jina la tawi linapaswa kueleza <strong>nia</strong> ya kazi</p>
+</div>
+
+<!-- Slide 40 -->
+<div class="slide" data-title="Commits Zinapaswa Kusimulia Hadithi">
+  <h1>Commits Zinapaswa Kusimulia Hadithi</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Ujumbe mbaya wa commit:</h3>
+      <pre style="border-color:rgba(239,68,68,.3);font-size:.8rem;">fix
+update
+wip
+asdf
+changed stuff</pre>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Ujumbe mzuri wa commit:</h3>
+      <pre style="border-color:rgba(0,229,184,.3);font-size:.8rem;">fix: redirect to login after session timeout
+feat: add email validation to registration
+refactor: extract discount logic into helper
+test: add edge cases for price calculator
+docs: update API authentication section</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 41 -->
+<div class="slide" data-title="PR Nzuri Inakaguliwa">
+  <h1>PR Nzuri Inakaguliwa</h1>
+  <p class="bullet green">Ndogo na inalenga kitu kimoja</p>
+  <p class="bullet green">Ina kichwa na maelezo wazi</p>
+  <p class="bullet green">Inaeleza <em>kwa nini</em> mabadiliko yalifanywa</p>
+  <p class="bullet green">Inajumuisha majaribio ikihitajika</p>
+  <p class="bullet green">Haichanganyi mabadiliko yasiyo husiana</p>
+  <div class="callout" style="margin-top:20px;">
+    Maelezo mazuri ya PR yanajibu: <strong>Nini</strong> kilibadilika? <strong>Kwa nini</strong>? <strong>Jinsi</strong> ya kujaribu?
+  </div>
+</div>
+
+<!-- Slide 42 -->
+<div class="slide" data-title="PR Mbaya dhidi ya PR Nzuri">
+  <h1>PR Mbaya dhidi ya PR Nzuri</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">PR Mbaya:</h3>
+      <p class="bullet red">Kichwa: &ldquo;masasisho&rdquo;</p>
+      <p class="bullet red">Hakuna maelezo</p>
+      <p class="bullet red">Faili 47 zimebadilishwa</p>
+      <p class="bullet red">Inachanganya kipengele + urekebishaji + marekebisho ya mtindo</p>
+      <p class="bullet red">Hakuna majaribio</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">PR Nzuri:</h3>
+      <p class="bullet green">Kichwa: &ldquo;feat: add email validation to registration&rdquo;</p>
+      <p class="bullet green">Maelezo yanaeleza mbinu</p>
+      <p class="bullet green">Faili 4 zimebadilishwa</p>
+      <p class="bullet green">Inalenga kipengele kimoja</p>
+      <p class="bullet green">Inajumuisha majaribio ya kitengo</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 43 -->
+<div class="slide section-divider" data-title="Sehemu: Hazina ya Kitaalamu" data-section="Hazina ya Kitaalamu">
+  <h1>Hazina ya Kitaalamu Si Msimbo Tu</h1>
+  <div class="sub">
+    <p>Hazina nzito inajumuisha muundo, nyaraka, usanidi, na viwango &mdash; si faili za chanzo tu.</p>
+  </div>
+</div>
+
+<!-- Slide 44 -->
+<div class="slide" data-title="Mfano wa Muundo wa Hazina">
+  <h1>Mfano wa Muundo wa Hazina</h1>
+  <pre style="font-size:.82rem;">project/
+├── src/
+│   ├── models/
+│   ├── services/
+│   ├── routes/
+│   └── utils/
+├── tests/
+│   ├── unit/
+│   └── integration/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── Makefile
+└── .env.example</pre>
+</div>
+
+<!-- Slide 45 -->
+<div class="slide" data-title="Kwa Nini README Ni Muhimu">
+  <h1>Kwa Nini README Ni Muhimu</h1>
+  <p style="font-size:1.1rem;color:var(--text);margin-bottom:20px;">README inapaswa kumwambia mwanachama mpya wa timu:</p>
+  <p class="bullet green">Mradi unafanya nini</p>
+  <p class="bullet green">Jinsi ya kuuweka</p>
+  <p class="bullet green">Jinsi ya kuuendesha</p>
+  <p class="bullet green">Jinsi ya kuendesha majaribio</p>
+  <p class="bullet green">Jinsi ya kuchangia</p>
+  <div class="callout red" style="margin-top:20px;">
+    Hazina bila README ni hazina inayosema: &ldquo;Jipatie mwenyewe.&rdquo;
+  </div>
+</div>
+
+<!-- Slide 46 -->
+<div class="slide" data-title="README Nzuri Inajumuisha">
+  <h1>README Nzuri Inajumuisha</h1>
+  <p class="bullet green">Jina la mradi na maelezo ya mstari mmoja</p>
+  <p class="bullet green">Mahitaji ya awali (toleo la Python, vitegemezi)</p>
+  <p class="bullet green">Hatua za ufungaji</p>
+  <p class="bullet green">Jinsi ya kuendesha ndani ya nchi</p>
+  <p class="bullet green">Jinsi ya kuendesha majaribio</p>
+  <p class="bullet green">Vibadilishaji vya mazingira vinavyohitajika</p>
+  <p class="bullet green">Muhtasari wa muundo wa mradi</p>
+  <p class="bullet green">Miongozo ya kuchangia</p>
+</div>
+
+<!-- Slide 47 -->
+<div class="slide" data-title="Hazina Yako Ikiwa na Mkanganyiko, Timu Yako Inapungua Kasi">
+  <h1>Hazina Yako Ikiwa na Mkanganyiko, Timu Yako Inapungua Kasi</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <div class="callout" style="max-width:700px;text-align:center;font-size:1.15rem;">
+      Kila dakika mwenzako wa timu anayoitumia kujaribu kuelewa muundo wa mradi wako ni dakika ambayo hatumii kujenga vipengele.<br><br>
+      <strong style="color:var(--teal);">Uwazi wa hazina ni aina ya heshima kwa timu yako.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 48 -->
+<div class="slide section-divider" data-title="Sehemu: Utamaduni wa Majaribio" data-section="Utamaduni wa Majaribio">
+  <h1>Utamaduni wa Majaribio</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--red);">Visingizio vya kawaida:</h3>
+      <p style="color:var(--text-muted);">&ldquo;Hatuna muda wa majaribio&rdquo;</p>
+      <p style="color:var(--text-muted);">&ldquo;Inafanya kazi kwenye kompyuta yangu&rdquo;</p>
+      <p style="color:var(--text-muted);">&ldquo;Majaribio yanatupunguza kasi&rdquo;</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Ukweli:</h3>
+      <p style="color:var(--text-muted);">Huna muda wa <em>kutojaribu</em></p>
+      <p style="color:var(--text-muted);">Inahitaji kufanya kazi kwenye kompyuta <em>zote</em></p>
+      <p style="color:var(--text-muted);">Majaribio yanakuokoa kutopungua kasi baadaye</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 49 -->
+<div class="slide" data-title="Majaribio Yanakupa Nini Kweli">
+  <h1>Majaribio Yanakupa Nini Kweli</h1>
+  <p class="bullet green">Uhakika wa kubadilisha msimbo</p>
+  <p class="bullet green">Utatuzi wa matatizo haraka &mdash; majaribio yanaonyesha <em>wapi</em> mambo yalivunjika</p>
+  <p class="bullet green">Nyaraka za tabia inayotarajiwa</p>
+  <p class="bullet green">Mtandao wa usalama kwa urekebishaji</p>
+  <p class="bullet green">Uthibitisho kwamba msimbo wako unafanya kazi</p>
+  <div class="callout" style="margin-top:24px;">
+    Majaribio hayapunguzi kasi timu zenye nguvu. Yanawaruhusu timu zenye nguvu <strong>kusonga haraka kwa usalama</strong>.
+  </div>
+</div>
+
+<!-- Slide 50 -->
+<div class="slide" data-title="Mfano Rahisi Sana">
+  <h1>Mfano Rahisi Sana</h1>
+  <pre><span class="kw">def</span> <span class="fn">add</span>(<span class="param">a</span>, <span class="param">b</span>):
+    <span class="kw">return</span> a + b</pre>
+  <p style="color:var(--text-muted);margin-top:16px;">Kazi rahisi. Tunajuaje inafanya kazi kwa usahihi?</p>
+  <p style="color:var(--text);margin-top:8px;font-weight:500;">Tunaandika jaribio.</p>
+</div>
+
+<!-- Slide 51 -->
+<div class="slide" data-title="Mfano wa Msingi wa Pytest">
+  <h1>Mfano wa Msingi wa Pytest</h1>
+  <pre><span class="kw">def</span> <span class="fn">test_add_returns_sum</span>():
+    <span class="kw">assert</span> add(<span class="num">2</span>, <span class="num">3</span>) == <span class="num">5</span></pre>
+  <p class="bullet green" style="margin-top:16px;">Wazi, inasomeka, haraka kuendesha</p>
+  <p class="bullet green">Ikiwa <code>add</code> itavunjika, jaribio hili linashika mara moja</p>
+  <p class="bullet green">Mtu yeyote anaweza kuelewa jaribio hili linakagua nini</p>
+</div>
+
+<!-- Slide 52 -->
+<div class="slide" data-title="Majaribio Mazuri Yanakagua Zaidi ya Njia ya Furaha">
+  <h1>Majaribio Mazuri Yanakagua Zaidi ya Njia ya Furaha</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Nini kingine tunapaswa kujaribu?</p>
+  <p class="bullet">Nambari hasi</p>
+  <p class="bullet">Thamani za sifuri</p>
+  <p class="bullet">Nambari kubwa sana</p>
+  <p class="bullet">Kutolingana kwa aina (ikihitajika)</p>
+  <p class="bullet">Masharti ya mpaka</p>
+  <p class="bullet">Kesi za hitilafu</p>
+  <div class="callout" style="margin-top:16px;">
+    Njia ya furaha ni mahali ambapo hitilafu <em>hazifichani</em>. Kesi za ukingo ni mahali zinapoishi.
+  </div>
+</div>
+
+<!-- Slide 53 -->
+<div class="slide" data-title="Mfano: Majaribio Yenye Manufaa Zaidi">
+  <h1>Mfano: Majaribio Yenye Manufaa Zaidi</h1>
+  <pre><span class="kw">def</span> <span class="fn">test_add_positive_numbers</span>():
+    <span class="kw">assert</span> add(<span class="num">2</span>, <span class="num">3</span>) == <span class="num">5</span>
+
+<span class="kw">def</span> <span class="fn">test_add_negative_numbers</span>():
+    <span class="kw">assert</span> add(-<span class="num">1</span>, -<span class="num">2</span>) == -<span class="num">3</span>
+
+<span class="kw">def</span> <span class="fn">test_add_with_zero</span>():
+    <span class="kw">assert</span> add(<span class="num">0</span>, <span class="num">5</span>) == <span class="num">5</span>
+    <span class="kw">assert</span> add(<span class="num">5</span>, <span class="num">0</span>) == <span class="num">5</span>
+
+<span class="kw">def</span> <span class="fn">test_add_mixed_signs</span>():
+    <span class="kw">assert</span> add(-<span class="num">3</span>, <span class="num">5</span>) == <span class="num">2</span></pre>
+  <p class="bullet green" style="margin-top:12px;">Kila jaribio lina jina wazi linaloeleza linakagua nini</p>
+</div>
+
+<!-- Slide 54 -->
+<div class="slide" data-title="Kinachotokea Bila Majaribio">
+  <h1>Kinachotokea Bila Majaribio</h1>
+  <p class="bullet red">Hitilafu zinafika uzalishaji</p>
+  <p class="bullet red">Urekebishaji unakuwa wa kutisha</p>
+  <p class="bullet red">Hakuna anayejua kama mabadiliko yalivunja kitu</p>
+  <p class="bullet red">Majaribio ya mikono ni polepole na hayategemewi</p>
+  <p class="bullet red">Kurudi nyuma kunaendelea kurudi</p>
+  <p class="bullet red">Timu inapoteza uaminifu katika msimbo</p>
+</div>
+
+<!-- Slide 55 -->
+<div class="slide" data-title="Kinachotokea na Majaribio">
+  <h1>Kinachotokea na Majaribio</h1>
+  <p class="bullet green">Hitilafu zinashikwa kabla ya kuunganisha</p>
+  <p class="bullet green">Urekebishaji ni salama na wa haraka</p>
+  <p class="bullet green">CI inashika kurudi nyuma kiotomatiki</p>
+  <p class="bullet green">Wanachama wapya wa timu wanaelewa tabia inayotarajiwa</p>
+  <p class="bullet green">Usambazaji unafanywa kwa uhakika</p>
+  <p class="bullet green">Kasi ya timu inaongezeka kwa muda</p>
+</div>
+
+<!-- Slide 56 -->
+<div class="slide section-divider" data-title="Sehemu: CI/CD na Milango ya Ubora" data-section="CI/CD na Milango ya Ubora">
+  <h1>CI/CD na Milango ya Ubora</h1>
+  <div class="sub">
+    <p><strong>CI = Ushirikiano Endelevu</strong></p>
+    <div class="sp"></div>
+    <p>Thibitisha kiotomatiki kila mabadiliko kabla hayajafika tawi la main.</p>
+  </div>
+</div>
+
+<!-- Slide 57 -->
+<div class="slide" data-title="Kwa Nini CI Ni Muhimu">
+  <h1>Kwa Nini CI Ni Muhimu</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">CI inazuia:</h3>
+      <p class="bullet red">Msimbo uliovunjika kufika main</p>
+      <p class="bullet red">Msimbo usiojaribiwa kuunganishwa</p>
+      <p class="bullet red">Kutokuwa na msimamo wa mtindo</p>
+      <p class="bullet red">Matatizo ya &ldquo;inafanya kazi kwenye kompyuta yangu&rdquo;</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">CI inatoa:</h3>
+      <p class="bullet green">Ukaguzi wa ubora wa kiotomatiki</p>
+      <p class="bullet green">Maoni ya haraka kwa kila PR</p>
+      <p class="bullet green">Viwango thabiti</p>
+      <p class="bullet green">Uaminifu wa timu</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 58 -->
+<div class="slide" data-title="Ukaguzi wa Kawaida wa CI">
+  <h1>Ukaguzi wa Kawaida wa CI</h1>
+  <p class="bullet">Endesha majaribio yote (ya kitengo + ya ushirikiano)</p>
+  <p class="bullet">Kagua uumbizo wa msimbo (black, prettier, n.k.)</p>
+  <p class="bullet">Endesha linter (pylint, eslint, flake8)</p>
+  <p class="bullet">Kagua maandishi ya aina (mypy)</p>
+  <p class="bullet">Pima chanjo ya majaribio</p>
+  <p class="bullet">Ukaguzi wa usalama</p>
+  <p class="bullet">Ukaguzi wa ujenzi (je, mradi unakusanya/kujenga?)</p>
+</div>
+
+<!-- Slide 59 -->
+<div class="slide" data-title="Mfano wa GitHub Actions">
+  <h1>Mfano wa GitHub Actions</h1>
+  <pre><span class="dec">name:</span> <span class="str">Python Checks</span>
+<span class="dec">on:</span>
+  <span class="dec">pull_request:</span>
+  <span class="dec">push:</span>
+<span class="dec">jobs:</span>
+  <span class="dec">test:</span>
+    <span class="dec">runs-on:</span> <span class="str">ubuntu-latest</span>
+    <span class="dec">steps:</span>
+      - <span class="dec">uses:</span> <span class="str">actions/checkout@v4</span>
+      - <span class="dec">uses:</span> <span class="str">actions/setup-python@v5</span>
+        <span class="dec">with:</span>
+          <span class="dec">python-version:</span> <span class="str">'3.11'</span>
+      - <span class="dec">run:</span> <span class="str">pip install -r requirements.txt</span>
+      - <span class="dec">run:</span> <span class="str">pytest</span></pre>
+</div>
+
+<!-- Slide 60 -->
+<div class="slide" data-title="Hii Inafanikisha Nini">
+  <h1>Hii Inafanikisha Nini</h1>
+  <p class="bullet green">Kila PR inaendesha majaribio kiotomatiki</p>
+  <p class="bullet green">PRs zilizovunjika haziwezi kuunganishwa (na ulinzi wa tawi)</p>
+  <p class="bullet green">Timu haihitaji kukumbuka kuendesha majaribio</p>
+  <p class="bullet green">Maoni ni ya haraka na thabiti</p>
+  <div class="callout" style="margin-top:24px;">
+    CI ni kama mlinzi langoni. Hairuhusu msimbo uliovunjika kuingia katika tawi lako la main.
+  </div>
+</div>
+
+<!-- Slide 61 -->
+<div class="slide" data-title="Ukaguzi wa Chanjo">
+  <h1>Ukaguzi wa Chanjo</h1>
+  <p style="color:var(--text);margin-bottom:16px;">Chanjo ya majaribio inapima ni kiasi gani cha msimbo wako kinafanyiwa mazoezi na majaribio.</p>
+  <p class="bullet">Chanjo ya juu haimaanishi hakuna hitilafu</p>
+  <p class="bullet">Chanjo ya chini inamaanisha maeneo makubwa hayajajaribiwa</p>
+  <p class="bullet">Chanjo ni mwongozo, si dhamana</p>
+  <div class="callout purple" style="margin-top:20px;">
+    <strong>Tahadhari:</strong> Usifuatie chanjo ya 100%. Lenga kujaribu <em>mantiki muhimu</em> na <em>kesi za ukingo</em>, si getters na setters za kawaida.
+  </div>
+</div>
+
+<!-- Slide 62 -->
+<div class="slide" data-title="Kanuni ya Vitendo ya Ubora">
+  <h1>Kanuni ya Vitendo ya Ubora</h1>
+  <p style="color:var(--text);margin-bottom:20px;font-weight:500;">Malengo mazuri kwa miradi mingi:</p>
+  <p class="bullet green">70-85% chanjo ya majaribio kama kiwango cha msingi</p>
+  <p class="bullet green">Mantiki yote muhimu ya biashara imejaribiwa</p>
+  <p class="bullet green">Kesi zote za ukingo za kazi kuu zimejaribiwa</p>
+  <p class="bullet green">CI lazima ipite kabla ya kuunganisha (bila ubaguzi)</p>
+  <p class="bullet green">Ukaguzi wa linter na muumbizaji katika kila PR</p>
+  <div class="callout" style="margin-top:20px;">
+    Milango ya ubora si urasimu. Ni <strong>miundombinu ya uhandisi</strong>.
+  </div>
+</div>
+
+<!-- Slide 63 -->
+<div class="slide section-divider" data-title="Sehemu: Ukaguzi Madhubuti wa Msimbo" data-section="Ukaguzi Madhubuti wa Msimbo">
+  <h1>Ukaguzi Madhubuti wa Msimbo</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--red);">Ukaguzi wa msimbo si:</h3>
+      <p style="color:var(--text-muted);">Utaratibu rasmi</p>
+      <p style="color:var(--text-muted);">Muhuri wa kibali</p>
+      <p style="color:var(--text-muted);">Onyesho la mamlaka</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Ukaguzi wa msimbo ni:</h3>
+      <p style="color:var(--text-muted);">Mazungumzo ya ubora</p>
+      <p style="color:var(--text-muted);">Fursa ya kujifunza</p>
+      <p style="color:var(--text-muted);">Utaratibu wa ulinzi wa timu</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 64 -->
+<div class="slide" data-title="Kwa Nini Timu Zinakagua Msimbo">
+  <h1>Kwa Nini Timu Zinakagua Msimbo</h1>
+  <p class="bullet green">Kushika hitilafu kabla hazijafika uzalishaji</p>
+  <p class="bullet green">Kushiriki maarifa ndani ya timu</p>
+  <p class="bullet green">Kudumisha ubora thabiti wa msimbo</p>
+  <p class="bullet green">Kusambaza umiliki wa msimbo</p>
+  <p class="bullet green">Kufundisha na kujifunza kutoka kwa kila mmoja</p>
+  <p class="bullet green">Kujenga uaminifu wa timu</p>
+</div>
+
+<!-- Slide 65 -->
+<div class="slide" data-title="Ukaguzi Dhaifu dhidi ya Ukaguzi Madhubuti">
+  <h1>Ukaguzi Dhaifu dhidi ya Ukaguzi Madhubuti</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Ukaguzi dhaifu:</h3>
+      <p class="bullet red">Angalia tofauti kwa sekunde 30</p>
+      <p class="bullet red">Bonyeza &ldquo;Idhinisha&rdquo;</p>
+      <p class="bullet red">Usiache maoni</p>
+      <p class="bullet red">Usiendeshe msimbo</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Ukaguzi madhubuti:</h3>
+      <p class="bullet green">Soma kila mstari uliobadilishwa</p>
+      <p class="bullet green">Kagua mantiki na kesi za ukingo</p>
+      <p class="bullet green">Uliza maswali ya ufafanuzi</p>
+      <p class="bullet green">Pendekeza maboresho kwa heshima</p>
+      <p class="bullet green">Thibitisha majaribio yapo</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 66 -->
+<div class="slide" data-title="Jinsi ya Kutoa Ukaguzi Madhubuti wa Msimbo">
+  <h1>Jinsi ya Kutoa Ukaguzi Madhubuti wa Msimbo</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Kagua:</p>
+  <p class="bullet">Usahihi &mdash; je, mantiki inafanya inachopaswa?</p>
+  <p class="bullet">Usomaji &mdash; je, unaweza kuelewa bila kuuliza?</p>
+  <p class="bullet">Utoaji majina &mdash; je, majina ni wazi na sahihi?</p>
+  <p class="bullet">Kurudia &mdash; je, kuna kitu kinachorudiwa bila sababu?</p>
+  <p class="bullet">Ushughulikiaji wa hitilafu &mdash; je, kesi za ukingo zimeshughulikiwa?</p>
+  <p class="bullet">Majaribio &mdash; je, kuna majaribio kwa mantiki mpya?</p>
+  <p class="bullet">Upeo &mdash; je, PR inabaki kwenye lengo?</p>
+</div>
+
+<!-- Slide 67 -->
+<div class="slide" data-title="Mtazamo wa Mkaguzi">
+  <h1>Mtazamo wa Mkaguzi</h1>
+  <p style="color:var(--text);margin-bottom:20px;font-weight:500;">Wakati wa ukaguzi, jibu maswali haya:</p>
+  <p class="bullet purple">Je, ninaelewa msimbo huu unafanya nini?</p>
+  <p class="bullet purple">Je, ningejisikia vizuri kudumisha hii?</p>
+  <p class="bullet purple">Je, kuna kitu ambacho kinaweza kuvunjika kwa kimya?</p>
+  <p class="bullet purple">Je, kuna majaribio yanayokosekana?</p>
+  <p class="bullet purple">Je, maelezo ya PR ni sahihi?</p>
+  <p class="bullet purple">Je, mwanachama mpya wa timu angeelewa hii?</p>
+</div>
+
+<!-- Slide 68 -->
+<div class="slide" data-title="Maoni Mabaya ya Ukaguzi">
+  <h1>Maoni Mabaya ya Ukaguzi</h1>
+  <div class="callout red" style="font-size:1.2rem;text-align:center;margin-bottom:24px;">
+    &ldquo;Hii ni mbaya.&rdquo;
+  </div>
+  <h3 style="color:var(--red);">Kwa nini ni dhaifu:</h3>
+  <p class="bullet red">Haielezi <em>nini</em> kiko vibaya</p>
+  <p class="bullet red">Haielezi <em>kwa nini</em> kiko vibaya</p>
+  <p class="bullet red">Haipendekezi uboreshaji</p>
+  <p class="bullet red">Inaonekana kama shambulio, si maoni</p>
+  <p class="bullet red">Inapoteza muda wa mwandishi</p>
+</div>
+
+<!-- Slide 69 -->
+<div class="slide" data-title="Maoni Bora ya Ukaguzi">
+  <h1>Maoni Bora ya Ukaguzi</h1>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:24px;">
+    &ldquo;Kazi hii inarudisha <code>None</code> mtumiaji asipopatiakana, lakini anayeita kwenye mstari wa 42 hakagui <code>None</code>. Hii inaweza kusababisha <code>AttributeError</code> wakati wa utekelezaji. Je, tunaweza kutupa ubaguzi hapa au kuongeza ukaguzi wa None kwa anayeita?&rdquo;
+  </div>
+  <h3 style="color:var(--teal);">Kwa nini inafanya kazi:</h3>
+  <p class="bullet green">Inaeleza tatizo</p>
+  <p class="bullet green">Inaonyesha athari</p>
+  <p class="bullet green">Inapendekeza marekebisho mahususi</p>
+  <p class="bullet green">Inamtendea mwandishi kama mshirikiano</p>
+</div>
+
+<!-- Slide 70 -->
+<div class="slide" data-title="Tumia Maswali Kupunguza Msuguano">
+  <h1>Tumia Maswali Kupunguza Msuguano</h1>
+  <p style="color:var(--text);margin-bottom:20px;">Badala ya amri, tumia maswali ya udadisi:</p>
+  <p class="bullet green">&ldquo;Nini kinatokea ikiwa ingizo hili ni hasi?&rdquo;</p>
+  <p class="bullet green">&ldquo;Je, tunaweza kurahisisha hii na kurudi mapema?&rdquo;</p>
+  <p class="bullet green">&ldquo;Je, kuna sababu hatutumii msaidizi uliopo kwa hii?&rdquo;</p>
+  <p class="bullet green">&ldquo;Je, ingekuwa wazi zaidi kutoa hii katika kazi tofauti?&rdquo;</p>
+  <div class="callout" style="margin-top:20px;">
+    Maswali yanaalika mazungumzo. Amri zinaunda upinzani.
+  </div>
+</div>
+
+<!-- Slide 71 -->
+<div class="slide" data-title="Mifano ya Lengo Madhubuti la Ukaguzi">
+  <h1>Mifano ya Lengo Madhubuti la Ukaguzi</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Mkaguzi madhubuti anaona:</p>
+  <p class="bullet purple">Nambari za kichawi bila maelezo</p>
+  <p class="bullet purple">Ushughulikiaji wa hitilafu unaokosekana kwa kesi za ukingo</p>
+  <p class="bullet purple">Mantiki iliyorudiwa ambayo inapaswa kutolewa</p>
+  <p class="bullet purple">Kazi zinazofanya zaidi ya kitu kimoja</p>
+  <p class="bullet purple">Kanuni za utoaji majina zisizo na msimamo</p>
+  <p class="bullet purple">Majaribio yanayokosekana au yasiyotosha</p>
+  <p class="bullet purple">Wasiwasi wa usalama (siri zilizowekwa kwa nguvu, SQL injection, n.k.)</p>
+</div>
+
+<!-- Slide 72 -->
+<div class="slide" data-title="Soma Msimbo Huu Kama Mkaguzi">
+  <h1>Soma Msimbo Huu Kama Mkaguzi</h1>
+  <pre><span class="kw">def</span> <span class="fn">calc</span>(<span class="param">items</span>):
+    t = <span class="num">0</span>
+    <span class="kw">for</span> i <span class="kw">in</span> items:
+        <span class="kw">if</span> i[<span class="str">"type"</span>] == <span class="str">"book"</span>:
+            t += i[<span class="str">"price"</span>] * <span class="num">0.9</span>
+        <span class="kw">else</span>:
+            t += i[<span class="str">"price"</span>]
+    <span class="kw">return</span> t</pre>
+  <p style="color:var(--text);margin-top:16px;font-weight:500;">Kama mkaguzi, uliza:</p>
+  <p class="bullet red"><code>calc</code> inahesabu nini?</p>
+  <p class="bullet red"><code>0.9</code> inamaanisha nini? Kwa nini vitabu haswa?</p>
+  <p class="bullet red">Nini kinatokea ikiwa kipengee hakina ufunguo wa &ldquo;type&rdquo; au &ldquo;price&rdquo;?</p>
+  <p class="bullet red">Majaribio yako wapi?</p>
+</div>
+
+<!-- Slide 73 -->
+<div class="slide" data-title="Toleo Bora Zaidi Linalokaguliwa">
+  <h1>Toleo Bora Zaidi Linalokaguliwa</h1>
+  <pre><span class="fn">BOOK_DISCOUNT_RATE</span> = <span class="num">0.1</span>
+
+<span class="kw">def</span> <span class="fn">get_item_price</span>(<span class="param">item</span>):
+    price = item[<span class="str">"price"</span>]
+    <span class="kw">if</span> item[<span class="str">"type"</span>] == <span class="str">"book"</span>:
+        <span class="kw">return</span> price * (<span class="num">1</span> - <span class="fn">BOOK_DISCOUNT_RATE</span>)
+    <span class="kw">return</span> price
+
+<span class="kw">def</span> <span class="fn">calculate_cart_total</span>(<span class="param">items</span>):
+    <span class="kw">return</span> <span class="fn">sum</span>(get_item_price(item) <span class="kw">for</span> item <span class="kw">in</span> items)</pre>
+  <h3 style="color:var(--teal);margin-top:16px;">Maboresho:</h3>
+  <p class="bullet green">Nambari ya kichawi imebadilishwa na thamani thabiti yenye jina</p>
+  <p class="bullet green">Mantiki ya bei imetolewa katika kazi yake</p>
+  <p class="bullet green">Kila kazi inajaribiwa kwa kujitegemea</p>
+</div>
+
+<!-- Slide 74 -->
+<div class="slide" data-title="Wakaguzi Wasipaswi Kufanya Nini">
+  <h1>Wakaguzi Wasipaswi Kufanya Nini</h1>
+  <p class="bullet red">Kushughulika na mtindo wakati kuna linter kwa hilo</p>
+  <p class="bullet red">Kuandika upya msimbo wa mwandishi kwa mtindo wao</p>
+  <p class="bullet red">Kuidhinisha bila kusoma</p>
+  <p class="bullet red">Kuzuia PR kwa upendeleo wa kibinafsi (si usahihi)</p>
+  <p class="bullet red">Kuwa wa kiburi au wa dharau</p>
+  <p class="bullet red">Kuchelewa ukaguzi kwa siku bila mawasiliano</p>
+</div>
+
+<!-- Slide 75 -->
+<div class="slide" data-title="Usipoelewa Msimbo, Usiidhinishe">
+  <h1>Usipoelewa Msimbo, Usiidhinishe</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <div>
+      <p class="big-quote" style="margin-bottom:32px;">&ldquo;Usipoelewa msimbo, usiidhinishe.&rdquo;</p>
+      <div class="callout" style="text-align:center;max-width:600px;margin:0 auto;">
+        <strong>Idhini inamaanisha uwajibikaji.</strong><br>
+        Ikiwa msimbo huo unasababisha hitilafu, unashiriki uwajibikaji.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 76 -->
+<div class="slide" data-title="Jinsi ya Kupokea Ukaguzi Kitaalamu" data-section="Kupokea Ukaguzi wa Msimbo">
+  <h1>Jinsi ya Kupokea Ukaguzi Kitaalamu</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Usifanye:</h3>
+      <p class="bullet red">Kuchukua maoni kibinafsi</p>
+      <p class="bullet red">Kubishana bila kusikiliza</p>
+      <p class="bullet red">Kupuuza mapendekezo mara moja</p>
+      <p class="bullet red">Kujisikia umeshambuliwa</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Fanya:</h3>
+      <p class="bullet green">Soma kila maoni kwa makini</p>
+      <p class="bullet green">Omba ufafanuzi ikihitajika</p>
+      <p class="bullet green">Shukuru wakaguzi kwa muda wao</p>
+      <p class="bullet green">Eleza mantiki yako kwa heshima</p>
+      <p class="bullet green">Fanya mabadiliko haraka</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 77 -->
+<div class="slide" data-title="Jibu Baya la Ukaguzi">
+  <h1>Jibu Baya la Ukaguzi</h1>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Inafanya kazi vizuri. Nilijaribu.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Hiyo ni upendeleo wa mtindo tu.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Hatuna muda wa hii.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;">&ldquo;Unaweza tu kuidhinisha?&rdquo;</div>
+  <p class="bullet red" style="margin-top:20px;">Majibu haya yanafunga ushirikiano na kuondoa uaminifu</p>
+</div>
+
+<!-- Slide 78 -->
+<div class="slide" data-title="Jibu Zuri la Ukaguzi">
+  <h1>Jibu Zuri la Ukaguzi</h1>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Umeshika vizuri &mdash; nilipoteza kesi hiyo ya ukingo. Imerekebishwa katika commit ya hivi karibuni.&rdquo;</div>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Naona hoja yako. Nilichagua mbinu hii kwa sababu [sababu]. Nina furaha kubadilisha ikiwa bado unafikiri ni bora.&rdquo;</div>
+  <div class="callout" style="font-size:1.05rem;">&ldquo;Asante kwa ukaguzi wa kina. Nimejifunza kitu kipya hapa.&rdquo;</div>
+  <p class="bullet green" style="margin-top:20px;">Majibu haya yanajenga uaminifu na kuimarisha timu</p>
+</div>
+
+<!-- Slide 79 -->
+<div class="slide" data-title="Ukaguzi Si Kuhusu Kushinda">
+  <h1>Ukaguzi Si Kuhusu Kushinda</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Lengo si:</h3>
+      <p class="bullet red">Kuthibitisha uko sawa</p>
+      <p class="bullet red">Kulinda ego yako</p>
+      <p class="bullet red">Kupata idhini haraka</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Lengo ni:</h3>
+      <p class="bullet green">Kutuma msimbo bora</p>
+      <p class="bullet green">Kujifunza kutoka kwa kila mmoja</p>
+      <p class="bullet green">Kujenga bidhaa ya kuaminika</p>
+      <p class="bullet green">Kukua kama wahandisi</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 80 -->
+<div class="slide section-divider" data-title="Sehemu: Jinsi ya Kufaidika na GenAI" data-section="GenAI kwa Wahandisi">
+  <h1>Jinsi ya Kufaidika na GenAI</h1>
+  <div class="sub">
+    <p>AI inaweza kufanya wahandisi wawe haraka, lakini pia wasiojali.</p>
+    <div class="sp"></div>
+    <div class="callout" style="text-align:center;max-width:600px;">
+      Tumia AI kama <strong>msaidizi</strong>, si kama mbadala wa hukumu ya uhandisi.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 81 -->
+<div class="slide" data-title="Matumizi Mazuri ya GenAI">
+  <h1>Matumizi Mazuri ya GenAI</h1>
+  <p class="bullet green">Tengeneza msimbo wa boilerplate kuokoa muda</p>
+  <p class="bullet green">Andaa kesi za majaribio kwa kazi zilizopo</p>
+  <p class="bullet green">Eleza msimbo au maktaba zisizojulikana</p>
+  <p class="bullet green">Pendekeza mbinu mbadala</p>
+  <p class="bullet green">Saidia kuandika nyaraka</p>
+  <p class="bullet green">Saidia katika utatuzi wa matatizo kwa kuchambua ujumbe wa hitilafu</p>
+  <p class="bullet green">Kagua msimbo kabla ya kuwasilisha PR</p>
+</div>
+
+<!-- Slide 82 -->
+<div class="slide" data-title="Matumizi Dhaifu ya GenAI">
+  <h1>Matumizi Dhaifu ya GenAI</h1>
+  <p style="color:var(--red);font-weight:600;margin-bottom:16px;">Kutumia AI bila kuelewa:</p>
+  <div class="callout red" style="margin-bottom:12px;">&ldquo;Niandikia mfumo wa kuingia&rdquo; &rarr; nakili-bandika &rarr; push</div>
+  <div class="callout red" style="margin-bottom:12px;">&ldquo;Rekebisha hitilafu hii&rdquo; &rarr; tumia pendekezo kwa upofu</div>
+  <div class="callout red">&ldquo;Tengeneza majaribio yangu yote&rdquo; &rarr; kamwe usiyasome</div>
+  <p class="bullet red" style="margin-top:20px;">Usipoweza kueleza msimbo, si wako</p>
+  <p class="bullet red">Msimbo uliotengenezwa na AI wenye hitilafu usizozielewa ni mbaya zaidi kuliko kutokuwa na msimbo</p>
+</div>
+
+<!-- Slide 83 -->
+<div class="slide" data-title="Matumizi Madhubuti ya GenAI">
+  <h1>Matumizi Madhubuti ya GenAI</h1>
+  <p style="color:var(--teal);font-weight:600;margin-bottom:16px;">Maombi bora, matokeo bora:</p>
+  <div class="callout" style="margin-bottom:12px;">&ldquo;Kagua kazi hii kwa kesi za ukingo ninazoweza kuwa nimekosa&rdquo;</div>
+  <div class="callout" style="margin-bottom:12px;">&ldquo;Tengeneza majaribio ya pytest kwa kazi hii, ikiwa ni pamoja na nambari hasi na ingizo tupu&rdquo;</div>
+  <div class="callout">&ldquo;Rekebisha hii kutumia kurudi mapema badala ya masharti yaliyoingizwa ndani&rdquo;</div>
+  <p class="bullet green" style="margin-top:20px;">Maombi mahususi na yenye lengo hutoa matokeo yenye manufaa na yanayokaguliwa</p>
+</div>
+
+<!-- Slide 84 -->
+<div class="slide" data-title="Mfano Mzuri wa Ombi la Kutengeneza Majaribio">
+  <h1>Mfano Mzuri wa Ombi la Kutengeneza Majaribio</h1>
+  <pre><span class="cm"># Prompt to AI:</span>
+<span class="str">"Write pytest tests for this function.
+Include: happy path, negative input, zero, empty list, and type error.
+Use descriptive test names."</span>
+
+<span class="cm"># Function:</span>
+<span class="kw">def</span> <span class="fn">calculate_average</span>(<span class="param">numbers</span>):
+    <span class="kw">if not</span> numbers:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"Cannot average empty list"</span>)
+    <span class="kw">return</span> <span class="fn">sum</span>(numbers) / <span class="fn">len</span>(numbers)</pre>
+  <p class="bullet green" style="margin-top:12px;">Ombi ni mahususi kuhusu nini cha kujaribu na jinsi ya kutaja majaribio</p>
+  <p class="bullet green">Bado unakagua na kurekebisha majaribio yaliyotengenezwa</p>
+</div>
+
+<!-- Slide 85 -->
+<div class="slide" data-title="Mfano Mzuri wa Ombi la Ukaguzi wa Msimbo">
+  <h1>Mfano Mzuri wa Ombi la Ukaguzi wa Msimbo</h1>
+  <pre><span class="cm"># Prompt to AI:</span>
+<span class="str">"Review this function as a senior engineer.
+Check for:
+- edge cases
+- naming clarity
+- error handling
+- testability
+- any potential bugs
+
+Be specific and suggest improvements."</span></pre>
+  <p class="bullet green" style="margin-top:12px;">Tumia AI kama &ldquo;mkaguzi wa kwanza&rdquo; kabla mwenzako wa timu hakagui</p>
+  <p class="bullet green">Hii inashika matatizo dhahiri na kuokoa muda wa mkaguzi</p>
+</div>
+
+<!-- Slide 86 -->
+<div class="slide" data-title="Muunganisho na VS Code na Wahariri">
+  <h1>Muunganisho na VS Code na Wahariri</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Zana za AI zenye manufaa kwa uendelezaji:</p>
+  <p class="bullet">GitHub Copilot &mdash; mapendekezo ya msimbo ndani ya mstari</p>
+  <p class="bullet">Claude Code (CLI) &mdash; msaidizi wa AI kwenye terminal</p>
+  <p class="bullet">Cursor &mdash; kihariri cha msimbo chenye AI asili</p>
+  <p class="bullet">Codeium &mdash; ukamilishaji otomatiki wa bure wa AI</p>
+  <div class="sp"></div>
+  <p style="color:var(--text);font-weight:500;">Matumizi mazuri:</p>
+  <p class="bullet green">Kukamilisha otomatiki mifumo inayorudiwa</p>
+  <p class="bullet green">Kutengeneza docstrings</p>
+  <p class="bullet green">Kueleza sehemu ngumu za msimbo</p>
+  <p class="bullet green">Kupendekeza muundo wa majaribio</p>
+</div>
+
+<!-- Slide 87 -->
+<div class="slide" data-title="Kanuni ya Msimbo Uliotengenezwa na AI">
+  <h1>Kanuni ya Msimbo Uliotengenezwa na AI</h1>
+  <p style="color:var(--text);font-size:1.15rem;margin-bottom:24px;">Kabla ya kuunganisha msimbo wowote uliotengenezwa na AI, lazima:</p>
+  <p class="bullet green"><strong>Uelewe</strong> &mdash; soma kila mstari</p>
+  <p class="bullet green"><strong>Ueleze</strong> &mdash; uweze kueleza unafanya nini na kwa nini</p>
+  <p class="bullet green"><strong>Ujaribu</strong> &mdash; uthibitishe na majaribio yako mwenyewe</p>
+  <p class="bullet green"><strong>Uidhinishe</strong> &mdash; uitendee kama vile umeandika wewe mwenyewe katika PR yako</p>
+  <div class="callout" style="margin-top:24px;">
+    <strong>Ikiwa jina lako liko kwenye commit, wewe ni mmiliki wa msimbo.</strong> Haijalishi ni nani au nini kilichoutengeneza.
+  </div>
+</div>
+
+<!-- Slide 88 -->
+<div class="slide section-divider" data-title="Sehemu: Onyesho la Moja kwa Moja" data-section="Onyesho la Moja kwa Moja">
+  <h1>Onyesho la Moja kwa Moja: Kukagua Pull Request Mbaya</h1>
+  <div class="sub">
+    <p>Tutakagua PR halisi pamoja na kutambua:</p>
+    <div class="sp"></div>
+    <p style="text-align:left;display:inline-block;">
+      &bull; Utoaji majina mbaya<br>
+      &bull; Ushughulikiaji wa hitilafu unaokosekana<br>
+      &bull; Mantiki iliyorudiwa<br>
+      &bull; Majaribio yanayokosekana<br>
+      &bull; Ujumbe wa commit usio wazi<br>
+      &bull; Upeo unaoenea
+    </p>
+  </div>
+</div>
+
+<!-- Slide 89 -->
+<div class="slide" data-title="Lengo la Onyesho la Moja kwa Moja">
+  <h1>Lengo la Onyesho la Moja kwa Moja</h1>
+  <p style="color:var(--text);font-size:1.1rem;margin-bottom:24px;">Baada ya onyesho hili, unapaswa kuweza:</p>
+  <p class="bullet green">Kusoma tofauti ya PR kwa makini</p>
+  <p class="bullet green">Kutambua angalau aina 5 za matatizo</p>
+  <p class="bullet green">Kuandika maoni ya ukaguzi yenye kujenga</p>
+  <p class="bullet green">Kupendekeza maboresho mahususi</p>
+  <p class="bullet green">Kutofautisha kati ya matatizo yanayozuia na mapendekezo</p>
+  <div class="callout" style="margin-top:24px;">
+    Kukagua msimbo ni ujuzi. Kama ujuzi wowote, unaboreshwa kwa mazoezi ya makusudi.
+  </div>
+</div>
+
+<!-- Slide 90 -->
+<div class="slide" data-title="Kazi ya Nyumbani: Kagua Pull Request Kama Mhandisi" data-section="Kazi ya Nyumbani">
+  <h1>Kazi ya Nyumbani: Kagua Pull Request Kama Mhandisi</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Kazi:</p>
+  <p class="bullet">Pata PR ya chanzo huria kwenye GitHub (au tumia moja iliyotolewa na mwalimu)</p>
+  <p class="bullet">Andika ukaguzi wenye angalau maoni 5 yenye maudhui</p>
+  <p class="bullet">Kila maoni lazima itambue tatizo mahususi na ipendekeze uboreshaji</p>
+  <div class="sp"></div>
+  <p style="color:var(--text);font-weight:500;">Mahitaji ya kuwasilisha:</p>
+  <p class="bullet green">Kiungo cha PR uliyoikagua</p>
+  <p class="bullet green">Maoni yako ya ukaguzi (picha ya skrini au markdown)</p>
+  <p class="bullet green">Tafakuri fupi: ulijifunza nini kutoka kwenye kukagua msimbo wa mtu mwingine?</p>
+</div>
+
+<!-- Slide 91 -->
+<div class="slide" data-title="Ujumbe wa Mwisho">
+  <h1>Ujumbe wa Mwisho</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <p class="big-quote">&ldquo;Wahandisi wakubwa hawafanyi msimbo tu ufanye kazi. Wanafanya msimbo ueleweke, ujaribiwe, ukaguliwe, na uaminike.&rdquo;</p>
+  </div>
+</div>
+
+<!-- Slide 92 -->
+<div class="slide title-slide" data-title="Hitimisho">
+  <h1 style="font-size:2.2rem;">Asante</h1>
+  <div style="max-width:700px;">
+    <p class="big-quote" style="font-size:1.5rem;">&ldquo;Msimbo ambao una shughuli sana kusafisha leo unakuwa tatizo linalomiliki timu yako kesho.&rdquo;</p>
+  </div>
+  <div style="margin-top:40px;color:var(--text-dim);font-size:.9rem;">
+    <p>Emre Varol &middot; A2SV &middot; University of Rwanda</p>
+    <p style="margin-top:8px;"><a href="https://emrevarol.com" style="color:var(--teal);text-decoration:none;">emrevarol.com</a></p>
+  </div>
+</div>
+
+</div><!-- end #deck -->
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const tocOverlay = document.getElementById('toc-overlay');
+  const tocGrid = document.getElementById('toc-grid');
+
+  slides.forEach((s, i) => {
+    const item = document.createElement('div');
+    const isSection = s.hasAttribute('data-section');
+    item.className = 'toc-item' + (isSection ? ' section' : '');
+    item.innerHTML = '<span class="num">' + (i+1) + '</span><span>' + (s.getAttribute('data-title') || 'Slide ' + (i+1)) + '</span>';
+    item.addEventListener('click', () => { goTo(i); closeTOC(); });
+    tocGrid.appendChild(item);
+  });
+
+  function updateUI() {
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'prev');
+      if (i === current) s.classList.add('active');
+      else if (i < current) s.classList.add('prev');
+    });
+    progress.style.width = ((current + 1) / total * 100) + '%';
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  function goTo(n) {
+    if (n < 0 || n >= total) return;
+    current = n;
+    updateUI();
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function openTOC() { tocOverlay.classList.add('open'); }
+  function closeTOC() { tocOverlay.classList.remove('open'); }
+
+  document.addEventListener('keydown', function(e) {
+    if (tocOverlay.classList.contains('open')) {
+      if (e.key === 'Escape') closeTOC();
+      return;
+    }
+    switch(e.key) {
+      case 'ArrowRight': case ' ': case 'PageDown': e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'PageUp': e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); goTo(0); break;
+      case 'End': e.preventDefault(); goTo(total - 1); break;
+      case 'Escape': openTOC(); break;
+    }
+  });
+
+  document.getElementById('next-btn').addEventListener('click', next);
+  document.getElementById('prev-btn').addEventListener('click', prev);
+  document.getElementById('toc-close').addEventListener('click', closeTOC);
+
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, {passive: true});
+  document.addEventListener('touchend', function(e) {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) next(); else prev();
+    }
+  }, {passive: true});
+
+  function checkHash() {
+    const h = parseInt(location.hash.replace('#',''), 10);
+    if (h >= 1 && h <= total) goTo(h - 1);
+  }
+  window.addEventListener('hashchange', checkHash);
+  checkHash();
+
+  const origGoTo = goTo;
+  goTo = function(n) {
+    if (n < 0 || n >= total) return;
+    current = n;
+    updateUI();
+    history.replaceState(null, '', '#' + (n + 1));
+  };
+
+  updateUI();
+})();
+</script>
+</body>
+</html>

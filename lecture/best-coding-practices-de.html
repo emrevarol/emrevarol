@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Practices beim Programmieren und Effektives Code Review — Emre Varol | A2SV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRL2RJSF51"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PRL2RJSF51');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+--bg:#06060f;--bg2:#0c0c1a;--bg3:#12122a;
+--text:#f0f4ff;--text-muted:#8892b0;--text-dim:#4a5178;
+--teal:#00e5b8;--purple:#a855f7;--red:#ef4444;--orange:#f59e0b;--green:#22c55e;
+--code-bg:#0d1117;--code-border:#1e293b;
+--font-sans:'Inter',system-ui,sans-serif;
+--font-mono:'Fira Code',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font-sans);}
+/* ── Slide Container ── */
+#deck{position:relative;width:100%;height:100%;}
+.slide{
+position:absolute;top:0;left:0;width:100%;height:100%;
+display:flex;flex-direction:column;justify-content:center;
+padding:60px 80px 80px;
+opacity:0;pointer-events:none;
+transition:opacity .45s ease,transform .45s ease;
+transform:translateX(40px);
+overflow-y:auto;
+}
+.slide.active{opacity:1;pointer-events:auto;transform:translateX(0);}
+.slide.prev{opacity:0;transform:translateX(-40px);}
+
+/* ── Section Divider Slides ── */
+.slide.section-divider{
+background:linear-gradient(135deg,rgba(0,229,184,.08) 0%,rgba(168,85,247,.08) 100%);
+border-left:4px solid var(--teal);
+text-align:center;
+justify-content:center;
+align-items:center;
+}
+.slide.section-divider h1{font-size:2.6rem;margin-bottom:24px;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.slide.section-divider .sub{font-size:1.2rem;color:var(--text-muted);max-width:700px;line-height:1.7;}
+
+/* ── Typography ── */
+h1{font-size:2.2rem;font-weight:800;margin-bottom:28px;letter-spacing:-.02em;line-height:1.2;}
+h2{font-size:1.6rem;font-weight:700;margin-bottom:20px;color:var(--teal);}
+h3{font-size:1.2rem;font-weight:600;margin-bottom:12px;color:var(--purple);}
+p,.bullet{font-size:1.05rem;line-height:1.7;color:var(--text-muted);}
+.bullet{margin-bottom:8px;padding-left:24px;position:relative;}
+.bullet::before{content:'';position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:var(--teal);}
+.bullet.red::before{background:var(--red);}
+.bullet.green::before{background:var(--green);}
+.bullet.orange::before{background:var(--orange);}
+.bullet.purple::before{background:var(--purple);}
+.bullet.dim::before{background:var(--text-dim);}
+
+/* ── Callout Box ── */
+.callout{
+background:rgba(0,229,184,.06);border:1px solid rgba(0,229,184,.2);border-left:4px solid var(--teal);
+padding:18px 24px;border-radius:8px;margin-top:24px;font-size:1.05rem;color:var(--text);line-height:1.6;
+}
+.callout.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2);border-left-color:var(--red);}
+.callout.purple{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.2);border-left-color:var(--purple);}
+
+/* ── Code Blocks ── */
+pre{
+background:var(--code-bg);border:1px solid var(--code-border);border-radius:10px;
+padding:20px 24px;font-family:var(--font-mono);font-size:.88rem;line-height:1.7;
+overflow-x:auto;margin:16px 0;color:#c9d1d9;
+}
+code{font-family:var(--font-mono);font-size:.88rem;}
+.kw{color:var(--purple);font-weight:500;}
+.fn{color:#79c0ff;}
+.str{color:#a5d6ff;}
+.cm{color:#6e7681;font-style:italic;}
+.num{color:var(--orange);}
+.op{color:var(--red);}
+.param{color:var(--orange);}
+.dec{color:var(--teal);}
+
+/* ── Columns ── */
+.cols{display:flex;gap:40px;margin-top:16px;}
+.col{flex:1;}
+.col h3{margin-bottom:12px;}
+
+/* ── Big Quote ── */
+.big-quote{
+font-size:1.8rem;font-weight:700;line-height:1.5;text-align:center;
+max-width:800px;margin:0 auto;
+background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ── Warning/Success boxes ── */
+.warn-list .bullet::before{background:var(--red);}
+.ok-list .bullet::before{background:var(--teal);}
+
+/* ── Progress Bar ── */
+#progress{position:fixed;bottom:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--purple));transition:width .4s ease;z-index:100;}
+
+/* ── Slide Counter ── */
+#counter{
+position:fixed;bottom:16px;right:24px;font-size:.85rem;color:var(--text-dim);
+font-family:var(--font-mono);z-index:100;
+}
+
+/* ── Navigation Arrows ── */
+.nav-arrow{
+position:fixed;top:50%;transform:translateY(-50%);
+width:48px;height:48px;border-radius:50%;
+background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+color:var(--text-muted);font-size:1.2rem;cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+transition:background .2s,color .2s;z-index:100;
+}
+.nav-arrow:hover{background:rgba(0,229,184,.1);color:var(--teal);}
+#prev-btn{left:16px;}
+#next-btn{right:16px;}
+
+/* ── Top Bar ── */
+#topbar{
+position:fixed;top:0;left:0;right:0;height:48px;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 24px;z-index:100;
+background:rgba(6,6,15,.85);backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.04);
+}
+#topbar a{color:var(--text-muted);text-decoration:none;font-size:.8rem;font-weight:500;transition:color .2s;}
+#topbar a:hover{color:var(--teal);}
+.a2sv-badge{font-size:.7rem;color:var(--text-dim);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+
+/* ── Table of Contents Overlay ── */
+#toc-overlay{
+position:fixed;inset:0;background:rgba(6,6,15,.95);backdrop-filter:blur(20px);
+z-index:200;display:none;flex-direction:column;align-items:center;
+padding:60px 40px;overflow-y:auto;
+}
+#toc-overlay.open{display:flex;}
+#toc-overlay h2{margin-bottom:30px;font-size:1.6rem;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;width:100%;max-width:1100px;}
+.toc-item{
+padding:10px 16px;border-radius:8px;cursor:pointer;
+font-size:.78rem;color:var(--text-muted);
+background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);
+transition:background .2s,color .2s;display:flex;gap:10px;align-items:center;
+}
+.toc-item:hover{background:rgba(0,229,184,.08);color:var(--text);}
+.toc-item .num{color:var(--teal);font-family:var(--font-mono);font-weight:600;min-width:28px;}
+.toc-item.section{background:rgba(168,85,247,.08);border-color:rgba(168,85,247,.15);color:var(--purple);font-weight:600;}
+#toc-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--text-muted);font-size:1.4rem;cursor:pointer;}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+.slide{padding:60px 28px 70px;}
+h1{font-size:1.6rem;}
+h2{font-size:1.2rem;}
+.cols{flex-direction:column;gap:20px;}
+pre{font-size:.75rem;padding:14px;}
+.big-quote{font-size:1.3rem;}
+.nav-arrow{width:36px;height:36px;font-size:1rem;}
+#prev-btn{left:8px;}
+#next-btn{right:8px;}
+.toc-grid{grid-template-columns:1fr;}
+}
+
+/* Title slide special */
+.slide.title-slide{text-align:center;align-items:center;}
+.slide.title-slide h1{font-size:2.8rem;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.slide.title-slide .subtitle{font-size:1.2rem;color:var(--purple);margin-bottom:32px;font-weight:600;}
+
+/* Flow diagram */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:20px 0;}
+.flow-step{
+background:rgba(0,229,184,.08);border:1px solid rgba(0,229,184,.2);
+padding:10px 18px;border-radius:8px;font-size:.85rem;font-weight:500;color:var(--teal);
+}
+.flow-arrow{color:var(--text-dim);font-size:1.2rem;}
+
+/* Badge */
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;}
+.badge.red{background:rgba(239,68,68,.12);color:var(--red);}
+.badge.green{background:rgba(34,197,94,.12);color:var(--green);}
+
+/* Spacer */
+.sp{height:16px;}
+.sp2{height:8px;}
+
+/* Side-by-side code comparison */
+.compare{display:flex;gap:20px;margin:12px 0;}
+.compare>div{flex:1;}
+.compare h3{font-size:.9rem;margin-bottom:8px;}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <a href="https://emrevarol.com">&larr; emrevarol.com</a>
+  <a href="materials.html" style="color:var(--teal);font-size:.85rem;margin-left:auto;margin-right:1rem;text-decoration:none;opacity:.7;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">Materialien und Checkliste &rarr;</a>
+  <span class="a2sv-badge">A2SV &middot; University of Rwanda</span>
+</div>
+
+<div id="progress"></div>
+<div id="counter"></div>
+<button class="nav-arrow" id="prev-btn">&#8592;</button>
+<button class="nav-arrow" id="next-btn">&#8594;</button>
+
+<div id="toc-overlay">
+  <button id="toc-close">&times;</button>
+  <h2>Table of Contents</h2>
+  <div class="toc-grid" id="toc-grid"></div>
+</div>
+
+<div id="deck">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 1: WHY THIS LECTURE MATTERS (1-8)  -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Slide 1 -->
+<div class="slide title-slide" data-title="Best Practices beim Programmieren und Effektives Code Review">
+  <h1>Best Coding Practices and Effective Code Review</h1>
+  <div class="subtitle">A2SV &mdash; University of Rwanda</div>
+  <div style="max-width:500px;text-align:left;">
+    <p class="bullet">Writing code is easy</p>
+    <p class="bullet">Writing maintainable code is hard</p>
+    <p class="bullet">Writing code that a team can trust is <strong style="color:var(--teal)">software engineering</strong></p>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" data-title="What This Lecture Is Really About">
+  <h1>What This Lecture Is Really About</h1>
+  <p class="bullet dim">Not just syntax</p>
+  <p class="bullet dim">Not just &ldquo;clean code&rdquo;</p>
+  <p class="bullet dim">Not just GitHub mechanics</p>
+  <p class="bullet" style="color:var(--text);font-weight:600;">This lecture is about <span style="color:var(--teal)">engineering discipline</span></p>
+  <div class="callout" style="margin-top:32px;">
+    Good engineering creates <strong>speed</strong>. Bad engineering creates <strong>chaos</strong>.
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" data-title="A Hard Truth">
+  <h1>A Hard Truth</h1>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:20px;">A project rarely fails because people cannot write <em>any</em> code.</p>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:24px;">A project often fails because code becomes:</p>
+  <p class="bullet red">Unclear</p>
+  <p class="bullet red">Untestable</p>
+  <p class="bullet red">Unreviewable</p>
+  <p class="bullet red">Hard to change</p>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" data-title="The Wrong Student Mindset">
+  <h1>The Wrong Student Mindset</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Common dangerous thoughts:</h3>
+      <p class="bullet red">&ldquo;It works, so it is good enough.&rdquo;</p>
+      <p class="bullet red">&ldquo;We can clean it later.&rdquo;</p>
+      <p class="bullet red">&ldquo;Tests take too much time.&rdquo;</p>
+      <p class="bullet red">&ldquo;Review is not needed for small changes.&rdquo;</p>
+      <p class="bullet red">&ldquo;My teammates will understand it.&rdquo;</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--orange);">Why this is dangerous:</h3>
+      <p class="bullet orange"><em>Later</em> usually never comes</p>
+      <p class="bullet orange">Small bad habits become team culture</p>
+      <p class="bullet orange">Team culture becomes product quality</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" data-title="The Right Engineering Mindset">
+  <h1>The Right Engineering Mindset</h1>
+  <p style="font-size:1.1rem;color:var(--text);margin-bottom:20px;">A professional engineer asks:</p>
+  <p class="bullet green">Can another person understand this quickly?</p>
+  <p class="bullet green">Can this be safely changed later?</p>
+  <p class="bullet green">Can this be tested?</p>
+  <p class="bullet green">Can this be reviewed well?</p>
+  <p class="bullet green">Will this make the team faster or slower?</p>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide" data-title="The Cost of Bad Code">
+  <h1>The Cost of Bad Code</h1>
+  <p style="font-size:1.1rem;color:var(--red);margin-bottom:20px;font-weight:600;">Bad code causes:</p>
+  <p class="bullet red">More bugs</p>
+  <p class="bullet red">Slower onboarding</p>
+  <p class="bullet red">Painful debugging</p>
+  <p class="bullet red">Duplicated work</p>
+  <p class="bullet red">Broken features after changes</p>
+  <p class="bullet red">Fear of touching the codebase</p>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide" data-title="The Benefit of Good Code">
+  <h1>The Benefit of Good Code</h1>
+  <p style="font-size:1.1rem;color:var(--teal);margin-bottom:20px;font-weight:600;">Good code gives:</p>
+  <p class="bullet green">Faster development</p>
+  <p class="bullet green">Easier collaboration</p>
+  <p class="bullet green">Safer refactoring</p>
+  <p class="bullet green">Better reviews</p>
+  <p class="bullet green">More trust</p>
+  <p class="bullet green">More consistent products</p>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide" data-title="Key Message">
+  <h1>Key Message</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <p class="big-quote">&ldquo;Your code is not only for the computer. Your code is for your teammates, your future self, and the product.&rdquo;</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 2: PROGRAMMING VS SOFTWARE ENG (9-14)      -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 9 -->
+<div class="slide section-divider" data-title="Section: Programming vs Software Engineering" data-section="Programming vs Software Engineering">
+  <h1>Programming vs Software Engineering</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3>Programming</h3>
+      <p style="color:var(--text-muted);">Making code run</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Software Engineering</h3>
+      <p style="color:var(--text-muted);">Making code reliable, maintainable, collaborative, production-ready</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide" data-title="A Script Can Work. A System Must Survive.">
+  <h1>A Script Can Work. A System Must Survive.</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--text-muted);">A script may only need:</h3>
+      <p class="bullet dim">Correct logic</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">A system needs:</h3>
+      <p class="bullet green">Clear structure</p>
+      <p class="bullet green">Tests</p>
+      <p class="bullet green">Reviews</p>
+      <p class="bullet green">Version control</p>
+      <p class="bullet green">Predictable deployment</p>
+      <p class="bullet green">Team understanding</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 11 -->
+<div class="slide" data-title="Code Is Read More Than It Is Written">
+  <h1>Code Is Read More Than It Is Written</h1>
+  <h2>Reality:</h2>
+  <p class="bullet">You write a function once</p>
+  <p class="bullet">Your teammates read it dozens of times</p>
+  <p class="bullet">Future you reads it months later with no memory</p>
+  <div class="sp"></div>
+  <h2>Therefore:</h2>
+  <p class="bullet green">Readability is not optional</p>
+  <p class="bullet green">Readability is part of correctness</p>
+</div>
+
+<!-- Slide 12 -->
+<div class="slide" data-title='Bad Example: "It Works" Is Not Enough'>
+  <h1>Bad Example: &ldquo;It Works&rdquo; Is Not Enough</h1>
+  <pre><span class="kw">def</span> <span class="fn">f</span>(<span class="param">x</span>, <span class="param">y</span>, <span class="param">z</span>):
+    <span class="kw">if</span> x:
+        <span class="kw">if</span> y &gt; <span class="num">0</span>:
+            <span class="kw">return</span> z * <span class="num">0.2</span>
+    <span class="kw">return</span> <span class="num">0</span></pre>
+  <h3 style="color:var(--red);">Problems:</h3>
+  <p class="bullet red">What is <code>f</code>? What does it calculate?</p>
+  <p class="bullet red">What are <code>x</code>, <code>y</code>, <code>z</code>?</p>
+  <p class="bullet red">What does <code>0.2</code> represent?</p>
+  <p class="bullet red">No one can review, test, or maintain this confidently</p>
+</div>
+
+<!-- Slide 13 -->
+<div class="slide" data-title="Better Example: Meaning Must Be Visible">
+  <h1>Better Example: Meaning Must Be Visible</h1>
+  <pre><span class="kw">def</span> <span class="fn">calculate_discount</span>(<span class="param">price</span>, <span class="param">has_membership</span>, <span class="param">loyalty_points</span>):
+    <span class="kw">if not</span> has_membership:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">if</span> loyalty_points &lt;= <span class="num">0</span>:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">return</span> price * <span class="num">0.2</span></pre>
+  <h3 style="color:var(--teal);">What improved:</h3>
+  <p class="bullet green">Function name explains the purpose</p>
+  <p class="bullet green">Parameters are meaningful</p>
+  <p class="bullet green">Logic reads like a sentence</p>
+  <p class="bullet green">A reviewer can check correctness immediately</p>
+</div>
+
+<!-- Slide 14 -->
+<div class="slide" data-title="Engineering Standard">
+  <h1>Engineering Standard</h1>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:24px;">Do not ask only: <span style="color:var(--text-muted);">&ldquo;Does it work?&rdquo;</span></p>
+  <p style="font-size:1.15rem;color:var(--teal);margin-bottom:24px;font-weight:600;">Also ask:</p>
+  <p class="bullet green">Is it readable?</p>
+  <p class="bullet green">Is it testable?</p>
+  <p class="bullet green">Is it safe to change?</p>
+  <p class="bullet green">Would I approve this in a PR?</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 3: BEST CODING PRACTICES (15-35)   -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Slide 15 -->
+<div class="slide section-divider" data-title="Section: Principle 1 — Naming Is a Design Tool" data-section="Best Coding Practices">
+  <h1>Principle 1: Naming Is a Design Tool</h1>
+  <div class="sub">
+    <p>Bad naming creates confusion. Good naming creates clarity.</p>
+    <div class="sp"></div>
+    <p>Names should reveal: <strong>what</strong> something is, <strong>what</strong> it does, <strong>why</strong> it exists.</p>
+  </div>
+</div>
+
+<!-- Slide 16 -->
+<div class="slide" data-title="Bad Naming Example">
+  <h1>Bad Naming Example</h1>
+  <pre><span class="kw">def</span> <span class="fn">calc</span>(<span class="param">a</span>, <span class="param">b</span>):
+    <span class="kw">return</span> a * b</pre>
+  <h3 style="color:var(--red);">Problems:</h3>
+  <p class="bullet red">What does <code>calc</code> calculate?</p>
+  <p class="bullet red">What are <code>a</code> and <code>b</code>?</p>
+  <p class="bullet red">Could be area, price, anything &mdash; impossible to know</p>
+  <p class="bullet red">A reviewer cannot verify correctness</p>
+</div>
+
+<!-- Slide 17 -->
+<div class="slide" data-title="Better Naming Example">
+  <h1>Better Naming Example</h1>
+  <pre><span class="kw">def</span> <span class="fn">calculate_total_price</span>(<span class="param">unit_price</span>, <span class="param">quantity</span>):
+    <span class="kw">return</span> unit_price * quantity</pre>
+  <h3 style="color:var(--teal);">Benefits:</h3>
+  <p class="bullet green">Purpose is immediately clear</p>
+  <p class="bullet green">Parameters explain themselves</p>
+  <p class="bullet green">Reviewer can verify: &ldquo;Yes, total price = unit price &times; quantity&rdquo;</p>
+  <p class="bullet green">Future developers will not misuse this function</p>
+</div>
+
+<!-- Slide 18 -->
+<div class="slide" data-title="What Good Naming Prevents">
+  <h1>What Good Naming Prevents</h1>
+  <p class="bullet green">Reduces confusion when reading unfamiliar code</p>
+  <p class="bullet green">Prevents wrong assumptions about function behavior</p>
+  <p class="bullet green">Prevents misuse of parameters</p>
+  <p class="bullet green">Prevents future bugs from misunderstanding</p>
+  <div class="callout" style="margin-top:24px;">
+    If you need a comment to explain what a variable is, the name is probably wrong.
+  </div>
+</div>
+
+<!-- Slide 19 -->
+<div class="slide section-divider" data-title="Section: Principle 2 — One Clear Thing">
+  <h1>Principle 2: A Function Should Do One Clear Thing</h1>
+  <div class="sub">
+    <p>When a function does too many things, testing becomes hard, reuse becomes impossible, and debugging becomes painful.</p>
+  </div>
+</div>
+
+<!-- Slide 20 -->
+<div class="slide" data-title="Bad Example: Too Many Responsibilities">
+  <h1>Bad Example: Too Many Responsibilities</h1>
+  <pre><span class="kw">def</span> <span class="fn">register_user</span>(<span class="param">user</span>):
+    validate_user(user)
+    save_user_to_database(user)
+    send_welcome_email(user)
+    log_activity(user)
+    notify_admin(user)</pre>
+  <h3 style="color:var(--red);">Problems:</h3>
+  <p class="bullet red">Five responsibilities in one function</p>
+  <p class="bullet red">Cannot test registration without sending email</p>
+  <p class="bullet red">If email fails, does the user still get saved?</p>
+  <p class="bullet red">Impossible to reuse any single step</p>
+</div>
+
+<!-- Slide 21 -->
+<div class="slide" data-title="Better Example: Separate Responsibilities">
+  <h1>Better Example: Separate Responsibilities</h1>
+  <pre><span class="kw">def</span> <span class="fn">register_user</span>(<span class="param">user</span>):
+    validate_user(user)
+    save_user_to_database(user)
+
+<span class="kw">def</span> <span class="fn">onboard_user</span>(<span class="param">user</span>):
+    send_welcome_email(user)
+    log_activity(user)
+
+<span class="kw">def</span> <span class="fn">handle_registration</span>(<span class="param">user</span>):
+    register_user(user)
+    onboard_user(user)
+    notify_admin(user)</pre>
+  <h3 style="color:var(--teal);">Benefits:</h3>
+  <p class="bullet green">Each function has a clear, single purpose</p>
+  <p class="bullet green">Each can be tested independently</p>
+  <p class="bullet green">Failure handling becomes manageable</p>
+</div>
+
+<!-- Slide 22 -->
+<div class="slide section-divider" data-title="Section: Principle 3 — Duplication Is a Bug Factory">
+  <h1>Principle 3: Duplication Is a Bug Factory</h1>
+  <div class="sub">
+    <p>Duplicated logic means missed fixes, inconsistency across the codebase, and expensive maintenance.</p>
+  </div>
+</div>
+
+<!-- Slide 23 -->
+<div class="slide" data-title="Bad Example: Repeated Logic">
+  <h1>Bad Example: Repeated Logic</h1>
+  <pre><span class="cm"># In checkout.py</span>
+final_price = price - price * <span class="num">0.1</span>
+
+<span class="cm"># In invoice.py</span>
+final_price = price - price * <span class="num">0.1</span>
+
+<span class="cm"># In report.py</span>
+final_price = price - price * <span class="num">0.1</span></pre>
+  <div class="callout red" style="margin-top:16px;">
+    If this appears in 7 places and the discount rate changes to 0.15, you must find and update <strong>all 7</strong>. Miss one? You have a silent bug.
+  </div>
+</div>
+
+<!-- Slide 24 -->
+<div class="slide" data-title="Better Example: Centralize Shared Logic">
+  <h1>Better Example: Centralize Shared Logic</h1>
+  <pre><span class="kw">def</span> <span class="fn">apply_discount</span>(<span class="param">price</span>, <span class="param">discount_rate</span>):
+    <span class="kw">return</span> price * (<span class="num">1</span> - discount_rate)
+
+<span class="cm"># Everywhere:</span>
+final_price = apply_discount(price, <span class="num">0.1</span>)</pre>
+  <h3 style="color:var(--teal);">Benefits:</h3>
+  <p class="bullet green">Single source of truth</p>
+  <p class="bullet green">Change once, correct everywhere</p>
+  <p class="bullet green">Easy to test</p>
+  <p class="bullet green">Easy to find and audit</p>
+</div>
+
+<!-- Slide 25 -->
+<div class="slide section-divider" data-title="Section: Principle 4 — Testability Should Influence Design">
+  <h1>Principle 4: Testability Should Influence Design</h1>
+  <div class="sub">
+    <p>If your code is hard to test, it is probably poorly designed.</p>
+    <div class="sp"></div>
+    <p>Testable code is modular, explicit, and has clear inputs and outputs.</p>
+  </div>
+</div>
+
+<!-- Slide 26 -->
+<div class="slide" data-title="Hard-to-Test Code Example">
+  <h1>Hard-to-Test Code Example</h1>
+  <pre><span class="kw">def</span> <span class="fn">process_order</span>(<span class="param">order_id</span>):
+    order = db.get_order(order_id)         <span class="cm"># database call</span>
+    user = db.get_user(order.user_id)      <span class="cm"># database call</span>
+    send_email(user.email, order.summary)  <span class="cm"># side effect</span>
+    db.mark_processed(order_id)            <span class="cm"># database call</span></pre>
+  <h3 style="color:var(--red);">Problems:</h3>
+  <p class="bullet red">Cannot test without a real database</p>
+  <p class="bullet red">Cannot test without sending real emails</p>
+  <p class="bullet red">All side effects are tightly coupled</p>
+</div>
+
+<!-- Slide 27 -->
+<div class="slide" data-title="More Testable Design">
+  <h1>More Testable Design</h1>
+  <pre><span class="kw">def</span> <span class="fn">process_order</span>(<span class="param">order</span>, <span class="param">user</span>, <span class="param">email_sender</span>, <span class="param">db</span>):
+    email_sender.send(user.email, order.summary)
+    db.mark_processed(order.id)</pre>
+  <h3 style="color:var(--teal);">Benefits:</h3>
+  <p class="bullet green">Dependencies are injected &mdash; easy to mock</p>
+  <p class="bullet green">Each dependency can be tested independently</p>
+  <p class="bullet green">Logic is separated from infrastructure</p>
+  <p class="bullet green">Function signature tells you exactly what it needs</p>
+</div>
+
+<!-- Slide 28 -->
+<div class="slide section-divider" data-title="Section: Principle 5 — Fail Clearly, Not Silently">
+  <h1>Principle 5: Fail Clearly, Not Silently</h1>
+  <div class="sub">
+    <p>Silent failures are the most dangerous kind of bug.</p>
+    <div class="sp"></div>
+    <p>When something goes wrong, make it <strong>loud</strong> and <strong>obvious</strong>.</p>
+  </div>
+</div>
+
+<!-- Slide 29 -->
+<div class="slide" data-title="Bad Error Handling">
+  <h1>Bad Error Handling</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_user_age</span>(<span class="param">user</span>):
+    <span class="kw">if</span> user <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">return</span> <span class="kw">None</span>
+    <span class="kw">if</span> user.birthday <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">return</span> <span class="kw">None</span>
+    <span class="kw">return</span> calculate_age(user.birthday)</pre>
+  <h3 style="color:var(--red);">Risk:</h3>
+  <p class="bullet red">Caller gets <code>None</code> and does not know why</p>
+  <p class="bullet red">Bug is hidden and propagates silently</p>
+  <p class="bullet red">Debugging becomes a guessing game</p>
+</div>
+
+<!-- Slide 30 -->
+<div class="slide" data-title="Clearer Error Handling">
+  <h1>Clearer Error Handling</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_user_age</span>(<span class="param">user</span>):
+    <span class="kw">if</span> user <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"User must not be None"</span>)
+    <span class="kw">if</span> user.birthday <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"User birthday is missing"</span>)
+    <span class="kw">return</span> calculate_age(user.birthday)</pre>
+  <h3 style="color:var(--teal);">Benefits:</h3>
+  <p class="bullet green">Error is immediately visible</p>
+  <p class="bullet green">Message tells you exactly what is wrong</p>
+  <p class="bullet green">Bug is caught early, not downstream</p>
+</div>
+
+<!-- Slide 31 -->
+<div class="slide section-divider" data-title="Section: Principle 6 — Complexity Is Expensive">
+  <h1>Principle 6: Complexity Is Expensive</h1>
+  <div class="sub">
+    <p>Complicated code is not clever. It is expensive to maintain, review, and debug.</p>
+  </div>
+</div>
+
+<!-- Slide 32 -->
+<div class="slide" data-title="Complex Example">
+  <h1>Complex Example</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_price</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">if</span> user.is_member:
+        <span class="kw">if</span> product.on_sale:
+            <span class="kw">if</span> user.loyalty_points &gt; <span class="num">100</span>:
+                <span class="kw">return</span> product.price * <span class="num">0.7</span>
+            <span class="kw">else</span>:
+                <span class="kw">return</span> product.price * <span class="num">0.8</span>
+        <span class="kw">else</span>:
+            <span class="kw">return</span> product.price * <span class="num">0.9</span>
+    <span class="kw">else</span>:
+        <span class="kw">if</span> product.on_sale:
+            <span class="kw">return</span> product.price * <span class="num">0.95</span>
+        <span class="kw">else</span>:
+            <span class="kw">return</span> product.price</pre>
+  <p class="bullet red" style="margin-top:12px;">Deeply nested, hard to follow, easy to introduce bugs</p>
+</div>
+
+<!-- Slide 33 -->
+<div class="slide" data-title="Simpler Example">
+  <h1>Simpler Example</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_discount_rate</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">if not</span> user.is_member <span class="kw">and not</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">if not</span> user.is_member <span class="kw">and</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0.05</span>
+    <span class="kw">if</span> user.is_member <span class="kw">and not</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0.1</span>
+    <span class="kw">if</span> user.loyalty_points &gt; <span class="num">100</span>:
+        <span class="kw">return</span> <span class="num">0.3</span>
+    <span class="kw">return</span> <span class="num">0.2</span>
+
+<span class="kw">def</span> <span class="fn">get_price</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">return</span> product.price * (<span class="num">1</span> - get_discount_rate(user, product))</pre>
+  <p class="bullet green" style="margin-top:12px;">Flat, readable, each case is explicit and testable</p>
+</div>
+
+<!-- Slide 34 -->
+<div class="slide" data-title="Small Changes Beat Big Messy Changes">
+  <h1>Principle 7: Small Changes Beat Big Messy Changes</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Big changes:</h3>
+      <p class="bullet red">Hard to review</p>
+      <p class="bullet red">High risk of bugs</p>
+      <p class="bullet red">Painful to merge</p>
+      <p class="bullet red">Confusing git history</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Small changes:</h3>
+      <p class="bullet green">Easy to review</p>
+      <p class="bullet green">Low risk</p>
+      <p class="bullet green">Fast to merge</p>
+      <p class="bullet green">Clear history</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 35 -->
+<div class="slide" data-title="Engineering Rule">
+  <h1>Engineering Rule</h1>
+  <p style="font-size:1.15rem;color:var(--teal);margin-bottom:24px;font-weight:600;">Prefer:</p>
+  <p class="bullet green">Smaller functions</p>
+  <p class="bullet green">Smaller commits</p>
+  <p class="bullet green">Smaller PRs</p>
+  <p class="bullet green">Smaller review units</p>
+  <div class="callout" style="margin-top:28px;">
+    Small, focused changes are easier to understand, review, test, and revert.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 4: GIT AND GITHUB WORKFLOW (36-42)     -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<!-- Slide 36 -->
+<div class="slide section-divider" data-title="Section: Git and GitHub Workflow" data-section="Git and GitHub Workflow">
+  <h1>Git and GitHub Workflow</h1>
+  <div class="sub">
+    <p>Without a workflow, teams create:<br>
+    overwritten code, unreviewed changes, broken main branches, confusion.</p>
+  </div>
+</div>
+
+<!-- Slide 37 -->
+<div class="slide" data-title="The Correct Basic Workflow">
+  <h1>The Correct Basic Workflow</h1>
+  <div class="flow">
+    <span class="flow-step">main</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">create feature branch</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">write code</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">commit small changes</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">open PR</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">review</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">improve</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step" style="background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.3);color:var(--purple);">merge to main</span>
+  </div>
+  <div class="callout" style="margin-top:24px;">
+    This is not optional. This is the minimum professional workflow.
+  </div>
+</div>
+
+<!-- Slide 38 -->
+<div class="slide" data-title="Never Work Directly on Main">
+  <h1>Never Work Directly on Main</h1>
+  <p class="bullet red">Main should always be deployable</p>
+  <p class="bullet red">Direct commits skip review</p>
+  <p class="bullet red">Merge conflicts become destructive</p>
+  <p class="bullet red">No way to revert cleanly</p>
+  <p class="bullet red">Team loses trust in the codebase</p>
+  <div class="callout red" style="margin-top:24px;">
+    If main is broken, <strong>everyone</strong> is blocked. Protect it.
+  </div>
+</div>
+
+<!-- Slide 39 -->
+<div class="slide" data-title="What a Branch Represents">
+  <h1>What a Branch Represents</h1>
+  <h3 style="color:var(--red);">Bad branch names:</h3>
+  <pre style="border-color:rgba(239,68,68,.3);">fix
+my-branch
+test123
+update</pre>
+  <h3 style="color:var(--teal);margin-top:20px;">Better branch names:</h3>
+  <pre style="border-color:rgba(0,229,184,.3);">feature/user-registration
+fix/login-redirect-bug
+chore/update-dependencies
+refactor/split-order-service</pre>
+  <p class="bullet green" style="margin-top:12px;">A branch name should describe the <strong>intent</strong> of the work</p>
+</div>
+
+<!-- Slide 40 -->
+<div class="slide" data-title="Commits Should Tell a Story">
+  <h1>Commits Should Tell a Story</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Bad commit messages:</h3>
+      <pre style="border-color:rgba(239,68,68,.3);font-size:.8rem;">fix
+update
+wip
+asdf
+changed stuff</pre>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Good commit messages:</h3>
+      <pre style="border-color:rgba(0,229,184,.3);font-size:.8rem;">fix: redirect to login after session timeout
+feat: add email validation to registration
+refactor: extract discount logic into helper
+test: add edge cases for price calculator
+docs: update API authentication section</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 41 -->
+<div class="slide" data-title="A Good PR Is Reviewable">
+  <h1>A Good PR Is Reviewable</h1>
+  <p class="bullet green">Small and focused on one thing</p>
+  <p class="bullet green">Has a clear title and description</p>
+  <p class="bullet green">Explains <em>why</em> the change was made</p>
+  <p class="bullet green">Includes tests if applicable</p>
+  <p class="bullet green">Does not mix unrelated changes</p>
+  <div class="callout" style="margin-top:20px;">
+    A good PR description answers: <strong>What</strong> changed? <strong>Why</strong>? <strong>How</strong> to test?
+  </div>
+</div>
+
+<!-- Slide 42 -->
+<div class="slide" data-title="Bad PR vs Good PR">
+  <h1>Bad PR vs Good PR</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Bad PR:</h3>
+      <p class="bullet red">Title: &ldquo;updates&rdquo;</p>
+      <p class="bullet red">No description</p>
+      <p class="bullet red">47 files changed</p>
+      <p class="bullet red">Mixes feature + refactor + style fix</p>
+      <p class="bullet red">No tests</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Good PR:</h3>
+      <p class="bullet green">Title: &ldquo;feat: add email validation to registration&rdquo;</p>
+      <p class="bullet green">Description explains the approach</p>
+      <p class="bullet green">4 files changed</p>
+      <p class="bullet green">Focused on one feature</p>
+      <p class="bullet green">Includes unit tests</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 5: PROFESSIONAL REPOSITORY (43-47)         -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 43 -->
+<div class="slide section-divider" data-title="Section: A Professional Repository" data-section="Professional Repository">
+  <h1>A Professional Repository Is Not Just Code</h1>
+  <div class="sub">
+    <p>A serious repository includes structure, documentation, configuration, and standards &mdash; not just source files.</p>
+  </div>
+</div>
+
+<!-- Slide 44 -->
+<div class="slide" data-title="Example Repository Structure">
+  <h1>Example Repository Structure</h1>
+  <pre style="font-size:.82rem;">project/
+├── src/
+│   ├── models/
+│   ├── services/
+│   ├── routes/
+│   └── utils/
+├── tests/
+│   ├── unit/
+│   └── integration/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── Makefile
+└── .env.example</pre>
+</div>
+
+<!-- Slide 45 -->
+<div class="slide" data-title="Why README Matters">
+  <h1>Why README Matters</h1>
+  <p style="font-size:1.1rem;color:var(--text);margin-bottom:20px;">A README should tell a new team member:</p>
+  <p class="bullet green">What the project does</p>
+  <p class="bullet green">How to set it up</p>
+  <p class="bullet green">How to run it</p>
+  <p class="bullet green">How to run tests</p>
+  <p class="bullet green">How to contribute</p>
+  <div class="callout red" style="margin-top:20px;">
+    A repository without a README is a repository that says: &ldquo;Figure it out yourself.&rdquo;
+  </div>
+</div>
+
+<!-- Slide 46 -->
+<div class="slide" data-title="A Good README Includes">
+  <h1>A Good README Includes</h1>
+  <p class="bullet green">Project name and one-line description</p>
+  <p class="bullet green">Prerequisites (Python version, dependencies)</p>
+  <p class="bullet green">Installation steps</p>
+  <p class="bullet green">How to run locally</p>
+  <p class="bullet green">How to run tests</p>
+  <p class="bullet green">Environment variables needed</p>
+  <p class="bullet green">Project structure overview</p>
+  <p class="bullet green">Contribution guidelines</p>
+</div>
+
+<!-- Slide 47 -->
+<div class="slide" data-title="If Your Repo Is Confusing, Your Team Slows Down">
+  <h1>If Your Repo Is Confusing, Your Team Slows Down</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <div class="callout" style="max-width:700px;text-align:center;font-size:1.15rem;">
+      Every minute a teammate spends figuring out your project structure is a minute they are not building features.<br><br>
+      <strong style="color:var(--teal);">Repository clarity is a form of respect for your team.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 6: TESTING CULTURE (48-55)         -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Slide 48 -->
+<div class="slide section-divider" data-title="Section: Testing Culture" data-section="Testing Culture">
+  <h1>Testing Culture</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--red);">Common excuses:</h3>
+      <p style="color:var(--text-muted);">&ldquo;We don&rsquo;t have time for tests&rdquo;</p>
+      <p style="color:var(--text-muted);">&ldquo;It works on my machine&rdquo;</p>
+      <p style="color:var(--text-muted);">&ldquo;Tests slow us down&rdquo;</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Reality:</h3>
+      <p style="color:var(--text-muted);">You do not have time to <em>not</em> test</p>
+      <p style="color:var(--text-muted);">It needs to work on <em>every</em> machine</p>
+      <p style="color:var(--text-muted);">Tests save you from slowing down later</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 49 -->
+<div class="slide" data-title="What Tests Really Give You">
+  <h1>What Tests Really Give You</h1>
+  <p class="bullet green">Confidence to change code</p>
+  <p class="bullet green">Faster debugging &mdash; tests show <em>where</em> things broke</p>
+  <p class="bullet green">Documentation of expected behavior</p>
+  <p class="bullet green">Safety net for refactoring</p>
+  <p class="bullet green">Proof that your code works</p>
+  <div class="callout" style="margin-top:24px;">
+    Tests do not slow strong teams down. They allow strong teams to <strong>move fast safely</strong>.
+  </div>
+</div>
+
+<!-- Slide 50 -->
+<div class="slide" data-title="A Very Simple Example">
+  <h1>A Very Simple Example</h1>
+  <pre><span class="kw">def</span> <span class="fn">add</span>(<span class="param">a</span>, <span class="param">b</span>):
+    <span class="kw">return</span> a + b</pre>
+  <p style="color:var(--text-muted);margin-top:16px;">Simple function. How do we know it works correctly?</p>
+  <p style="color:var(--text);margin-top:8px;font-weight:500;">We write a test.</p>
+</div>
+
+<!-- Slide 51 -->
+<div class="slide" data-title="Basic Pytest Example">
+  <h1>Basic Pytest Example</h1>
+  <pre><span class="kw">def</span> <span class="fn">test_add_returns_sum</span>():
+    <span class="kw">assert</span> add(<span class="num">2</span>, <span class="num">3</span>) == <span class="num">5</span></pre>
+  <p class="bullet green" style="margin-top:16px;">Clear, readable, fast to run</p>
+  <p class="bullet green">If <code>add</code> ever breaks, this test catches it immediately</p>
+  <p class="bullet green">Anyone can understand what this test checks</p>
+</div>
+
+<!-- Slide 52 -->
+<div class="slide" data-title="Good Tests Check More Than Happy Path">
+  <h1>Good Tests Check More Than Happy Path</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">What else should we test?</p>
+  <p class="bullet">Negative numbers</p>
+  <p class="bullet">Zero values</p>
+  <p class="bullet">Very large numbers</p>
+  <p class="bullet">Type mismatches (if applicable)</p>
+  <p class="bullet">Boundary conditions</p>
+  <p class="bullet">Error cases</p>
+  <div class="callout" style="margin-top:16px;">
+    The happy path is where bugs <em>don&rsquo;t</em> hide. Edge cases are where they live.
+  </div>
+</div>
+
+<!-- Slide 53 -->
+<div class="slide" data-title="Example: More Useful Tests">
+  <h1>Example: More Useful Tests</h1>
+  <pre><span class="kw">def</span> <span class="fn">test_add_positive_numbers</span>():
+    <span class="kw">assert</span> add(<span class="num">2</span>, <span class="num">3</span>) == <span class="num">5</span>
+
+<span class="kw">def</span> <span class="fn">test_add_negative_numbers</span>():
+    <span class="kw">assert</span> add(-<span class="num">1</span>, -<span class="num">2</span>) == -<span class="num">3</span>
+
+<span class="kw">def</span> <span class="fn">test_add_with_zero</span>():
+    <span class="kw">assert</span> add(<span class="num">0</span>, <span class="num">5</span>) == <span class="num">5</span>
+    <span class="kw">assert</span> add(<span class="num">5</span>, <span class="num">0</span>) == <span class="num">5</span>
+
+<span class="kw">def</span> <span class="fn">test_add_mixed_signs</span>():
+    <span class="kw">assert</span> add(-<span class="num">3</span>, <span class="num">5</span>) == <span class="num">2</span></pre>
+  <p class="bullet green" style="margin-top:12px;">Each test has a clear name describing what it verifies</p>
+</div>
+
+<!-- Slide 54 -->
+<div class="slide" data-title="What Happens Without Tests">
+  <h1>What Happens Without Tests</h1>
+  <p class="bullet red">Bugs reach production</p>
+  <p class="bullet red">Refactoring becomes terrifying</p>
+  <p class="bullet red">Nobody knows if a change broke something</p>
+  <p class="bullet red">Manual testing is slow and unreliable</p>
+  <p class="bullet red">Regressions keep coming back</p>
+  <p class="bullet red">Team loses confidence in the code</p>
+</div>
+
+<!-- Slide 55 -->
+<div class="slide" data-title="What Happens With Tests">
+  <h1>What Happens With Tests</h1>
+  <p class="bullet green">Bugs are caught before merge</p>
+  <p class="bullet green">Refactoring is safe and fast</p>
+  <p class="bullet green">CI catches regressions automatically</p>
+  <p class="bullet green">New team members understand expected behavior</p>
+  <p class="bullet green">Deployments are confident</p>
+  <p class="bullet green">Team velocity increases over time</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 7: CI/CD AND QUALITY GATES (56-62)     -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<!-- Slide 56 -->
+<div class="slide section-divider" data-title="Section: CI/CD and Quality Gates" data-section="CI/CD and Quality Gates">
+  <h1>CI/CD and Quality Gates</h1>
+  <div class="sub">
+    <p><strong>CI = Continuous Integration</strong></p>
+    <div class="sp"></div>
+    <p>Automatically verify every change before it reaches the main branch.</p>
+  </div>
+</div>
+
+<!-- Slide 57 -->
+<div class="slide" data-title="Why CI Matters">
+  <h1>Why CI Matters</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">CI prevents:</h3>
+      <p class="bullet red">Broken code reaching main</p>
+      <p class="bullet red">Untested code being merged</p>
+      <p class="bullet red">Style inconsistencies</p>
+      <p class="bullet red">&ldquo;Works on my machine&rdquo; problems</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">CI gives:</h3>
+      <p class="bullet green">Automated quality checks</p>
+      <p class="bullet green">Fast feedback on every PR</p>
+      <p class="bullet green">Consistent standards</p>
+      <p class="bullet green">Team confidence</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 58 -->
+<div class="slide" data-title="Common CI Checks">
+  <h1>Common CI Checks</h1>
+  <p class="bullet">Run all tests (unit + integration)</p>
+  <p class="bullet">Check code formatting (black, prettier, etc.)</p>
+  <p class="bullet">Run linter (pylint, eslint, flake8)</p>
+  <p class="bullet">Check type annotations (mypy)</p>
+  <p class="bullet">Measure test coverage</p>
+  <p class="bullet">Security scanning</p>
+  <p class="bullet">Build check (does the project compile/build?)</p>
+</div>
+
+<!-- Slide 59 -->
+<div class="slide" data-title="GitHub Actions Example">
+  <h1>GitHub Actions Example</h1>
+  <pre><span class="dec">name:</span> <span class="str">Python Checks</span>
+<span class="dec">on:</span>
+  <span class="dec">pull_request:</span>
+  <span class="dec">push:</span>
+<span class="dec">jobs:</span>
+  <span class="dec">test:</span>
+    <span class="dec">runs-on:</span> <span class="str">ubuntu-latest</span>
+    <span class="dec">steps:</span>
+      - <span class="dec">uses:</span> <span class="str">actions/checkout@v4</span>
+      - <span class="dec">uses:</span> <span class="str">actions/setup-python@v5</span>
+        <span class="dec">with:</span>
+          <span class="dec">python-version:</span> <span class="str">'3.11'</span>
+      - <span class="dec">run:</span> <span class="str">pip install -r requirements.txt</span>
+      - <span class="dec">run:</span> <span class="str">pytest</span></pre>
+</div>
+
+<!-- Slide 60 -->
+<div class="slide" data-title="What This Achieves">
+  <h1>What This Achieves</h1>
+  <p class="bullet green">Every PR automatically runs tests</p>
+  <p class="bullet green">Broken PRs cannot be merged (with branch protection)</p>
+  <p class="bullet green">Team does not need to remember to run tests</p>
+  <p class="bullet green">Feedback is fast and consistent</p>
+  <div class="callout" style="margin-top:24px;">
+    CI is like a guard at the gate. It does not let broken code into your main branch.
+  </div>
+</div>
+
+<!-- Slide 61 -->
+<div class="slide" data-title="Coverage Checks">
+  <h1>Coverage Checks</h1>
+  <p style="color:var(--text);margin-bottom:16px;">Test coverage measures how much of your code is exercised by tests.</p>
+  <p class="bullet">High coverage does not mean no bugs</p>
+  <p class="bullet">Low coverage means large untested areas</p>
+  <p class="bullet">Coverage is a guideline, not a guarantee</p>
+  <div class="callout purple" style="margin-top:20px;">
+    <strong>Caution:</strong> Do not chase 100% coverage. Focus on testing <em>important logic</em> and <em>edge cases</em>, not trivial getters and setters.
+  </div>
+</div>
+
+<!-- Slide 62 -->
+<div class="slide" data-title="Practical Quality Rule">
+  <h1>Practical Quality Rule</h1>
+  <p style="color:var(--text);margin-bottom:20px;font-weight:500;">Good targets for most projects:</p>
+  <p class="bullet green">70-85% test coverage as a baseline</p>
+  <p class="bullet green">All critical business logic tested</p>
+  <p class="bullet green">All edge cases for core functions tested</p>
+  <p class="bullet green">CI must pass before merge (no exceptions)</p>
+  <p class="bullet green">Linter and formatter checks on every PR</p>
+  <div class="callout" style="margin-top:20px;">
+    Quality gates are not bureaucracy. They are <strong>engineering infrastructure</strong>.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 8: EFFECTIVE CODE REVIEW (63-75)           -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 63 -->
+<div class="slide section-divider" data-title="Section: Effective Code Review" data-section="Effective Code Review">
+  <h1>Effective Code Review</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--red);">Code review is not:</h3>
+      <p style="color:var(--text-muted);">A formality</p>
+      <p style="color:var(--text-muted);">A rubber stamp</p>
+      <p style="color:var(--text-muted);">A power move</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Code review is:</h3>
+      <p style="color:var(--text-muted);">A quality conversation</p>
+      <p style="color:var(--text-muted);">A learning opportunity</p>
+      <p style="color:var(--text-muted);">A team defense mechanism</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 64 -->
+<div class="slide" data-title="Why Teams Review Code">
+  <h1>Why Teams Review Code</h1>
+  <p class="bullet green">Catch bugs before they reach production</p>
+  <p class="bullet green">Share knowledge across the team</p>
+  <p class="bullet green">Maintain consistent code quality</p>
+  <p class="bullet green">Spread ownership of the codebase</p>
+  <p class="bullet green">Teach and learn from each other</p>
+  <p class="bullet green">Build team trust</p>
+</div>
+
+<!-- Slide 65 -->
+<div class="slide" data-title="A Weak Review vs an Effective Review">
+  <h1>A Weak Review vs an Effective Review</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Weak review:</h3>
+      <p class="bullet red">Glance at the diff for 30 seconds</p>
+      <p class="bullet red">Click &ldquo;Approve&rdquo;</p>
+      <p class="bullet red">Leave no comments</p>
+      <p class="bullet red">Do not run the code</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Effective review:</h3>
+      <p class="bullet green">Read every changed line</p>
+      <p class="bullet green">Check logic and edge cases</p>
+      <p class="bullet green">Ask clarifying questions</p>
+      <p class="bullet green">Suggest improvements respectfully</p>
+      <p class="bullet green">Verify tests exist</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 66 -->
+<div class="slide" data-title="How to Give an Effective Code Review">
+  <h1>How to Give an Effective Code Review</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Check for:</p>
+  <p class="bullet">Correctness &mdash; does the logic do what it should?</p>
+  <p class="bullet">Readability &mdash; can you understand it without asking?</p>
+  <p class="bullet">Naming &mdash; are names clear and accurate?</p>
+  <p class="bullet">Duplication &mdash; is anything repeated unnecessarily?</p>
+  <p class="bullet">Error handling &mdash; are edge cases covered?</p>
+  <p class="bullet">Tests &mdash; are there tests for the new logic?</p>
+  <p class="bullet">Scope &mdash; does the PR stay focused?</p>
+</div>
+
+<!-- Slide 67 -->
+<div class="slide" data-title="Reviewer Mindset">
+  <h1>Reviewer Mindset</h1>
+  <p style="color:var(--text);margin-bottom:20px;font-weight:500;">During a review, answer these questions:</p>
+  <p class="bullet purple">Do I understand what this code does?</p>
+  <p class="bullet purple">Would I be comfortable maintaining this?</p>
+  <p class="bullet purple">Is there anything that could break silently?</p>
+  <p class="bullet purple">Are there missing tests?</p>
+  <p class="bullet purple">Is the PR description accurate?</p>
+  <p class="bullet purple">Would a new team member understand this?</p>
+</div>
+
+<!-- Slide 68 -->
+<div class="slide" data-title="Bad Review Comment">
+  <h1>Bad Review Comment</h1>
+  <div class="callout red" style="font-size:1.2rem;text-align:center;margin-bottom:24px;">
+    &ldquo;This is wrong.&rdquo;
+  </div>
+  <h3 style="color:var(--red);">Why it is weak:</h3>
+  <p class="bullet red">Does not explain <em>what</em> is wrong</p>
+  <p class="bullet red">Does not explain <em>why</em> it is wrong</p>
+  <p class="bullet red">Does not suggest an improvement</p>
+  <p class="bullet red">Feels like an attack, not feedback</p>
+  <p class="bullet red">Wastes the author&rsquo;s time</p>
+</div>
+
+<!-- Slide 69 -->
+<div class="slide" data-title="Better Review Comment">
+  <h1>Better Review Comment</h1>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:24px;">
+    &ldquo;This function returns <code>None</code> when the user is not found, but the caller on line 42 does not check for <code>None</code>. This could cause an <code>AttributeError</code> at runtime. Could we either raise an exception here or add a None check in the caller?&rdquo;
+  </div>
+  <h3 style="color:var(--teal);">Why it works:</h3>
+  <p class="bullet green">Explains the problem</p>
+  <p class="bullet green">Shows the impact</p>
+  <p class="bullet green">Suggests a concrete fix</p>
+  <p class="bullet green">Treats the author as a collaborator</p>
+</div>
+
+<!-- Slide 70 -->
+<div class="slide" data-title="Use Questions to Reduce Friction">
+  <h1>Use Questions to Reduce Friction</h1>
+  <p style="color:var(--text);margin-bottom:20px;">Instead of commands, use curious questions:</p>
+  <p class="bullet green">&ldquo;What happens if this input is negative?&rdquo;</p>
+  <p class="bullet green">&ldquo;Could we simplify this with an early return?&rdquo;</p>
+  <p class="bullet green">&ldquo;Is there a reason we are not using the existing helper for this?&rdquo;</p>
+  <p class="bullet green">&ldquo;Would it be clearer to extract this into a separate function?&rdquo;</p>
+  <div class="callout" style="margin-top:20px;">
+    Questions invite dialogue. Commands create resistance.
+  </div>
+</div>
+
+<!-- Slide 71 -->
+<div class="slide" data-title="Examples of Strong Review Focus">
+  <h1>Examples of Strong Review Focus</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">A strong reviewer notices:</p>
+  <p class="bullet purple">Magic numbers without explanation</p>
+  <p class="bullet purple">Missing error handling for edge cases</p>
+  <p class="bullet purple">Duplicated logic that should be extracted</p>
+  <p class="bullet purple">Functions doing more than one thing</p>
+  <p class="bullet purple">Inconsistent naming conventions</p>
+  <p class="bullet purple">Missing or insufficient tests</p>
+  <p class="bullet purple">Security concerns (hardcoded secrets, SQL injection, etc.)</p>
+</div>
+
+<!-- Slide 72 -->
+<div class="slide" data-title="Read This Code Like a Reviewer">
+  <h1>Read This Code Like a Reviewer</h1>
+  <pre><span class="kw">def</span> <span class="fn">calc</span>(<span class="param">items</span>):
+    t = <span class="num">0</span>
+    <span class="kw">for</span> i <span class="kw">in</span> items:
+        <span class="kw">if</span> i[<span class="str">"type"</span>] == <span class="str">"book"</span>:
+            t += i[<span class="str">"price"</span>] * <span class="num">0.9</span>
+        <span class="kw">else</span>:
+            t += i[<span class="str">"price"</span>]
+    <span class="kw">return</span> t</pre>
+  <p style="color:var(--text);margin-top:16px;font-weight:500;">As a reviewer, ask:</p>
+  <p class="bullet red">What does <code>calc</code> calculate?</p>
+  <p class="bullet red">What does <code>0.9</code> mean? Why books specifically?</p>
+  <p class="bullet red">What if an item has no &ldquo;type&rdquo; or &ldquo;price&rdquo; key?</p>
+  <p class="bullet red">Where are the tests?</p>
+</div>
+
+<!-- Slide 73 -->
+<div class="slide" data-title="A Better Reviewable Version">
+  <h1>A Better Reviewable Version</h1>
+  <pre><span class="fn">BOOK_DISCOUNT_RATE</span> = <span class="num">0.1</span>
+
+<span class="kw">def</span> <span class="fn">get_item_price</span>(<span class="param">item</span>):
+    price = item[<span class="str">"price"</span>]
+    <span class="kw">if</span> item[<span class="str">"type"</span>] == <span class="str">"book"</span>:
+        <span class="kw">return</span> price * (<span class="num">1</span> - <span class="fn">BOOK_DISCOUNT_RATE</span>)
+    <span class="kw">return</span> price
+
+<span class="kw">def</span> <span class="fn">calculate_cart_total</span>(<span class="param">items</span>):
+    <span class="kw">return</span> <span class="fn">sum</span>(get_item_price(item) <span class="kw">for</span> item <span class="kw">in</span> items)</pre>
+  <h3 style="color:var(--teal);margin-top:16px;">Improvements:</h3>
+  <p class="bullet green">Magic number replaced with named constant</p>
+  <p class="bullet green">Pricing logic extracted into its own function</p>
+  <p class="bullet green">Each function is independently testable</p>
+</div>
+
+<!-- Slide 74 -->
+<div class="slide" data-title="What Reviewers Should Not Do">
+  <h1>What Reviewers Should Not Do</h1>
+  <p class="bullet red">Nitpick style when there is a linter for that</p>
+  <p class="bullet red">Rewrite the author&rsquo;s code in their own style</p>
+  <p class="bullet red">Approve without reading</p>
+  <p class="bullet red">Block a PR for personal preference (not correctness)</p>
+  <p class="bullet red">Be condescending or dismissive</p>
+  <p class="bullet red">Delay reviews for days without communication</p>
+</div>
+
+<!-- Slide 75 -->
+<div class="slide" data-title="If You Do Not Understand the Code, Do Not Approve It">
+  <h1>If You Do Not Understand the Code, Do Not Approve It</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <div>
+      <p class="big-quote" style="margin-bottom:32px;">&ldquo;If you do not understand the code, do not approve it.&rdquo;</p>
+      <div class="callout" style="text-align:center;max-width:600px;margin:0 auto;">
+        <strong>Approval means responsibility.</strong><br>
+        If that code causes a bug, you share the accountability.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 9: RECEIVING CODE REVIEW (76-79)           -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 76 -->
+<div class="slide" data-title="How to Receive Review Professionally" data-section="Receiving Code Review">
+  <h1>How to Receive Review Professionally</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Do not:</h3>
+      <p class="bullet red">Take feedback personally</p>
+      <p class="bullet red">Argue without listening</p>
+      <p class="bullet red">Dismiss suggestions immediately</p>
+      <p class="bullet red">Feel attacked</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Do:</h3>
+      <p class="bullet green">Read every comment carefully</p>
+      <p class="bullet green">Ask for clarification if needed</p>
+      <p class="bullet green">Thank reviewers for their time</p>
+      <p class="bullet green">Explain your reasoning respectfully</p>
+      <p class="bullet green">Make changes promptly</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 77 -->
+<div class="slide" data-title="Bad Response to Review">
+  <h1>Bad Response to Review</h1>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;It works fine. I tested it.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;That&rsquo;s just a style preference.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;We don&rsquo;t have time for this.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;">&ldquo;Can you just approve it?&rdquo;</div>
+  <p class="bullet red" style="margin-top:20px;">These responses shut down collaboration and erode trust</p>
+</div>
+
+<!-- Slide 78 -->
+<div class="slide" data-title="Good Response to Review">
+  <h1>Good Response to Review</h1>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Good catch &mdash; I missed that edge case. Fixed in the latest commit.&rdquo;</div>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;I see your point. I went with this approach because [reason]. Happy to change if you still think it&rsquo;s better.&rdquo;</div>
+  <div class="callout" style="font-size:1.05rem;">&ldquo;Thank you for the detailed review. I learned something new here.&rdquo;</div>
+  <p class="bullet green" style="margin-top:20px;">These responses build trust and strengthen the team</p>
+</div>
+
+<!-- Slide 79 -->
+<div class="slide" data-title="Review Is Not About Winning">
+  <h1>Review Is Not About Winning</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">The goal is not:</h3>
+      <p class="bullet red">Proving you are right</p>
+      <p class="bullet red">Defending your ego</p>
+      <p class="bullet red">Getting approved fast</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">The goal is:</h3>
+      <p class="bullet green">Shipping better code</p>
+      <p class="bullet green">Learning from each other</p>
+      <p class="bullet green">Building a reliable product</p>
+      <p class="bullet green">Growing as engineers</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 10: GenAI FOR ENGINEERS (80-87)            -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 80 -->
+<div class="slide section-divider" data-title="Section: How to Benefit from GenAI" data-section="GenAI for Engineers">
+  <h1>How to Benefit from GenAI</h1>
+  <div class="sub">
+    <p>AI can make engineers faster, but also sloppier.</p>
+    <div class="sp"></div>
+    <div class="callout" style="text-align:center;max-width:600px;">
+      Use AI as an <strong>assistant</strong>, not as a replacement for engineering judgment.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 81 -->
+<div class="slide" data-title="Good Uses of GenAI">
+  <h1>Good Uses of GenAI</h1>
+  <p class="bullet green">Generate boilerplate code to save time</p>
+  <p class="bullet green">Draft test cases for existing functions</p>
+  <p class="bullet green">Explain unfamiliar code or libraries</p>
+  <p class="bullet green">Suggest alternative approaches</p>
+  <p class="bullet green">Help write documentation</p>
+  <p class="bullet green">Assist with debugging by analyzing error messages</p>
+  <p class="bullet green">Pre-review code before submitting a PR</p>
+</div>
+
+<!-- Slide 82 -->
+<div class="slide" data-title="Weak Use of GenAI">
+  <h1>Weak Use of GenAI</h1>
+  <p style="color:var(--red);font-weight:600;margin-bottom:16px;">Using AI without understanding:</p>
+  <div class="callout red" style="margin-bottom:12px;">&ldquo;Write me a login system&rdquo; &rarr; copy-paste &rarr; push</div>
+  <div class="callout red" style="margin-bottom:12px;">&ldquo;Fix this error&rdquo; &rarr; apply suggestion blindly</div>
+  <div class="callout red">&ldquo;Generate all my tests&rdquo; &rarr; never read them</div>
+  <p class="bullet red" style="margin-top:20px;">If you cannot explain the code, you do not own it</p>
+  <p class="bullet red">AI-generated code with bugs you do not understand is worse than no code</p>
+</div>
+
+<!-- Slide 83 -->
+<div class="slide" data-title="Strong Use of GenAI">
+  <h1>Strong Use of GenAI</h1>
+  <p style="color:var(--teal);font-weight:600;margin-bottom:16px;">Better prompts, better results:</p>
+  <div class="callout" style="margin-bottom:12px;">&ldquo;Review this function for edge cases I might have missed&rdquo;</div>
+  <div class="callout" style="margin-bottom:12px;">&ldquo;Generate pytest tests for this function, including negative numbers and empty input&rdquo;</div>
+  <div class="callout">&ldquo;Refactor this to use early returns instead of nested conditions&rdquo;</div>
+  <p class="bullet green" style="margin-top:20px;">Specific, focused prompts produce useful, reviewable output</p>
+</div>
+
+<!-- Slide 84 -->
+<div class="slide" data-title="Good Prompt Example for Test Generation">
+  <h1>Good Prompt Example for Test Generation</h1>
+  <pre><span class="cm"># Prompt to AI:</span>
+<span class="str">"Write pytest tests for this function.
+Include: happy path, negative input, zero, empty list, and type error.
+Use descriptive test names."</span>
+
+<span class="cm"># Function:</span>
+<span class="kw">def</span> <span class="fn">calculate_average</span>(<span class="param">numbers</span>):
+    <span class="kw">if not</span> numbers:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"Cannot average empty list"</span>)
+    <span class="kw">return</span> <span class="fn">sum</span>(numbers) / <span class="fn">len</span>(numbers)</pre>
+  <p class="bullet green" style="margin-top:12px;">The prompt is specific about what to test and how to name tests</p>
+  <p class="bullet green">You still review and adjust the generated tests</p>
+</div>
+
+<!-- Slide 85 -->
+<div class="slide" data-title="Good Prompt Example for Code Review">
+  <h1>Good Prompt Example for Code Review</h1>
+  <pre><span class="cm"># Prompt to AI:</span>
+<span class="str">"Review this function as a senior engineer.
+Check for:
+- edge cases
+- naming clarity
+- error handling
+- testability
+- any potential bugs
+
+Be specific and suggest improvements."</span></pre>
+  <p class="bullet green" style="margin-top:12px;">Use AI as a &ldquo;first reviewer&rdquo; before your teammate reviews</p>
+  <p class="bullet green">This catches obvious issues and saves reviewer time</p>
+</div>
+
+<!-- Slide 86 -->
+<div class="slide" data-title="VS Code and Editor Integrations">
+  <h1>VS Code and Editor Integrations</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Useful AI tools for development:</p>
+  <p class="bullet">GitHub Copilot &mdash; inline code suggestions</p>
+  <p class="bullet">Claude Code (CLI) &mdash; terminal-based AI assistant</p>
+  <p class="bullet">Cursor &mdash; AI-native code editor</p>
+  <p class="bullet">Codeium &mdash; free AI autocomplete</p>
+  <div class="sp"></div>
+  <p style="color:var(--text);font-weight:500;">Good use cases:</p>
+  <p class="bullet green">Autocomplete repetitive patterns</p>
+  <p class="bullet green">Generate docstrings</p>
+  <p class="bullet green">Explain complex code sections</p>
+  <p class="bullet green">Suggest test structure</p>
+</div>
+
+<!-- Slide 87 -->
+<div class="slide" data-title="The Rule for AI-Generated Code">
+  <h1>The Rule for AI-Generated Code</h1>
+  <p style="color:var(--text);font-size:1.15rem;margin-bottom:24px;">Before merging any AI-generated code, you must:</p>
+  <p class="bullet green"><strong>Understand it</strong> &mdash; read every line</p>
+  <p class="bullet green"><strong>Explain it</strong> &mdash; be able to describe what it does and why</p>
+  <p class="bullet green"><strong>Test it</strong> &mdash; verify it with your own tests</p>
+  <p class="bullet green"><strong>Approve it</strong> &mdash; treat it as if you wrote it in your PR</p>
+  <div class="callout" style="margin-top:24px;">
+    <strong>If your name is on the commit, you own the code.</strong> It does not matter who or what generated it.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 11: LIVE DEMO (88-89)                  -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<!-- Slide 88 -->
+<div class="slide section-divider" data-title="Section: Live Demo" data-section="Live Demo">
+  <h1>Live Demo: Reviewing a Bad Pull Request</h1>
+  <div class="sub">
+    <p>We will inspect a real PR together and identify:</p>
+    <div class="sp"></div>
+    <p style="text-align:left;display:inline-block;">
+      &bull; Poor naming<br>
+      &bull; Missing error handling<br>
+      &bull; Duplicated logic<br>
+      &bull; Missing tests<br>
+      &bull; Unclear commit messages<br>
+      &bull; Scope creep
+    </p>
+  </div>
+</div>
+
+<!-- Slide 89 -->
+<div class="slide" data-title="Live Demo Goal">
+  <h1>Live Demo Goal</h1>
+  <p style="color:var(--text);font-size:1.1rem;margin-bottom:24px;">After this demo, you should be able to:</p>
+  <p class="bullet green">Read a PR diff critically</p>
+  <p class="bullet green">Identify at least 5 types of issues</p>
+  <p class="bullet green">Write constructive review comments</p>
+  <p class="bullet green">Suggest specific improvements</p>
+  <p class="bullet green">Distinguish between blocking issues and suggestions</p>
+  <div class="callout" style="margin-top:24px;">
+    Reviewing code is a skill. Like any skill, it improves with deliberate practice.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 12: HOMEWORK (90-92)               -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Slide 90 -->
+<div class="slide" data-title="Homework: Review a Pull Request Like an Engineer" data-section="Homework">
+  <h1>Homework: Review a Pull Request Like an Engineer</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Assignment:</p>
+  <p class="bullet">Find an open-source PR on GitHub (or use one provided by the instructor)</p>
+  <p class="bullet">Write a review with at least 5 substantive comments</p>
+  <p class="bullet">Each comment must identify a specific issue and suggest an improvement</p>
+  <div class="sp"></div>
+  <p style="color:var(--text);font-weight:500;">Submission requirements:</p>
+  <p class="bullet green">Link to the PR you reviewed</p>
+  <p class="bullet green">Your review comments (screenshot or markdown)</p>
+  <p class="bullet green">A short reflection: what did you learn from reviewing someone else&rsquo;s code?</p>
+</div>
+
+<!-- Slide 91 -->
+<div class="slide" data-title="Final Message">
+  <h1>Final Message</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <p class="big-quote">&ldquo;Great engineers do not just make code work. They make code understandable, testable, reviewable, and trustworthy.&rdquo;</p>
+  </div>
+</div>
+
+<!-- Slide 92 -->
+<div class="slide title-slide" data-title="Closing Line">
+  <h1 style="font-size:2.2rem;">Thank You</h1>
+  <div style="max-width:700px;">
+    <p class="big-quote" style="font-size:1.5rem;">&ldquo;The code you are too busy to clean today becomes the problem that owns your team tomorrow.&rdquo;</p>
+  </div>
+  <div style="margin-top:40px;color:var(--text-dim);font-size:.9rem;">
+    <p>Emre Varol &middot; A2SV &middot; University of Rwanda</p>
+    <p style="margin-top:8px;"><a href="https://emrevarol.com" style="color:var(--teal);text-decoration:none;">emrevarol.com</a></p>
+  </div>
+</div>
+
+</div><!-- end #deck -->
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const tocOverlay = document.getElementById('toc-overlay');
+  const tocGrid = document.getElementById('toc-grid');
+
+  // Build TOC
+  slides.forEach((s, i) => {
+    const item = document.createElement('div');
+    const isSection = s.hasAttribute('data-section');
+    item.className = 'toc-item' + (isSection ? ' section' : '');
+    item.innerHTML = '<span class="num">' + (i+1) + '</span><span>' + (s.getAttribute('data-title') || 'Slide ' + (i+1)) + '</span>';
+    item.addEventListener('click', () => { goTo(i); closeTOC(); });
+    tocGrid.appendChild(item);
+  });
+
+  function updateUI() {
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'prev');
+      if (i === current) s.classList.add('active');
+      else if (i < current) s.classList.add('prev');
+    });
+    progress.style.width = ((current + 1) / total * 100) + '%';
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  function goTo(n) {
+    if (n < 0 || n >= total) return;
+    current = n;
+    updateUI();
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function openTOC() { tocOverlay.classList.add('open'); }
+  function closeTOC() { tocOverlay.classList.remove('open'); }
+
+  // Keyboard nav
+  document.addEventListener('keydown', function(e) {
+    if (tocOverlay.classList.contains('open')) {
+      if (e.key === 'Escape') closeTOC();
+      return;
+    }
+    switch(e.key) {
+      case 'ArrowRight': case ' ': case 'PageDown': e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'PageUp': e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); goTo(0); break;
+      case 'End': e.preventDefault(); goTo(total - 1); break;
+      case 'Escape': openTOC(); break;
+    }
+  });
+
+  // Button nav
+  document.getElementById('next-btn').addEventListener('click', next);
+  document.getElementById('prev-btn').addEventListener('click', prev);
+  document.getElementById('toc-close').addEventListener('click', closeTOC);
+
+  // Touch/swipe
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, {passive: true});
+  document.addEventListener('touchend', function(e) {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) next(); else prev();
+    }
+  }, {passive: true});
+
+  // Hash support
+  function checkHash() {
+    const h = parseInt(location.hash.replace('#',''), 10);
+    if (h >= 1 && h <= total) goTo(h - 1);
+  }
+  window.addEventListener('hashchange', checkHash);
+  checkHash();
+
+  // Update hash on slide change
+  const origGoTo = goTo;
+  goTo = function(n) {
+    if (n < 0 || n >= total) return;
+    current = n;
+    updateUI();
+    history.replaceState(null, '', '#' + (n + 1));
+  };
+
+  updateUI();
+})();
+</script>
+</body>
+</html>

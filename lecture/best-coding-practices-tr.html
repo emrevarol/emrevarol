@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>En İyi Kodlama Pratikleri ve Etkili Kod İnceleme — Emre Varol | A2SV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PRL2RJSF51"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PRL2RJSF51');</script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+--bg:#06060f;--bg2:#0c0c1a;--bg3:#12122a;
+--text:#f0f4ff;--text-muted:#8892b0;--text-dim:#4a5178;
+--teal:#00e5b8;--purple:#a855f7;--red:#ef4444;--orange:#f59e0b;--green:#22c55e;
+--code-bg:#0d1117;--code-border:#1e293b;
+--font-sans:'Inter',system-ui,sans-serif;
+--font-mono:'Fira Code',monospace;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--font-sans);}
+/* ── Slide Container ── */
+#deck{position:relative;width:100%;height:100%;}
+.slide{
+position:absolute;top:0;left:0;width:100%;height:100%;
+display:flex;flex-direction:column;justify-content:center;
+padding:60px 80px 80px;
+opacity:0;pointer-events:none;
+transition:opacity .45s ease,transform .45s ease;
+transform:translateX(40px);
+overflow-y:auto;
+}
+.slide.active{opacity:1;pointer-events:auto;transform:translateX(0);}
+.slide.prev{opacity:0;transform:translateX(-40px);}
+
+/* ── Section Divider Slides ── */
+.slide.section-divider{
+background:linear-gradient(135deg,rgba(0,229,184,.08) 0%,rgba(168,85,247,.08) 100%);
+border-left:4px solid var(--teal);
+text-align:center;
+justify-content:center;
+align-items:center;
+}
+.slide.section-divider h1{font-size:2.6rem;margin-bottom:24px;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.slide.section-divider .sub{font-size:1.2rem;color:var(--text-muted);max-width:700px;line-height:1.7;}
+
+/* ── Typography ── */
+h1{font-size:2.2rem;font-weight:800;margin-bottom:28px;letter-spacing:-.02em;line-height:1.2;}
+h2{font-size:1.6rem;font-weight:700;margin-bottom:20px;color:var(--teal);}
+h3{font-size:1.2rem;font-weight:600;margin-bottom:12px;color:var(--purple);}
+p,.bullet{font-size:1.05rem;line-height:1.7;color:var(--text-muted);}
+.bullet{margin-bottom:8px;padding-left:24px;position:relative;}
+.bullet::before{content:'';position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:50%;background:var(--teal);}
+.bullet.red::before{background:var(--red);}
+.bullet.green::before{background:var(--green);}
+.bullet.orange::before{background:var(--orange);}
+.bullet.purple::before{background:var(--purple);}
+.bullet.dim::before{background:var(--text-dim);}
+
+/* ── Callout Box ── */
+.callout{
+background:rgba(0,229,184,.06);border:1px solid rgba(0,229,184,.2);border-left:4px solid var(--teal);
+padding:18px 24px;border-radius:8px;margin-top:24px;font-size:1.05rem;color:var(--text);line-height:1.6;
+}
+.callout.red{background:rgba(239,68,68,.06);border-color:rgba(239,68,68,.2);border-left-color:var(--red);}
+.callout.purple{background:rgba(168,85,247,.06);border-color:rgba(168,85,247,.2);border-left-color:var(--purple);}
+
+/* ── Code Blocks ── */
+pre{
+background:var(--code-bg);border:1px solid var(--code-border);border-radius:10px;
+padding:20px 24px;font-family:var(--font-mono);font-size:.88rem;line-height:1.7;
+overflow-x:auto;margin:16px 0;color:#c9d1d9;
+}
+code{font-family:var(--font-mono);font-size:.88rem;}
+.kw{color:var(--purple);font-weight:500;}
+.fn{color:#79c0ff;}
+.str{color:#a5d6ff;}
+.cm{color:#6e7681;font-style:italic;}
+.num{color:var(--orange);}
+.op{color:var(--red);}
+.param{color:var(--orange);}
+.dec{color:var(--teal);}
+
+/* ── Columns ── */
+.cols{display:flex;gap:40px;margin-top:16px;}
+.col{flex:1;}
+.col h3{margin-bottom:12px;}
+
+/* ── Big Quote ── */
+.big-quote{
+font-size:1.8rem;font-weight:700;line-height:1.5;text-align:center;
+max-width:800px;margin:0 auto;
+background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ── Warning/Success boxes ── */
+.warn-list .bullet::before{background:var(--red);}
+.ok-list .bullet::before{background:var(--teal);}
+
+/* ── Progress Bar ── */
+#progress{position:fixed;bottom:0;left:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--purple));transition:width .4s ease;z-index:100;}
+
+/* ── Slide Counter ── */
+#counter{
+position:fixed;bottom:16px;right:24px;font-size:.85rem;color:var(--text-dim);
+font-family:var(--font-mono);z-index:100;
+}
+
+/* ── Navigation Arrows ── */
+.nav-arrow{
+position:fixed;top:50%;transform:translateY(-50%);
+width:48px;height:48px;border-radius:50%;
+background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+color:var(--text-muted);font-size:1.2rem;cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+transition:background .2s,color .2s;z-index:100;
+}
+.nav-arrow:hover{background:rgba(0,229,184,.1);color:var(--teal);}
+#prev-btn{left:16px;}
+#next-btn{right:16px;}
+
+/* ── Top Bar ── */
+#topbar{
+position:fixed;top:0;left:0;right:0;height:48px;
+display:flex;align-items:center;justify-content:space-between;
+padding:0 24px;z-index:100;
+background:rgba(6,6,15,.85);backdrop-filter:blur(10px);
+border-bottom:1px solid rgba(255,255,255,.04);
+}
+#topbar a{color:var(--text-muted);text-decoration:none;font-size:.8rem;font-weight:500;transition:color .2s;}
+#topbar a:hover{color:var(--teal);}
+.a2sv-badge{font-size:.7rem;color:var(--text-dim);font-weight:600;letter-spacing:.08em;text-transform:uppercase;}
+
+/* ── Table of Contents Overlay ── */
+#toc-overlay{
+position:fixed;inset:0;background:rgba(6,6,15,.95);backdrop-filter:blur(20px);
+z-index:200;display:none;flex-direction:column;align-items:center;
+padding:60px 40px;overflow-y:auto;
+}
+#toc-overlay.open{display:flex;}
+#toc-overlay h2{margin-bottom:30px;font-size:1.6rem;}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px;width:100%;max-width:1100px;}
+.toc-item{
+padding:10px 16px;border-radius:8px;cursor:pointer;
+font-size:.78rem;color:var(--text-muted);
+background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);
+transition:background .2s,color .2s;display:flex;gap:10px;align-items:center;
+}
+.toc-item:hover{background:rgba(0,229,184,.08);color:var(--text);}
+.toc-item .num{color:var(--teal);font-family:var(--font-mono);font-weight:600;min-width:28px;}
+.toc-item.section{background:rgba(168,85,247,.08);border-color:rgba(168,85,247,.15);color:var(--purple);font-weight:600;}
+#toc-close{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--text-muted);font-size:1.4rem;cursor:pointer;}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+.slide{padding:60px 28px 70px;}
+h1{font-size:1.6rem;}
+h2{font-size:1.2rem;}
+.cols{flex-direction:column;gap:20px;}
+pre{font-size:.75rem;padding:14px;}
+.big-quote{font-size:1.3rem;}
+.nav-arrow{width:36px;height:36px;font-size:1rem;}
+#prev-btn{left:8px;}
+#next-btn{right:8px;}
+.toc-grid{grid-template-columns:1fr;}
+}
+
+/* Title slide special */
+.slide.title-slide{text-align:center;align-items:center;}
+.slide.title-slide h1{font-size:2.8rem;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.slide.title-slide .subtitle{font-size:1.2rem;color:var(--purple);margin-bottom:32px;font-weight:600;}
+
+/* Flow diagram */
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:20px 0;}
+.flow-step{
+background:rgba(0,229,184,.08);border:1px solid rgba(0,229,184,.2);
+padding:10px 18px;border-radius:8px;font-size:.85rem;font-weight:500;color:var(--teal);
+}
+.flow-arrow{color:var(--text-dim);font-size:1.2rem;}
+
+/* Badge */
+.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;}
+.badge.red{background:rgba(239,68,68,.12);color:var(--red);}
+.badge.green{background:rgba(34,197,94,.12);color:var(--green);}
+
+/* Spacer */
+.sp{height:16px;}
+.sp2{height:8px;}
+
+/* Side-by-side code comparison */
+.compare{display:flex;gap:20px;margin:12px 0;}
+.compare>div{flex:1;}
+.compare h3{font-size:.9rem;margin-bottom:8px;}
+</style>
+</head>
+<body>
+
+<div id="topbar">
+  <a href="https://emrevarol.com">&larr; emrevarol.com</a>
+  <a href="materials.html" style="color:var(--teal);font-size:.85rem;margin-left:auto;margin-right:1rem;text-decoration:none;opacity:.7;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">Materyaller &amp; Kontrol Listesi &rarr;</a>
+  <span class="a2sv-badge">A2SV &middot; University of Rwanda</span>
+</div>
+
+<div id="progress"></div>
+<div id="counter"></div>
+<button class="nav-arrow" id="prev-btn">&#8592;</button>
+<button class="nav-arrow" id="next-btn">&#8594;</button>
+
+<div id="toc-overlay">
+  <button id="toc-close">&times;</button>
+  <h2>İçindekiler</h2>
+  <div class="toc-grid" id="toc-grid"></div>
+</div>
+
+<div id="deck">
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 1: WHY THIS LECTURE MATTERS (1-8)  -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Slide 1 -->
+<div class="slide title-slide" data-title="En İyi Kodlama Pratikleri ve Etkili Kod İnceleme">
+  <h1>En İyi Kodlama Pratikleri ve Etkili Kod İnceleme</h1>
+  <div class="subtitle">A2SV &mdash; Ruanda Üniversitesi</div>
+  <div style="max-width:500px;text-align:left;">
+    <p class="bullet">Kod yazmak kolaydır</p>
+    <p class="bullet">Sürdürülebilir kod yazmak zordur</p>
+    <p class="bullet">Bir ekibin güvenebileceği kod yazmak <strong style="color:var(--teal)">yazılım mühendisliğidir</strong></p>
+  </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide" data-title="Bu Dersin Gerçekte Konusu">
+  <h1>Bu Dersin Gerçekte Konusu</h1>
+  <p class="bullet dim">Sadece söz dizimi değil</p>
+  <p class="bullet dim">Sadece &ldquo;temiz kod&rdquo; değil</p>
+  <p class="bullet dim">Sadece GitHub mekanikleri değil</p>
+  <p class="bullet" style="color:var(--text);font-weight:600;">Bu ders <span style="color:var(--teal)">mühendislik disiplini</span> hakkındadır</p>
+  <div class="callout" style="margin-top:32px;">
+    İyi mühendislik <strong>hız</strong> yaratır. Kötü mühendislik <strong>kaos</strong> yaratır.
+  </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide" data-title="Acı Bir Gerçek">
+  <h1>Acı Bir Gerçek</h1>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:20px;">Bir proje nadiren insanların <em>hiç</em> kod yazamamasından dolayı başarısız olur.</p>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:24px;">Bir proje çoğu zaman kodun şu hale gelmesinden dolayı başarısız olur:</p>
+  <p class="bullet red">Anlaşılmaz</p>
+  <p class="bullet red">Test edilemez</p>
+  <p class="bullet red">İncelenmesi imkansız</p>
+  <p class="bullet red">Değiştirilmesi zor</p>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide" data-title="Yanlış Öğrenci Zihniyeti">
+  <h1>Yanlış Öğrenci Zihniyeti</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Yaygın tehlikeli düşünceler:</h3>
+      <p class="bullet red">&ldquo;Çalışıyor, yeterince iyi.&rdquo;</p>
+      <p class="bullet red">&ldquo;Sonra temizleriz.&rdquo;</p>
+      <p class="bullet red">&ldquo;Testler çok fazla zaman alıyor.&rdquo;</p>
+      <p class="bullet red">&ldquo;Küçük değişiklikler için inceleme gerekmez.&rdquo;</p>
+      <p class="bullet red">&ldquo;Ekip arkadaşlarım anlayacaktır.&rdquo;</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--orange);">Bunun neden tehlikeli olduğu:</h3>
+      <p class="bullet orange"><em>Sonra</em> genellikle hiç gelmez</p>
+      <p class="bullet orange">Küçük kötü alışkanlıklar ekip kültürü olur</p>
+      <p class="bullet orange">Ekip kültürü ürün kalitesine dönüşür</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide" data-title="Doğru Mühendislik Zihniyeti">
+  <h1>Doğru Mühendislik Zihniyeti</h1>
+  <p style="font-size:1.1rem;color:var(--text);margin-bottom:20px;">Profesyonel bir mühendis şunu sorar:</p>
+  <p class="bullet green">Başka bir kişi bunu hızlıca anlayabilir mi?</p>
+  <p class="bullet green">Bu daha sonra güvenle değiştirilebilir mi?</p>
+  <p class="bullet green">Bu test edilebilir mi?</p>
+  <p class="bullet green">Bu iyi bir şekilde incelenebilir mi?</p>
+  <p class="bullet green">Bu ekibi hızlandırır mı yoksa yavaşlatır mı?</p>
+</div>
+
+<!-- Slide 6 -->
+<div class="slide" data-title="Kötü Kodun Maliyeti">
+  <h1>Kötü Kodun Maliyeti</h1>
+  <p style="font-size:1.1rem;color:var(--red);margin-bottom:20px;font-weight:600;">Kötü kod şunlara neden olur:</p>
+  <p class="bullet red">Daha fazla hata</p>
+  <p class="bullet red">Daha yavaş uyum süreci</p>
+  <p class="bullet red">Zorlu hata ayıklama</p>
+  <p class="bullet red">Tekrarlanan iş</p>
+  <p class="bullet red">Değişikliklerden sonra bozulan özellikler</p>
+  <p class="bullet red">Kod tabanına dokunma korkusu</p>
+</div>
+
+<!-- Slide 7 -->
+<div class="slide" data-title="İyi Kodun Faydaları">
+  <h1>İyi Kodun Faydaları</h1>
+  <p style="font-size:1.1rem;color:var(--teal);margin-bottom:20px;font-weight:600;">İyi kod şunları sağlar:</p>
+  <p class="bullet green">Daha hızlı geliştirme</p>
+  <p class="bullet green">Daha kolay iş birliği</p>
+  <p class="bullet green">Daha güvenli yeniden düzenleme</p>
+  <p class="bullet green">Daha iyi incelemeler</p>
+  <p class="bullet green">Daha fazla güven</p>
+  <p class="bullet green">Daha tutarlı ürünler</p>
+</div>
+
+<!-- Slide 8 -->
+<div class="slide" data-title="Anahtar Mesaj">
+  <h1>Anahtar Mesaj</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <p class="big-quote">&ldquo;Kodunuz sadece bilgisayar için değildir. Kodunuz ekip arkadaşlarınız, gelecekteki kendiniz ve ürün içindir.&rdquo;</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 2: PROGRAMMING VS SOFTWARE ENG (9-14)      -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 9 -->
+<div class="slide section-divider" data-title="Bölüm: Programlama ve Yazılım Mühendisliği" data-section="Programlama ve Yazılım Mühendisliği">
+  <h1>Programlama ve Yazılım Mühendisliği</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3>Programlama</h3>
+      <p style="color:var(--text-muted);">Kodun çalışmasını sağlamak</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Yazılım Mühendisliği</h3>
+      <p style="color:var(--text-muted);">Kodu güvenilir, sürdürülebilir, iş birliğine uygun ve üretime hazır hale getirmek</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 10 -->
+<div class="slide" data-title="Bir Betik Çalışabilir. Bir Sistem Hayatta Kalmalıdır.">
+  <h1>Bir Betik Çalışabilir. Bir Sistem Hayatta Kalmalıdır.</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--text-muted);">Bir betik yalnızca şuna ihtiyaç duyabilir:</h3>
+      <p class="bullet dim">Doğru mantık</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Bir sistem şunlara ihtiyaç duyar:</h3>
+      <p class="bullet green">Açık yapı</p>
+      <p class="bullet green">Testler</p>
+      <p class="bullet green">İncelemeler</p>
+      <p class="bullet green">Sürüm kontrolü</p>
+      <p class="bullet green">Öngörülebilir dağıtım</p>
+      <p class="bullet green">Ekip anlayışı</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 11 -->
+<div class="slide" data-title="Kod Yazıldığından Çok Okunur">
+  <h1>Kod Yazıldığından Çok Okunur</h1>
+  <h2>Gerçek:</h2>
+  <p class="bullet">Bir fonksiyonu bir kez yazarsınız</p>
+  <p class="bullet">Ekip arkadaşlarınız onu düzinelerce kez okur</p>
+  <p class="bullet">Gelecekteki siz, aylar sonra hiçbir şey hatırlamadan okur</p>
+  <div class="sp"></div>
+  <h2>Bu nedenle:</h2>
+  <p class="bullet green">Okunabilirlik isteğe bağlı değildir</p>
+  <p class="bullet green">Okunabilirlik doğruluğun bir parçasıdır</p>
+</div>
+
+<!-- Slide 12 -->
+<div class="slide" data-title='Kötü Örnek: "Çalışıyor" Yeterli Değildir'>
+  <h1>Kötü Örnek: &ldquo;Çalışıyor&rdquo; Yeterli Değildir</h1>
+  <pre><span class="kw">def</span> <span class="fn">f</span>(<span class="param">x</span>, <span class="param">y</span>, <span class="param">z</span>):
+    <span class="kw">if</span> x:
+        <span class="kw">if</span> y &gt; <span class="num">0</span>:
+            <span class="kw">return</span> z * <span class="num">0.2</span>
+    <span class="kw">return</span> <span class="num">0</span></pre>
+  <h3 style="color:var(--red);">Sorunlar:</h3>
+  <p class="bullet red"><code>f</code> nedir? Ne hesaplıyor?</p>
+  <p class="bullet red"><code>x</code>, <code>y</code>, <code>z</code> nedir?</p>
+  <p class="bullet red"><code>0.2</code> neyi temsil ediyor?</p>
+  <p class="bullet red">Hiç kimse bunu güvenle inceleyemez, test edemez veya bakımını yapamaz</p>
+</div>
+
+<!-- Slide 13 -->
+<div class="slide" data-title="Daha İyi Örnek: Anlam Görünür Olmalıdır">
+  <h1>Daha İyi Örnek: Anlam Görünür Olmalıdır</h1>
+  <pre><span class="kw">def</span> <span class="fn">calculate_discount</span>(<span class="param">price</span>, <span class="param">has_membership</span>, <span class="param">loyalty_points</span>):
+    <span class="kw">if not</span> has_membership:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">if</span> loyalty_points &lt;= <span class="num">0</span>:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">return</span> price * <span class="num">0.2</span></pre>
+  <h3 style="color:var(--teal);">Ne iyileşti:</h3>
+  <p class="bullet green">Fonksiyon adı amacı açıklıyor</p>
+  <p class="bullet green">Parametreler anlamlı</p>
+  <p class="bullet green">Mantık bir cümle gibi okunuyor</p>
+  <p class="bullet green">İnceleyici doğruluğu hemen kontrol edebilir</p>
+</div>
+
+<!-- Slide 14 -->
+<div class="slide" data-title="Mühendislik Standardı">
+  <h1>Mühendislik Standardı</h1>
+  <p style="font-size:1.15rem;color:var(--text);margin-bottom:24px;">Sadece şunu sormayın: <span style="color:var(--text-muted);">&ldquo;Çalışıyor mu?&rdquo;</span></p>
+  <p style="font-size:1.15rem;color:var(--teal);margin-bottom:24px;font-weight:600;">Ayrıca şunu da sorun:</p>
+  <p class="bullet green">Okunabilir mi?</p>
+  <p class="bullet green">Test edilebilir mi?</p>
+  <p class="bullet green">Değiştirmek güvenli mi?</p>
+  <p class="bullet green">Bunu bir PR'da onaylar mıydım?</p>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 3: BEST CODING PRACTICES (15-35)   -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Slide 15 -->
+<div class="slide section-divider" data-title="Bölüm: İlke 1 — İsimlendirme Bir Tasarım Aracıdır" data-section="En İyi Kodlama Pratikleri">
+  <h1>İlke 1: İsimlendirme Bir Tasarım Aracıdır</h1>
+  <div class="sub">
+    <p>Kötü isimlendirme kafa karışıklığı yaratır. İyi isimlendirme netlik yaratır.</p>
+    <div class="sp"></div>
+    <p>İsimler şunları ortaya koymalıdır: bir şeyin <strong>ne</strong> olduğu, <strong>ne</strong> yaptığı, <strong>neden</strong> var olduğu.</p>
+  </div>
+</div>
+
+<!-- Slide 16 -->
+<div class="slide" data-title="Kötü İsimlendirme Örneği">
+  <h1>Kötü İsimlendirme Örneği</h1>
+  <pre><span class="kw">def</span> <span class="fn">calc</span>(<span class="param">a</span>, <span class="param">b</span>):
+    <span class="kw">return</span> a * b</pre>
+  <h3 style="color:var(--red);">Sorunlar:</h3>
+  <p class="bullet red"><code>calc</code> ne hesaplıyor?</p>
+  <p class="bullet red"><code>a</code> ve <code>b</code> nedir?</p>
+  <p class="bullet red">Alan, fiyat, herhangi bir şey olabilir &mdash; bilinmesi imkansız</p>
+  <p class="bullet red">İnceleyici doğruluğu doğrulayamaz</p>
+</div>
+
+<!-- Slide 17 -->
+<div class="slide" data-title="Daha İyi İsimlendirme Örneği">
+  <h1>Daha İyi İsimlendirme Örneği</h1>
+  <pre><span class="kw">def</span> <span class="fn">calculate_total_price</span>(<span class="param">unit_price</span>, <span class="param">quantity</span>):
+    <span class="kw">return</span> unit_price * quantity</pre>
+  <h3 style="color:var(--teal);">Faydalar:</h3>
+  <p class="bullet green">Amaç hemen anlaşılır</p>
+  <p class="bullet green">Parametreler kendilerini açıklar</p>
+  <p class="bullet green">İnceleyici doğrulayabilir: &ldquo;Evet, toplam fiyat = birim fiyat &times; miktar&rdquo;</p>
+  <p class="bullet green">Gelecekteki geliştiriciler bu fonksiyonu yanlış kullanmayacaktır</p>
+</div>
+
+<!-- Slide 18 -->
+<div class="slide" data-title="İyi İsimlendirme Neleri Önler">
+  <h1>İyi İsimlendirme Neleri Önler</h1>
+  <p class="bullet green">Tanıdık olmayan kodu okurken kafa karışıklığını azaltır</p>
+  <p class="bullet green">Fonksiyon davranışı hakkında yanlış varsayımları önler</p>
+  <p class="bullet green">Parametrelerin yanlış kullanımını önler</p>
+  <p class="bullet green">Yanlış anlamadan kaynaklanan gelecekteki hataları önler</p>
+  <div class="callout" style="margin-top:24px;">
+    Bir değişkenin ne olduğunu açıklamak için yorum yazmanız gerekiyorsa, isim muhtemelen yanlıştır.
+  </div>
+</div>
+
+<!-- Slide 19 -->
+<div class="slide section-divider" data-title="Bölüm: İlke 2 — Tek Bir Açık Görev">
+  <h1>İlke 2: Bir Fonksiyon Tek Bir Açık Görev Yapmalıdır</h1>
+  <div class="sub">
+    <p>Bir fonksiyon çok fazla şey yaptığında, test etmek zorlaşır, yeniden kullanım imkansız hale gelir ve hata ayıklama acı verici olur.</p>
+  </div>
+</div>
+
+<!-- Slide 20 -->
+<div class="slide" data-title="Kötü Örnek: Çok Fazla Sorumluluk">
+  <h1>Kötü Örnek: Çok Fazla Sorumluluk</h1>
+  <pre><span class="kw">def</span> <span class="fn">register_user</span>(<span class="param">user</span>):
+    validate_user(user)
+    save_user_to_database(user)
+    send_welcome_email(user)
+    log_activity(user)
+    notify_admin(user)</pre>
+  <h3 style="color:var(--red);">Sorunlar:</h3>
+  <p class="bullet red">Bir fonksiyonda beş sorumluluk</p>
+  <p class="bullet red">E-posta göndermeden kayıt test edilemez</p>
+  <p class="bullet red">E-posta başarısız olursa, kullanıcı yine de kaydedilir mi?</p>
+  <p class="bullet red">Herhangi bir adımı yeniden kullanmak imkansız</p>
+</div>
+
+<!-- Slide 21 -->
+<div class="slide" data-title="Daha İyi Örnek: Sorumlulukları Ayırın">
+  <h1>Daha İyi Örnek: Sorumlulukları Ayırın</h1>
+  <pre><span class="kw">def</span> <span class="fn">register_user</span>(<span class="param">user</span>):
+    validate_user(user)
+    save_user_to_database(user)
+
+<span class="kw">def</span> <span class="fn">onboard_user</span>(<span class="param">user</span>):
+    send_welcome_email(user)
+    log_activity(user)
+
+<span class="kw">def</span> <span class="fn">handle_registration</span>(<span class="param">user</span>):
+    register_user(user)
+    onboard_user(user)
+    notify_admin(user)</pre>
+  <h3 style="color:var(--teal);">Faydalar:</h3>
+  <p class="bullet green">Her fonksiyonun açık, tek bir amacı var</p>
+  <p class="bullet green">Her biri bağımsız olarak test edilebilir</p>
+  <p class="bullet green">Hata yönetimi kontrol edilebilir hale gelir</p>
+</div>
+
+<!-- Slide 22 -->
+<div class="slide section-divider" data-title="Bölüm: İlke 3 — Tekrarlama Bir Hata Fabrikasıdır">
+  <h1>İlke 3: Tekrarlama Bir Hata Fabrikasıdır</h1>
+  <div class="sub">
+    <p>Tekrarlanan mantık, kaçırılan düzeltmeler, kod tabanında tutarsızlık ve maliyetli bakım demektir.</p>
+  </div>
+</div>
+
+<!-- Slide 23 -->
+<div class="slide" data-title="Kötü Örnek: Tekrarlanan Mantık">
+  <h1>Kötü Örnek: Tekrarlanan Mantık</h1>
+  <pre><span class="cm"># In checkout.py</span>
+final_price = price - price * <span class="num">0.1</span>
+
+<span class="cm"># In invoice.py</span>
+final_price = price - price * <span class="num">0.1</span>
+
+<span class="cm"># In report.py</span>
+final_price = price - price * <span class="num">0.1</span></pre>
+  <div class="callout red" style="margin-top:16px;">
+    Bu 7 yerde görünüyorsa ve indirim oranı 0.15'e değişirse, <strong>7'sini de</strong> bulup güncellemeniz gerekir. Birini kaçırırsanız? Sessiz bir hatanız olur.
+  </div>
+</div>
+
+<!-- Slide 24 -->
+<div class="slide" data-title="Daha İyi Örnek: Ortak Mantığı Merkezileştirin">
+  <h1>Daha İyi Örnek: Ortak Mantığı Merkezileştirin</h1>
+  <pre><span class="kw">def</span> <span class="fn">apply_discount</span>(<span class="param">price</span>, <span class="param">discount_rate</span>):
+    <span class="kw">return</span> price * (<span class="num">1</span> - discount_rate)
+
+<span class="cm"># Everywhere:</span>
+final_price = apply_discount(price, <span class="num">0.1</span>)</pre>
+  <h3 style="color:var(--teal);">Faydalar:</h3>
+  <p class="bullet green">Tek doğru kaynak</p>
+  <p class="bullet green">Bir kez değiştir, her yerde düzelt</p>
+  <p class="bullet green">Test etmesi kolay</p>
+  <p class="bullet green">Bulmak ve denetlemek kolay</p>
+</div>
+
+<!-- Slide 25 -->
+<div class="slide section-divider" data-title="Bölüm: İlke 4 — Test Edilebilirlik Tasarımı Etkilemelidir">
+  <h1>İlke 4: Test Edilebilirlik Tasarımı Etkilemelidir</h1>
+  <div class="sub">
+    <p>Kodunuzu test etmek zorsa, muhtemelen kötü tasarlanmıştır.</p>
+    <div class="sp"></div>
+    <p>Test edilebilir kod modüler, açık ve net giriş-çıkışlara sahiptir.</p>
+  </div>
+</div>
+
+<!-- Slide 26 -->
+<div class="slide" data-title="Test Edilmesi Zor Kod Örneği">
+  <h1>Test Edilmesi Zor Kod Örneği</h1>
+  <pre><span class="kw">def</span> <span class="fn">process_order</span>(<span class="param">order_id</span>):
+    order = db.get_order(order_id)         <span class="cm"># database call</span>
+    user = db.get_user(order.user_id)      <span class="cm"># database call</span>
+    send_email(user.email, order.summary)  <span class="cm"># side effect</span>
+    db.mark_processed(order_id)            <span class="cm"># database call</span></pre>
+  <h3 style="color:var(--red);">Sorunlar:</h3>
+  <p class="bullet red">Gerçek bir veritabanı olmadan test edilemez</p>
+  <p class="bullet red">Gerçek e-posta göndermeden test edilemez</p>
+  <p class="bullet red">Tüm yan etkiler sıkı sıkıya bağlı</p>
+</div>
+
+<!-- Slide 27 -->
+<div class="slide" data-title="Daha Test Edilebilir Tasarım">
+  <h1>Daha Test Edilebilir Tasarım</h1>
+  <pre><span class="kw">def</span> <span class="fn">process_order</span>(<span class="param">order</span>, <span class="param">user</span>, <span class="param">email_sender</span>, <span class="param">db</span>):
+    email_sender.send(user.email, order.summary)
+    db.mark_processed(order.id)</pre>
+  <h3 style="color:var(--teal);">Faydalar:</h3>
+  <p class="bullet green">Bağımlılıklar enjekte edilir &mdash; taklit etmesi kolay</p>
+  <p class="bullet green">Her bağımlılık bağımsız olarak test edilebilir</p>
+  <p class="bullet green">Mantık altyapıdan ayrılmış</p>
+  <p class="bullet green">Fonksiyon imzası tam olarak neye ihtiyacı olduğunu söyler</p>
+</div>
+
+<!-- Slide 28 -->
+<div class="slide section-divider" data-title="Bölüm: İlke 5 — Sessizce Değil, Açıkça Başarısız Olun">
+  <h1>İlke 5: Sessizce Değil, Açıkça Başarısız Olun</h1>
+  <div class="sub">
+    <p>Sessiz başarısızlıklar en tehlikeli hata türüdür.</p>
+    <div class="sp"></div>
+    <p>Bir şeyler ters gittiğinde, bunu <strong>yüksek sesli</strong> ve <strong>açık</strong> yapın.</p>
+  </div>
+</div>
+
+<!-- Slide 29 -->
+<div class="slide" data-title="Kötü Hata Yönetimi">
+  <h1>Kötü Hata Yönetimi</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_user_age</span>(<span class="param">user</span>):
+    <span class="kw">if</span> user <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">return</span> <span class="kw">None</span>
+    <span class="kw">if</span> user.birthday <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">return</span> <span class="kw">None</span>
+    <span class="kw">return</span> calculate_age(user.birthday)</pre>
+  <h3 style="color:var(--red);">Risk:</h3>
+  <p class="bullet red">Çağıran taraf <code>None</code> alır ve nedenini bilmez</p>
+  <p class="bullet red">Hata gizlenir ve sessizce yayılır</p>
+  <p class="bullet red">Hata ayıklama bir tahmin oyununa dönüşür</p>
+</div>
+
+<!-- Slide 30 -->
+<div class="slide" data-title="Daha Açık Hata Yönetimi">
+  <h1>Daha Açık Hata Yönetimi</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_user_age</span>(<span class="param">user</span>):
+    <span class="kw">if</span> user <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"User must not be None"</span>)
+    <span class="kw">if</span> user.birthday <span class="kw">is</span> <span class="kw">None</span>:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"User birthday is missing"</span>)
+    <span class="kw">return</span> calculate_age(user.birthday)</pre>
+  <h3 style="color:var(--teal);">Faydalar:</h3>
+  <p class="bullet green">Hata hemen görünür</p>
+  <p class="bullet green">Mesaj tam olarak neyin yanlış olduğunu söyler</p>
+  <p class="bullet green">Hata erken yakalanır, ileriki aşamalarda değil</p>
+</div>
+
+<!-- Slide 31 -->
+<div class="slide section-divider" data-title="Bölüm: İlke 6 — Karmaşıklık Pahalıdır">
+  <h1>İlke 6: Karmaşıklık Pahalıdır</h1>
+  <div class="sub">
+    <p>Karmaşık kod zeki değildir. Bakımı, incelemesi ve hata ayıklaması pahalıdır.</p>
+  </div>
+</div>
+
+<!-- Slide 32 -->
+<div class="slide" data-title="Karmaşık Örnek">
+  <h1>Karmaşık Örnek</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_price</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">if</span> user.is_member:
+        <span class="kw">if</span> product.on_sale:
+            <span class="kw">if</span> user.loyalty_points &gt; <span class="num">100</span>:
+                <span class="kw">return</span> product.price * <span class="num">0.7</span>
+            <span class="kw">else</span>:
+                <span class="kw">return</span> product.price * <span class="num">0.8</span>
+        <span class="kw">else</span>:
+            <span class="kw">return</span> product.price * <span class="num">0.9</span>
+    <span class="kw">else</span>:
+        <span class="kw">if</span> product.on_sale:
+            <span class="kw">return</span> product.price * <span class="num">0.95</span>
+        <span class="kw">else</span>:
+            <span class="kw">return</span> product.price</pre>
+  <p class="bullet red" style="margin-top:12px;">Derin iç içe geçmiş, takip etmesi zor, hata çıkarması kolay</p>
+</div>
+
+<!-- Slide 33 -->
+<div class="slide" data-title="Daha Basit Örnek">
+  <h1>Daha Basit Örnek</h1>
+  <pre><span class="kw">def</span> <span class="fn">get_discount_rate</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">if not</span> user.is_member <span class="kw">and not</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0</span>
+    <span class="kw">if not</span> user.is_member <span class="kw">and</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0.05</span>
+    <span class="kw">if</span> user.is_member <span class="kw">and not</span> product.on_sale:
+        <span class="kw">return</span> <span class="num">0.1</span>
+    <span class="kw">if</span> user.loyalty_points &gt; <span class="num">100</span>:
+        <span class="kw">return</span> <span class="num">0.3</span>
+    <span class="kw">return</span> <span class="num">0.2</span>
+
+<span class="kw">def</span> <span class="fn">get_price</span>(<span class="param">user</span>, <span class="param">product</span>):
+    <span class="kw">return</span> product.price * (<span class="num">1</span> - get_discount_rate(user, product))</pre>
+  <p class="bullet green" style="margin-top:12px;">Düz, okunabilir, her durum açık ve test edilebilir</p>
+</div>
+
+<!-- Slide 34 -->
+<div class="slide" data-title="Küçük Değişiklikler Büyük Karmaşık Değişiklikleri Yener">
+  <h1>İlke 7: Küçük Değişiklikler Büyük Karmaşık Değişiklikleri Yener</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Büyük değişiklikler:</h3>
+      <p class="bullet red">İncelemesi zor</p>
+      <p class="bullet red">Yüksek hata riski</p>
+      <p class="bullet red">Birleştirmesi acı verici</p>
+      <p class="bullet red">Kafa karıştıran git geçmişi</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Küçük değişiklikler:</h3>
+      <p class="bullet green">İncelemesi kolay</p>
+      <p class="bullet green">Düşük risk</p>
+      <p class="bullet green">Hızlı birleştirme</p>
+      <p class="bullet green">Açık geçmiş</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 35 -->
+<div class="slide" data-title="Mühendislik Kuralı">
+  <h1>Mühendislik Kuralı</h1>
+  <p style="font-size:1.15rem;color:var(--teal);margin-bottom:24px;font-weight:600;">Tercih edin:</p>
+  <p class="bullet green">Daha küçük fonksiyonlar</p>
+  <p class="bullet green">Daha küçük commit'ler</p>
+  <p class="bullet green">Daha küçük PR'lar</p>
+  <p class="bullet green">Daha küçük inceleme birimleri</p>
+  <div class="callout" style="margin-top:28px;">
+    Küçük, odaklanmış değişiklikleri anlamak, incelemek, test etmek ve geri almak daha kolaydır.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 4: GIT AND GITHUB WORKFLOW (36-42)     -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<!-- Slide 36 -->
+<div class="slide section-divider" data-title="Bölüm: Git ve GitHub İş Akışı" data-section="Git ve GitHub İş Akışı">
+  <h1>Git ve GitHub İş Akışı</h1>
+  <div class="sub">
+    <p>İş akışı olmadan ekipler şunları oluşturur:<br>
+    üzerine yazılan kod, incelenmemiş değişiklikler, bozuk main branch'ler, kafa karışıklığı.</p>
+  </div>
+</div>
+
+<!-- Slide 37 -->
+<div class="slide" data-title="Doğru Temel İş Akışı">
+  <h1>Doğru Temel İş Akışı</h1>
+  <div class="flow">
+    <span class="flow-step">main</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">feature branch oluştur</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">kod yaz</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">küçük değişiklikler commit'le</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">PR aç</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">incele</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step">iyileştir</span><span class="flow-arrow">&rarr;</span>
+    <span class="flow-step" style="background:rgba(168,85,247,.12);border-color:rgba(168,85,247,.3);color:var(--purple);">main'e birleştir</span>
+  </div>
+  <div class="callout" style="margin-top:24px;">
+    Bu isteğe bağlı değildir. Bu minimum profesyonel iş akışıdır.
+  </div>
+</div>
+
+<!-- Slide 38 -->
+<div class="slide" data-title="Asla Doğrudan Main Üzerinde Çalışmayın">
+  <h1>Asla Doğrudan Main Üzerinde Çalışmayın</h1>
+  <p class="bullet red">Main her zaman dağıtılabilir olmalıdır</p>
+  <p class="bullet red">Doğrudan commit'ler incelemeyi atlar</p>
+  <p class="bullet red">Birleştirme çakışmaları yıkıcı hale gelir</p>
+  <p class="bullet red">Temiz bir şekilde geri alma yolu yok</p>
+  <p class="bullet red">Ekip kod tabanına olan güvenini kaybeder</p>
+  <div class="callout red" style="margin-top:24px;">
+    Main bozuksa, <strong>herkes</strong> engellenir. Onu koruyun.
+  </div>
+</div>
+
+<!-- Slide 39 -->
+<div class="slide" data-title="Bir Branch Neyi Temsil Eder">
+  <h1>Bir Branch Neyi Temsil Eder</h1>
+  <h3 style="color:var(--red);">Kötü branch isimleri:</h3>
+  <pre style="border-color:rgba(239,68,68,.3);">fix
+my-branch
+test123
+update</pre>
+  <h3 style="color:var(--teal);margin-top:20px;">Daha iyi branch isimleri:</h3>
+  <pre style="border-color:rgba(0,229,184,.3);">feature/user-registration
+fix/login-redirect-bug
+chore/update-dependencies
+refactor/split-order-service</pre>
+  <p class="bullet green" style="margin-top:12px;">Bir branch adı işin <strong>amacını</strong> tanımlamalıdır</p>
+</div>
+
+<!-- Slide 40 -->
+<div class="slide" data-title="Commit'ler Bir Hikaye Anlatmalıdır">
+  <h1>Commit'ler Bir Hikaye Anlatmalıdır</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Kötü commit mesajları:</h3>
+      <pre style="border-color:rgba(239,68,68,.3);font-size:.8rem;">fix
+update
+wip
+asdf
+changed stuff</pre>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">İyi commit mesajları:</h3>
+      <pre style="border-color:rgba(0,229,184,.3);font-size:.8rem;">fix: redirect to login after session timeout
+feat: add email validation to registration
+refactor: extract discount logic into helper
+test: add edge cases for price calculator
+docs: update API authentication section</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 41 -->
+<div class="slide" data-title="İyi Bir PR İncelenebilirdir">
+  <h1>İyi Bir PR İncelenebilirdir</h1>
+  <p class="bullet green">Küçük ve tek bir şeye odaklanmış</p>
+  <p class="bullet green">Açık bir başlık ve açıklamaya sahip</p>
+  <p class="bullet green">Değişikliğin <em>neden</em> yapıldığını açıklar</p>
+  <p class="bullet green">Uygunsa testleri içerir</p>
+  <p class="bullet green">İlgisiz değişiklikleri karıştırmaz</p>
+  <div class="callout" style="margin-top:20px;">
+    İyi bir PR açıklaması şu soruları yanıtlar: <strong>Ne</strong> değişti? <strong>Neden</strong>? Nasıl <strong>test</strong> edilir?
+  </div>
+</div>
+
+<!-- Slide 42 -->
+<div class="slide" data-title="Kötü PR ve İyi PR">
+  <h1>Kötü PR ve İyi PR</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Kötü PR:</h3>
+      <p class="bullet red">Başlık: &ldquo;güncellemeler&rdquo;</p>
+      <p class="bullet red">Açıklama yok</p>
+      <p class="bullet red">47 dosya değişti</p>
+      <p class="bullet red">Özellik + yeniden düzenleme + stil düzeltmesini karıştırır</p>
+      <p class="bullet red">Test yok</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">İyi PR:</h3>
+      <p class="bullet green">Başlık: &ldquo;feat: kayıta e-posta doğrulaması eklendi&rdquo;</p>
+      <p class="bullet green">Açıklama yaklaşımı anlatır</p>
+      <p class="bullet green">4 dosya değişti</p>
+      <p class="bullet green">Tek bir özelliğe odaklanmış</p>
+      <p class="bullet green">Birim testleri içerir</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 5: PROFESSIONAL REPOSITORY (43-47)         -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 43 -->
+<div class="slide section-divider" data-title="Bölüm: Profesyonel Bir Depo" data-section="Profesyonel Depo">
+  <h1>Profesyonel Bir Depo Sadece Kod Değildir</h1>
+  <div class="sub">
+    <p>Ciddi bir depo yapı, dokümantasyon, yapılandırma ve standartları içerir &mdash; sadece kaynak dosyaları değil.</p>
+  </div>
+</div>
+
+<!-- Slide 44 -->
+<div class="slide" data-title="Örnek Depo Yapısı">
+  <h1>Örnek Depo Yapısı</h1>
+  <pre style="font-size:.82rem;">project/
+├── src/
+│   ├── models/
+│   ├── services/
+│   ├── routes/
+│   └── utils/
+├── tests/
+│   ├── unit/
+│   └── integration/
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── .gitignore
+├── README.md
+├── requirements.txt
+├── Makefile
+└── .env.example</pre>
+</div>
+
+<!-- Slide 45 -->
+<div class="slide" data-title="README Neden Önemlidir">
+  <h1>README Neden Önemlidir</h1>
+  <p style="font-size:1.1rem;color:var(--text);margin-bottom:20px;">Bir README yeni bir ekip üyesine şunları söylemelidir:</p>
+  <p class="bullet green">Projenin ne yaptığı</p>
+  <p class="bullet green">Nasıl kurulacağı</p>
+  <p class="bullet green">Nasıl çalıştırılacağı</p>
+  <p class="bullet green">Testlerin nasıl çalıştırılacağı</p>
+  <p class="bullet green">Nasıl katkıda bulunulacağı</p>
+  <div class="callout red" style="margin-top:20px;">
+    README'si olmayan bir depo şunu söyleyen bir depodur: &ldquo;Kendin çöz.&rdquo;
+  </div>
+</div>
+
+<!-- Slide 46 -->
+<div class="slide" data-title="İyi Bir README Şunları İçerir">
+  <h1>İyi Bir README Şunları İçerir</h1>
+  <p class="bullet green">Proje adı ve tek satırlık açıklama</p>
+  <p class="bullet green">Ön koşullar (Python sürümü, bağımlılıklar)</p>
+  <p class="bullet green">Kurulum adımları</p>
+  <p class="bullet green">Yerel olarak nasıl çalıştırılacağı</p>
+  <p class="bullet green">Testlerin nasıl çalıştırılacağı</p>
+  <p class="bullet green">Gerekli ortam değişkenleri</p>
+  <p class="bullet green">Proje yapısına genel bakış</p>
+  <p class="bullet green">Katkıda bulunma kılavuzları</p>
+</div>
+
+<!-- Slide 47 -->
+<div class="slide" data-title="Deponuz Kafa Karıştırıcıysa, Ekibiniz Yavaşlar">
+  <h1>Deponuz Kafa Karıştırıcıysa, Ekibiniz Yavaşlar</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <div class="callout" style="max-width:700px;text-align:center;font-size:1.15rem;">
+      Bir ekip arkadaşının proje yapınızı anlamaya harcadığı her dakika, özellik geliştirmediği bir dakikadır.<br><br>
+      <strong style="color:var(--teal);">Depo netliği, ekibinize duyulan saygının bir biçimidir.</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 6: TESTING CULTURE (48-55)         -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Slide 48 -->
+<div class="slide section-divider" data-title="Bölüm: Test Kültürü" data-section="Test Kültürü">
+  <h1>Test Kültürü</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--red);">Yaygın bahaneler:</h3>
+      <p style="color:var(--text-muted);">&ldquo;Testler için zamanımız yok&rdquo;</p>
+      <p style="color:var(--text-muted);">&ldquo;Benim bilgisayarımda çalışıyor&rdquo;</p>
+      <p style="color:var(--text-muted);">&ldquo;Testler bizi yavaşlatıyor&rdquo;</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Gerçek:</h3>
+      <p style="color:var(--text-muted);">Test <em>yapmamak</em> için zamanınız yok</p>
+      <p style="color:var(--text-muted);"><em>Her</em> bilgisayarda çalışması gerekiyor</p>
+      <p style="color:var(--text-muted);">Testler sizi sonradan yavaşlamaktan kurtarır</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 49 -->
+<div class="slide" data-title="Testler Size Gerçekte Ne Verir">
+  <h1>Testler Size Gerçekte Ne Verir</h1>
+  <p class="bullet green">Kodu değiştirme güveni</p>
+  <p class="bullet green">Daha hızlı hata ayıklama &mdash; testler neyin <em>nerede</em> bozulduğunu gösterir</p>
+  <p class="bullet green">Beklenen davranışın dokümantasyonu</p>
+  <p class="bullet green">Yeniden düzenleme için güvenlik ağı</p>
+  <p class="bullet green">Kodunuzun çalıştığının kanıtı</p>
+  <div class="callout" style="margin-top:24px;">
+    Testler güçlü ekipleri yavaşlatmaz. Güçlü ekiplerin <strong>güvenle hızlı ilerlemesini</strong> sağlar.
+  </div>
+</div>
+
+<!-- Slide 50 -->
+<div class="slide" data-title="Çok Basit Bir Örnek">
+  <h1>Çok Basit Bir Örnek</h1>
+  <pre><span class="kw">def</span> <span class="fn">add</span>(<span class="param">a</span>, <span class="param">b</span>):
+    <span class="kw">return</span> a + b</pre>
+  <p style="color:var(--text-muted);margin-top:16px;">Basit fonksiyon. Doğru çalıştığını nasıl bilebiliriz?</p>
+  <p style="color:var(--text);margin-top:8px;font-weight:500;">Bir test yazarız.</p>
+</div>
+
+<!-- Slide 51 -->
+<div class="slide" data-title="Temel Pytest Örneği">
+  <h1>Temel Pytest Örneği</h1>
+  <pre><span class="kw">def</span> <span class="fn">test_add_returns_sum</span>():
+    <span class="kw">assert</span> add(<span class="num">2</span>, <span class="num">3</span>) == <span class="num">5</span></pre>
+  <p class="bullet green" style="margin-top:16px;">Açık, okunabilir, çalıştırması hızlı</p>
+  <p class="bullet green"><code>add</code> bozulursa, bu test hemen yakalar</p>
+  <p class="bullet green">Bu testin neyi kontrol ettiğini herkes anlayabilir</p>
+</div>
+
+<!-- Slide 52 -->
+<div class="slide" data-title="İyi Testler Sadece Mutlu Yolu Kontrol Etmez">
+  <h1>İyi Testler Sadece Mutlu Yolu Kontrol Etmez</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Başka ne test etmeliyiz?</p>
+  <p class="bullet">Negatif sayılar</p>
+  <p class="bullet">Sıfır değerleri</p>
+  <p class="bullet">Çok büyük sayılar</p>
+  <p class="bullet">Tür uyumsuzlukları (uygunsa)</p>
+  <p class="bullet">Sınır koşulları</p>
+  <p class="bullet">Hata durumları</p>
+  <div class="callout" style="margin-top:16px;">
+    Mutlu yol, hataların <em>gizlenmediği</em> yerdir. Uç durumlar, hataların yaşadığı yerdir.
+  </div>
+</div>
+
+<!-- Slide 53 -->
+<div class="slide" data-title="Örnek: Daha Faydalı Testler">
+  <h1>Örnek: Daha Faydalı Testler</h1>
+  <pre><span class="kw">def</span> <span class="fn">test_add_positive_numbers</span>():
+    <span class="kw">assert</span> add(<span class="num">2</span>, <span class="num">3</span>) == <span class="num">5</span>
+
+<span class="kw">def</span> <span class="fn">test_add_negative_numbers</span>():
+    <span class="kw">assert</span> add(-<span class="num">1</span>, -<span class="num">2</span>) == -<span class="num">3</span>
+
+<span class="kw">def</span> <span class="fn">test_add_with_zero</span>():
+    <span class="kw">assert</span> add(<span class="num">0</span>, <span class="num">5</span>) == <span class="num">5</span>
+    <span class="kw">assert</span> add(<span class="num">5</span>, <span class="num">0</span>) == <span class="num">5</span>
+
+<span class="kw">def</span> <span class="fn">test_add_mixed_signs</span>():
+    <span class="kw">assert</span> add(-<span class="num">3</span>, <span class="num">5</span>) == <span class="num">2</span></pre>
+  <p class="bullet green" style="margin-top:12px;">Her testin ne doğruladığını anlatan açık bir adı var</p>
+</div>
+
+<!-- Slide 54 -->
+<div class="slide" data-title="Testsiz Ne Olur">
+  <h1>Testsiz Ne Olur</h1>
+  <p class="bullet red">Hatalar üretime ulaşır</p>
+  <p class="bullet red">Yeniden düzenleme korkutucu hale gelir</p>
+  <p class="bullet red">Bir değişikliğin bir şeyi bozup bozmadığını kimse bilmez</p>
+  <p class="bullet red">Manuel test yavaş ve güvenilmezdir</p>
+  <p class="bullet red">Regresyonlar sürekli geri gelir</p>
+  <p class="bullet red">Ekip koda olan güvenini kaybeder</p>
+</div>
+
+<!-- Slide 55 -->
+<div class="slide" data-title="Testlerle Ne Olur">
+  <h1>Testlerle Ne Olur</h1>
+  <p class="bullet green">Hatalar birleştirmeden önce yakalanır</p>
+  <p class="bullet green">Yeniden düzenleme güvenli ve hızlıdır</p>
+  <p class="bullet green">CI regresyonları otomatik olarak yakalar</p>
+  <p class="bullet green">Yeni ekip üyeleri beklenen davranışı anlar</p>
+  <p class="bullet green">Dağıtımlar güvenle yapılır</p>
+  <p class="bullet green">Ekip hızı zamanla artar</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 7: CI/CD AND QUALITY GATES (56-62)     -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<!-- Slide 56 -->
+<div class="slide section-divider" data-title="Bölüm: CI/CD ve Kalite Kapıları" data-section="CI/CD ve Kalite Kapıları">
+  <h1>CI/CD ve Kalite Kapıları</h1>
+  <div class="sub">
+    <p><strong>CI = Sürekli Entegrasyon (Continuous Integration)</strong></p>
+    <div class="sp"></div>
+    <p>Main branch'e ulaşmadan önce her değişikliği otomatik olarak doğrulayın.</p>
+  </div>
+</div>
+
+<!-- Slide 57 -->
+<div class="slide" data-title="CI Neden Önemlidir">
+  <h1>CI Neden Önemlidir</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">CI şunları önler:</h3>
+      <p class="bullet red">Bozuk kodun main'e ulaşması</p>
+      <p class="bullet red">Test edilmemiş kodun birleştirilmesi</p>
+      <p class="bullet red">Stil tutarsızlıkları</p>
+      <p class="bullet red">&ldquo;Benim bilgisayarımda çalışıyor&rdquo; sorunları</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">CI şunları sağlar:</h3>
+      <p class="bullet green">Otomatik kalite kontrolleri</p>
+      <p class="bullet green">Her PR'da hızlı geri bildirim</p>
+      <p class="bullet green">Tutarlı standartlar</p>
+      <p class="bullet green">Ekip güveni</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 58 -->
+<div class="slide" data-title="Yaygın CI Kontrolleri">
+  <h1>Yaygın CI Kontrolleri</h1>
+  <p class="bullet">Tüm testleri çalıştır (birim + entegrasyon)</p>
+  <p class="bullet">Kod biçimlendirmesini kontrol et (black, prettier, vb.)</p>
+  <p class="bullet">Linter çalıştır (pylint, eslint, flake8)</p>
+  <p class="bullet">Tür ek açıklamalarını kontrol et (mypy)</p>
+  <p class="bullet">Test kapsamını ölç</p>
+  <p class="bullet">Güvenlik taraması</p>
+  <p class="bullet">Derleme kontrolü (proje derleniyor/oluşuyor mu?)</p>
+</div>
+
+<!-- Slide 59 -->
+<div class="slide" data-title="GitHub Actions Example">
+  <h1>GitHub Actions Example</h1>
+  <pre><span class="dec">name:</span> <span class="str">Python Checks</span>
+<span class="dec">on:</span>
+  <span class="dec">pull_request:</span>
+  <span class="dec">push:</span>
+<span class="dec">jobs:</span>
+  <span class="dec">test:</span>
+    <span class="dec">runs-on:</span> <span class="str">ubuntu-latest</span>
+    <span class="dec">steps:</span>
+      - <span class="dec">uses:</span> <span class="str">actions/checkout@v4</span>
+      - <span class="dec">uses:</span> <span class="str">actions/setup-python@v5</span>
+        <span class="dec">with:</span>
+          <span class="dec">python-version:</span> <span class="str">'3.11'</span>
+      - <span class="dec">run:</span> <span class="str">pip install -r requirements.txt</span>
+      - <span class="dec">run:</span> <span class="str">pytest</span></pre>
+</div>
+
+<!-- Slide 60 -->
+<div class="slide" data-title="Bu Ne Sağlar">
+  <h1>Bu Ne Sağlar</h1>
+  <p class="bullet green">Her PR otomatik olarak testleri çalıştırır</p>
+  <p class="bullet green">Bozuk PR'lar birleştirilemez (branch korumasıyla)</p>
+  <p class="bullet green">Ekibin testleri çalıştırmayı hatırlamasına gerek yok</p>
+  <p class="bullet green">Geri bildirim hızlı ve tutarlı</p>
+  <div class="callout" style="margin-top:24px;">
+    CI kapıdaki bir nöbetçi gibidir. Bozuk kodun main branch'inize girmesine izin vermez.
+  </div>
+</div>
+
+<!-- Slide 61 -->
+<div class="slide" data-title="Kapsam Kontrolleri">
+  <h1>Kapsam Kontrolleri</h1>
+  <p style="color:var(--text);margin-bottom:16px;">Test kapsamı, kodunuzun ne kadarının testler tarafından çalıştırıldığını ölçer.</p>
+  <p class="bullet">Yüksek kapsam, hata olmadığı anlamına gelmez</p>
+  <p class="bullet">Düşük kapsam, büyük test edilmemiş alanlar demektir</p>
+  <p class="bullet">Kapsam bir kılavuzdur, garanti değildir</p>
+  <div class="callout purple" style="margin-top:20px;">
+    <strong>Dikkat:</strong> %100 kapsam peşinde koşmayın. Önemsiz getter ve setter'lar yerine <em>önemli mantığı</em> ve <em>uç durumları</em> test etmeye odaklanın.
+  </div>
+</div>
+
+<!-- Slide 62 -->
+<div class="slide" data-title="Pratik Kalite Kuralı">
+  <h1>Pratik Kalite Kuralı</h1>
+  <p style="color:var(--text);margin-bottom:20px;font-weight:500;">Çoğu proje için iyi hedefler:</p>
+  <p class="bullet green">Temel olarak %70-85 test kapsamı</p>
+  <p class="bullet green">Tüm kritik iş mantığı test edilmiş</p>
+  <p class="bullet green">Temel fonksiyonlar için tüm uç durumlar test edilmiş</p>
+  <p class="bullet green">Birleştirmeden önce CI geçmeli (istisna yok)</p>
+  <p class="bullet green">Her PR'da linter ve biçimlendirici kontrolleri</p>
+  <div class="callout" style="margin-top:20px;">
+    Kalite kapıları bürokrasi değildir. Onlar <strong>mühendislik altyapısıdır</strong>.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 8: EFFECTIVE CODE REVIEW (63-75)           -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 63 -->
+<div class="slide section-divider" data-title="Bölüm: Etkili Kod İnceleme" data-section="Etkili Kod İnceleme">
+  <h1>Etkili Kod İnceleme</h1>
+  <div class="cols" style="max-width:750px;">
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--red);">Kod inceleme şu değildir:</h3>
+      <p style="color:var(--text-muted);">Bir formalite</p>
+      <p style="color:var(--text-muted);">Bir mühür basma işlemi</p>
+      <p style="color:var(--text-muted);">Bir güç gösterisi</p>
+    </div>
+    <div class="col" style="text-align:center;">
+      <h3 style="color:var(--teal);">Kod inceleme şudur:</h3>
+      <p style="color:var(--text-muted);">Bir kalite sohbeti</p>
+      <p style="color:var(--text-muted);">Bir öğrenme fırsatı</p>
+      <p style="color:var(--text-muted);">Bir ekip savunma mekanizması</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 64 -->
+<div class="slide" data-title="Ekipler Neden Kod İnceler">
+  <h1>Ekipler Neden Kod İnceler</h1>
+  <p class="bullet green">Hataları üretime ulaşmadan yakalayın</p>
+  <p class="bullet green">Ekip genelinde bilgi paylaşın</p>
+  <p class="bullet green">Tutarlı kod kalitesini koruyun</p>
+  <p class="bullet green">Kod tabanının sahipliğini yayın</p>
+  <p class="bullet green">Birbirinden öğrenin ve öğretin</p>
+  <p class="bullet green">Ekip güveni oluşturun</p>
+</div>
+
+<!-- Slide 65 -->
+<div class="slide" data-title="Zayıf İnceleme ve Etkili İnceleme">
+  <h1>Zayıf İnceleme ve Etkili İnceleme</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Zayıf inceleme:</h3>
+      <p class="bullet red">Diff'e 30 saniye göz at</p>
+      <p class="bullet red">&ldquo;Onayla&rdquo;ya tıkla</p>
+      <p class="bullet red">Yorum bırakma</p>
+      <p class="bullet red">Kodu çalıştırma</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Etkili inceleme:</h3>
+      <p class="bullet green">Değişen her satırı oku</p>
+      <p class="bullet green">Mantığı ve uç durumları kontrol et</p>
+      <p class="bullet green">Açıklayıcı sorular sor</p>
+      <p class="bullet green">Saygılı bir şekilde iyileştirmeler öner</p>
+      <p class="bullet green">Testlerin var olduğunu doğrula</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 66 -->
+<div class="slide" data-title="Etkili Kod İnceleme Nasıl Yapılır">
+  <h1>Etkili Kod İnceleme Nasıl Yapılır</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Şunları kontrol edin:</p>
+  <p class="bullet">Doğruluk &mdash; mantık yapması gerekeni yapıyor mu?</p>
+  <p class="bullet">Okunabilirlik &mdash; sormadan anlayabiliyor musunuz?</p>
+  <p class="bullet">İsimlendirme &mdash; isimler açık ve doğru mu?</p>
+  <p class="bullet">Tekrarlama &mdash; gereksiz yere tekrarlanan bir şey var mı?</p>
+  <p class="bullet">Hata yönetimi &mdash; uç durumlar kapsanmış mı?</p>
+  <p class="bullet">Testler &mdash; yeni mantık için testler var mı?</p>
+  <p class="bullet">Kapsam &mdash; PR odaklanmış mı kalıyor?</p>
+</div>
+
+<!-- Slide 67 -->
+<div class="slide" data-title="İnceleyici Zihniyeti">
+  <h1>İnceleyici Zihniyeti</h1>
+  <p style="color:var(--text);margin-bottom:20px;font-weight:500;">İnceleme sırasında şu soruları yanıtlayın:</p>
+  <p class="bullet purple">Bu kodun ne yaptığını anlıyor muyum?</p>
+  <p class="bullet purple">Bunun bakımını yapmaktan rahat olur muydum?</p>
+  <p class="bullet purple">Sessizce bozulabilecek bir şey var mı?</p>
+  <p class="bullet purple">Eksik testler var mı?</p>
+  <p class="bullet purple">PR açıklaması doğru mu?</p>
+  <p class="bullet purple">Yeni bir ekip üyesi bunu anlar mı?</p>
+</div>
+
+<!-- Slide 68 -->
+<div class="slide" data-title="Kötü İnceleme Yorumu">
+  <h1>Kötü İnceleme Yorumu</h1>
+  <div class="callout red" style="font-size:1.2rem;text-align:center;margin-bottom:24px;">
+    &ldquo;Bu yanlış.&rdquo;
+  </div>
+  <h3 style="color:var(--red);">Neden zayıf:</h3>
+  <p class="bullet red"><em>Neyin</em> yanlış olduğunu açıklamaz</p>
+  <p class="bullet red"><em>Neden</em> yanlış olduğunu açıklamaz</p>
+  <p class="bullet red">Bir iyileştirme önermez</p>
+  <p class="bullet red">Geri bildirim değil, saldırı gibi hissedilir</p>
+  <p class="bullet red">Yazarın zamanını boşa harcar</p>
+</div>
+
+<!-- Slide 69 -->
+<div class="slide" data-title="Daha İyi İnceleme Yorumu">
+  <h1>Daha İyi İnceleme Yorumu</h1>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:24px;">
+    &ldquo;Bu fonksiyon kullanıcı bulunamadığında <code>None</code> döndürüyor, ancak 42. satırdaki çağıran taraf <code>None</code> kontrolü yapmıyor. Bu, çalışma zamanında bir <code>AttributeError</code>'a neden olabilir. Burada bir istisna fırlatabilir veya çağıran tarafa bir None kontrolü ekleyebilir miyiz?&rdquo;
+  </div>
+  <h3 style="color:var(--teal);">Neden işe yarar:</h3>
+  <p class="bullet green">Sorunu açıklar</p>
+  <p class="bullet green">Etkisini gösterir</p>
+  <p class="bullet green">Somut bir düzeltme önerir</p>
+  <p class="bullet green">Yazara bir iş birlikçi olarak davranır</p>
+</div>
+
+<!-- Slide 70 -->
+<div class="slide" data-title="Sürtünmeyi Azaltmak İçin Sorular Kullanın">
+  <h1>Sürtünmeyi Azaltmak İçin Sorular Kullanın</h1>
+  <p style="color:var(--text);margin-bottom:20px;">Komutlar yerine meraklı sorular kullanın:</p>
+  <p class="bullet green">&ldquo;Bu girdi negatif olursa ne olur?&rdquo;</p>
+  <p class="bullet green">&ldquo;Bunu erken dönüşle basitleştirebilir miyiz?&rdquo;</p>
+  <p class="bullet green">&ldquo;Bunun için mevcut yardımcı fonksiyonu kullanmamamızın bir nedeni var mı?&rdquo;</p>
+  <p class="bullet green">&ldquo;Bunu ayrı bir fonksiyona çıkarmak daha açık olmaz mı?&rdquo;</p>
+  <div class="callout" style="margin-top:20px;">
+    Sorular diyaloğu davet eder. Komutlar direnç yaratır.
+  </div>
+</div>
+
+<!-- Slide 71 -->
+<div class="slide" data-title="Güçlü İnceleme Odağı Örnekleri">
+  <h1>Güçlü İnceleme Odağı Örnekleri</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Güçlü bir inceleyici şunları fark eder:</p>
+  <p class="bullet purple">Açıklamasız sihirli sayılar</p>
+  <p class="bullet purple">Uç durumlar için eksik hata yönetimi</p>
+  <p class="bullet purple">Çıkarılması gereken tekrarlanan mantık</p>
+  <p class="bullet purple">Birden fazla iş yapan fonksiyonlar</p>
+  <p class="bullet purple">Tutarsız isimlendirme kuralları</p>
+  <p class="bullet purple">Eksik veya yetersiz testler</p>
+  <p class="bullet purple">Güvenlik endişeleri (sabit kodlanmış gizli anahtarlar, SQL injection, vb.)</p>
+</div>
+
+<!-- Slide 72 -->
+<div class="slide" data-title="Bu Kodu Bir İnceleyici Gibi Okuyun">
+  <h1>Bu Kodu Bir İnceleyici Gibi Okuyun</h1>
+  <pre><span class="kw">def</span> <span class="fn">calc</span>(<span class="param">items</span>):
+    t = <span class="num">0</span>
+    <span class="kw">for</span> i <span class="kw">in</span> items:
+        <span class="kw">if</span> i[<span class="str">"type"</span>] == <span class="str">"book"</span>:
+            t += i[<span class="str">"price"</span>] * <span class="num">0.9</span>
+        <span class="kw">else</span>:
+            t += i[<span class="str">"price"</span>]
+    <span class="kw">return</span> t</pre>
+  <p style="color:var(--text);margin-top:16px;font-weight:500;">İnceleyici olarak sorun:</p>
+  <p class="bullet red"><code>calc</code> ne hesaplıyor?</p>
+  <p class="bullet red"><code>0.9</code> ne anlama geliyor? Neden özellikle kitaplar?</p>
+  <p class="bullet red">Bir öğenin &ldquo;type&rdquo; veya &ldquo;price&rdquo; anahtarı yoksa ne olur?</p>
+  <p class="bullet red">Testler nerede?</p>
+</div>
+
+<!-- Slide 73 -->
+<div class="slide" data-title="Daha İyi İncelenebilir Sürüm">
+  <h1>Daha İyi İncelenebilir Sürüm</h1>
+  <pre><span class="fn">BOOK_DISCOUNT_RATE</span> = <span class="num">0.1</span>
+
+<span class="kw">def</span> <span class="fn">get_item_price</span>(<span class="param">item</span>):
+    price = item[<span class="str">"price"</span>]
+    <span class="kw">if</span> item[<span class="str">"type"</span>] == <span class="str">"book"</span>:
+        <span class="kw">return</span> price * (<span class="num">1</span> - <span class="fn">BOOK_DISCOUNT_RATE</span>)
+    <span class="kw">return</span> price
+
+<span class="kw">def</span> <span class="fn">calculate_cart_total</span>(<span class="param">items</span>):
+    <span class="kw">return</span> <span class="fn">sum</span>(get_item_price(item) <span class="kw">for</span> item <span class="kw">in</span> items)</pre>
+  <h3 style="color:var(--teal);margin-top:16px;">İyileştirmeler:</h3>
+  <p class="bullet green">Sihirli sayı adlandırılmış sabitle değiştirildi</p>
+  <p class="bullet green">Fiyatlandırma mantığı kendi fonksiyonuna çıkarıldı</p>
+  <p class="bullet green">Her fonksiyon bağımsız olarak test edilebilir</p>
+</div>
+
+<!-- Slide 74 -->
+<div class="slide" data-title="İnceleyicilerin Yapmaması Gerekenler">
+  <h1>İnceleyicilerin Yapmaması Gerekenler</h1>
+  <p class="bullet red">Bunun için linter varken stil detaylarını eleştirmek</p>
+  <p class="bullet red">Yazarın kodunu kendi tarzlarında yeniden yazmak</p>
+  <p class="bullet red">Okumadan onaylamak</p>
+  <p class="bullet red">Kişisel tercih için (doğruluk değil) PR'ı engellemek</p>
+  <p class="bullet red">Küçümseyici veya umursamaz olmak</p>
+  <p class="bullet red">İletişim olmadan incelemeleri günlerce geciktirmek</p>
+</div>
+
+<!-- Slide 75 -->
+<div class="slide" data-title="Kodu Anlamıyorsanız, Onaylamayın">
+  <h1>Kodu Anlamıyorsanız, Onaylamayın</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <div>
+      <p class="big-quote" style="margin-bottom:32px;">&ldquo;Kodu anlamıyorsanız, onaylamayın.&rdquo;</p>
+      <div class="callout" style="text-align:center;max-width:600px;margin:0 auto;">
+        <strong>Onay sorumluluk demektir.</strong><br>
+        O kod bir hataya neden olursa, hesap verebilirliği paylaşırsınız.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 9: RECEIVING CODE REVIEW (76-79)           -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 76 -->
+<div class="slide" data-title="İncelemeyi Profesyonelce Nasıl Karşılarsınız" data-section="Kod İnceleme Alma">
+  <h1>İncelemeyi Profesyonelce Nasıl Karşılarsınız</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Yapmayın:</h3>
+      <p class="bullet red">Geri bildirimi kişisel almayın</p>
+      <p class="bullet red">Dinlemeden tartışmayın</p>
+      <p class="bullet red">Önerileri hemen reddetmeyin</p>
+      <p class="bullet red">Saldırıya uğramış hissetmeyin</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Yapın:</h3>
+      <p class="bullet green">Her yorumu dikkatlice okuyun</p>
+      <p class="bullet green">Gerekirse açıklama isteyin</p>
+      <p class="bullet green">İnceleyicilere zaman ayırdıkları için teşekkür edin</p>
+      <p class="bullet green">Mantığınızı saygılı bir şekilde açıklayın</p>
+      <p class="bullet green">Değişiklikleri hızla yapın</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 77 -->
+<div class="slide" data-title="İncelemeye Kötü Yanıt">
+  <h1>İncelemeye Kötü Yanıt</h1>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Gayet iyi çalışıyor. Test ettim.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Bu sadece bir stil tercihi.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Bunun için zamanımız yok.&rdquo;</div>
+  <div class="callout red" style="font-size:1.05rem;">&ldquo;Onaylayabilir misin?&rdquo;</div>
+  <p class="bullet red" style="margin-top:20px;">Bu yanıtlar iş birliğini kapatır ve güveni aşındırır</p>
+</div>
+
+<!-- Slide 78 -->
+<div class="slide" data-title="İncelemeye İyi Yanıt">
+  <h1>İncelemeye İyi Yanıt</h1>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;İyi yakalama &mdash; o uç durumu kaçırmışım. Son commit'te düzelttim.&rdquo;</div>
+  <div class="callout" style="font-size:1.05rem;margin-bottom:12px;">&ldquo;Haklısınız. Bu yaklaşımı [neden] tercih ettim. Hala daha iyi olduğunu düşünüyorsanız değiştirmekten memnuniyet duyarım.&rdquo;</div>
+  <div class="callout" style="font-size:1.05rem;">&ldquo;Detaylı inceleme için teşekkürler. Burada yeni bir şey öğrendim.&rdquo;</div>
+  <p class="bullet green" style="margin-top:20px;">Bu yanıtlar güven oluşturur ve ekibi güçlendirir</p>
+</div>
+
+<!-- Slide 79 -->
+<div class="slide" data-title="İnceleme Kazanmak İçin Değildir">
+  <h1>İnceleme Kazanmak İçin Değildir</h1>
+  <div class="cols">
+    <div class="col">
+      <h3 style="color:var(--red);">Amaç şu değildir:</h3>
+      <p class="bullet red">Haklı olduğunuzu kanıtlamak</p>
+      <p class="bullet red">Egonuzu savunmak</p>
+      <p class="bullet red">Hızlı onay almak</p>
+    </div>
+    <div class="col">
+      <h3 style="color:var(--teal);">Amaç şudur:</h3>
+      <p class="bullet green">Daha iyi kod göndermek</p>
+      <p class="bullet green">Birbirinden öğrenmek</p>
+      <p class="bullet green">Güvenilir bir ürün oluşturmak</p>
+      <p class="bullet green">Mühendis olarak büyümek</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- SECTION 10: GenAI FOR ENGINEERS (80-87)            -->
+<!-- ═══════════════════════════════════════════════════ -->
+
+<!-- Slide 80 -->
+<div class="slide section-divider" data-title="Bölüm: GenAI'dan Nasıl Faydalanılır" data-section="Mühendisler İçin GenAI">
+  <h1>GenAI'dan Nasıl Faydalanılır</h1>
+  <div class="sub">
+    <p>AI mühendisleri daha hızlı yapabilir, ama aynı zamanda daha özensiz de yapabilir.</p>
+    <div class="sp"></div>
+    <div class="callout" style="text-align:center;max-width:600px;">
+      AI'yı mühendislik muhakemesinin yerini alan bir araç olarak değil, bir <strong>asistan</strong> olarak kullanın.
+    </div>
+  </div>
+</div>
+
+<!-- Slide 81 -->
+<div class="slide" data-title="GenAI'nın İyi Kullanımları">
+  <h1>GenAI'nın İyi Kullanımları</h1>
+  <p class="bullet green">Zaman kazanmak için şablon kod üretin</p>
+  <p class="bullet green">Mevcut fonksiyonlar için test senaryoları taslağı oluşturun</p>
+  <p class="bullet green">Tanıdık olmayan kodu veya kütüphaneleri açıklayın</p>
+  <p class="bullet green">Alternatif yaklaşımlar önerin</p>
+  <p class="bullet green">Dokümantasyon yazmaya yardımcı olun</p>
+  <p class="bullet green">Hata mesajlarını analiz ederek hata ayıklamaya yardımcı olun</p>
+  <p class="bullet green">PR göndermeden önce kodu ön incelemeye tabi tutun</p>
+</div>
+
+<!-- Slide 82 -->
+<div class="slide" data-title="GenAI'nın Zayıf Kullanımı">
+  <h1>GenAI'nın Zayıf Kullanımı</h1>
+  <p style="color:var(--red);font-weight:600;margin-bottom:16px;">AI'yı anlamadan kullanmak:</p>
+  <div class="callout red" style="margin-bottom:12px;">&ldquo;Bana bir giriş sistemi yaz&rdquo; &rarr; kopyala-yapıştır &rarr; gönder</div>
+  <div class="callout red" style="margin-bottom:12px;">&ldquo;Bu hatayı düzelt&rdquo; &rarr; öneriyi körü körüne uygula</div>
+  <div class="callout red">&ldquo;Tüm testlerimi üret&rdquo; &rarr; asla okuma</div>
+  <p class="bullet red" style="margin-top:20px;">Kodu açıklayamıyorsanız, ona sahip değilsiniz</p>
+  <p class="bullet red">Anlamadığınız hatalara sahip AI üretimi kod, hiç kod olmamasından daha kötüdür</p>
+</div>
+
+<!-- Slide 83 -->
+<div class="slide" data-title="GenAI'nın Güçlü Kullanımı">
+  <h1>GenAI'nın Güçlü Kullanımı</h1>
+  <p style="color:var(--teal);font-weight:600;margin-bottom:16px;">Daha iyi istemler, daha iyi sonuçlar:</p>
+  <div class="callout" style="margin-bottom:12px;">&ldquo;Bu fonksiyonu kaçırmış olabileceğim uç durumlar için incele&rdquo;</div>
+  <div class="callout" style="margin-bottom:12px;">&ldquo;Bu fonksiyon için negatif sayılar ve boş girdi dahil pytest testleri üret&rdquo;</div>
+  <div class="callout">&ldquo;Bunu iç içe koşullar yerine erken dönüşler kullanacak şekilde yeniden düzenle&rdquo;</div>
+  <p class="bullet green" style="margin-top:20px;">Belirli, odaklanmış istemler faydalı, incelenebilir çıktı üretir</p>
+</div>
+
+<!-- Slide 84 -->
+<div class="slide" data-title="Test Üretimi İçin İyi İstem Örneği">
+  <h1>Test Üretimi İçin İyi İstem Örneği</h1>
+  <pre><span class="cm"># Prompt to AI:</span>
+<span class="str">"Write pytest tests for this function.
+Include: happy path, negative input, zero, empty list, and type error.
+Use descriptive test names."</span>
+
+<span class="cm"># Function:</span>
+<span class="kw">def</span> <span class="fn">calculate_average</span>(<span class="param">numbers</span>):
+    <span class="kw">if not</span> numbers:
+        <span class="kw">raise</span> <span class="fn">ValueError</span>(<span class="str">"Cannot average empty list"</span>)
+    <span class="kw">return</span> <span class="fn">sum</span>(numbers) / <span class="fn">len</span>(numbers)</pre>
+  <p class="bullet green" style="margin-top:12px;">İstem neyin test edileceği ve testlerin nasıl adlandırılacağı konusunda spesifik</p>
+  <p class="bullet green">Üretilen testleri hala inceleyip ayarlarsınız</p>
+</div>
+
+<!-- Slide 85 -->
+<div class="slide" data-title="Kod İnceleme İçin İyi İstem Örneği">
+  <h1>Kod İnceleme İçin İyi İstem Örneği</h1>
+  <pre><span class="cm"># Prompt to AI:</span>
+<span class="str">"Review this function as a senior engineer.
+Check for:
+- edge cases
+- naming clarity
+- error handling
+- testability
+- any potential bugs
+
+Be specific and suggest improvements."</span></pre>
+  <p class="bullet green" style="margin-top:12px;">Ekip arkadaşınız incelemeden önce AI'yı &ldquo;ilk inceleyici&rdquo; olarak kullanın</p>
+  <p class="bullet green">Bu, bariz sorunları yakalar ve inceleyicinin zamanından tasarruf sağlar</p>
+</div>
+
+<!-- Slide 86 -->
+<div class="slide" data-title="VS Code ve Editör Entegrasyonları">
+  <h1>VS Code ve Editör Entegrasyonları</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Geliştirme için faydalı AI araçları:</p>
+  <p class="bullet">GitHub Copilot &mdash; satır içi kod önerileri</p>
+  <p class="bullet">Claude Code (CLI) &mdash; terminal tabanlı AI asistanı</p>
+  <p class="bullet">Cursor &mdash; AI tabanlı kod editörü</p>
+  <p class="bullet">Codeium &mdash; ücretsiz AI otomatik tamamlama</p>
+  <div class="sp"></div>
+  <p style="color:var(--text);font-weight:500;">İyi kullanım alanları:</p>
+  <p class="bullet green">Tekrarlayan kalıpları otomatik tamamlama</p>
+  <p class="bullet green">Docstring'ler üretme</p>
+  <p class="bullet green">Karmaşık kod bölümlerini açıklama</p>
+  <p class="bullet green">Test yapısı önerme</p>
+</div>
+
+<!-- Slide 87 -->
+<div class="slide" data-title="AI Üretimi Kod İçin Kural">
+  <h1>AI Üretimi Kod İçin Kural</h1>
+  <p style="color:var(--text);font-size:1.15rem;margin-bottom:24px;">AI üretimi herhangi bir kodu birleştirmeden önce şunları yapmalısınız:</p>
+  <p class="bullet green"><strong>Anlayın</strong> &mdash; her satırı okuyun</p>
+  <p class="bullet green"><strong>Açıklayın</strong> &mdash; ne yaptığını ve neden yaptığını tarif edebilmelisiniz</p>
+  <p class="bullet green"><strong>Test edin</strong> &mdash; kendi testlerinizle doğrulayın</p>
+  <p class="bullet green"><strong>Onaylayın</strong> &mdash; PR'ınızda siz yazmışsınız gibi davranın</p>
+  <div class="callout" style="margin-top:24px;">
+    <strong>Commit'te adınız varsa, kod sizindir.</strong> Kimin veya neyin ürettiği önemli değildir.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- SECTION 11: LIVE DEMO (88-89)                  -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<!-- Slide 88 -->
+<div class="slide section-divider" data-title="Bölüm: Canlı Demo" data-section="Canlı Demo">
+  <h1>Canlı Demo: Kötü Bir Pull Request İnceleme</h1>
+  <div class="sub">
+    <p>Birlikte gerçek bir PR'ı inceleyeceğiz ve şunları belirleyeceğiz:</p>
+    <div class="sp"></div>
+    <p style="text-align:left;display:inline-block;">
+      &bull; Kötü isimlendirme<br>
+      &bull; Eksik hata yönetimi<br>
+      &bull; Tekrarlanan mantık<br>
+      &bull; Eksik testler<br>
+      &bull; Belirsiz commit mesajları<br>
+      &bull; Kapsam genişlemesi
+    </p>
+  </div>
+</div>
+
+<!-- Slide 89 -->
+<div class="slide" data-title="Canlı Demo Hedefi">
+  <h1>Canlı Demo Hedefi</h1>
+  <p style="color:var(--text);font-size:1.1rem;margin-bottom:24px;">Bu demodan sonra şunları yapabilmelisiniz:</p>
+  <p class="bullet green">PR diff'ini eleştirel okumak</p>
+  <p class="bullet green">En az 5 tür sorun belirlemek</p>
+  <p class="bullet green">Yapıcı inceleme yorumları yazmak</p>
+  <p class="bullet green">Belirli iyileştirmeler önermek</p>
+  <p class="bullet green">Engelleyici sorunlar ile öneriler arasında ayrım yapmak</p>
+  <div class="callout" style="margin-top:24px;">
+    Kod inceleme bir beceridir. Her beceri gibi, bilinçli pratikle gelişir.
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- SECTION 12: HOMEWORK (90-92)               -->
+<!-- ═══════════════════════════════════════════ -->
+
+<!-- Slide 90 -->
+<div class="slide" data-title="Ödev: Bir Pull Request'i Mühendis Gibi İnceleyin" data-section="Ödev">
+  <h1>Ödev: Bir Pull Request'i Mühendis Gibi İnceleyin</h1>
+  <p style="color:var(--text);margin-bottom:16px;font-weight:500;">Görev:</p>
+  <p class="bullet">GitHub'da açık kaynaklı bir PR bulun (veya eğitmen tarafından sağlananı kullanın)</p>
+  <p class="bullet">En az 5 öz içerikli yorumla bir inceleme yazın</p>
+  <p class="bullet">Her yorum belirli bir sorunu tanımlamalı ve bir iyileştirme önermelidir</p>
+  <div class="sp"></div>
+  <p style="color:var(--text);font-weight:500;">Teslim gereksinimleri:</p>
+  <p class="bullet green">İncelediğiniz PR'ın bağlantısı</p>
+  <p class="bullet green">İnceleme yorumlarınız (ekran görüntüsü veya markdown)</p>
+  <p class="bullet green">Kısa bir yansıtma: başka birinin kodunu incelemekten ne öğrendiniz?</p>
+</div>
+
+<!-- Slide 91 -->
+<div class="slide" data-title="Son Mesaj">
+  <h1>Son Mesaj</h1>
+  <div style="display:flex;align-items:center;justify-content:center;flex:1;">
+    <p class="big-quote">&ldquo;Harika mühendisler sadece kodun çalışmasını sağlamaz. Kodu anlaşılır, test edilebilir, incelenebilir ve güvenilir yaparlar.&rdquo;</p>
+  </div>
+</div>
+
+<!-- Slide 92 -->
+<div class="slide title-slide" data-title="Kapanış">
+  <h1 style="font-size:2.2rem;">Teşekkürler</h1>
+  <div style="max-width:700px;">
+    <p class="big-quote" style="font-size:1.5rem;">&ldquo;Bugün temizlemek için çok meşgul olduğunuz kod, yarın ekibinize sahip olan sorun haline gelir.&rdquo;</p>
+  </div>
+  <div style="margin-top:40px;color:var(--text-dim);font-size:.9rem;">
+    <p>Emre Varol &middot; A2SV &middot; Ruanda Üniversitesi</p>
+    <p style="margin-top:8px;"><a href="https://emrevarol.com" style="color:var(--teal);text-decoration:none;">emrevarol.com</a></p>
+  </div>
+</div>
+
+</div><!-- end #deck -->
+
+<script>
+(function(){
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+  const progress = document.getElementById('progress');
+  const counter = document.getElementById('counter');
+  const tocOverlay = document.getElementById('toc-overlay');
+  const tocGrid = document.getElementById('toc-grid');
+
+  // Build TOC
+  slides.forEach((s, i) => {
+    const item = document.createElement('div');
+    const isSection = s.hasAttribute('data-section');
+    item.className = 'toc-item' + (isSection ? ' section' : '');
+    item.innerHTML = '<span class="num">' + (i+1) + '</span><span>' + (s.getAttribute('data-title') || 'Slide ' + (i+1)) + '</span>';
+    item.addEventListener('click', () => { goTo(i); closeTOC(); });
+    tocGrid.appendChild(item);
+  });
+
+  function updateUI() {
+    slides.forEach((s, i) => {
+      s.classList.remove('active', 'prev');
+      if (i === current) s.classList.add('active');
+      else if (i < current) s.classList.add('prev');
+    });
+    progress.style.width = ((current + 1) / total * 100) + '%';
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  function goTo(n) {
+    if (n < 0 || n >= total) return;
+    current = n;
+    updateUI();
+  }
+
+  function next() { goTo(current + 1); }
+  function prev() { goTo(current - 1); }
+
+  function openTOC() { tocOverlay.classList.add('open'); }
+  function closeTOC() { tocOverlay.classList.remove('open'); }
+
+  // Keyboard nav
+  document.addEventListener('keydown', function(e) {
+    if (tocOverlay.classList.contains('open')) {
+      if (e.key === 'Escape') closeTOC();
+      return;
+    }
+    switch(e.key) {
+      case 'ArrowRight': case ' ': case 'PageDown': e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'PageUp': e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); goTo(0); break;
+      case 'End': e.preventDefault(); goTo(total - 1); break;
+      case 'Escape': openTOC(); break;
+    }
+  });
+
+  // Button nav
+  document.getElementById('next-btn').addEventListener('click', next);
+  document.getElementById('prev-btn').addEventListener('click', prev);
+  document.getElementById('toc-close').addEventListener('click', closeTOC);
+
+  // Touch/swipe
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, {passive: true});
+  document.addEventListener('touchend', function(e) {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) next(); else prev();
+    }
+  }, {passive: true});
+
+  // Hash support
+  function checkHash() {
+    const h = parseInt(location.hash.replace('#',''), 10);
+    if (h >= 1 && h <= total) goTo(h - 1);
+  }
+  window.addEventListener('hashchange', checkHash);
+  checkHash();
+
+  // Update hash on slide change
+  const origGoTo = goTo;
+  goTo = function(n) {
+    if (n < 0 || n >= total) return;
+    current = n;
+    updateUI();
+    history.replaceState(null, '', '#' + (n + 1));
+  };
+
+  updateUI();
+})();
+</script>
+</body>
+</html>

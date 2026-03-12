@@ -1,0 +1,3139 @@
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intambwe 7 zo Gukemura Ibibazo mu Buryo Bwiza - Isomo rya A2SV na Emre Varol</title>
+  <meta name="description" content="Igitabo cy'Ikiganiro: Intambwe 7 zo Gukemura Ibibazo mu Buryo Bwiza. An A2SV lecture by Emre Varol.">
+  <meta property="og:title" content="7 Steps of Highly Effective Problem Solving">
+  <meta property="og:description" content="The Interview Playbook - A2SV Lecture by Emre Varol">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRL2RJSF51"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PRL2RJSF51');
+  </script>
+  <style>
+    :root {
+      --bg: #06060f;
+      --text: #f0f4ff;
+      --text-dim: #8892b0;
+      --text-muted: #5a6380;
+      --teal: #00e5b8;
+      --purple: #a855f7;
+      --red: #ef4444;
+      --green: #22c55e;
+      --orange: #f59e0b;
+      --blue: #3b82f6;
+      --code-bg: #0d1117;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 50% 100%; }
+      50% { background-position: 100% 50%; }
+      75% { background-position: 50% 0%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.15;
+        text-shadow: 0 0 40px rgba(0, 229, 184, 0.2);
+      }
+      50% {
+        opacity: 0.25;
+        text-shadow: 0 0 80px rgba(168, 85, 247, 0.3);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 229, 184, 0);
+      }
+      50% {
+        box-shadow: 0 0 20px 2px rgba(0, 229, 184, 0.15);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulseBorder {
+      0%, 100% {
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      50% {
+        border-color: rgba(239, 68, 68, 0.5);
+      }
+    }
+
+    @keyframes orbMove1 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(60px, -40px) scale(1.1); }
+      66% { transform: translate(-30px, 30px) scale(0.95); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes orbMove2 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-50px, 50px) scale(0.9); }
+      66% { transform: translate(40px, -20px) scale(1.05); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes orbMove3 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, 60px) scale(1.08); }
+      66% { transform: translate(-60px, -30px) scale(0.92); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1.5rem;
+      background: rgba(6, 6, 15, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.85rem;
+    }
+
+    .top-bar a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .top-bar a:hover {
+      color: var(--teal);
+    }
+
+    .top-bar .back-link::before {
+      content: '\2190 ';
+    }
+
+    .top-bar .materials-link::after {
+      content: ' \2192';
+    }
+
+    .a2sv-badge {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    /* ===== SLIDES CONTAINER ===== */
+    .slides-wrapper {
+      flex: 1;
+      position: relative;
+      margin-top: 42px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2.5rem 4rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slide.active .slide-inner {
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    .slide-inner {
+      max-width: 960px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* ===== DOT PATTERN BACKGROUND ===== */
+    .slides-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      );
+      background-size: 30px 30px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .slide {
+      z-index: 1;
+    }
+
+    /* ===== AURORA ORBS (title slide) ===== */
+    .aurora-orbs {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+    }
+
+    .aurora-orb:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 229, 184, 0.4), transparent 70%);
+      top: 10%;
+      left: 15%;
+      animation: orbMove1 12s ease-in-out infinite;
+    }
+
+    .aurora-orb:nth-child(2) {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.35), transparent 70%);
+      top: 40%;
+      right: 10%;
+      animation: orbMove2 15s ease-in-out infinite;
+    }
+
+    .aurora-orb:nth-child(3) {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+      bottom: 10%;
+      left: 40%;
+      animation: orbMove3 18s ease-in-out infinite;
+    }
+
+    /* ===== SECTION DIVIDER ANIMATED BG ===== */
+    .section-bg-animated {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 229, 184, 0.04),
+        rgba(168, 85, 247, 0.04),
+        rgba(59, 130, 246, 0.04),
+        rgba(0, 229, 184, 0.04)
+      );
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-dim);
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .big-text {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+      max-width: 800px;
+    }
+
+    .huge-text {
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .medium-text {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      text-align: center;
+      line-height: 1.7;
+      max-width: 700px;
+    }
+
+    .teal { color: var(--teal); }
+    .purple { color: var(--purple); }
+    .red { color: var(--red); }
+    .green { color: var(--green); }
+    .orange { color: var(--orange); }
+    .blue { color: var(--blue); }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 100%;
+      transition: border-color 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .problem-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 229, 184, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-dim);
+      max-width: 800px;
+      background: linear-gradient(135deg, rgba(0, 229, 184, 0.03), rgba(168, 85, 247, 0.03));
+    }
+
+    /* ===== GOOD/BAD COMPARISON ===== */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .compare-bad {
+      background: rgba(239, 68, 68, 0.06);
+      border-left: 3px solid var(--red);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-bad::before {
+      content: '\2717';
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 1.4rem;
+      color: rgba(239, 68, 68, 0.15);
+      font-weight: 900;
+    }
+
+    .compare-good {
+      background: rgba(34, 197, 94, 0.06);
+      border-left: 3px solid var(--green);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-good::before {
+      content: '\2713';
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 1.4rem;
+      color: rgba(34, 197, 94, 0.15);
+      font-weight: 900;
+    }
+
+    .compare-bad h4 {
+      color: var(--red);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .compare-good h4 {
+      color: var(--green);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .compare-bad ul,
+    .compare-good ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .compare-bad li::before {
+      content: '\2717 ';
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .compare-good li::before {
+      content: '\2713 ';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .compare-bad li,
+    .compare-good li {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-dim);
+    }
+
+    /* ===== BULLETS ===== */
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .bullets li {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-dim);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .bullets li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .bullets.red-bullets li::before {
+      color: var(--red);
+      content: '\2717';
+    }
+
+    .bullets.green-bullets li::before {
+      color: var(--green);
+      content: '\2713';
+    }
+
+    /* ===== ICON BULLETS ===== */
+    .icon-bullets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      max-width: 600px;
+    }
+
+    .icon-bullet {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      color: var(--text-dim);
+      padding: 0.6rem 1rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .icon-bullet:hover {
+      border-color: rgba(0, 229, 184, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .icon-bullet .ib-icon {
+      font-size: 1.2rem;
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    .code-block {
+      background: var(--code-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 229, 184, 0.03), 0 0 60px rgba(168, 85, 247, 0.03);
+    }
+
+    .code-block .kw { color: var(--purple); font-weight: 500; }
+    .code-block .fn { color: #60a5fa; }
+    .code-block .st { color: var(--teal); }
+    .code-block .cm { color: var(--text-muted); font-style: italic; }
+    .code-block .nb { color: var(--orange); }
+    .code-block .op { color: var(--text-dim); }
+    .code-block .var { color: var(--text); }
+
+    /* ===== SECTION DIVIDER ===== */
+    .section-divider {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .section-divider .big-number {
+      font-size: 12rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, rgba(0, 229, 184, 0.15), rgba(168, 85, 247, 0.15));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      user-select: none;
+      animation: glow 4s ease-in-out infinite;
+    }
+
+    .section-divider .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-top: -1rem;
+    }
+
+    .section-divider .section-quote {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      font-style: italic;
+      margin-top: 0.5rem;
+      max-width: 600px;
+    }
+
+    .section-divider .section-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .section-divider .section-bullets li {
+      font-size: 1rem;
+      color: var(--text-dim);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .section-divider .section-bullets li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    /* ===== STAIRCASE ===== */
+    .staircase {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .stair {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .stair:hover {
+      transform: translateX(8px) scale(1.02);
+      border-color: rgba(0, 229, 184, 0.3);
+      box-shadow: 0 0 20px rgba(0, 229, 184, 0.08);
+    }
+
+    .stair:nth-child(1) { margin-left: 0; }
+    .stair:nth-child(2) { margin-left: 1.5rem; }
+    .stair:nth-child(3) { margin-left: 3rem; }
+    .stair:nth-child(4) { margin-left: 4.5rem; }
+    .stair:nth-child(5) { margin-left: 3rem; }
+    .stair:nth-child(6) { margin-left: 1.5rem; }
+    .stair:nth-child(7) { margin-left: 0; }
+
+    .stair-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      color: #fff;
+    }
+
+    .stair-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ===== WARNING BOX ===== */
+    .warning-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 600px;
+      width: 100%;
+      animation: pulseBorder 3s ease-in-out infinite;
+    }
+
+    .warning-box h4 {
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .warning-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .warning-box li {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .warning-box li::before {
+      content: '\2717';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+    }
+
+    /* ===== ARRAY VIZ ===== */
+    .array-viz {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .array-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .array-cell {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--text-dim);
+      border-radius: 8px;
+      font-family: 'Fira Code', monospace;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .array-cell.highlight {
+      border-color: var(--teal);
+      background: rgba(0, 229, 184, 0.1);
+      color: var(--teal);
+    }
+
+    .array-cell.red-highlight {
+      border-color: var(--red);
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+    }
+
+    .array-index {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* ===== GRID VIZ ===== */
+    .grid-viz {
+      display: inline-grid;
+      grid-template-columns: repeat(3, 50px);
+      gap: 3px;
+    }
+
+    .grid-cell {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--text-dim);
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .grid-cell.center {
+      border-color: var(--teal);
+      background: rgba(0, 229, 184, 0.15);
+      color: var(--teal);
+    }
+
+    .grid-cell.neighbor {
+      background: rgba(168, 85, 247, 0.08);
+    }
+
+    .grid-cell.invalid {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-bar {
+      display: flex;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 48px;
+    }
+
+    .timeline-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #fff;
+      padding: 0 0.3rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .timeline-labels {
+      display: flex;
+      width: 100%;
+      margin-top: 0.3rem;
+    }
+
+    .timeline-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ===== BADGE CARDS ===== */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .badge-card {
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-dim);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .badge-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .badge-card.green-badge {
+      border-color: rgba(34, 197, 94, 0.3);
+      background: rgba(34, 197, 94, 0.06);
+    }
+
+    .badge-card.green-badge:hover {
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.1);
+    }
+
+    .badge-card.red-badge {
+      border-color: rgba(239, 68, 68, 0.3);
+      background: rgba(239, 68, 68, 0.06);
+    }
+
+    .badge-card.red-badge:hover {
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
+    }
+
+    .badge-card.teal-badge {
+      border-color: rgba(0, 229, 184, 0.3);
+      background: rgba(0, 229, 184, 0.06);
+    }
+
+    .badge-card.teal-badge:hover {
+      box-shadow: 0 0 15px rgba(0, 229, 184, 0.1);
+    }
+
+    /* ===== DIRECTION ARROWS ===== */
+    .direction-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 56px);
+      grid-template-rows: repeat(3, 56px);
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .dir-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      color: var(--text-muted);
+    }
+
+    .dir-cell.dir-center {
+      background: rgba(0, 229, 184, 0.15);
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .dir-cell.dir-active {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: var(--purple);
+    }
+
+    /* ===== REFERENCE CARD ===== */
+    .ref-card {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .ref-card li {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 2;
+      list-style: none;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .ref-card li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    /* ===== SPEECH BUBBLES ===== */
+    .speech-bubble {
+      position: relative;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .speech-bubble.bad-bubble {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: var(--text-dim);
+    }
+
+    .speech-bubble.good-bubble {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: var(--text-dim);
+    }
+
+    /* ===== TWO COL LAYOUT ===== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      align-items: start;
+    }
+
+    /* ===== COMPLEXITY BADGE ===== */
+    .complexity-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .complexity-badge.bad-c {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--red);
+    }
+
+    .complexity-badge.good-c {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+    }
+
+    /* ===== CODE TEXTURE (slide 1) ===== */
+    .code-texture {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.04;
+      pointer-events: none;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      line-height: 1.8;
+      color: var(--text);
+      white-space: pre;
+      padding: 2rem;
+      z-index: 0;
+    }
+
+    /* ===== TWO SIDE VIZ (slide 2) ===== */
+    .two-side-viz {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .viz-box {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    .viz-box.random-box {
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .viz-box.struct-box {
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .viz-label {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .chaos-arrows {
+      font-size: 1.6rem;
+      line-height: 2;
+      letter-spacing: 0.3rem;
+      color: var(--red);
+    }
+
+    .clean-steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .clean-step {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--green);
+    }
+
+    /* ===== GATE BOX ===== */
+    .gate-box {
+      background: rgba(168, 85, 247, 0.06);
+      border: 2px solid rgba(168, 85, 247, 0.3);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .gate-box h4 {
+      color: var(--purple);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===== EDGE CASE CARDS ===== */
+    .edge-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      max-width: 700px;
+    }
+
+    .edge-card {
+      background: rgba(0, 229, 184, 0.06);
+      border: 1px solid rgba(0, 229, 184, 0.2);
+      border-radius: 10px;
+      padding: 0.75rem 1.2rem;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      max-width: 300px;
+      transition: transform 0.2s, border-color 0.3s;
+    }
+
+    .edge-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 229, 184, 0.4);
+    }
+
+    /* ===== EDGE CASE GRID ===== */
+    .edge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .edge-category {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+
+    .edge-category h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .edge-category ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .edge-category li {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .edge-category li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    @media (max-width: 768px) {
+      .edge-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== NAV ===== */
+    .nav-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-dim);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .nav-arrow:hover {
+      background: rgba(0, 229, 184, 0.1);
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .nav-prev { left: 1rem; }
+    .nav-next { right: 1rem; }
+
+    /* ===== BOTTOM BAR ===== */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .progress-bar {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--purple));
+      transition: width 0.3s ease;
+    }
+
+    .slide-counter {
+      text-align: center;
+      padding: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+      background: rgba(6, 6, 15, 0.9);
+    }
+
+    /* ===== TOC OVERLAY ===== */
+    .toc-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(6, 6, 15, 0.96);
+      backdrop-filter: blur(16px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 2rem;
+      overflow-y: auto;
+    }
+
+    .toc-overlay.open {
+      display: flex;
+    }
+
+    .toc-overlay h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .toc-list li {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .toc-list li:hover {
+      background: rgba(0, 229, 184, 0.08);
+      color: var(--teal);
+    }
+
+    .toc-list li .toc-num {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      min-width: 2rem;
+      text-align: right;
+    }
+
+    .toc-list li.toc-section {
+      font-weight: 700;
+      color: var(--teal);
+      margin-top: 0.5rem;
+    }
+
+    .toc-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    /* ===== CODE ANNOTATION ===== */
+    .code-with-notes {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      width: 100%;
+      align-items: start;
+    }
+
+    .code-annotations {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .annotation {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .annotation.red-ann {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+    }
+
+    .annotation.green-ann {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      background: rgba(0, 229, 184, 0.08);
+      border: 1px solid rgba(0, 229, 184, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      max-width: 600px;
+      font-size: 1rem;
+      color: var(--teal);
+      font-weight: 500;
+      text-align: center;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    /* ===== BEFORE/AFTER ===== */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .ba-box {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .ba-box.before {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .ba-box.after {
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .ba-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .ba-code {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    /* ===== 3 BULLET RULE ===== */
+    .three-giant {
+      font-size: 10rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .three-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .three-box {
+      padding: 0.75rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      font-size: 1rem;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    /* ===== PIVOT ===== */
+    .pivot-text {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== TEST CARDS ===== */
+    .test-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .test-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+    }
+
+    .test-card .tc-input {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--teal);
+      flex: 1;
+    }
+
+    .test-card .tc-reason {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ===== QUOTE OF THE DAY ===== */
+    .quote-slide {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .quote-mark {
+      font-size: 8rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      user-select: none;
+      opacity: 0.6;
+      margin-bottom: -2rem;
+    }
+
+    .quote-text {
+      font-size: 2rem;
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.5;
+      max-width: 750px;
+      background: linear-gradient(135deg, var(--text), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .quote-attribution {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.4rem; }
+      .big-text { font-size: 1.5rem; }
+      .huge-text { font-size: 2rem; }
+      .slide { padding: 2.5rem 1.2rem 3.5rem; }
+      .comparison { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .two-side-viz { grid-template-columns: 1fr; }
+      .code-with-notes { grid-template-columns: 1fr; }
+      .icon-bullets { grid-template-columns: 1fr; }
+      .badge-grid { grid-template-columns: 1fr 1fr; }
+      .before-after { grid-template-columns: 1fr; }
+      .section-divider .big-number { font-size: 6rem; }
+      .three-giant { font-size: 6rem; }
+      .nav-arrow { width: 36px; height: 36px; font-size: 1rem; }
+      .nav-prev { left: 0.5rem; }
+      .nav-next { right: 0.5rem; }
+      .code-block { font-size: 0.75rem; padding: 1rem; }
+      .stair { margin-left: 0 !important; }
+      .timeline-bar { height: 36px; }
+      .timeline-seg { font-size: 0.55rem; }
+      .top-bar { font-size: 0.75rem; padding: 0.5rem 0.8rem; }
+      .quote-text { font-size: 1.4rem; }
+      .quote-mark { font-size: 5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .badge-grid { grid-template-columns: 1fr; }
+      .edge-cards { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="https://emrevarol.com" class="back-link">emrevarol.com</a>
+  <a href="materials-7-steps.html" class="materials-link">Materials</a>
+  <span class="a2sv-badge">A2SV</span>
+</div>
+
+<!-- NAV ARROWS -->
+<button class="nav-arrow nav-prev" onclick="goSlide(current-1)" aria-label="Previous">&lsaquo;</button>
+<button class="nav-arrow nav-next" onclick="goSlide(current+1)" aria-label="Next">&rsaquo;</button>
+
+<!-- SLIDES -->
+<div class="slides-wrapper" id="slidesWrapper">
+
+  <!-- SLIDE 1: Title -->
+  <div class="slide" data-slide="1">
+    <div class="aurora-orbs">
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+    </div>
+    <div class="code-texture">def solve(problem):
+    understand(problem)
+    manual_solve(example)
+    design_algorithm()
+    attack_own_idea()
+    implement()
+    test_comprehensively()
+    simplify()
+    return solution
+
+class Interview:
+    def __init__(self):
+        self.steps = 7
+        self.clarity = True
+        self.speed = False
+
+# The Playbook
+for step in range(1, 8):
+    execute(step)
+    communicate(step)
+    verify(step)</div>
+    <div class="slide-inner">
+      <h1 style="font-size: 3.2rem">
+        7 Steps of Highly Effective<br>
+        <span class="gradient-text">Problem Solving</span>
+      </h1>
+      <p class="subtitle" style="margin-top: 0.5rem">Igitabo cy'Ikiganiro</p>
+      <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted)">A2SV - Emre Varol</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Why a Playbook? -->
+  <div class="slide" data-slide="2">
+    <div class="slide-inner">
+      <h2>Kubera Iki Igitabo?</h2>
+      <ul class="bullets">
+        <li>Interviews create pressure</li>
+        <li>Pressure destroys random thinking</li>
+        <li>A playbook creates consistency</li>
+        <li>Consistency beats occasional brilliance</li>
+      </ul>
+      <div class="two-side-viz" style="margin-top: 1rem">
+        <div class="viz-box random-box">
+          <div class="viz-label red">Random</div>
+          <div class="chaos-arrows">
+            &nearr; &swarr; &nwarr; &searr;<br>
+            &darr; &uarr; &rarr; &larr;<br>
+            &swarr; &nearr; &searr; &nwarr;
+          </div>
+        </div>
+        <div class="viz-box struct-box">
+          <div class="viz-label green">Structured</div>
+          <div class="clean-steps">
+            <span class="clean-step">1. Understand</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">2. Manual</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">3. Design</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">4. Attack</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">5. Code</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">6. Test</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">7. Clean</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: The Goal -->
+  <div class="slide" data-slide="3">
+    <div class="slide-inner">
+      <p class="big-text" style="margin-bottom: 2rem">
+        Not just to solve problems -<br>
+        to solve them <span class="gradient-text">reliably under pressure</span>
+      </p>
+      <div class="icon-bullets">
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> Better judgment
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> Fewer avoidable mistakes
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> Cleaner communication
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> More interview wins
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: The 7 Steps -->
+  <div class="slide" data-slide="4">
+    <div class="slide-inner">
+      <h2>Intambwe 7</h2>
+      <div class="staircase">
+        <div class="stair">
+          <div class="stair-num">1</div>
+          <div class="stair-text">Understand the problem</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">2</div>
+          <div class="stair-text">Solve the problem manually</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">3</div>
+          <div class="stair-text">Come up with a solution idea</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">4</div>
+          <div class="stair-text">Attack your own idea</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">5</div>
+          <div class="stair-text">Implement</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">6</div>
+          <div class="stair-text">Test comprehensively</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">7</div>
+          <div class="stair-text">Simplify and clean up</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Biggest Mistake -->
+  <div class="slide" data-slide="5">
+    <div class="slide-inner">
+      <h2>Ikosa Rinini ry'Umukandida</h2>
+      <p class="huge-text red" style="margin: 1rem 0">Starting to code too early</p>
+      <div class="warning-box">
+        <h4>Consequences</h4>
+        <ul>
+          <li>Wrong understanding</li>
+          <li>Wrong algorithm</li>
+          <li>Wrong complexity</li>
+          <li>Wasted time</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Section Divider Step 1 -->
+  <div class="slide" data-slide="6">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">01</div>
+        <div class="section-title">Kumva Ikibazo</div>
+        <ul class="section-bullets">
+          <li>Read slowly</li>
+          <li>Process every sentence</li>
+          <li>Extract constraints</li>
+          <li>Restate in your own words</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Good vs Bad Step 1 -->
+  <div class="slide" data-slide="7">
+    <div class="slide-inner">
+      <h2>Step 1: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bibi</h4>
+          <ul>
+            <li>Skims the problem</li>
+            <li>Assumes what is being asked</li>
+            <li>Starts coding after reading once</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Byiza</h4>
+          <ul>
+            <li>Restates input and output</li>
+            <li>Identifies constraints</li>
+            <li>Confirms what exactly must be returned</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Two Sum Problem -->
+  <div class="slide" data-slide="8">
+    <div class="slide-inner">
+      <h2>Problem Example: Two Sum</h2>
+      <div class="problem-card">
+        Given an array of integers <code>nums</code> and an integer <code>target</code>,
+        return the <strong>indices</strong> of the two numbers whose sum equals target.
+        Assume exactly one valid answer exists, and the same element cannot be used twice.
+      </div>
+      <div style="margin-top: 1rem; text-align: center">
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem">
+          target = <span class="teal" style="font-weight: 700">9</span>
+        </div>
+        <div class="array-viz">
+          <div class="array-col">
+            <div class="array-cell highlight">2</div>
+            <div class="array-index">0</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell highlight">7</div>
+            <div class="array-index">1</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell">11</div>
+            <div class="array-index">2</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell">15</div>
+            <div class="array-index">3</div>
+          </div>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--teal); margin-top: 0.5rem; font-weight: 500">
+          2 + 7 = 9 &rarr; return [0, 1]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: Good Step 1 on Two Sum -->
+  <div class="slide" data-slide="9">
+    <div class="slide-inner">
+      <h2>Good Step 1 on Two Sum</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">Candidate says:</h3>
+          <ul class="bullets green-bullets">
+            <li>Input: array + target</li>
+            <li>Output: two indices</li>
+            <li>We return positions, not values</li>
+            <li>Exactly one answer exists</li>
+            <li>Cannot reuse the same element</li>
+          </ul>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="highlight-box">
+            No ambiguity left.<br>
+            Important constraints captured.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Bad Step 1 on Two Sum -->
+  <div class="slide" data-slide="10">
+    <div class="slide-inner">
+      <h2>Bad Step 1 on Two Sum</h2>
+      <div class="warning-box" style="max-width: 700px">
+        <h4>Bad Candidate Behavior</h4>
+        <ul>
+          <li>"I just need two numbers that add up"</li>
+          <li>Forgets indices vs values</li>
+          <li>Ignores exactly-one-answer constraint</li>
+          <li>Ignores can't-use-same-element rule</li>
+        </ul>
+      </div>
+      <p style="margin-top: 1rem; color: var(--orange); font-weight: 600; font-size: 0.95rem">
+        Correct-looking code can still be wrong.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: Section Divider Step 2 -->
+  <div class="slide" data-slide="11">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">02</div>
+        <div class="section-title">Solve the Problem Manually</div>
+        <div class="section-quote">"If you cannot do it by hand, you cannot automate it."</div>
+        <ul class="section-bullets">
+          <li>Start with the sample</li>
+          <li>Track your decisions</li>
+          <li>Look for repetition</li>
+          <li>Extract the pattern</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Good vs Bad Step 2 -->
+  <div class="slide" data-slide="12">
+    <div class="slide-inner">
+      <h2>Step 2: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bad</h4>
+          <ul>
+            <li>Jumps from reading to coding</li>
+            <li>Says "I think I know the trick"</li>
+            <li>Never checks a small example</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Good</h4>
+          <ul>
+            <li>Works through sample input</li>
+            <li>Notices repeating action</li>
+            <li>Extracts what information would help</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: Manual Walkthrough Two Sum -->
+  <div class="slide" data-slide="13">
+    <div class="slide-inner">
+      <h2>Manual Walkthrough: Two Sum</h2>
+      <div style="font-family: 'Fira Code', monospace; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1rem">
+        nums = [2, 7, 11, 15], target = 9
+      </div>
+      <div class="array-viz" style="margin-bottom: 1rem">
+        <div class="array-col">
+          <div class="array-cell highlight">2</div>
+          <div class="array-index">0</div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--text-muted); display: flex; align-items: center">
+          &rarr;
+        </div>
+        <div class="array-col" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center">
+          <div style="font-size: 0.85rem; color: var(--text-dim)">
+            Need <span class="teal" style="font-weight: 600">7</span>
+          </div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--text-muted); display: flex; align-items: center">
+          &rarr;
+        </div>
+        <div class="array-col">
+          <div class="array-cell highlight">7</div>
+          <div class="array-index">1</div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--green); display: flex; align-items: center">
+          &check;
+        </div>
+      </div>
+      <div style="font-size: 0.95rem; color: var(--teal); font-weight: 600; margin-bottom: 1rem">
+        Answer: [0, 1]
+      </div>
+      <div class="highlight-box">
+        Pattern discovered: For each number, I need its complement.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: Key Question Step 2 -->
+  <div class="slide" data-slide="14">
+    <div class="slide-inner">
+      <p class="big-text">
+        "What am I <span class="gradient-text">repeatedly checking</span> by hand?"
+      </p>
+      <p class="medium-text" style="margin-top: 1.5rem">
+        For Two Sum: "Does the needed number already exist?"
+      </p>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center">
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">hash map</span>
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">fast lookup</span>
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">O(n) solution</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: Section Divider Step 3 -->
+  <div class="slide" data-slide="15">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">03</div>
+        <div class="section-title">Come Up with a Solution Idea</div>
+        <ul class="section-bullets">
+          <li>Generalize your manual process</li>
+          <li>Choose the right data structure</li>
+          <li>Check time complexity</li>
+          <li>Check space complexity</li>
+          <li>Fill logic gaps before coding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: The Complexity Gate -->
+  <div class="slide" data-slide="16">
+    <div class="slide-inner">
+      <h2>The Complexity Gate</h2>
+      <div class="gate-box">
+        <h4>Before writing code, ask:</h4>
+        <ul class="bullets" style="max-width: 100%">
+          <li>Is brute force good enough?</li>
+          <li>What do the constraints allow?</li>
+          <li>Are helper functions hiding extra cost?</li>
+          <li>Am I sure this can pass?</li>
+        </ul>
+      </div>
+      <p style="margin-top: 1.5rem; font-weight: 700; font-size: 1.15rem; color: var(--purple)">
+        No code before this gate.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: Good vs Bad Step 3 -->
+  <div class="slide" data-slide="17">
+    <div class="slide-inner">
+      <h2>Step 3: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bad <span class="complexity-badge bad-c" style="margin-left: 0.5rem">O(n&sup2;)</span></h4>
+          <ul>
+            <li>"I'll just code and see"</li>
+            <li>No complexity discussion</li>
+            <li>Vague logic</li>
+            <li>Data structure chosen randomly</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Good <span class="complexity-badge good-c" style="margin-left: 0.5rem">O(n)</span></h4>
+          <ul>
+            <li>States brute force first</li>
+            <li>Improves it intentionally</li>
+            <li>Picks structure based on need</li>
+            <li>Explains why it fits constraints</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 18: Two Sum Good Design -->
+  <div class="slide" data-slide="18">
+    <div class="slide-inner">
+      <h2>Two Sum: Good Design</h2>
+      <div class="two-col">
+        <div class="card" style="border-color: var(--text-muted); opacity: 0.6">
+          <h3 style="font-size: 1rem; color: var(--text-muted)">Brute Force</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem">Try every pair</p>
+          <p class="complexity-badge bad-c" style="margin-top: 0.5rem">O(n&sup2;)</p>
+        </div>
+        <div class="card" style="border-color: rgba(0, 229, 184, 0.3)">
+          <h3 style="font-size: 1rem; color: var(--teal)">Better</h3>
+          <p style="font-size: 0.95rem; color: var(--text-dim); margin-top: 0.5rem">
+            Store seen numbers in dict, check complement
+          </p>
+          <p class="complexity-badge good-c" style="margin-top: 0.5rem">O(n)</p>
+        </div>
+      </div>
+      <div style="margin-top: 1rem; display: flex; align-items: center; gap: 1rem; color: var(--text-muted)">
+        <span style="font-size: 2rem">&rarr;</span>
+        <span style="font-style: italic; font-size: 0.95rem">improvement</span>
+        <span style="font-size: 2rem">&rarr;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 19: Python Two Sum Core -->
+  <div class="slide" data-slide="19">
+    <div class="slide-inner">
+      <h2>Python: Two Sum Core Idea</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">two_sum</span>(nums, target):
+    seen = {}
+
+    <span class="kw">for</span> i, num <span class="kw">in</span> <span class="fn">enumerate</span>(nums):
+        need = target - num
+        <span class="kw">if</span> need <span class="kw">in</span> seen:
+            <span class="kw">return</span> [seen[need], i]
+        seen[num] = i</div>
+        <div class="code-annotations">
+          <div class="annotation green-ann">Short</div>
+          <div class="annotation green-ann">Readable</div>
+          <div class="annotation green-ann">Structure matches need</div>
+          <div class="annotation green-ann">Complexity is clear</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 20: Section Divider Step 4 -->
+  <div class="slide" data-slide="20">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">04</div>
+        <div class="section-title">Attack Your Own Idea</div>
+        <div class="section-quote">
+          "Play devil's advocate. Imagine your worst enemy came up with this idea. You would do your best to tear it apart."
+        </div>
+        <ul class="section-bullets">
+          <li>Play devil's advocate with your own solution</li>
+          <li>Try to break it with adversarial inputs</li>
+          <li>Find hidden assumptions</li>
+          <li>Look for edge cases</li>
+          <li>Refute your own solution before the interviewer does</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 21: Good vs Bad Step 4 -->
+  <div class="slide" data-slide="21">
+    <div class="slide-inner">
+      <h2>Step 4: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bad</h4>
+          <ul>
+            <li>"This should work"</li>
+            <li>No edge-case thinking</li>
+            <li>Emotionally attached to first idea</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Good</h4>
+          <ul>
+            <li>Actively searches for failures</li>
+            <li>Checks assumptions</li>
+            <li>Asks what input would break the logic</li>
+            <li>Plays devil's advocate against own solution</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 22: Edge-Case Questions -->
+  <div class="slide" data-slide="22">
+    <div class="slide-inner">
+      <h2>Edge-Case Questions to Ask</h2>
+      <div class="edge-grid">
+        <div class="edge-category" style="border-color: rgba(0, 229, 184, 0.2)">
+          <h4 class="teal">Input Boundaries</h4>
+          <ul>
+            <li>Empty input</li>
+            <li>Single element</li>
+            <li>Maximum size</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(168, 85, 247, 0.2)">
+          <h4 class="purple">Value Edge Cases</h4>
+          <ul>
+            <li>Duplicates</li>
+            <li>Negatives</li>
+            <li>Zeros</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(59, 130, 246, 0.2)">
+          <h4 class="blue">Assumption Checks</h4>
+          <ul>
+            <li>Sorted vs unsorted</li>
+            <li>Unique vs repeated</li>
+            <li>Overflow</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 23: Hidden Assumption Example -->
+  <div class="slide" data-slide="23">
+    <div class="slide-inner">
+      <h2>Example of a Hidden Assumption</h2>
+      <div class="warning-box" style="max-width: 700px">
+        <h4>Bad assumption: "The input is sorted."</h4>
+        <ul>
+          <li style="list-style: none; padding-left: 0">Was that guaranteed?</li>
+        </ul>
+      </div>
+      <p style="color: var(--orange); font-weight: 600; margin-top: 0.75rem; font-size: 0.95rem">
+        If not, a two-pointer idea may fail completely.
+      </p>
+      <div class="two-col" style="max-width: 500px; margin-top: 1rem">
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--green); font-weight: 600; margin-bottom: 0.5rem">Sorted</div>
+          <div class="array-viz">
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">1</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">2</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">3</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">4</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">5</div></div>
+          </div>
+        </div>
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--red); font-weight: 600; margin-bottom: 0.5rem">Unsorted</div>
+          <div class="array-viz">
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">3</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">1</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">4</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">2</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">5</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 24: Section Divider Step 5 -->
+  <div class="slide" data-slide="24">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">05</div>
+        <div class="section-title">Implement</div>
+        <div class="section-quote">"Now code. But code with discipline:"</div>
+        <ul class="section-bullets">
+          <li>Write in blocks</li>
+          <li>Use clear naming</li>
+          <li>Use helper functions when useful</li>
+          <li>Explain what each block does</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 25: Good vs Bad Step 5 -->
+  <div class="slide" data-slide="25">
+    <div class="slide-inner">
+      <h2>Step 5: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bad</h4>
+          <ul>
+            <li>Giant block of code</li>
+            <li>Bad variable names</li>
+            <li>No structure</li>
+            <li>Hard to explain</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Good</h4>
+          <ul>
+            <li>Clean naming</li>
+            <li>Helper functions where needed</li>
+            <li>Block-by-block implementation</li>
+            <li>Easy to explain</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 26: Bad Python Example -->
+  <div class="slide" data-slide="26">
+    <div class="slide-inner">
+      <h2 class="red">Ishyirwa mu Bikorwa Bibi</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">f</span>(a, t):
+    d = {}
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(a)):
+        x = t - a[i]
+        <span class="kw">if</span> x <span class="kw">in</span> d:
+            <span class="kw">return</span> [d[x], i]
+        d[a[i]] = i</div>
+        <div class="code-annotations">
+          <div class="annotation red-ann">f?</div>
+          <div class="annotation red-ann">a?</div>
+          <div class="annotation red-ann">t?</div>
+          <div class="annotation red-ann">d?</div>
+          <div class="annotation red-ann">x?</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; text-align: center; max-width: 600px">
+        Vague naming &rarr; harder to explain &rarr; lower readability &rarr; easier to confuse yourself
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 27: Better Python Example -->
+  <div class="slide" data-slide="27">
+    <div class="slide-inner">
+      <h2 class="green">Ishyirwa mu Bikorwa Byiza</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">two_sum</span>(nums, target):
+    value_to_index = {}
+
+    <span class="kw">for</span> index, num <span class="kw">in</span> <span class="fn">enumerate</span>(nums):
+        needed = target - num
+        <span class="kw">if</span> needed <span class="kw">in</span> value_to_index:
+            <span class="kw">return</span> [value_to_index[needed], index]
+
+        value_to_index[num] = index</div>
+        <div class="code-annotations">
+          <div class="annotation green-ann">two_sum &check;</div>
+          <div class="annotation green-ann">value_to_index &check;</div>
+          <div class="annotation green-ann">needed &check;</div>
+          <div class="annotation green-ann">index, num &check;</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; text-align: center; max-width: 600px">
+        Readable &rarr; interviewer-friendly &rarr; easier to debug &rarr; easier to narrate
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 28: Helper Function Example -->
+  <div class="slide" data-slide="28">
+    <div class="slide-inner">
+      <h2>Helper Function Pattern: Grid Problems</h2>
+      <p class="medium-text" style="margin-bottom: 1rem">
+        Given a 2D grid, visit valid neighbors to compute or update a result.
+      </p>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">is_valid</span>(row, col, rows, cols):
+    <span class="kw">return</span> <span class="nb">0</span> &lt;= row &lt; rows <span class="kw">and</span> <span class="nb">0</span> &lt;= col &lt; cols</div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="grid-viz">
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&uarr;</div>
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&larr;</div>
+            <div class="grid-cell center">c</div>
+            <div class="grid-cell neighbor">&rarr;</div>
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&darr;</div>
+            <div class="grid-cell neighbor"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 29: Direction Vector Pattern -->
+  <div class="slide" data-slide="29">
+    <div class="slide-inner">
+      <h2>Direction Vector Pattern</h2>
+      <div class="code-with-notes">
+        <div class="code-block">directions = [
+    (<span class="nb">-1</span>, <span class="nb">0</span>),   <span class="cm"># up</span>
+    (<span class="nb">1</span>,  <span class="nb">0</span>),   <span class="cm"># down</span>
+    (<span class="nb">0</span>, <span class="nb">-1</span>),   <span class="cm"># left</span>
+    (<span class="nb">0</span>,  <span class="nb">1</span>),   <span class="cm"># right</span>
+]</div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem">
+          <div class="direction-grid">
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&uarr;</div>
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&larr;</div>
+            <div class="dir-cell dir-center">c</div>
+            <div class="dir-cell dir-active">&rarr;</div>
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&darr;</div>
+            <div class="dir-cell"></div>
+          </div>
+        </div>
+      </div>
+      <ul class="bullets" style="margin-top: 1rem">
+        <li>Less repeated code</li>
+        <li>Fewer mistakes</li>
+        <li>Cleaner traversal logic</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SLIDE 30: Section Divider Step 6 -->
+  <div class="slide" data-slide="30">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">06</div>
+        <div class="section-title">Test Comprehensively</div>
+        <div class="section-quote">"Testing is not optional. Testing is part of the solution."</div>
+        <ul class="section-bullets">
+          <li>Sample case</li>
+          <li>Edge case</li>
+          <li>Tricky case</li>
+          <li>Boundary case</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 31: Good vs Bad Step 6 -->
+  <div class="slide" data-slide="31">
+    <div class="slide-inner">
+      <h2>Step 6: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bad - "Random"</h4>
+          <ul>
+            <li>Tests only sample input</li>
+            <li>Tries random values</li>
+            <li>Stops after first success</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Good - "Intentional"</h4>
+          <ul>
+            <li>Each test has a reason</li>
+            <li>Targets assumptions</li>
+            <li>Covers boundaries and duplicates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 32: Two Sum Testing -->
+  <div class="slide" data-slide="32">
+    <div class="slide-inner">
+      <h2>Two Sum: Testing Examples</h2>
+      <div class="test-cards">
+        <div class="test-card">
+          <span class="tc-input">[2, 7, 11, 15], target 9</span>
+          <span class="tc-reason">basic case</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[3, 3], target 6</span>
+          <span class="tc-reason">duplicate values</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[1, 2, 3, 4], target 7</span>
+          <span class="tc-reason">answer at end</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[5, 4], target 9</span>
+          <span class="tc-reason">very small input</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Does the logic still work when the same value appears twice?
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 33: What Interviewers Notice -->
+  <div class="slide" data-slide="33">
+    <div class="slide-inner">
+      <h2>What Interviewers Notice in Testing</h2>
+      <p class="medium-text">When you test without being asked, you signal:</p>
+      <div class="badge-grid" style="max-width: 500px; margin-top: 1rem">
+        <div class="badge-card green-badge">Discipline</div>
+        <div class="badge-card green-badge">Ownership</div>
+        <div class="badge-card green-badge">Maturity</div>
+        <div class="badge-card green-badge">Engineering Mindset</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 34: Section Divider Step 7 -->
+  <div class="slide" data-slide="34">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">07</div>
+        <div class="section-title">Simplify and Clean Up</div>
+        <div class="section-quote">"Once the code works:"</div>
+        <ul class="section-bullets">
+          <li>Improve names</li>
+          <li>Remove clutter</li>
+          <li>Simplify logic</li>
+          <li>Add minimal comments if useful</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 35: Good vs Bad Step 7 -->
+  <div class="slide" data-slide="35">
+    <div class="slide-inner">
+      <h2>Step 7: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bad</h4>
+          <ul>
+            <li>Leaves confusing names</li>
+            <li>Keeps dead code</li>
+            <li>Makes no final pass</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Good</h4>
+          <ul>
+            <li>Removes clutter</li>
+            <li>Improves clarity</li>
+            <li>Makes final explanation easier</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 36: Before and After Naming -->
+  <div class="slide" data-slide="36">
+    <div class="slide-inner">
+      <h2>Before and After Naming</h2>
+      <div class="before-after">
+        <div class="ba-box before">
+          <div class="ba-label red">Before</div>
+          <div class="ba-code red">mp = {}</div>
+        </div>
+        <div class="ba-box after">
+          <div class="ba-label green">After</div>
+          <div class="ba-code green">value_to_index = {}</div>
+        </div>
+      </div>
+      <p class="big-text" style="margin-top: 2rem">Clarity is part of correctness.</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 37: The 3-Bullet Rule -->
+  <div class="slide" data-slide="37">
+    <div class="slide-inner">
+      <h2>The 3-Bullet Rule</h2>
+      <div class="three-giant">3</div>
+      <div class="three-boxes">
+        <div class="three-box">What the idea is</div>
+        <div class="three-box">Why it works</div>
+        <div class="three-box">Why it is efficient enough</div>
+      </div>
+      <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic">
+        If you need 10 bullets, you do not understand it clearly yet.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 38: The 40-Minute Timeline -->
+  <div class="slide" data-slide="38">
+    <div class="slide-inner">
+      <h2>The 40-Minute Interview Timeline</h2>
+      <div style="width: 100%; max-width: 800px">
+        <div class="timeline-bar">
+          <div class="timeline-seg" style="flex: 5; background: var(--teal)">0-5 min</div>
+          <div class="timeline-seg" style="flex: 5; background: var(--blue)">5-10</div>
+          <div class="timeline-seg" style="flex: 8; background: var(--purple)">10-18</div>
+          <div class="timeline-seg" style="flex: 12; background: var(--green)">18-30</div>
+          <div class="timeline-seg" style="flex: 6; background: var(--orange)">30-36</div>
+          <div class="timeline-seg" style="flex: 4; background: var(--text-muted)">36-40</div>
+        </div>
+        <div class="timeline-labels" style="margin-top: 0.5rem">
+          <div class="timeline-label" style="flex: 5">Understand<br>&amp; restate</div>
+          <div class="timeline-label" style="flex: 5">Solve<br>manually</div>
+          <div class="timeline-label" style="flex: 8">Design &amp;<br>complexity</div>
+          <div class="timeline-label" style="flex: 12">Implement</div>
+          <div class="timeline-label" style="flex: 6">Test</div>
+          <div class="timeline-label" style="flex: 4">Clean up<br>&amp; summarize</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 39: The Pivot Rule -->
+  <div class="slide" data-slide="39">
+    <div class="slide-inner">
+      <h2>The Pivot Rule</h2>
+      <p class="medium-text">If you spend 5-7 minutes and:</p>
+      <ul class="bullets red-bullets" style="margin: 0.75rem 0">
+        <li>Cannot justify complexity</li>
+        <li>Keep breaking on edge cases</li>
+        <li>Cannot explain why it works</li>
+      </ul>
+      <div class="pivot-text">PIVOT</div>
+      <div class="badge-grid" style="max-width: 600px; margin-top: 1rem">
+        <div class="badge-card teal-badge">New data structure</div>
+        <div class="badge-card teal-badge">New perspective</div>
+        <div class="badge-card teal-badge">Simpler version first</div>
+        <div class="badge-card teal-badge">Ask a focused hint</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 40: Good vs Bad Hint Request -->
+  <div class="slide" data-slide="40">
+    <div class="slide-inner">
+      <h2>Good Hint Request vs Bad Hint Request</h2>
+      <div class="two-col" style="max-width: 700px; align-items: center">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem">
+          <div style="font-size: 0.8rem; color: var(--red); font-weight: 700; text-transform: uppercase">Bad</div>
+          <div class="speech-bubble bad-bubble">"I'm stuck."</div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem">
+          <div style="font-size: 0.8rem; color: var(--green); font-weight: 700; text-transform: uppercase">Better</div>
+          <div class="speech-bubble good-bubble">
+            "I have an O(n&sup2;) solution, but I think the constraints need something faster. Should I be thinking about hashing or sorting?"
+          </div>
+        </div>
+      </div>
+      <p class="medium-text" style="margin-top: 1.5rem">
+        Why better: shows progress, shows awareness, asks a targeted question.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 41: Communication Script -->
+  <div class="slide" data-slide="41">
+    <div class="slide-inner">
+      <h2>Communication Script You Can Reuse</h2>
+      <div class="ref-card">
+        <ul>
+          <li>"Let me restate the problem."</li>
+          <li>"I'll start with a small example."</li>
+          <li>"The brute force is O(n&sup2;), but I think we can do better."</li>
+          <li>"I'll implement this in two parts."</li>
+          <li>"Now I'll test edge cases."</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 42: Image Smoother Section Divider -->
+  <div class="slide" data-slide="42">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number" style="font-size: 8rem">II</div>
+        <div class="section-title">Full Walkthrough: Image Smoother</div>
+        <div class="section-quote">"Let's apply all 7 steps to a second problem."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 43: Image Smoother Problem Statement -->
+  <div class="slide" data-slide="43">
+    <div class="slide-inner">
+      <h2>Problem: Image Smoother</h2>
+      <div class="problem-card">
+        You are given a 2D integer grid representing image pixel values.
+        For each cell, compute the <strong>floor</strong> of the average of the valid
+        neighboring cells around it, including the cell itself.
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center">
+        <div class="grid-viz" style="grid-template-columns: repeat(3, 56px); gap: 4px">
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell center" style="width: 56px; height: 56px">0</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+        </div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
+        Center cell highlighted in teal, its neighbors shaded
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 44: Step 1 on Image Smoother -->
+  <div class="slide" data-slide="44">
+    <div class="slide-inner">
+      <h2>Step 1: Understand &mdash; Image Smoother</h2>
+      <ul class="bullets green-bullets" style="margin-bottom: 1.5rem">
+        <li>Input: m &times; n integer matrix</li>
+        <li>Output: another m &times; n matrix</li>
+        <li>Use valid neighbors only (boundary-aware)</li>
+        <li>Include the center cell itself in the average</li>
+        <li>Average uses floor division</li>
+      </ul>
+      <div class="two-col" style="max-width: 400px">
+        <div style="text-align: center">
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem">
+            Corner: 3 neighbors + self = 4
+          </div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 40px); gap: 3px">
+            <div class="grid-cell center" style="width: 40px; height: 40px; font-size: 0.7rem">c</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+          </div>
+        </div>
+        <div style="text-align: center">
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem">
+            Center: 8 neighbors + self = 9
+          </div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 40px); gap: 3px">
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell center" style="width: 40px; height: 40px; font-size: 0.7rem">c</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 45: Step 2 on Image Smoother - Manual Walkthrough -->
+  <div class="slide" data-slide="45">
+    <div class="slide-inner">
+      <h2>Step 2: Manual Solve &mdash; Image Smoother</h2>
+      <p class="medium-text" style="margin-bottom: 1rem">
+        Compute the smoothed value for cell (0,0) by hand:
+      </p>
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 2rem; flex-wrap: wrap">
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem">Input grid</div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 50px); gap: 3px">
+            <div class="grid-cell center" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">0</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; font-family: 'Fira Code', monospace; font-size: 0.9rem; color: var(--text-dim)">
+          <div>Cell (0,0) = <span class="teal">1</span></div>
+          <div>Valid neighbors:</div>
+          <div style="padding-left: 1rem">(0,1) = 1</div>
+          <div style="padding-left: 1rem">(1,0) = 1</div>
+          <div style="padding-left: 1rem">(1,1) = 0</div>
+          <div style="margin-top: 0.5rem">Sum = 1 + 1 + 1 + 0 = <span class="teal">3</span></div>
+          <div>Count = <span class="teal">4</span></div>
+          <div style="color: var(--teal); font-weight: 600">floor(3/4) = 0</div>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Pattern: for each cell, gather valid neighbors, sum them, divide by count.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 46: Step 3 on Image Smoother - Design -->
+  <div class="slide" data-slide="46">
+    <div class="slide-inner">
+      <h2>Step 3: Design &mdash; Image Smoother</h2>
+      <div class="two-col" style="max-width: 700px; align-items: start">
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">Key Decisions</h3>
+          <ul class="bullets green-bullets">
+            <li>Use 9 direction offsets (including center)</li>
+            <li>Use <code>is_valid</code> bounds check</li>
+            <li>Allocate a fresh output matrix</li>
+            <li>Iterate every cell in the grid</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">Complexity</h3>
+          <ul class="bullets">
+            <li>Each cell checks up to 9 neighbors</li>
+            <li>Total: O(m &times; n &times; 9) = <span class="teal" style="font-weight: 600">O(m &times; n)</span></li>
+            <li>Space: <span class="teal" style="font-weight: 600">O(m &times; n)</span> for output</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center">
+        <div class="direction-grid">
+          <div class="dir-cell dir-active">&nwarr;</div>
+          <div class="dir-cell dir-active">&uarr;</div>
+          <div class="dir-cell dir-active">&nearr;</div>
+          <div class="dir-cell dir-active">&larr;</div>
+          <div class="dir-cell dir-center">c</div>
+          <div class="dir-cell dir-active">&rarr;</div>
+          <div class="dir-cell dir-active">&swarr;</div>
+          <div class="dir-cell dir-active">&darr;</div>
+          <div class="dir-cell dir-active">&searr;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 47: Step 4 on Image Smoother - Attack -->
+  <div class="slide" data-slide="47">
+    <div class="slide-inner">
+      <h2>Step 4: Attack &mdash; Image Smoother</h2>
+      <div class="edge-grid">
+        <div class="edge-category" style="border-color: rgba(0, 229, 184, 0.2)">
+          <h4 class="teal">Boundary Questions</h4>
+          <ul>
+            <li>Corners have only 4 cells (including self)</li>
+            <li>Edges have only 6 cells</li>
+            <li>What about a 1&times;1 grid?</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(168, 85, 247, 0.2)">
+          <h4 class="purple">Value Questions</h4>
+          <ul>
+            <li>Is the center cell included in the average?</li>
+            <li>Floor division, not rounding</li>
+            <li>All same values &rarr; unchanged?</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(59, 130, 246, 0.2)">
+          <h4 class="blue">Implementation Traps</h4>
+          <ul>
+            <li>Modifying input in-place (corrupts later reads)</li>
+            <li>Off-by-one in bounds check</li>
+            <li>Integer vs float division</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Key insight: we need a separate output matrix because reading and writing the same grid corrupts results.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 48: Step 5 on Image Smoother - Implement Part 1 -->
+  <div class="slide" data-slide="48">
+    <div class="slide-inner">
+      <h2>Step 5: Implement &mdash; Image Smoother (Setup)</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">image_smoother</span>(img):
+    rows, cols = <span class="fn">len</span>(img), <span class="fn">len</span>(img[<span class="nb">0</span>])
+    output = [[<span class="nb">0</span>] * cols <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(rows)]
+
+    neighbors = [
+        (<span class="nb">-1</span>, <span class="nb">-1</span>), (<span class="nb">-1</span>, <span class="nb">0</span>), (<span class="nb">-1</span>, <span class="nb">1</span>),
+        (<span class="nb">0</span>,  <span class="nb">-1</span>), (<span class="nb">0</span>,  <span class="nb">0</span>), (<span class="nb">0</span>,  <span class="nb">1</span>),
+        (<span class="nb">1</span>,  <span class="nb">-1</span>), (<span class="nb">1</span>,  <span class="nb">0</span>), (<span class="nb">1</span>,  <span class="nb">1</span>),
+    ]</div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 44px); gap: 3px">
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,-1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">0,-1</div>
+            <div class="grid-cell center" style="width: 44px; height: 44px; font-size: 0.65rem">0,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">0,1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,-1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 49: Step 5 on Image Smoother - Implement Part 2 (Full) -->
+  <div class="slide" data-slide="49">
+    <div class="slide-inner">
+      <h2>Step 5: Implement &mdash; Full Solution</h2>
+      <div class="code-block" style="max-width: 900px; font-size: 0.82rem"><span class="kw">def</span> <span class="fn">image_smoother</span>(img):
+    rows, cols = <span class="fn">len</span>(img), <span class="fn">len</span>(img[<span class="nb">0</span>])
+    output = [[<span class="nb">0</span>] * cols <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(rows)]
+
+    neighbors = [
+        (<span class="nb">-1</span>, <span class="nb">-1</span>), (<span class="nb">-1</span>, <span class="nb">0</span>), (<span class="nb">-1</span>, <span class="nb">1</span>),
+        (<span class="nb">0</span>,  <span class="nb">-1</span>), (<span class="nb">0</span>,  <span class="nb">0</span>), (<span class="nb">0</span>,  <span class="nb">1</span>),
+        (<span class="nb">1</span>,  <span class="nb">-1</span>), (<span class="nb">1</span>,  <span class="nb">0</span>), (<span class="nb">1</span>,  <span class="nb">1</span>),
+    ]
+
+    <span class="kw">for</span> row <span class="kw">in</span> <span class="fn">range</span>(rows):
+        <span class="kw">for</span> col <span class="kw">in</span> <span class="fn">range</span>(cols):
+            total = <span class="nb">0</span>
+            count = <span class="nb">0</span>
+
+            <span class="kw">for</span> dr, dc <span class="kw">in</span> neighbors:
+                nr, nc = row + dr, col + dc
+                <span class="kw">if</span> <span class="nb">0</span> &lt;= nr &lt; rows <span class="kw">and</span> <span class="nb">0</span> &lt;= nc &lt; cols:
+                    total += img[nr][nc]
+                    count += <span class="nb">1</span>
+
+            output[row][col] = total // count
+
+    <span class="kw">return</span> output</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 50: Step 6 on Image Smoother - Test -->
+  <div class="slide" data-slide="50">
+    <div class="slide-inner">
+      <h2>Step 6: Test &mdash; Image Smoother</h2>
+      <div class="test-cards">
+        <div class="test-card">
+          <span class="tc-input">[[1,1,1],[1,0,1],[1,1,1]]</span>
+          <span class="tc-reason">sample case &mdash; center cell surrounded</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[5,5,5],[5,5,5],[5,5,5]]</span>
+          <span class="tc-reason">all same values &rarr; output unchanged</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[7]]</span>
+          <span class="tc-reason">1&times;1 grid &rarr; output is [[7]]</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[1,1,1],[1,0,1],[1,1,1]], cell (0,0)</span>
+          <span class="tc-reason">corner cell: (1+1+1+0)/4 = floor(3/4) = 0</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Each test targets a specific boundary or assumption.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 51: Step 7 on Image Smoother - Clean Up -->
+  <div class="slide" data-slide="51">
+    <div class="slide-inner">
+      <h2>Step 7: Clean Up &mdash; Image Smoother</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Before Cleanup</h4>
+          <ul>
+            <li>Variable name <code>d</code> for directions</li>
+            <li>Magic numbers like <code>-1</code>, <code>1</code> scattered</li>
+            <li>No comments on bounds check</li>
+            <li>In-place mutation risk</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>After Cleanup</h4>
+          <ul>
+            <li><code>neighbors</code> is self-documenting</li>
+            <li>Direction offsets grouped visually</li>
+            <li>Separate output matrix is explicit</li>
+            <li>Code reads like the algorithm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Final check: Can you explain every line in one sentence?
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 52: Image Smoother Good vs Bad Summary -->
+  <div class="slide" data-slide="52">
+    <div class="slide-inner">
+      <h2>Image Smoother: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bad</h4>
+          <ul>
+            <li>Starts coding loops immediately</li>
+            <li>Forgets output allocation</li>
+            <li>Forgets boundary checks</li>
+            <li>Repeats 9 conditions manually</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Good</h4>
+          <ul>
+            <li>Identifies grid-neighbor problem</li>
+            <li>Uses neighbor offsets</li>
+            <li>Allocates output first</li>
+            <li>Handles bounds centrally</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 53: What Strong Candidates Do -->
+  <div class="slide" data-slide="53">
+    <div class="slide-inner">
+      <h2>Ibyo Abakandida Bakomeye Bakora</h2>
+      <div class="badge-grid" style="max-width: 600px">
+        <div class="badge-card green-badge">Slow down at the start</div>
+        <div class="badge-card green-badge">Think before coding</div>
+        <div class="badge-card green-badge">Challenge their own ideas</div>
+        <div class="badge-card green-badge">Test intentionally</div>
+        <div class="badge-card green-badge">Communicate clearly</div>
+        <div class="badge-card green-badge">Recover calmly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 54: What Weak Candidates Do -->
+  <div class="slide" data-slide="54">
+    <div class="slide-inner">
+      <h2>Ibyo Abakandida Badakomeye Bakora</h2>
+      <div class="badge-grid" style="max-width: 600px">
+        <div class="badge-card red-badge">Rush into code</div>
+        <div class="badge-card red-badge">Ignore constraints</div>
+        <div class="badge-card red-badge">Hope the idea works</div>
+        <div class="badge-card red-badge">Skip edge cases</div>
+        <div class="badge-card red-badge">Panic when stuck</div>
+        <div class="badge-card red-badge">Never clean up</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 55: One-Sentence Summary -->
+  <div class="slide" data-slide="55">
+    <div class="slide-inner">
+      <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center">
+        <p class="huge-text gradient-text">Kumvikana mbere.</p>
+        <p class="huge-text" style="color: var(--text)">Gukora neza kabiri.</p>
+        <p class="huge-text" style="color: var(--text-dim)">Umuvuduko gatatu.</p>
+      </div>
+      <p class="medium-text" style="margin-top: 2rem">
+        Speed without clarity creates wrong solutions.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 56: Quote of the Day -->
+  <div class="slide" data-slide="56">
+    <div class="aurora-orbs">
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="quote-slide">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="quote-text">
+          The problem is not the problem. The problem is your attitude about the problem.
+          Do you understand?
+        </div>
+        <div class="quote-attribution">
+          - Captain Jack Sparrow
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /slides-wrapper -->
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar">
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="slide-counter" id="slideCounter">1 / 56</div>
+</div>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="tocOverlay">
+  <button class="toc-close" onclick="closeToc()">&times;</button>
+  <h2>Table of Contents</h2>
+  <ul class="toc-list" id="tocList"></ul>
+</div>
+
+<script>
+  const TOTAL = 56;
+  let current = 1;
+
+  const slideTitles = {
+    1: 'Title',
+    2: 'Why a Playbook?',
+    3: 'The Goal',
+    4: 'The 7 Steps',
+    5: 'The Biggest Candidate Mistake',
+    6: 'Step 1: Understand the Problem',
+    7: 'Step 1: Good vs Bad',
+    8: 'Problem: Two Sum',
+    9: 'Good Step 1 on Two Sum',
+    10: 'Bad Step 1 on Two Sum',
+    11: 'Step 2: Solve the Problem Manually',
+    12: 'Step 2: Good vs Bad',
+    13: 'Manual Walkthrough: Two Sum',
+    14: 'Key Question in Step 2',
+    15: 'Step 3: Come Up with a Solution Idea',
+    16: 'The Complexity Gate',
+    17: 'Step 3: Good vs Bad',
+    18: 'Two Sum: Good Design',
+    19: 'Python: Two Sum Core Idea',
+    20: 'Step 4: Attack Your Own Idea',
+    21: 'Step 4: Good vs Bad',
+    22: 'Edge-Case Questions',
+    23: 'Hidden Assumption Example',
+    24: 'Step 5: Implement',
+    25: 'Step 5: Good vs Bad',
+    26: 'Bad Implementation',
+    27: 'Better Implementation',
+    28: 'Helper Function Pattern',
+    29: 'Direction Vector Pattern',
+    30: 'Step 6: Test Comprehensively',
+    31: 'Step 6: Good vs Bad',
+    32: 'Two Sum: Testing Examples',
+    33: 'What Interviewers Notice',
+    34: 'Step 7: Simplify and Clean Up',
+    35: 'Step 7: Good vs Bad',
+    36: 'Before and After Naming',
+    37: 'The 3-Bullet Rule',
+    38: 'The 40-Minute Timeline',
+    39: 'The Pivot Rule',
+    40: 'Good vs Bad Hint Request',
+    41: 'Communication Script',
+    42: 'Full Walkthrough: Image Smoother',
+    43: 'Problem: Image Smoother',
+    44: 'Step 1: Understand - Image Smoother',
+    45: 'Step 2: Manual Solve - Image Smoother',
+    46: 'Step 3: Design - Image Smoother',
+    47: 'Step 4: Attack - Image Smoother',
+    48: 'Step 5: Implement - Image Smoother (Setup)',
+    49: 'Step 5: Implement - Full Solution',
+    50: 'Step 6: Test - Image Smoother',
+    51: 'Step 7: Clean Up - Image Smoother',
+    52: 'Image Smoother: Good vs Bad',
+    53: 'What Strong Candidates Do',
+    54: 'What Weak Candidates Do',
+    55: 'Clarity. Correctness. Speed.',
+    56: 'Quote of the Day'
+  };
+
+  const sectionSlides = [1, 6, 11, 15, 20, 24, 30, 34, 42, 53];
+
+  // Build TOC
+  (function buildToc() {
+    const list = document.getElementById('tocList');
+    for (let i = 1; i <= TOTAL; i++) {
+      const li = document.createElement('li');
+      if (sectionSlides.includes(i)) li.classList.add('toc-section');
+      li.innerHTML = '<span class="toc-num">' + i + '</span> ' + (slideTitles[i] || '');
+      li.onclick = function () { goSlide(i); closeToc(); };
+      list.appendChild(li);
+    }
+  })();
+
+  function goSlide(n) {
+    if (n < 1 || n > TOTAL) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.getElementById('slideCounter').textContent = current + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = ((current / TOTAL) * 100) + '%';
+    history.replaceState(null, '', '#' + current);
+  }
+
+  function openToc() { document.getElementById('tocOverlay').classList.add('open'); }
+  function closeToc() { document.getElementById('tocOverlay').classList.remove('open'); }
+
+  // Keyboard
+  document.addEventListener('keydown', function (e) {
+    if (document.getElementById('tocOverlay').classList.contains('open')) {
+      if (e.key === 'Escape') closeToc();
+      return;
+    }
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ':
+        e.preventDefault(); goSlide(current + 1); break;
+      case 'ArrowLeft': case 'ArrowUp':
+        e.preventDefault(); goSlide(current - 1); break;
+      case 'Home':
+        e.preventDefault(); goSlide(1); break;
+      case 'End':
+        e.preventDefault(); goSlide(TOTAL); break;
+      case 'Escape':
+        openToc(); break;
+    }
+  });
+
+  // Touch/swipe
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) goSlide(current + 1);
+      else goSlide(current - 1);
+    }
+  }, { passive: true });
+
+  // Init from hash
+  (function init() {
+    const hash = parseInt(location.hash.replace('#', ''), 10);
+    const start = (hash >= 1 && hash <= TOTAL) ? hash : 1;
+    document.querySelector('.slide[data-slide="' + start + '"]').classList.add('active');
+    current = start;
+    document.getElementById('slideCounter').textContent = current + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = ((current / TOTAL) * 100) + '%';
+    history.replaceState(null, '', '#' + current);
+  })();
+
+  // Handle hash change
+  window.addEventListener('hashchange', function () {
+    const hash = parseInt(location.hash.replace('#', ''), 10);
+    if (hash >= 1 && hash <= TOTAL && hash !== current) goSlide(hash);
+  });
+</script>
+</body>
+</html>

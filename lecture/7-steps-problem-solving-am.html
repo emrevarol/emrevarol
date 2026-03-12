@@ -1,0 +1,3139 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>7 ውጤታማ የችግር አፈታት ደረጃዎች - የA2SV ትምህርት በEmre Varol</title>
+  <meta name="description" content="የቃለ መጠይቅ መመሪያ: 7 ውጤታማ የችግር አፈታት ደረጃዎች። የA2SV ትምህርት በEmre Varol።">
+  <meta property="og:title" content="7 ውጤታማ የችግር አፈታት ደረጃዎች">
+  <meta property="og:description" content="የቃለ መጠይቅ መመሪያ - የA2SV ትምህርት በEmre Varol">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PRL2RJSF51"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PRL2RJSF51');
+  </script>
+  <style>
+    :root {
+      --bg: #06060f;
+      --text: #f0f4ff;
+      --text-dim: #8892b0;
+      --text-muted: #5a6380;
+      --teal: #00e5b8;
+      --purple: #a855f7;
+      --red: #ef4444;
+      --green: #22c55e;
+      --orange: #f59e0b;
+      --blue: #3b82f6;
+      --code-bg: #0d1117;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes aurora {
+      0% { background-position: 0% 50%; }
+      25% { background-position: 50% 100%; }
+      50% { background-position: 100% 50%; }
+      75% { background-position: 50% 0%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.15;
+        text-shadow: 0 0 40px rgba(0, 229, 184, 0.2);
+      }
+      50% {
+        opacity: 0.25;
+        text-shadow: 0 0 80px rgba(168, 85, 247, 0.3);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(0, 229, 184, 0);
+      }
+      50% {
+        box-shadow: 0 0 20px 2px rgba(0, 229, 184, 0.15);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    @keyframes pulseBorder {
+      0%, 100% {
+        border-color: rgba(239, 68, 68, 0.25);
+      }
+      50% {
+        border-color: rgba(239, 68, 68, 0.5);
+      }
+    }
+
+    @keyframes orbMove1 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(60px, -40px) scale(1.1); }
+      66% { transform: translate(-30px, 30px) scale(0.95); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes orbMove2 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(-50px, 50px) scale(0.9); }
+      66% { transform: translate(40px, -20px) scale(1.05); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes orbMove3 {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, 60px) scale(1.08); }
+      66% { transform: translate(-60px, -30px) scale(0.92); }
+      100% { transform: translate(0, 0) scale(1); }
+    }
+
+    /* ===== TOP BAR ===== */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1.5rem;
+      background: rgba(6, 6, 15, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+      font-size: 0.85rem;
+    }
+
+    .top-bar a {
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .top-bar a:hover {
+      color: var(--teal);
+    }
+
+    .top-bar .back-link::before {
+      content: '\2190 ';
+    }
+
+    .top-bar .materials-link::after {
+      content: ' \2192';
+    }
+
+    .a2sv-badge {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+    }
+
+    /* ===== SLIDES CONTAINER ===== */
+    .slides-wrapper {
+      flex: 1;
+      position: relative;
+      margin-top: 42px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2.5rem 4rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .slide.active .slide-inner {
+      animation: fadeInUp 0.5s ease both;
+    }
+
+    .slide-inner {
+      max-width: 960px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    /* ===== DOT PATTERN BACKGROUND ===== */
+    .slides-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px
+      );
+      background-size: 30px 30px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .slide {
+      z-index: 1;
+    }
+
+    /* ===== AURORA ORBS (title slide) ===== */
+    .aurora-orbs {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .aurora-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.3;
+    }
+
+    .aurora-orb:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 229, 184, 0.4), transparent 70%);
+      top: 10%;
+      left: 15%;
+      animation: orbMove1 12s ease-in-out infinite;
+    }
+
+    .aurora-orb:nth-child(2) {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.35), transparent 70%);
+      top: 40%;
+      right: 10%;
+      animation: orbMove2 15s ease-in-out infinite;
+    }
+
+    .aurora-orb:nth-child(3) {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.3), transparent 70%);
+      bottom: 10%;
+      left: 40%;
+      animation: orbMove3 18s ease-in-out infinite;
+    }
+
+    /* ===== SECTION DIVIDER ANIMATED BG ===== */
+    .section-bg-animated {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 229, 184, 0.04),
+        rgba(168, 85, 247, 0.04),
+        rgba(59, 130, 246, 0.04),
+        rgba(0, 229, 184, 0.04)
+      );
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+      color: var(--text);
+    }
+
+    h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: var(--text-dim);
+      font-weight: 400;
+      text-align: center;
+    }
+
+    .big-text {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+      max-width: 800px;
+    }
+
+    .huge-text {
+      font-size: 3rem;
+      font-weight: 800;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .medium-text {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      text-align: center;
+      line-height: 1.7;
+      max-width: 700px;
+    }
+
+    .teal { color: var(--teal); }
+    .purple { color: var(--purple); }
+    .red { color: var(--red); }
+    .green { color: var(--green); }
+    .orange { color: var(--orange); }
+    .blue { color: var(--blue); }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      width: 100%;
+      transition: border-color 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .problem-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(0, 229, 184, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-dim);
+      max-width: 800px;
+      background: linear-gradient(135deg, rgba(0, 229, 184, 0.03), rgba(168, 85, 247, 0.03));
+    }
+
+    /* ===== GOOD/BAD COMPARISON ===== */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .compare-bad {
+      background: rgba(239, 68, 68, 0.06);
+      border-left: 3px solid var(--red);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-bad::before {
+      content: '\2717';
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 1.4rem;
+      color: rgba(239, 68, 68, 0.15);
+      font-weight: 900;
+    }
+
+    .compare-good {
+      background: rgba(34, 197, 94, 0.06);
+      border-left: 3px solid var(--green);
+      border-radius: 0 12px 12px 0;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .compare-good::before {
+      content: '\2713';
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      font-size: 1.4rem;
+      color: rgba(34, 197, 94, 0.15);
+      font-weight: 900;
+    }
+
+    .compare-bad h4 {
+      color: var(--red);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .compare-good h4 {
+      color: var(--green);
+      font-size: 1rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .compare-bad ul,
+    .compare-good ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .compare-bad li::before {
+      content: '\2717 ';
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    .compare-good li::before {
+      content: '\2713 ';
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .compare-bad li,
+    .compare-good li {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-dim);
+    }
+
+    /* ===== BULLETS ===== */
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .bullets li {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-dim);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .bullets li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    .bullets.red-bullets li::before {
+      color: var(--red);
+      content: '\2717';
+    }
+
+    .bullets.green-bullets li::before {
+      color: var(--green);
+      content: '\2713';
+    }
+
+    /* ===== ICON BULLETS ===== */
+    .icon-bullets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      max-width: 600px;
+    }
+
+    .icon-bullet {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1rem;
+      color: var(--text-dim);
+      padding: 0.6rem 1rem;
+      background: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      transition: border-color 0.3s, transform 0.2s;
+    }
+
+    .icon-bullet:hover {
+      border-color: rgba(0, 229, 184, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .icon-bullet .ib-icon {
+      font-size: 1.2rem;
+    }
+
+    /* ===== CODE BLOCKS ===== */
+    .code-block {
+      background: var(--code-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      width: 100%;
+      max-width: 800px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      position: relative;
+      box-shadow: 0 0 30px rgba(0, 229, 184, 0.03), 0 0 60px rgba(168, 85, 247, 0.03);
+    }
+
+    .code-block .kw { color: var(--purple); font-weight: 500; }
+    .code-block .fn { color: #60a5fa; }
+    .code-block .st { color: var(--teal); }
+    .code-block .cm { color: var(--text-muted); font-style: italic; }
+    .code-block .nb { color: var(--orange); }
+    .code-block .op { color: var(--text-dim); }
+    .code-block .var { color: var(--text); }
+
+    /* ===== SECTION DIVIDER ===== */
+    .section-divider {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .section-divider .big-number {
+      font-size: 12rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, rgba(0, 229, 184, 0.15), rgba(168, 85, 247, 0.15));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      user-select: none;
+      animation: glow 4s ease-in-out infinite;
+    }
+
+    .section-divider .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-top: -1rem;
+    }
+
+    .section-divider .section-quote {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      font-style: italic;
+      margin-top: 0.5rem;
+      max-width: 600px;
+    }
+
+    .section-divider .section-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .section-divider .section-bullets li {
+      font-size: 1rem;
+      color: var(--text-dim);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .section-divider .section-bullets li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    /* ===== STAIRCASE ===== */
+    .staircase {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .stair {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+
+    .stair:hover {
+      transform: translateX(8px) scale(1.02);
+      border-color: rgba(0, 229, 184, 0.3);
+      box-shadow: 0 0 20px rgba(0, 229, 184, 0.08);
+    }
+
+    .stair:nth-child(1) { margin-left: 0; }
+    .stair:nth-child(2) { margin-left: 1.5rem; }
+    .stair:nth-child(3) { margin-left: 3rem; }
+    .stair:nth-child(4) { margin-left: 4.5rem; }
+    .stair:nth-child(5) { margin-left: 3rem; }
+    .stair:nth-child(6) { margin-left: 1.5rem; }
+    .stair:nth-child(7) { margin-left: 0; }
+
+    .stair-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      color: #fff;
+    }
+
+    .stair-text {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ===== WARNING BOX ===== */
+    .warning-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-width: 600px;
+      width: 100%;
+      animation: pulseBorder 3s ease-in-out infinite;
+    }
+
+    .warning-box h4 {
+      color: var(--red);
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+
+    .warning-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .warning-box li {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .warning-box li::before {
+      content: '\2717';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+    }
+
+    /* ===== ARRAY VIZ ===== */
+    .array-viz {
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .array-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .array-cell {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--text-dim);
+      border-radius: 8px;
+      font-family: 'Fira Code', monospace;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .array-cell.highlight {
+      border-color: var(--teal);
+      background: rgba(0, 229, 184, 0.1);
+      color: var(--teal);
+    }
+
+    .array-cell.red-highlight {
+      border-color: var(--red);
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+    }
+
+    .array-index {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* ===== GRID VIZ ===== */
+    .grid-viz {
+      display: inline-grid;
+      grid-template-columns: repeat(3, 50px);
+      gap: 3px;
+    }
+
+    .grid-cell {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--text-dim);
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .grid-cell.center {
+      border-color: var(--teal);
+      background: rgba(0, 229, 184, 0.15);
+      color: var(--teal);
+    }
+
+    .grid-cell.neighbor {
+      background: rgba(168, 85, 247, 0.08);
+    }
+
+    .grid-cell.invalid {
+      background: rgba(239, 68, 68, 0.1);
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline-bar {
+      display: flex;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 48px;
+    }
+
+    .timeline-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #fff;
+      padding: 0 0.3rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .timeline-labels {
+      display: flex;
+      width: 100%;
+      margin-top: 0.3rem;
+    }
+
+    .timeline-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ===== BADGE CARDS ===== */
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .badge-card {
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-align: center;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-dim);
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .badge-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .badge-card.green-badge {
+      border-color: rgba(34, 197, 94, 0.3);
+      background: rgba(34, 197, 94, 0.06);
+    }
+
+    .badge-card.green-badge:hover {
+      box-shadow: 0 0 15px rgba(34, 197, 94, 0.1);
+    }
+
+    .badge-card.red-badge {
+      border-color: rgba(239, 68, 68, 0.3);
+      background: rgba(239, 68, 68, 0.06);
+    }
+
+    .badge-card.red-badge:hover {
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.1);
+    }
+
+    .badge-card.teal-badge {
+      border-color: rgba(0, 229, 184, 0.3);
+      background: rgba(0, 229, 184, 0.06);
+    }
+
+    .badge-card.teal-badge:hover {
+      box-shadow: 0 0 15px rgba(0, 229, 184, 0.1);
+    }
+
+    /* ===== DIRECTION ARROWS ===== */
+    .direction-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 56px);
+      grid-template-rows: repeat(3, 56px);
+      gap: 4px;
+      justify-content: center;
+    }
+
+    .dir-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      color: var(--text-muted);
+    }
+
+    .dir-cell.dir-center {
+      background: rgba(0, 229, 184, 0.15);
+      border: 2px solid var(--teal);
+      color: var(--teal);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .dir-cell.dir-active {
+      background: rgba(168, 85, 247, 0.1);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      color: var(--purple);
+    }
+
+    /* ===== REFERENCE CARD ===== */
+    .ref-card {
+      background: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .ref-card li {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 2;
+      list-style: none;
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .ref-card li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    /* ===== SPEECH BUBBLES ===== */
+    .speech-bubble {
+      position: relative;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .speech-bubble.bad-bubble {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: var(--text-dim);
+    }
+
+    .speech-bubble.good-bubble {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: var(--text-dim);
+    }
+
+    /* ===== TWO COL LAYOUT ===== */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      align-items: start;
+    }
+
+    /* ===== COMPLEXITY BADGE ===== */
+    .complexity-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .complexity-badge.bad-c {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--red);
+    }
+
+    .complexity-badge.good-c {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+    }
+
+    /* ===== CODE TEXTURE (slide 1) ===== */
+    .code-texture {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.04;
+      pointer-events: none;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.7rem;
+      line-height: 1.8;
+      color: var(--text);
+      white-space: pre;
+      padding: 2rem;
+      z-index: 0;
+    }
+
+    /* ===== TWO SIDE VIZ (slide 2) ===== */
+    .two-side-viz {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .viz-box {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+
+    .viz-box.random-box {
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+
+    .viz-box.struct-box {
+      border-color: rgba(34, 197, 94, 0.3);
+    }
+
+    .viz-label {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .chaos-arrows {
+      font-size: 1.6rem;
+      line-height: 2;
+      letter-spacing: 0.3rem;
+      color: var(--red);
+    }
+
+    .clean-steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .clean-step {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--green);
+    }
+
+    /* ===== GATE BOX ===== */
+    .gate-box {
+      background: rgba(168, 85, 247, 0.06);
+      border: 2px solid rgba(168, 85, 247, 0.3);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+      max-width: 600px;
+      width: 100%;
+    }
+
+    .gate-box h4 {
+      color: var(--purple);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ===== EDGE CASE CARDS ===== */
+    .edge-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      max-width: 700px;
+    }
+
+    .edge-card {
+      background: rgba(0, 229, 184, 0.06);
+      border: 1px solid rgba(0, 229, 184, 0.2);
+      border-radius: 10px;
+      padding: 0.75rem 1.2rem;
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      max-width: 300px;
+      transition: transform 0.2s, border-color 0.3s;
+    }
+
+    .edge-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(0, 229, 184, 0.4);
+    }
+
+    /* ===== EDGE CASE GRID ===== */
+    .edge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1rem;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .edge-category {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.2rem;
+    }
+
+    .edge-category h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .edge-category ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .edge-category li {
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .edge-category li::before {
+      content: '\25B8';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+    }
+
+    @media (max-width: 768px) {
+      .edge-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== NAV ===== */
+    .nav-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-dim);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .nav-arrow:hover {
+      background: rgba(0, 229, 184, 0.1);
+      color: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .nav-prev { left: 1rem; }
+    .nav-next { right: 1rem; }
+
+    /* ===== BOTTOM BAR ===== */
+    .bottom-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .progress-bar {
+      height: 3px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--teal), var(--purple));
+      transition: width 0.3s ease;
+    }
+
+    .slide-counter {
+      text-align: center;
+      padding: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+      background: rgba(6, 6, 15, 0.9);
+    }
+
+    /* ===== TOC OVERLAY ===== */
+    .toc-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(6, 6, 15, 0.96);
+      backdrop-filter: blur(16px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 2rem;
+      overflow-y: auto;
+    }
+
+    .toc-overlay.open {
+      display: flex;
+    }
+
+    .toc-overlay h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .toc-list {
+      list-style: none;
+      max-width: 600px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .toc-list li {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .toc-list li:hover {
+      background: rgba(0, 229, 184, 0.08);
+      color: var(--teal);
+    }
+
+    .toc-list li .toc-num {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      min-width: 2rem;
+      text-align: right;
+    }
+
+    .toc-list li.toc-section {
+      font-weight: 700;
+      color: var(--teal);
+      margin-top: 0.5rem;
+    }
+
+    .toc-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--text-dim);
+      font-size: 1.5rem;
+      cursor: pointer;
+      z-index: 201;
+    }
+
+    /* ===== CODE ANNOTATION ===== */
+    .code-with-notes {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      width: 100%;
+      align-items: start;
+    }
+
+    .code-annotations {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .annotation {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .annotation.red-ann {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--red);
+    }
+
+    .annotation.green-ann {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+    }
+
+    /* ===== HIGHLIGHT BOX ===== */
+    .highlight-box {
+      background: rgba(0, 229, 184, 0.08);
+      border: 1px solid rgba(0, 229, 184, 0.25);
+      border-radius: 10px;
+      padding: 1rem 1.5rem;
+      max-width: 600px;
+      font-size: 1rem;
+      color: var(--teal);
+      font-weight: 500;
+      text-align: center;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    /* ===== BEFORE/AFTER ===== */
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .ba-box {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: 12px;
+    }
+
+    .ba-box.before {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .ba-box.after {
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .ba-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .ba-code {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    /* ===== 3 BULLET RULE ===== */
+    .three-giant {
+      font-size: 10rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .three-boxes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .three-box {
+      padding: 0.75rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      font-size: 1rem;
+      color: var(--text-dim);
+      text-align: center;
+    }
+
+    /* ===== PIVOT ===== */
+    .pivot-text {
+      font-size: 5rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      background: linear-gradient(135deg, var(--orange), var(--red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ===== TEST CARDS ===== */
+    .test-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      width: 100%;
+      max-width: 700px;
+    }
+
+    .test-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+    }
+
+    .test-card .tc-input {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--teal);
+      flex: 1;
+    }
+
+    .test-card .tc-reason {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ===== QUOTE OF THE DAY ===== */
+    .quote-slide {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .quote-mark {
+      font-size: 8rem;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal), var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      user-select: none;
+      opacity: 0.6;
+      margin-bottom: -2rem;
+    }
+
+    .quote-text {
+      font-size: 2rem;
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.5;
+      max-width: 750px;
+      background: linear-gradient(135deg, var(--text), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .quote-attribution {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 1rem;
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.4rem; }
+      .big-text { font-size: 1.5rem; }
+      .huge-text { font-size: 2rem; }
+      .slide { padding: 2.5rem 1.2rem 3.5rem; }
+      .comparison { grid-template-columns: 1fr; }
+      .two-col { grid-template-columns: 1fr; }
+      .two-side-viz { grid-template-columns: 1fr; }
+      .code-with-notes { grid-template-columns: 1fr; }
+      .icon-bullets { grid-template-columns: 1fr; }
+      .badge-grid { grid-template-columns: 1fr 1fr; }
+      .before-after { grid-template-columns: 1fr; }
+      .section-divider .big-number { font-size: 6rem; }
+      .three-giant { font-size: 6rem; }
+      .nav-arrow { width: 36px; height: 36px; font-size: 1rem; }
+      .nav-prev { left: 0.5rem; }
+      .nav-next { right: 0.5rem; }
+      .code-block { font-size: 0.75rem; padding: 1rem; }
+      .stair { margin-left: 0 !important; }
+      .timeline-bar { height: 36px; }
+      .timeline-seg { font-size: 0.55rem; }
+      .top-bar { font-size: 0.75rem; padding: 0.5rem 0.8rem; }
+      .quote-text { font-size: 1.4rem; }
+      .quote-mark { font-size: 5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .badge-grid { grid-template-columns: 1fr; }
+      .edge-cards { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <a href="https://emrevarol.com" class="back-link">emrevarol.com</a>
+  <a href="materials-7-steps.html" class="materials-link">Materials</a>
+  <span class="a2sv-badge">A2SV</span>
+</div>
+
+<!-- NAV ARROWS -->
+<button class="nav-arrow nav-prev" onclick="goSlide(current-1)" aria-label="Previous">&lsaquo;</button>
+<button class="nav-arrow nav-next" onclick="goSlide(current+1)" aria-label="Next">&rsaquo;</button>
+
+<!-- SLIDES -->
+<div class="slides-wrapper" id="slidesWrapper">
+
+  <!-- SLIDE 1: Title -->
+  <div class="slide" data-slide="1">
+    <div class="aurora-orbs">
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+    </div>
+    <div class="code-texture">def solve(problem):
+    understand(problem)
+    manual_solve(example)
+    design_algorithm()
+    attack_own_idea()
+    implement()
+    test_comprehensively()
+    simplify()
+    return solution
+
+class Interview:
+    def __init__(self):
+        self.steps = 7
+        self.clarity = True
+        self.speed = False
+
+# The Playbook
+for step in range(1, 8):
+    execute(step)
+    communicate(step)
+    verify(step)</div>
+    <div class="slide-inner">
+      <h1 style="font-size: 3.2rem">
+        7 ውጤታማ<br>
+        <span class="gradient-text">የችግር አፈታት</span> ደረጃዎች
+      </h1>
+      <p class="subtitle" style="margin-top: 0.5rem">የቃለ መጠይቅ መመሪያ</p>
+      <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--text-muted)">A2SV - Emre Varol</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Why a Playbook? -->
+  <div class="slide" data-slide="2">
+    <div class="slide-inner">
+      <h2>ለምን መመሪያ?</h2>
+      <ul class="bullets">
+        <li>ቃለ መጠይቆች ጫና ይፈጥራሉ</li>
+        <li>ጫና ያልተደራጀ አስተሳሰብን ያጠፋል</li>
+        <li>መመሪያ ወጥነት ይፈጥራል</li>
+        <li>ወጥነት አልፎ አልፎ ከሚመጣ ብልሃት ይበልጣል</li>
+      </ul>
+      <div class="two-side-viz" style="margin-top: 1rem">
+        <div class="viz-box random-box">
+          <div class="viz-label red">ያልተደራጀ</div>
+          <div class="chaos-arrows">
+            &nearr; &swarr; &nwarr; &searr;<br>
+            &darr; &uarr; &rarr; &larr;<br>
+            &swarr; &nearr; &searr; &nwarr;
+          </div>
+        </div>
+        <div class="viz-box struct-box">
+          <div class="viz-label green">የተደራጀ</div>
+          <div class="clean-steps">
+            <span class="clean-step">1. ተረዳ</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">2. በእጅ</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">3. ንደፍ</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">4. ጥቃት</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">5. ኮድ</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">6. ፈትን</span>
+            <span class="clean-step">&darr;</span>
+            <span class="clean-step">7. አጽዳ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: The Goal -->
+  <div class="slide" data-slide="3">
+    <div class="slide-inner">
+      <p class="big-text" style="margin-bottom: 2rem">
+        ችግሮችን መፍታት ብቻ ሳይሆን -<br>
+        <span class="gradient-text">በጫና ውስጥ በአስተማማኝ ሁኔታ</span> መፍታት
+      </p>
+      <div class="icon-bullets">
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> የተሻለ ውሳኔ
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> ሊቀሩ የሚችሉ ስህተቶች ማነስ
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> ንጹህ ግንኙነት
+        </div>
+        <div class="icon-bullet">
+          <span class="ib-icon teal">&bull;</span> ተጨማሪ የቃለ መጠይቅ ድሎች
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: The 7 Steps -->
+  <div class="slide" data-slide="4">
+    <div class="slide-inner">
+      <h2>7ቱ ደረጃዎች</h2>
+      <div class="staircase">
+        <div class="stair">
+          <div class="stair-num">1</div>
+          <div class="stair-text">ችግሩን ተረዳ</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">2</div>
+          <div class="stair-text">ችግሩን በእጅ ፍታ</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">3</div>
+          <div class="stair-text">የመፍትሄ ሀሳብ ፍጠር</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">4</div>
+          <div class="stair-text">የራስህን ሀሳብ አጥቃ</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">5</div>
+          <div class="stair-text">ተግብር</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">6</div>
+          <div class="stair-text">በሰፊው ፈትን</div>
+        </div>
+        <div class="stair">
+          <div class="stair-num">7</div>
+          <div class="stair-text">አቅለል እና አጽዳ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Biggest Mistake -->
+  <div class="slide" data-slide="5">
+    <div class="slide-inner">
+      <h2>የእጩው ትልቁ ስህተት</h2>
+      <p class="huge-text red" style="margin: 1rem 0">ኮድ መጻፍ በጣም ቀድሞ መጀመር</p>
+      <div class="warning-box">
+        <h4>ውጤቶች</h4>
+        <ul>
+          <li>የተሳሳተ ግንዛቤ</li>
+          <li>የተሳሳተ algorithm</li>
+          <li>የተሳሳተ complexity</li>
+          <li>የባከነ ጊዜ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Section Divider Step 1 -->
+  <div class="slide" data-slide="6">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">01</div>
+        <div class="section-title">ችግሩን ተረዳ</div>
+        <ul class="section-bullets">
+          <li>በዝግታ አንብብ</li>
+          <li>እያንዳንዱን ዓረፍተ ነገር አስብ</li>
+          <li>ገደቦችን አውጣ</li>
+          <li>በራስህ ቃላት ድገም</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: Good vs Bad Step 1 -->
+  <div class="slide" data-slide="7">
+    <div class="slide-inner">
+      <h2>ደረጃ 1: ጥሩ vs መጥፎ</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>መጥፎ</h4>
+          <ul>
+            <li>ችግሩን በፍጥነት ያልፋል</li>
+            <li>ምን እንደተጠየቀ ይገምታል</li>
+            <li>አንድ ጊዜ ካነበበ በኋላ ኮድ ይጀምራል</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>ጥሩ</h4>
+          <ul>
+            <li>ግብአት እና ውጤትን ይደግማል</li>
+            <li>ገደቦችን ይለያል</li>
+            <li>ምን መመለስ እንዳለበት ያረጋግጣል</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 8: Two Sum Problem -->
+  <div class="slide" data-slide="8">
+    <div class="slide-inner">
+      <h2>የችግር ምሳሌ: Two Sum</h2>
+      <div class="problem-card">
+        የኢንቲጀር ድርድር <code>nums</code> እና ኢንቲጀር <code>target</code> ሲሰጥ፣
+        ድምራቸው ከ target ጋር የሚስማማ ሁለት ቁጥሮችን <strong>ኢንዴክስ</strong> መልስ።
+        ትክክል ትክክለኛ መልስ አንድ ብቻ እንዳለ ግምት፣ እና ተመሳሳይ ንጥል ሁለት ጊዜ መጠቀም አይቻልም።
+      </div>
+      <div style="margin-top: 1rem; text-align: center">
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem">
+          target = <span class="teal" style="font-weight: 700">9</span>
+        </div>
+        <div class="array-viz">
+          <div class="array-col">
+            <div class="array-cell highlight">2</div>
+            <div class="array-index">0</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell highlight">7</div>
+            <div class="array-index">1</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell">11</div>
+            <div class="array-index">2</div>
+          </div>
+          <div class="array-col">
+            <div class="array-cell">15</div>
+            <div class="array-index">3</div>
+          </div>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--teal); margin-top: 0.5rem; font-weight: 500">
+          2 + 7 = 9 &rarr; return [0, 1]
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: Good Step 1 on Two Sum -->
+  <div class="slide" data-slide="9">
+    <div class="slide-inner">
+      <h2>ጥሩ ደረጃ 1 በ Two Sum</h2>
+      <div class="two-col">
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">እጩው ይላል:</h3>
+          <ul class="bullets green-bullets">
+            <li>ግብአት: ድርድር + target</li>
+            <li>ውጤት: ሁለት ኢንዴክሶች</li>
+            <li>ቦታዎችን እንመልሳለን፣ ዋጋዎችን ሳይሆን</li>
+            <li>ትክክል አንድ መልስ ብቻ አለ</li>
+            <li>ተመሳሳይ ንጥል እንደገና መጠቀም አይቻልም</li>
+          </ul>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="highlight-box">
+            ምንም አሻሚነት አልቀረም።<br>
+            ጠቃሚ ገደቦች ተይዘዋል።
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Bad Step 1 on Two Sum -->
+  <div class="slide" data-slide="10">
+    <div class="slide-inner">
+      <h2>መጥፎ ደረጃ 1 በ Two Sum</h2>
+      <div class="warning-box" style="max-width: 700px">
+        <h4>የእጩ መጥፎ ባህሪ</h4>
+        <ul>
+          <li>"የሚደመሩ ሁለት ቁጥሮች ብቻ ያስፈልጉኛል"</li>
+          <li>ኢንዴክሶችን ከዋጋዎች ይረሳል</li>
+          <li>ትክክል-አንድ-መልስ ገደብን ችላ ይላል</li>
+          <li>ተመሳሳይ-ንጥል-አይጠቀሙ ህግን ችላ ይላል</li>
+        </ul>
+      </div>
+      <p style="margin-top: 1rem; color: var(--orange); font-weight: 600; font-size: 0.95rem">
+        ትክክል የሚመስል ኮድ አሁንም ስህተት ሊሆን ይችላል።
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: Section Divider Step 2 -->
+  <div class="slide" data-slide="11">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">02</div>
+        <div class="section-title">ችግሩን በእጅ ፍታ</div>
+        <div class="section-quote">"በእጅ ማድረግ ካልቻልህ፣ ኦቶሜት ማድረግ አትችልም።"</div>
+        <ul class="section-bullets">
+          <li>ከምሳሌው ጀምር</li>
+          <li>ውሳኔዎችህን ተከታተል</li>
+          <li>ድግግሞሽ ፈልግ</li>
+          <li>ቅርጹን አውጣ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Good vs Bad Step 2 -->
+  <div class="slide" data-slide="12">
+    <div class="slide-inner">
+      <h2>ደረጃ 2: ጥሩ vs መጥፎ</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>መጥፎ</h4>
+          <ul>
+            <li>ከማንበብ ወደ ኮድ ይዘላል</li>
+            <li>"ዘዴውን ያውቃል ይመስለኛል" ይላል</li>
+            <li>ትንሽ ምሳሌ ፈጽሞ አይፈትሽም</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>ጥሩ</h4>
+          <ul>
+            <li>ከምሳሌ ግብአት ጋር ይሰራል</li>
+            <li>ተደጋጋሚ ድርጊት ያስተውላል</li>
+            <li>የትኛው መረጃ እንደሚረዳ ያወጣል</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: Manual Walkthrough Two Sum -->
+  <div class="slide" data-slide="13">
+    <div class="slide-inner">
+      <h2>በእጅ ማሳያ: Two Sum</h2>
+      <div style="font-family: 'Fira Code', monospace; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1rem">
+        nums = [2, 7, 11, 15], target = 9
+      </div>
+      <div class="array-viz" style="margin-bottom: 1rem">
+        <div class="array-col">
+          <div class="array-cell highlight">2</div>
+          <div class="array-index">0</div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--text-muted); display: flex; align-items: center">
+          &rarr;
+        </div>
+        <div class="array-col" style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center">
+          <div style="font-size: 0.85rem; color: var(--text-dim)">
+            ያስፈልጋል <span class="teal" style="font-weight: 600">7</span>
+          </div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--text-muted); display: flex; align-items: center">
+          &rarr;
+        </div>
+        <div class="array-col">
+          <div class="array-cell highlight">7</div>
+          <div class="array-index">1</div>
+        </div>
+        <div class="array-col" style="font-size: 1.5rem; color: var(--green); display: flex; align-items: center">
+          &check;
+        </div>
+      </div>
+      <div style="font-size: 0.95rem; color: var(--teal); font-weight: 600; margin-bottom: 1rem">
+        መልስ: [0, 1]
+      </div>
+      <div class="highlight-box">
+        ቅርጽ ተገኘ: ለእያንዳንዱ ቁጥር ተጓዳኙን ያስፈልገኛል።
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 14: Key Question Step 2 -->
+  <div class="slide" data-slide="14">
+    <div class="slide-inner">
+      <p class="big-text">
+        "በእጅ <span class="gradient-text">ደጋግሜ የምፈትሸው</span> ምንድን ነው?"
+      </p>
+      <p class="medium-text" style="margin-top: 1.5rem">
+        ለ Two Sum: "የሚያስፈልገው ቁጥር ቀድሞ ይኖራል?"
+      </p>
+      <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; justify-content: center">
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">hash map</span>
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">ፈጣን ፍለጋ</span>
+        <span style="font-size: 1.5rem; color: var(--text-muted)">&rarr;</span>
+        <span class="badge-card teal-badge" style="font-weight: 600">O(n) solution</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 15: Section Divider Step 3 -->
+  <div class="slide" data-slide="15">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">03</div>
+        <div class="section-title">የመፍትሄ ሀሳብ ፍጠር</div>
+        <ul class="section-bullets">
+          <li>የእጅ ሂደትህን ዳግም አስፋፋ</li>
+          <li>ትክክለኛውን የዳታ መዋቅር ምረጥ</li>
+          <li>የጊዜ complexity ፈትሽ</li>
+          <li>የቦታ complexity ፈትሽ</li>
+          <li>ከኮድ በፊት የሎጂክ ክፍተቶችን ሙላ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 16: The Complexity Gate -->
+  <div class="slide" data-slide="16">
+    <div class="slide-inner">
+      <h2>የ Complexity በር</h2>
+      <div class="gate-box">
+        <h4>ኮድ ከመጻፍ በፊት ጠይቅ:</h4>
+        <ul class="bullets" style="max-width: 100%">
+          <li>Brute force በቂ ነው?</li>
+          <li>ገደቦቹ ምን ይፈቅዳሉ?</li>
+          <li>የረዳት ተግባራት ተጨማሪ ወጪ ይደብቃሉ?</li>
+          <li>ይህ ማለፍ እንደሚችል እርግጠኛ ነኝ?</li>
+        </ul>
+      </div>
+      <p style="margin-top: 1.5rem; font-weight: 700; font-size: 1.15rem; color: var(--purple)">
+        ከዚህ በር በፊት ኮድ የለም።
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 17: Good vs Bad Step 3 -->
+  <div class="slide" data-slide="17">
+    <div class="slide-inner">
+      <h2>ደረጃ 3: ጥሩ vs መጥፎ</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>መጥፎ <span class="complexity-badge bad-c" style="margin-left: 0.5rem">O(n&sup2;)</span></h4>
+          <ul>
+            <li>"ኮድ አድርጌ እመለከታለሁ"</li>
+            <li>ስለ complexity ምንም ውይይት የለም</li>
+            <li>ግልጽ ያልሆነ ሎጂክ</li>
+            <li>የዳታ መዋቅር ያለ ምርጫ ተመርጧል</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>ጥሩ <span class="complexity-badge good-c" style="margin-left: 0.5rem">O(n)</span></h4>
+          <ul>
+            <li>መጀመሪያ brute force ይገልጻል</li>
+            <li>ሆን ብሎ ያሻሽላል</li>
+            <li>እንደ ፍላጎት መዋቅር ይመርጣል</li>
+            <li>ለምን ከገደቦች ጋር እንደሚስማማ ያብራራል</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 18: Two Sum Good Design -->
+  <div class="slide" data-slide="18">
+    <div class="slide-inner">
+      <h2>Two Sum: ጥሩ ንድፍ</h2>
+      <div class="two-col">
+        <div class="card" style="border-color: var(--text-muted); opacity: 0.6">
+          <h3 style="font-size: 1rem; color: var(--text-muted)">Brute Force</h3>
+          <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem">ሁሉንም ጥንዶች ሞክር</p>
+          <p class="complexity-badge bad-c" style="margin-top: 0.5rem">O(n&sup2;)</p>
+        </div>
+        <div class="card" style="border-color: rgba(0, 229, 184, 0.3)">
+          <h3 style="font-size: 1rem; color: var(--teal)">የተሻለ</h3>
+          <p style="font-size: 0.95rem; color: var(--text-dim); margin-top: 0.5rem">
+            የታዩ ቁጥሮችን በ dict ያስቀምጡ፣ ተጓዳኝ ይፈትሹ
+          </p>
+          <p class="complexity-badge good-c" style="margin-top: 0.5rem">O(n)</p>
+        </div>
+      </div>
+      <div style="margin-top: 1rem; display: flex; align-items: center; gap: 1rem; color: var(--text-muted)">
+        <span style="font-size: 2rem">&rarr;</span>
+        <span style="font-style: italic; font-size: 0.95rem">መሻሻል</span>
+        <span style="font-size: 2rem">&rarr;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 19: Python Two Sum Core -->
+  <div class="slide" data-slide="19">
+    <div class="slide-inner">
+      <h2>Python: የ Two Sum ዋና ሀሳብ</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">two_sum</span>(nums, target):
+    seen = {}
+
+    <span class="kw">for</span> i, num <span class="kw">in</span> <span class="fn">enumerate</span>(nums):
+        need = target - num
+        <span class="kw">if</span> need <span class="kw">in</span> seen:
+            <span class="kw">return</span> [seen[need], i]
+        seen[num] = i</div>
+        <div class="code-annotations">
+          <div class="annotation green-ann">አጭር</div>
+          <div class="annotation green-ann">ሊነበብ የሚችል</div>
+          <div class="annotation green-ann">መዋቅር ከፍላጎት ጋር ይስማማል</div>
+          <div class="annotation green-ann">Complexity ግልጽ ነው</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 20: Section Divider Step 4 -->
+  <div class="slide" data-slide="20">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">04</div>
+        <div class="section-title">የራስህን ሀሳብ አጥቃ</div>
+        <div class="section-quote">
+          "የዲያብሎስ ጠበቃ ሁን። ከሁሉ የከፋ ጠላትህ ይህን ሀሳብ ያመጣ እንደሆነ አስብ። ለማፍረስ የተቻለህን ትፈጥራለህ።"
+        </div>
+        <ul class="section-bullets">
+          <li>ከራስህ መፍትሄ ጋር የዲያብሎስ ጠበቃ ሁን</li>
+          <li>በተቃራኒ ግብአቶች ለመስበር ሞክር</li>
+          <li>የተደበቁ ግምቶችን ፈልግ</li>
+          <li>የድንበር ሁኔታዎችን ፈልግ</li>
+          <li>ቃለ-መጠይቅ አድራጊው ከማድረጉ በፊት የራስህን መፍትሄ ተቃወም</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 21: Good vs Bad Step 4 -->
+  <div class="slide" data-slide="21">
+    <div class="slide-inner">
+      <h2>ደረጃ 4: ጥሩ vs መጥፎ</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>መጥፎ</h4>
+          <ul>
+            <li>"ይህ መስራት አለበት"</li>
+            <li>ስለ ድንበር ሁኔታ ምንም አስተሳሰብ የለም</li>
+            <li>ለመጀመሪያ ሀሳብ በስሜት ተያይዟል</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>ጥሩ</h4>
+          <ul>
+            <li>ውድቀቶችን በንቃት ይፈልጋል</li>
+            <li>ግምቶችን ይፈትሻል</li>
+            <li>የትኛው ግብአት ሎጂኩን እንደሚሰብር ይጠይቃል</li>
+            <li>ከራሱ መፍትሄ ላይ የዲያብሎስ ጠበቃ ይጫወታል</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 22: Edge-Case Questions -->
+  <div class="slide" data-slide="22">
+    <div class="slide-inner">
+      <h2>ስለ ድንበር ሁኔታ የሚጠየቁ ጥያቄዎች</h2>
+      <div class="edge-grid">
+        <div class="edge-category" style="border-color: rgba(0, 229, 184, 0.2)">
+          <h4 class="teal">የግብአት ድንበሮች</h4>
+          <ul>
+            <li>ባዶ ግብአት</li>
+            <li>ነጠላ ንጥል</li>
+            <li>ከፍተኛ መጠን</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(168, 85, 247, 0.2)">
+          <h4 class="purple">የዋጋ ድንበር ሁኔታዎች</h4>
+          <ul>
+            <li>ድግግሞሾች</li>
+            <li>አሉታዊ ቁጥሮች</li>
+            <li>ዜሮዎች</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(59, 130, 246, 0.2)">
+          <h4 class="blue">የግምት ፍተሻዎች</h4>
+          <ul>
+            <li>የተደረደረ vs ያልተደረደረ</li>
+            <li>ልዩ vs ተደጋጋሚ</li>
+            <li>Overflow</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 23: Hidden Assumption Example -->
+  <div class="slide" data-slide="23">
+    <div class="slide-inner">
+      <h2>የተደበቀ ግምት ምሳሌ</h2>
+      <div class="warning-box" style="max-width: 700px">
+        <h4>መጥፎ ግምት: "ግብአቱ የተደረደረ ነው።"</h4>
+        <ul>
+          <li style="list-style: none; padding-left: 0">ያ ዋስትና ነበረው?</li>
+        </ul>
+      </div>
+      <p style="color: var(--orange); font-weight: 600; margin-top: 0.75rem; font-size: 0.95rem">
+        ካልሆነ፣ የሁለት-ጠቋሚ ሀሳብ ሙሉ በሙሉ ሊሳካ ይችላል።
+      </p>
+      <div class="two-col" style="max-width: 500px; margin-top: 1rem">
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--green); font-weight: 600; margin-bottom: 0.5rem">የተደረደረ</div>
+          <div class="array-viz">
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">1</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">2</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">3</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">4</div></div>
+            <div class="array-col"><div class="array-cell" style="width: 44px; height: 44px; font-size: 0.9rem">5</div></div>
+          </div>
+        </div>
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--red); font-weight: 600; margin-bottom: 0.5rem">ያልተደረደረ</div>
+          <div class="array-viz">
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">3</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">1</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">4</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">2</div></div>
+            <div class="array-col"><div class="array-cell red-highlight" style="width: 44px; height: 44px; font-size: 0.9rem">5</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 24: Section Divider Step 5 -->
+  <div class="slide" data-slide="24">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">05</div>
+        <div class="section-title">ተግብር</div>
+        <div class="section-quote">"አሁን ኮድ ጻፍ። ግን በስነ-ስርዓት ጻፍ:"</div>
+        <ul class="section-bullets">
+          <li>በብሎኮች ጻፍ</li>
+          <li>ግልጽ ስያሜዎችን ተጠቀም</li>
+          <li>ሲጠቅም ረዳት ተግባራትን ተጠቀም</li>
+          <li>እያንዳንዱ ብሎክ ምን እንደሚሰራ አብራራ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 25: Good vs Bad Step 5 -->
+  <div class="slide" data-slide="25">
+    <div class="slide-inner">
+      <h2>ደረጃ 5: ጥሩ vs መጥፎ</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>መጥፎ</h4>
+          <ul>
+            <li>ግዙፍ የኮድ ብሎክ</li>
+            <li>መጥፎ ሥያሜዎች</li>
+            <li>ምንም መዋቅር የለም</li>
+            <li>ለማብራራት ከባድ</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>ጥሩ</h4>
+          <ul>
+            <li>ንጹህ ስያሜ</li>
+            <li>ሲያስፈልግ ረዳት ተግባራት</li>
+            <li>ብሎክ-በ-ብሎክ ትግበራ</li>
+            <li>ለማብራራት ቀላል</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 26: Bad Python Example -->
+  <div class="slide" data-slide="26">
+    <div class="slide-inner">
+      <h2 class="red">መጥፎ ትግበራ</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">f</span>(a, t):
+    d = {}
+    <span class="kw">for</span> i <span class="kw">in</span> <span class="fn">range</span>(<span class="fn">len</span>(a)):
+        x = t - a[i]
+        <span class="kw">if</span> x <span class="kw">in</span> d:
+            <span class="kw">return</span> [d[x], i]
+        d[a[i]] = i</div>
+        <div class="code-annotations">
+          <div class="annotation red-ann">f?</div>
+          <div class="annotation red-ann">a?</div>
+          <div class="annotation red-ann">t?</div>
+          <div class="annotation red-ann">d?</div>
+          <div class="annotation red-ann">x?</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; text-align: center; max-width: 600px">
+        ግልጽ ያልሆነ ስያሜ &rarr; ለማብራራት ከባድ &rarr; ዝቅተኛ ንባብነት &rarr; ራስን ለማደናገር ቀላል
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 27: Better Python Example -->
+  <div class="slide" data-slide="27">
+    <div class="slide-inner">
+      <h2 class="green">የተሻለ ትግበራ</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">two_sum</span>(nums, target):
+    value_to_index = {}
+
+    <span class="kw">for</span> index, num <span class="kw">in</span> <span class="fn">enumerate</span>(nums):
+        needed = target - num
+        <span class="kw">if</span> needed <span class="kw">in</span> value_to_index:
+            <span class="kw">return</span> [value_to_index[needed], index]
+
+        value_to_index[num] = index</div>
+        <div class="code-annotations">
+          <div class="annotation green-ann">two_sum &check;</div>
+          <div class="annotation green-ann">value_to_index &check;</div>
+          <div class="annotation green-ann">needed &check;</div>
+          <div class="annotation green-ann">index, num &check;</div>
+        </div>
+      </div>
+      <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem; text-align: center; max-width: 600px">
+        ሊነበብ ይችላል &rarr; ቃለ-መጠይቅ ወዳጅ &rarr; ለማረም ቀላል &rarr; ለመተረክ ቀላል
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 28: Helper Function Example -->
+  <div class="slide" data-slide="28">
+    <div class="slide-inner">
+      <h2>የረዳት ተግባር ቅርጽ: የግሪድ ችግሮች</h2>
+      <p class="medium-text" style="margin-bottom: 1rem">
+        2D ግሪድ ሲሰጥ፣ ውጤት ለማስላት ወይም ለማዘመን ትክክለኛ ጎረቤቶችን ጎብኝ።
+      </p>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">is_valid</span>(row, col, rows, cols):
+    <span class="kw">return</span> <span class="nb">0</span> &lt;= row &lt; rows <span class="kw">and</span> <span class="nb">0</span> &lt;= col &lt; cols</div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="grid-viz">
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&uarr;</div>
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&larr;</div>
+            <div class="grid-cell center">c</div>
+            <div class="grid-cell neighbor">&rarr;</div>
+            <div class="grid-cell neighbor"></div>
+            <div class="grid-cell neighbor">&darr;</div>
+            <div class="grid-cell neighbor"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 29: Direction Vector Pattern -->
+  <div class="slide" data-slide="29">
+    <div class="slide-inner">
+      <h2>የአቅጣጫ ቬክተር ቅርጽ</h2>
+      <div class="code-with-notes">
+        <div class="code-block">directions = [
+    (<span class="nb">-1</span>, <span class="nb">0</span>),   <span class="cm"># up</span>
+    (<span class="nb">1</span>,  <span class="nb">0</span>),   <span class="cm"># down</span>
+    (<span class="nb">0</span>, <span class="nb">-1</span>),   <span class="cm"># left</span>
+    (<span class="nb">0</span>,  <span class="nb">1</span>),   <span class="cm"># right</span>
+]</div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem">
+          <div class="direction-grid">
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&uarr;</div>
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&larr;</div>
+            <div class="dir-cell dir-center">c</div>
+            <div class="dir-cell dir-active">&rarr;</div>
+            <div class="dir-cell"></div>
+            <div class="dir-cell dir-active">&darr;</div>
+            <div class="dir-cell"></div>
+          </div>
+        </div>
+      </div>
+      <ul class="bullets" style="margin-top: 1rem">
+        <li>ያነሰ ተደጋጋሚ ኮድ</li>
+        <li>ያነሱ ስህተቶች</li>
+        <li>ንጹህ የመዘዋወር ሎጂክ</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SLIDE 30: Section Divider Step 6 -->
+  <div class="slide" data-slide="30">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">06</div>
+        <div class="section-title">በሰፊው ፈትን</div>
+        <div class="section-quote">"ፍተሻ አማራጭ አይደለም። ፍተሻ የመፍትሄው ክፍል ነው።"</div>
+        <ul class="section-bullets">
+          <li>ምሳሌ ሁኔታ</li>
+          <li>ድንበር ሁኔታ</li>
+          <li>አስቸጋሪ ሁኔታ</li>
+          <li>ወሰን ሁኔታ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 31: Good vs Bad Step 6 -->
+  <div class="slide" data-slide="31">
+    <div class="slide-inner">
+      <h2>ደረጃ 6: ጥሩ vs መጥፎ</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>መጥፎ - "ያልተደራጀ"</h4>
+          <ul>
+            <li>ምሳሌ ግብአት ብቻ ይፈትሻል</li>
+            <li>የዘፈቀደ ዋጋዎችን ይሞክራል</li>
+            <li>ከመጀመሪያ ስኬት በኋላ ያቆማል</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>ጥሩ - "ሆን ተብሎ"</h4>
+          <ul>
+            <li>እያንዳንዱ ፍተሻ ምክንያት አለው</li>
+            <li>ግምቶችን ይቃጣል</li>
+            <li>ድንበሮችን እና ድግግሞሾችን ይሸፍናል</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 32: Two Sum Testing -->
+  <div class="slide" data-slide="32">
+    <div class="slide-inner">
+      <h2>Two Sum: የፍተሻ ምሳሌዎች</h2>
+      <div class="test-cards">
+        <div class="test-card">
+          <span class="tc-input">[2, 7, 11, 15], target 9</span>
+          <span class="tc-reason">መሰረታዊ ሁኔታ</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[3, 3], target 6</span>
+          <span class="tc-reason">ድግግሞሽ ዋጋዎች</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[1, 2, 3, 4], target 7</span>
+          <span class="tc-reason">መልስ መጨረሻ ላይ</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[5, 4], target 9</span>
+          <span class="tc-reason">በጣም ትንሽ ግብአት</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        ተመሳሳይ ዋጋ ሁለት ጊዜ ሲመጣ ሎጂኩ አሁንም ይሰራል?
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 33: What Interviewers Notice -->
+  <div class="slide" data-slide="33">
+    <div class="slide-inner">
+      <h2>ቃለ-መጠይቅ አድራጊዎች በፍተሻ ውስጥ የሚያስተውሉት</h2>
+      <p class="medium-text">ሳይጠየቁ ሲፈትሹ፣ ምልክት ይሰጣሉ:</p>
+      <div class="badge-grid" style="max-width: 500px; margin-top: 1rem">
+        <div class="badge-card green-badge">ስነ-ስርዓት</div>
+        <div class="badge-card green-badge">ባለቤትነት</div>
+        <div class="badge-card green-badge">ብስለት</div>
+        <div class="badge-card green-badge">የምህንድስና አስተሳሰብ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 34: Section Divider Step 7 -->
+  <div class="slide" data-slide="34">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number">07</div>
+        <div class="section-title">አቅለል እና አጽዳ</div>
+        <div class="section-quote">"ኮዱ አንዴ ከሰራ:"</div>
+        <ul class="section-bullets">
+          <li>ስያሜዎችን አሻሽል</li>
+          <li>ብዥታውን አስወግድ</li>
+          <li>ሎጂኩን አቅልል</li>
+          <li>ሲጠቅም ዝቅተኛ አስተያየቶችን ጨምር</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 35: Good vs Bad Step 7 -->
+  <div class="slide" data-slide="35">
+    <div class="slide-inner">
+      <h2>ደረጃ 7: ጥሩ vs መጥፎ</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>መጥፎ</h4>
+          <ul>
+            <li>ግራ የሚያጋቡ ስያሜዎችን ይተዋል</li>
+            <li>የሞተ ኮድ ያቆያል</li>
+            <li>ምንም የመጨረሻ ግምገማ አያደርግም</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>ጥሩ</h4>
+          <ul>
+            <li>ብዥታውን ያስወግዳል</li>
+            <li>ግልጽነትን ያሻሽላል</li>
+            <li>የመጨረሻ ማብራሪያ ቀላል ያደርጋል</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 36: Before and After Naming -->
+  <div class="slide" data-slide="36">
+    <div class="slide-inner">
+      <h2>ስያሜ ከመቀየር በፊት እና በኋላ</h2>
+      <div class="before-after">
+        <div class="ba-box before">
+          <div class="ba-label red">በፊት</div>
+          <div class="ba-code red">mp = {}</div>
+        </div>
+        <div class="ba-box after">
+          <div class="ba-label green">በኋላ</div>
+          <div class="ba-code green">value_to_index = {}</div>
+        </div>
+      </div>
+      <p class="big-text" style="margin-top: 2rem">ግልጽነት የትክክለኛነት ክፍል ነው።</p>
+    </div>
+  </div>
+
+  <!-- SLIDE 37: The 3-Bullet Rule -->
+  <div class="slide" data-slide="37">
+    <div class="slide-inner">
+      <h2>የ3 ነጥብ ህግ</h2>
+      <div class="three-giant">3</div>
+      <div class="three-boxes">
+        <div class="three-box">ሀሳቡ ምንድን ነው</div>
+        <div class="three-box">ለምን ይሰራል</div>
+        <div class="three-box">ለምን በቂ ውጤታማ ነው</div>
+      </div>
+      <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.95rem; font-style: italic">
+        10 ነጥቦች ካስፈለጉህ፣ ገና በግልጽ አልተረዳህም።
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 38: The 40-Minute Timeline -->
+  <div class="slide" data-slide="38">
+    <div class="slide-inner">
+      <h2>የ40 ደቂቃ ቃለ መጠይቅ የጊዜ ሰሌዳ</h2>
+      <div style="width: 100%; max-width: 800px">
+        <div class="timeline-bar">
+          <div class="timeline-seg" style="flex: 5; background: var(--teal)">0-5 min</div>
+          <div class="timeline-seg" style="flex: 5; background: var(--blue)">5-10</div>
+          <div class="timeline-seg" style="flex: 8; background: var(--purple)">10-18</div>
+          <div class="timeline-seg" style="flex: 12; background: var(--green)">18-30</div>
+          <div class="timeline-seg" style="flex: 6; background: var(--orange)">30-36</div>
+          <div class="timeline-seg" style="flex: 4; background: var(--text-muted)">36-40</div>
+        </div>
+        <div class="timeline-labels" style="margin-top: 0.5rem">
+          <div class="timeline-label" style="flex: 5">ተረዳ<br>&amp; ድገም</div>
+          <div class="timeline-label" style="flex: 5">በእጅ<br>ፍታ</div>
+          <div class="timeline-label" style="flex: 8">ንደፍ &amp;<br>complexity</div>
+          <div class="timeline-label" style="flex: 12">ተግብር</div>
+          <div class="timeline-label" style="flex: 6">ፈትን</div>
+          <div class="timeline-label" style="flex: 4">አጽዳ<br>&amp; ጠቅልል</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 39: The Pivot Rule -->
+  <div class="slide" data-slide="39">
+    <div class="slide-inner">
+      <h2>የመቀየር ህግ</h2>
+      <p class="medium-text">5-7 ደቂቃ ካሳለፉ እና:</p>
+      <ul class="bullets red-bullets" style="margin: 0.75rem 0">
+        <li>Complexity ማረጋገጥ ካልቻሉ</li>
+        <li>በድንበር ሁኔታዎች ላይ ማለፍ ከቀጠሉ</li>
+        <li>ለምን እንደሚሰራ ማብራራት ካልቻሉ</li>
+      </ul>
+      <div class="pivot-text">PIVOT</div>
+      <div class="badge-grid" style="max-width: 600px; margin-top: 1rem">
+        <div class="badge-card teal-badge">አዲስ የዳታ መዋቅር</div>
+        <div class="badge-card teal-badge">አዲስ እይታ</div>
+        <div class="badge-card teal-badge">ቀላል ስሪት መጀመሪያ</div>
+        <div class="badge-card teal-badge">ያተኮረ ፍንጭ ጠይቅ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 40: Good vs Bad Hint Request -->
+  <div class="slide" data-slide="40">
+    <div class="slide-inner">
+      <h2>ጥሩ የፍንጭ ጥያቄ vs መጥፎ የፍንጭ ጥያቄ</h2>
+      <div class="two-col" style="max-width: 700px; align-items: center">
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem">
+          <div style="font-size: 0.8rem; color: var(--red); font-weight: 700; text-transform: uppercase">መጥፎ</div>
+          <div class="speech-bubble bad-bubble">"ተጣብቄያለሁ።"</div>
+        </div>
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem">
+          <div style="font-size: 0.8rem; color: var(--green); font-weight: 700; text-transform: uppercase">የተሻለ</div>
+          <div class="speech-bubble good-bubble">
+            "O(n&sup2;) መፍትሄ አለኝ፣ ግን ገደቦቹ ፈጣን ነገር ይፈልጋሉ ብዬ አስባለሁ። hashing ወይስ sorting ላስብ?"
+          </div>
+        </div>
+      </div>
+      <p class="medium-text" style="margin-top: 1.5rem">
+        ለምን የተሻለ ነው: እድገት ያሳያል፣ ግንዛቤ ያሳያል፣ ያተኮረ ጥያቄ ይጠይቃል።
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 41: Communication Script -->
+  <div class="slide" data-slide="41">
+    <div class="slide-inner">
+      <h2>ደጋግመህ ልትጠቀምበት የምትችል የግንኙነት ስክሪፕት</h2>
+      <div class="ref-card">
+        <ul>
+          <li>"ችግሩን እንደገና ልግለጽ።"</li>
+          <li>"በትንሽ ምሳሌ እጀምራለሁ።"</li>
+          <li>"Brute force O(n&sup2;) ነው፣ ግን የተሻለ ማድረግ እንችላለን ብዬ አስባለሁ።"</li>
+          <li>"ይህን በሁለት ክፍል እተገብራለሁ።"</li>
+          <li>"አሁን edge cases እፈትናለሁ።"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 42: Image Smoother Section Divider -->
+  <div class="slide" data-slide="42">
+    <div class="section-bg-animated"></div>
+    <div class="slide-inner">
+      <div class="section-divider">
+        <div class="big-number" style="font-size: 8rem">II</div>
+        <div class="section-title">ሙሉ ማሳያ: Image Smoother</div>
+        <div class="section-quote">"ሁሉንም 7 ደረጃዎች በሁለተኛ ችግር ላይ እንተግብር።"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 43: Image Smoother Problem Statement -->
+  <div class="slide" data-slide="43">
+    <div class="slide-inner">
+      <h2>ችግር: Image Smoother</h2>
+      <div class="problem-card">
+        የምስል ፒክሰል ዋጋዎችን የሚወክል 2D integer grid ተሰጥቶሃል።
+        ለእያንዳንዱ ሴል፣ ከዙሪያው ያሉ ትክክለኛ ጎረቤት ሴሎች <strong>floor</strong> አማካይ አስላ፣
+        ሴሉን ራሱ ጨምሮ።
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center">
+        <div class="grid-viz" style="grid-template-columns: repeat(3, 56px); gap: 4px">
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell center" style="width: 56px; height: 56px">0</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+          <div class="grid-cell neighbor" style="width: 56px; height: 56px">1</div>
+        </div>
+      </div>
+      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.75rem">
+        መሃል ሴል በteal ጎልቶ ይታያል፣ ጎረቤቶቹ ጥቁር ናቸው
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 44: Step 1 on Image Smoother -->
+  <div class="slide" data-slide="44">
+    <div class="slide-inner">
+      <h2>ደረጃ 1: ተረዳ &mdash; Image Smoother</h2>
+      <ul class="bullets green-bullets" style="margin-bottom: 1.5rem">
+        <li>ግብዓት: m &times; n integer matrix</li>
+        <li>ውጤት: ሌላ m &times; n matrix</li>
+        <li>ትክክለኛ ጎረቤቶችን ብቻ ተጠቀም (ድንበር-ተቆጣጣሪ)</li>
+        <li>መሃል ሴሉን ራሱ በአማካይ ውስጥ ጨምር</li>
+        <li>አማካይ floor division ይጠቀማል</li>
+      </ul>
+      <div class="two-col" style="max-width: 400px">
+        <div style="text-align: center">
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem">
+            ጥግ: 3 ጎረቤቶች + ራስ = 4
+          </div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 40px); gap: 3px">
+            <div class="grid-cell center" style="width: 40px; height: 40px; font-size: 0.7rem">c</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+            <div class="grid-cell invalid" style="width: 40px; height: 40px; font-size: 0.7rem">&times;</div>
+          </div>
+        </div>
+        <div style="text-align: center">
+          <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem">
+            መሃል: 8 ጎረቤቶች + ራስ = 9
+          </div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 40px); gap: 3px">
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell center" style="width: 40px; height: 40px; font-size: 0.7rem">c</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+            <div class="grid-cell neighbor" style="width: 40px; height: 40px; font-size: 0.7rem">n</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 45: Step 2 on Image Smoother - Manual Walkthrough -->
+  <div class="slide" data-slide="45">
+    <div class="slide-inner">
+      <h2>ደረጃ 2: በእጅ ፍታ &mdash; Image Smoother</h2>
+      <p class="medium-text" style="margin-bottom: 1rem">
+        ለሴል (0,0) የተለሰለሰ ዋጋን በእጅ አስላ:
+      </p>
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 2rem; flex-wrap: wrap">
+        <div style="text-align: center">
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem">ግብዓት grid</div>
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 50px); gap: 3px">
+            <div class="grid-cell center" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell neighbor" style="width: 50px; height: 50px">0</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+            <div class="grid-cell" style="width: 50px; height: 50px">1</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; font-family: 'Fira Code', monospace; font-size: 0.9rem; color: var(--text-dim)">
+          <div>Cell (0,0) = <span class="teal">1</span></div>
+          <div>ትክክለኛ ጎረቤቶች:</div>
+          <div style="padding-left: 1rem">(0,1) = 1</div>
+          <div style="padding-left: 1rem">(1,0) = 1</div>
+          <div style="padding-left: 1rem">(1,1) = 0</div>
+          <div style="margin-top: 0.5rem">Sum = 1 + 1 + 1 + 0 = <span class="teal">3</span></div>
+          <div>Count = <span class="teal">4</span></div>
+          <div style="color: var(--teal); font-weight: 600">floor(3/4) = 0</div>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        ቅርጸት: ለእያንዳንዱ ሴል፣ ትክክለኛ ጎረቤቶችን ሰብስብ፣ ድመር፣ በቁጥር አካፍል።
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 46: Step 3 on Image Smoother - Design -->
+  <div class="slide" data-slide="46">
+    <div class="slide-inner">
+      <h2>ደረጃ 3: ንደፍ &mdash; Image Smoother</h2>
+      <div class="two-col" style="max-width: 700px; align-items: start">
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">ቁልፍ ውሳኔዎች</h3>
+          <ul class="bullets green-bullets">
+            <li>9 direction offsets ተጠቀም (መሃልን ጨምሮ)</li>
+            <li><code>is_valid</code> bounds check ተጠቀም</li>
+            <li>አዲስ output matrix መድብ</li>
+            <li>በgrid ውስጥ ያለ እያንዳንዱን ሴል ዙር</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="text-align: left; margin-bottom: 0.75rem; color: var(--text)">Complexity</h3>
+          <ul class="bullets">
+            <li>እያንዳንዱ ሴል እስከ 9 ጎረቤቶች ይፈትሻል</li>
+            <li>Total: O(m &times; n &times; 9) = <span class="teal" style="font-weight: 600">O(m &times; n)</span></li>
+            <li>Space: <span class="teal" style="font-weight: 600">O(m &times; n)</span> for output</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top: 1.5rem; display: flex; align-items: center; justify-content: center">
+        <div class="direction-grid">
+          <div class="dir-cell dir-active">&nwarr;</div>
+          <div class="dir-cell dir-active">&uarr;</div>
+          <div class="dir-cell dir-active">&nearr;</div>
+          <div class="dir-cell dir-active">&larr;</div>
+          <div class="dir-cell dir-center">c</div>
+          <div class="dir-cell dir-active">&rarr;</div>
+          <div class="dir-cell dir-active">&swarr;</div>
+          <div class="dir-cell dir-active">&darr;</div>
+          <div class="dir-cell dir-active">&searr;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 47: Step 4 on Image Smoother - Attack -->
+  <div class="slide" data-slide="47">
+    <div class="slide-inner">
+      <h2>ደረጃ 4: ተቃወም &mdash; Image Smoother</h2>
+      <div class="edge-grid">
+        <div class="edge-category" style="border-color: rgba(0, 229, 184, 0.2)">
+          <h4 class="teal">የድንበር ጥያቄዎች</h4>
+          <ul>
+            <li>ጥግዎች 4 ሴሎች ብቻ አሏቸው (ራስን ጨምሮ)</li>
+            <li>ጠርዞች 6 ሴሎች ብቻ አሏቸው</li>
+            <li>1&times;1 grid ቢሆንስ?</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(168, 85, 247, 0.2)">
+          <h4 class="purple">የዋጋ ጥያቄዎች</h4>
+          <ul>
+            <li>መሃል ሴሉ በአማካይ ውስጥ ተካትቷል?</li>
+            <li>Floor division፣ rounding አይደለም</li>
+            <li>ሁሉም ተመሳሳይ ዋጋዎች &rarr; ያልተለወጠ?</li>
+          </ul>
+        </div>
+        <div class="edge-category" style="border-color: rgba(59, 130, 246, 0.2)">
+          <h4 class="blue">የአተገባበር ወጥመዶች</h4>
+          <ul>
+            <li>ግብዓትን በቦታው ማሻሻል (በኋላ ያሉ ንባቦችን ያበላሻል)</li>
+            <li>በbounds check ውስጥ off-by-one</li>
+            <li>Integer vs float division</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        ቁልፍ ግንዛቤ: ተለይቶ output matrix ያስፈልገናል ምክንያቱም ተመሳሳይ grid ማንበብ እና መጻፍ ውጤቶችን ያበላሻል።
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 48: Step 5 on Image Smoother - Implement Part 1 -->
+  <div class="slide" data-slide="48">
+    <div class="slide-inner">
+      <h2>ደረጃ 5: ተግብር &mdash; Image Smoother (ማዘጋጃ)</h2>
+      <div class="code-with-notes">
+        <div class="code-block"><span class="kw">def</span> <span class="fn">image_smoother</span>(img):
+    rows, cols = <span class="fn">len</span>(img), <span class="fn">len</span>(img[<span class="nb">0</span>])
+    output = [[<span class="nb">0</span>] * cols <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(rows)]
+
+    neighbors = [
+        (<span class="nb">-1</span>, <span class="nb">-1</span>), (<span class="nb">-1</span>, <span class="nb">0</span>), (<span class="nb">-1</span>, <span class="nb">1</span>),
+        (<span class="nb">0</span>,  <span class="nb">-1</span>), (<span class="nb">0</span>,  <span class="nb">0</span>), (<span class="nb">0</span>,  <span class="nb">1</span>),
+        (<span class="nb">1</span>,  <span class="nb">-1</span>), (<span class="nb">1</span>,  <span class="nb">0</span>), (<span class="nb">1</span>,  <span class="nb">1</span>),
+    ]</div>
+        <div style="display: flex; align-items: center; justify-content: center">
+          <div class="grid-viz" style="grid-template-columns: repeat(3, 44px); gap: 3px">
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,-1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">-1,1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">0,-1</div>
+            <div class="grid-cell center" style="width: 44px; height: 44px; font-size: 0.65rem">0,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">0,1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,-1</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,0</div>
+            <div class="grid-cell neighbor" style="width: 44px; height: 44px; font-size: 0.65rem">1,1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 49: Step 5 on Image Smoother - Implement Part 2 (Full) -->
+  <div class="slide" data-slide="49">
+    <div class="slide-inner">
+      <h2>ደረጃ 5: ተግብር &mdash; ሙሉ መፍትሄ</h2>
+      <div class="code-block" style="max-width: 900px; font-size: 0.82rem"><span class="kw">def</span> <span class="fn">image_smoother</span>(img):
+    rows, cols = <span class="fn">len</span>(img), <span class="fn">len</span>(img[<span class="nb">0</span>])
+    output = [[<span class="nb">0</span>] * cols <span class="kw">for</span> _ <span class="kw">in</span> <span class="fn">range</span>(rows)]
+
+    neighbors = [
+        (<span class="nb">-1</span>, <span class="nb">-1</span>), (<span class="nb">-1</span>, <span class="nb">0</span>), (<span class="nb">-1</span>, <span class="nb">1</span>),
+        (<span class="nb">0</span>,  <span class="nb">-1</span>), (<span class="nb">0</span>,  <span class="nb">0</span>), (<span class="nb">0</span>,  <span class="nb">1</span>),
+        (<span class="nb">1</span>,  <span class="nb">-1</span>), (<span class="nb">1</span>,  <span class="nb">0</span>), (<span class="nb">1</span>,  <span class="nb">1</span>),
+    ]
+
+    <span class="kw">for</span> row <span class="kw">in</span> <span class="fn">range</span>(rows):
+        <span class="kw">for</span> col <span class="kw">in</span> <span class="fn">range</span>(cols):
+            total = <span class="nb">0</span>
+            count = <span class="nb">0</span>
+
+            <span class="kw">for</span> dr, dc <span class="kw">in</span> neighbors:
+                nr, nc = row + dr, col + dc
+                <span class="kw">if</span> <span class="nb">0</span> &lt;= nr &lt; rows <span class="kw">and</span> <span class="nb">0</span> &lt;= nc &lt; cols:
+                    total += img[nr][nc]
+                    count += <span class="nb">1</span>
+
+            output[row][col] = total // count
+
+    <span class="kw">return</span> output</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 50: Step 6 on Image Smoother - Test -->
+  <div class="slide" data-slide="50">
+    <div class="slide-inner">
+      <h2>Step 6: Test &mdash; Image Smoother</h2>
+      <div class="test-cards">
+        <div class="test-card">
+          <span class="tc-input">[[1,1,1],[1,0,1],[1,1,1]]</span>
+          <span class="tc-reason">sample case &mdash; center cell surrounded</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[5,5,5],[5,5,5],[5,5,5]]</span>
+          <span class="tc-reason">all same values &rarr; output unchanged</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[7]]</span>
+          <span class="tc-reason">1&times;1 grid &rarr; output is [[7]]</span>
+        </div>
+        <div class="test-card">
+          <span class="tc-input">[[1,1,1],[1,0,1],[1,1,1]], cell (0,0)</span>
+          <span class="tc-reason">corner cell: (1+1+1+0)/4 = floor(3/4) = 0</span>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Each test targets a specific boundary or assumption.
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 51: Step 7 on Image Smoother - Clean Up -->
+  <div class="slide" data-slide="51">
+    <div class="slide-inner">
+      <h2>Step 7: Clean Up &mdash; Image Smoother</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Before Cleanup</h4>
+          <ul>
+            <li>Variable name <code>d</code> for directions</li>
+            <li>Magic numbers like <code>-1</code>, <code>1</code> scattered</li>
+            <li>No comments on bounds check</li>
+            <li>In-place mutation risk</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>After Cleanup</h4>
+          <ul>
+            <li><code>neighbors</code> is self-documenting</li>
+            <li>Direction offsets grouped visually</li>
+            <li>Separate output matrix is explicit</li>
+            <li>Code reads like the algorithm</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box" style="margin-top: 1rem">
+        Final check: Can you explain every line in one sentence?
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 52: Image Smoother Good vs Bad Summary -->
+  <div class="slide" data-slide="52">
+    <div class="slide-inner">
+      <h2>Image Smoother: Good vs Bad</h2>
+      <div class="comparison">
+        <div class="compare-bad">
+          <h4>Bad</h4>
+          <ul>
+            <li>Starts coding loops immediately</li>
+            <li>Forgets output allocation</li>
+            <li>Forgets boundary checks</li>
+            <li>Repeats 9 conditions manually</li>
+          </ul>
+        </div>
+        <div class="compare-good">
+          <h4>Good</h4>
+          <ul>
+            <li>Identifies grid-neighbor problem</li>
+            <li>Uses neighbor offsets</li>
+            <li>Allocates output first</li>
+            <li>Handles bounds centrally</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 53: What Strong Candidates Do -->
+  <div class="slide" data-slide="53">
+    <div class="slide-inner">
+      <h2>What Strong Candidates Do</h2>
+      <div class="badge-grid" style="max-width: 600px">
+        <div class="badge-card green-badge">Slow down at the start</div>
+        <div class="badge-card green-badge">Think before coding</div>
+        <div class="badge-card green-badge">Challenge their own ideas</div>
+        <div class="badge-card green-badge">Test intentionally</div>
+        <div class="badge-card green-badge">Communicate clearly</div>
+        <div class="badge-card green-badge">Recover calmly</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 54: What Weak Candidates Do -->
+  <div class="slide" data-slide="54">
+    <div class="slide-inner">
+      <h2>What Weak Candidates Do</h2>
+      <div class="badge-grid" style="max-width: 600px">
+        <div class="badge-card red-badge">Rush into code</div>
+        <div class="badge-card red-badge">Ignore constraints</div>
+        <div class="badge-card red-badge">Hope the idea works</div>
+        <div class="badge-card red-badge">Skip edge cases</div>
+        <div class="badge-card red-badge">Panic when stuck</div>
+        <div class="badge-card red-badge">Never clean up</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 55: One-Sentence Summary -->
+  <div class="slide" data-slide="55">
+    <div class="slide-inner">
+      <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center">
+        <p class="huge-text gradient-text">Clarity first.</p>
+        <p class="huge-text" style="color: var(--text)">Correctness second.</p>
+        <p class="huge-text" style="color: var(--text-dim)">Speed third.</p>
+      </div>
+      <p class="medium-text" style="margin-top: 2rem">
+        Speed without clarity creates wrong solutions.
+      </p>
+    </div>
+  </div>
+
+  <!-- SLIDE 56: Quote of the Day -->
+  <div class="slide" data-slide="56">
+    <div class="aurora-orbs">
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+      <div class="aurora-orb"></div>
+    </div>
+    <div class="slide-inner">
+      <div class="quote-slide">
+        <div class="quote-mark">&ldquo;</div>
+        <div class="quote-text">
+          The problem is not the problem. The problem is your attitude about the problem.
+          Do you understand?
+        </div>
+        <div class="quote-attribution">
+          - Captain Jack Sparrow
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /slides-wrapper -->
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar">
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+  <div class="slide-counter" id="slideCounter">1 / 56</div>
+</div>
+
+<!-- TOC OVERLAY -->
+<div class="toc-overlay" id="tocOverlay">
+  <button class="toc-close" onclick="closeToc()">&times;</button>
+  <h2>Table of Contents</h2>
+  <ul class="toc-list" id="tocList"></ul>
+</div>
+
+<script>
+  const TOTAL = 56;
+  let current = 1;
+
+  const slideTitles = {
+    1: 'Title',
+    2: 'Why a Playbook?',
+    3: 'The Goal',
+    4: 'The 7 Steps',
+    5: 'The Biggest Candidate Mistake',
+    6: 'Step 1: Understand the Problem',
+    7: 'Step 1: Good vs Bad',
+    8: 'Problem: Two Sum',
+    9: 'Good Step 1 on Two Sum',
+    10: 'Bad Step 1 on Two Sum',
+    11: 'Step 2: Solve the Problem Manually',
+    12: 'Step 2: Good vs Bad',
+    13: 'Manual Walkthrough: Two Sum',
+    14: 'Key Question in Step 2',
+    15: 'Step 3: Come Up with a Solution Idea',
+    16: 'The Complexity Gate',
+    17: 'Step 3: Good vs Bad',
+    18: 'Two Sum: Good Design',
+    19: 'Python: Two Sum Core Idea',
+    20: 'Step 4: Attack Your Own Idea',
+    21: 'Step 4: Good vs Bad',
+    22: 'Edge-Case Questions',
+    23: 'Hidden Assumption Example',
+    24: 'Step 5: Implement',
+    25: 'Step 5: Good vs Bad',
+    26: 'Bad Implementation',
+    27: 'Better Implementation',
+    28: 'Helper Function Pattern',
+    29: 'Direction Vector Pattern',
+    30: 'Step 6: Test Comprehensively',
+    31: 'Step 6: Good vs Bad',
+    32: 'Two Sum: Testing Examples',
+    33: 'What Interviewers Notice',
+    34: 'Step 7: Simplify and Clean Up',
+    35: 'Step 7: Good vs Bad',
+    36: 'Before and After Naming',
+    37: 'The 3-Bullet Rule',
+    38: 'The 40-Minute Timeline',
+    39: 'The Pivot Rule',
+    40: 'Good vs Bad Hint Request',
+    41: 'Communication Script',
+    42: 'Full Walkthrough: Image Smoother',
+    43: 'Problem: Image Smoother',
+    44: 'Step 1: Understand - Image Smoother',
+    45: 'Step 2: Manual Solve - Image Smoother',
+    46: 'Step 3: Design - Image Smoother',
+    47: 'Step 4: Attack - Image Smoother',
+    48: 'Step 5: Implement - Image Smoother (Setup)',
+    49: 'Step 5: Implement - Full Solution',
+    50: 'Step 6: Test - Image Smoother',
+    51: 'Step 7: Clean Up - Image Smoother',
+    52: 'Image Smoother: Good vs Bad',
+    53: 'What Strong Candidates Do',
+    54: 'What Weak Candidates Do',
+    55: 'Clarity. Correctness. Speed.',
+    56: 'Quote of the Day'
+  };
+
+  const sectionSlides = [1, 6, 11, 15, 20, 24, 30, 34, 42, 53];
+
+  // Build TOC
+  (function buildToc() {
+    const list = document.getElementById('tocList');
+    for (let i = 1; i <= TOTAL; i++) {
+      const li = document.createElement('li');
+      if (sectionSlides.includes(i)) li.classList.add('toc-section');
+      li.innerHTML = '<span class="toc-num">' + i + '</span> ' + (slideTitles[i] || '');
+      li.onclick = function () { goSlide(i); closeToc(); };
+      list.appendChild(li);
+    }
+  })();
+
+  function goSlide(n) {
+    if (n < 1 || n > TOTAL) return;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.remove('active');
+    current = n;
+    document.querySelector('.slide[data-slide="' + current + '"]').classList.add('active');
+    document.getElementById('slideCounter').textContent = current + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = ((current / TOTAL) * 100) + '%';
+    history.replaceState(null, '', '#' + current);
+  }
+
+  function openToc() { document.getElementById('tocOverlay').classList.add('open'); }
+  function closeToc() { document.getElementById('tocOverlay').classList.remove('open'); }
+
+  // Keyboard
+  document.addEventListener('keydown', function (e) {
+    if (document.getElementById('tocOverlay').classList.contains('open')) {
+      if (e.key === 'Escape') closeToc();
+      return;
+    }
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case ' ':
+        e.preventDefault(); goSlide(current + 1); break;
+      case 'ArrowLeft': case 'ArrowUp':
+        e.preventDefault(); goSlide(current - 1); break;
+      case 'Home':
+        e.preventDefault(); goSlide(1); break;
+      case 'End':
+        e.preventDefault(); goSlide(TOTAL); break;
+      case 'Escape':
+        openToc(); break;
+    }
+  });
+
+  // Touch/swipe
+  let touchStartX = 0, touchStartY = 0;
+  document.addEventListener('touchstart', function (e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    const dx = e.changedTouches[0].screenX - touchStartX;
+    const dy = e.changedTouches[0].screenY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+      if (dx < 0) goSlide(current + 1);
+      else goSlide(current - 1);
+    }
+  }, { passive: true });
+
+  // Init from hash
+  (function init() {
+    const hash = parseInt(location.hash.replace('#', ''), 10);
+    const start = (hash >= 1 && hash <= TOTAL) ? hash : 1;
+    document.querySelector('.slide[data-slide="' + start + '"]').classList.add('active');
+    current = start;
+    document.getElementById('slideCounter').textContent = current + ' / ' + TOTAL;
+    document.getElementById('progressFill').style.width = ((current / TOTAL) * 100) + '%';
+    history.replaceState(null, '', '#' + current);
+  })();
+
+  // Handle hash change
+  window.addEventListener('hashchange', function () {
+    const hash = parseInt(location.hash.replace('#', ''), 10);
+    if (hash >= 1 && hash <= TOTAL && hash !== current) goSlide(hash);
+  });
+</script>
+</body>
+</html>
