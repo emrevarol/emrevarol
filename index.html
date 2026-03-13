@@ -1322,7 +1322,7 @@
 <!-- ═══ A2SV SPOTLIGHT ═══ -->
 <section id="a2sv">
   <div class="container">
-    <div class="section-tag">a2sv</div>
+    <div class="section-tag" data-i18n="a2sv.tag">a2sv</div>
     <h2 class="section-h" data-i18n-html="a2sv.h">Africa to <em>Silicon Valley</em></h2>
     <div class="a2sv-top">
       <div class="a2sv-content anim">
@@ -1705,7 +1705,7 @@
   <div class="container">
     <div class="personal-grid">
       <div class="anim">
-        <div class="section-tag">beyond code</div>
+        <div class="section-tag" data-i18n="personal.tag">beyond code</div>
         <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)" data-i18n-html="personal.h">When I'm <em>not</em> building</h2>
         <p style="color:var(--muted);line-height:1.85;margin-top:1rem;font-size:.96rem" data-i18n="personal.p">
           You'll find me with a guitar in hand, on a hiking trail, watching Galatasaray dominate,
@@ -1713,12 +1713,12 @@
           I believe the best engineers are also curious humans, and I try to embody that.
         </p>
         <div class="pills" style="margin-top:1.5rem">
-          <span class="pill pill-plain">🎸 Guitar</span>
-          <span class="pill pill-plain">⚽ Football</span>
-          <span class="pill pill-plain">🥾 Hiking</span>
-          <span class="pill pill-plain">📚 Reading</span>
-          <span class="pill pill-plain">✍️ Writing</span>
-          <span class="pill pill-plain">🧀 Good Cheese</span>
+          <span class="pill pill-plain" data-i18n="pill.guitar">🎸 Guitar</span>
+          <span class="pill pill-plain" data-i18n="pill.football">⚽ Football</span>
+          <span class="pill pill-plain" data-i18n="pill.hiking">🥾 Hiking</span>
+          <span class="pill pill-plain" data-i18n="pill.reading">📚 Reading</span>
+          <span class="pill pill-plain" data-i18n="pill.writing">✍️ Writing</span>
+          <span class="pill pill-plain" data-i18n="pill.cheese">🧀 Good Cheese</span>
         </div>
       </div>
       <div class="anim">
@@ -1731,7 +1731,7 @@
 <!-- ═══ PHOTO GALLERY ═══ -->
 <section style="border-top:1px solid var(--border)">
   <div class="container">
-    <div class="section-tag">gallery</div>
+    <div class="section-tag" data-i18n="gallery.tag">gallery</div>
     <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)" data-i18n-html="gallery.h">Moments &amp; <em>Memories</em></h2>
     <div class="gallery-grid">
       <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-1.jpg')">
@@ -1910,7 +1910,7 @@
 <!-- ═══ BLOG ═══ -->
 <section id="blog" class="anim">
   <div class="container">
-  <div class="section-tag">blog</div>
+  <div class="section-tag" data-i18n="blog.tag">blog</div>
   <h2 class="section-h" data-i18n-html="blog.h">From the <em>Newsletter</em></h2>
   <p style="color:var(--muted);max-width:600px;margin:0 auto .5rem;text-align:center" data-i18n="blog.desc">Insights on African tech talent, A2SV's journey, and the engineers shaping the future.</p>
 
@@ -2149,6 +2149,8 @@ const translations = {
     'contact.donate': 'Donate to A2SV', 'contact.hire': 'Hire African Talent',
     'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message', 'form.send': 'Send Message',
     'contact.tag': 'contact', 'form.ph.name': 'Your name', 'form.ph.email': 'you@example.com', 'form.ph.message': 'Write your message...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'beyond code', 'gallery.tag': 'gallery', 'blog.tag': 'blog',
+    'pill.guitar': '🎸 Guitar', 'pill.football': '⚽ Football', 'pill.hiking': '🥾 Hiking', 'pill.reading': '📚 Reading', 'pill.writing': '✍️ Writing', 'pill.cheese': '🧀 Good Cheese',
     'stat1.label': 'Engineers Trained', 'stat1.sub': 'from 22 African countries',
     'stat2.label': 'Top Tech Job Offers', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon Participants', 'stat3.sub': "Africa's largest AI hackathon",
@@ -2235,6 +2237,8 @@ const translations = {
     'contact.donate': "A2SV'ye Bağış Yap", 'contact.hire': 'Afrikalı Yetenek İşe Al',
     'form.name': 'Ad Soyad', 'form.email': 'E-posta', 'form.message': 'Mesaj', 'form.send': 'Mesajı Gönder',
     'contact.tag': 'iletişim', 'form.ph.name': 'Adınız', 'form.ph.email': 'ornek@email.com', 'form.ph.message': 'Mesajınızı yazın...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'kodun ötesinde', 'gallery.tag': 'galeri', 'blog.tag': 'blog',
+    'pill.guitar': '🎸 Gitar', 'pill.football': '⚽ Futbol', 'pill.hiking': '🥾 Yürüyüş', 'pill.reading': '📚 Okuma', 'pill.writing': '✍️ Yazarlık', 'pill.cheese': '🧀 İyi Peynir',
     'stat1.label': 'Yetiştirilen Mühendis', 'stat1.sub': '22 Afrika ülkesinden',
     'stat2.label': 'İş Teklifi Alındı', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon Katılımcısı', 'stat3.sub': "Afrika'nın en büyük AI yarışması",
@@ -2321,6 +2325,8 @@ const translations = {
     'contact.donate': 'Donar a A2SV', 'contact.hire': 'Contratar Talento Africano',
     'form.name': 'Nombre', 'form.email': 'Correo', 'form.message': 'Mensaje', 'form.send': 'Enviar Mensaje',
     'contact.tag': 'contacto', 'form.ph.name': 'Tu nombre', 'form.ph.email': 'tu@correo.com', 'form.ph.message': 'Escribe tu mensaje...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'más allá del código', 'gallery.tag': 'galería', 'blog.tag': 'blog',
+    'pill.guitar': '🎸 Guitarra', 'pill.football': '⚽ Fútbol', 'pill.hiking': '🥾 Senderismo', 'pill.reading': '📚 Lectura', 'pill.writing': '✍️ Escritura', 'pill.cheese': '🧀 Buen Queso',
     'stat1.label': 'Ingenieros Formados', 'stat1.sub': 'de 22 países africanos',
     'stat2.label': 'Ofertas de Trabajo', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Participantes Hackathon', 'stat3.sub': 'el mayor hackathon de IA en África',
@@ -2407,6 +2413,8 @@ const translations = {
     'contact.donate': 'Tanga kuri A2SV', 'contact.hire': "Shaka Inzobere z'Afurika",
     'form.name': 'Izina', 'form.email': 'Imeyili', 'form.message': 'Ubutumwa', 'form.send': 'Ohereza Ubutumwa',
     'contact.tag': 'twandikire', 'form.ph.name': 'Izina ryawe', 'form.ph.email': 'imeyili@urugero.com', 'form.ph.message': 'Andika ubutumwa bwawe...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'inyuma ya kode', 'gallery.tag': 'amafoto', 'blog.tag': 'blog',
+    'pill.guitar': '🎸 Igitari', 'pill.football': '⚽ Umupira', 'pill.hiking': '🥾 Kunyura', 'pill.reading': '📚 Gusoma', 'pill.writing': '✍️ Kwandika', 'pill.cheese': '🧀 Fromayi Nziza',
     'stat1.label': 'Inzobere Zitozwe', 'stat1.sub': 'biva mu bihugu 22 bya Afurika',
     'stat2.label': 'Ibyifuzo bya Akazi', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Abagize Hackathon', 'stat3.sub': 'irushanwa rinini rya AI muri Afurika',
@@ -2493,6 +2501,8 @@ const translations = {
     'contact.donate': 'Faire un don à A2SV', 'contact.hire': 'Recruter des Talents Africains',
     'form.name': 'Nom', 'form.email': 'E-mail', 'form.message': 'Message', 'form.send': 'Envoyer',
     'contact.tag': 'contact', 'form.ph.name': 'Votre nom', 'form.ph.email': 'vous@exemple.com', 'form.ph.message': 'Écrivez votre message...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'au-delà du code', 'gallery.tag': 'galerie', 'blog.tag': 'blog',
+    'pill.guitar': '🎸 Guitare', 'pill.football': '⚽ Football', 'pill.hiking': '🥾 Randonnée', 'pill.reading': '📚 Lecture', 'pill.writing': '✍️ Écriture', 'pill.cheese': '🧀 Bon Fromage',
     'stat1.label': 'Ingénieurs Formés', 'stat1.sub': 'de 22 pays africains',
     'stat2.label': "Offres d'Emploi Top", 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Participants Hackathon', 'stat3.sub': "Plus grand hackathon IA d'Afrique",
@@ -2579,6 +2589,8 @@ const translations = {
     'contact.donate': 'An A2SV spenden', 'contact.hire': 'Afrikanische Talente einstellen',
     'form.name': 'Name', 'form.email': 'E-Mail', 'form.message': 'Nachricht', 'form.send': 'Nachricht senden',
     'contact.tag': 'kontakt', 'form.ph.name': 'Ihr Name', 'form.ph.email': 'sie@beispiel.com', 'form.ph.message': 'Schreiben Sie Ihre Nachricht...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'jenseits des codes', 'gallery.tag': 'galerie', 'blog.tag': 'blog',
+    'pill.guitar': '🎸 Gitarre', 'pill.football': '⚽ Fußball', 'pill.hiking': '🥾 Wandern', 'pill.reading': '📚 Lesen', 'pill.writing': '✍️ Schreiben', 'pill.cheese': '🧀 Guter Käse',
     'stat1.label': 'Ausgebildete Ingenieure', 'stat1.sub': 'aus 22 afrikanischen Ländern',
     'stat2.label': 'Top-Tech-Stellenangebote', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon-Teilnehmer', 'stat3.sub': "Afrikas größter KI-Hackathon",
@@ -2665,6 +2677,8 @@ const translations = {
     'contact.donate': 'تبرع لـ A2SV', 'contact.hire': 'وظّف مواهب أفريقية',
     'form.name': 'الاسم', 'form.email': 'البريد الإلكتروني', 'form.message': 'الرسالة', 'form.send': 'إرسال الرسالة',
     'contact.tag': 'تواصل', 'form.ph.name': 'اسمك', 'form.ph.email': 'بريدك@مثال.com', 'form.ph.message': 'اكتب رسالتك...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'ما وراء الكود', 'gallery.tag': 'معرض', 'blog.tag': 'مدوّنة',
+    'pill.guitar': '🎸 جيتار', 'pill.football': '⚽ كرة قدم', 'pill.hiking': '🥾 مشي', 'pill.reading': '📚 قراءة', 'pill.writing': '✍️ كتابة', 'pill.cheese': '🧀 جبنة فاخرة',
     'stat1.label': 'مهندس مدرّب', 'stat1.sub': 'من 22 دولة أفريقية',
     'stat2.label': 'عروض عمل مرموقة', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'مشارك في هاكاثون', 'stat3.sub': 'أكبر هاكاثون ذكاء اصطناعي في أفريقيا',
@@ -2751,6 +2765,8 @@ const translations = {
     'contact.donate': 'Doar para A2SV', 'contact.hire': 'Contratar Talentos Africanos',
     'form.name': 'Nome', 'form.email': 'E-mail', 'form.message': 'Mensagem', 'form.send': 'Enviar Mensagem',
     'contact.tag': 'contato', 'form.ph.name': 'Seu nome', 'form.ph.email': 'voce@exemplo.com', 'form.ph.message': 'Escreva sua mensagem...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'além do código', 'gallery.tag': 'galeria', 'blog.tag': 'blog',
+    'pill.guitar': '🎸 Violão', 'pill.football': '⚽ Futebol', 'pill.hiking': '🥾 Trilha', 'pill.reading': '📚 Leitura', 'pill.writing': '✍️ Escrita', 'pill.cheese': '🧀 Bom Queijo',
     'stat1.label': 'Engenheiros Treinados', 'stat1.sub': 'de 22 países africanos',
     'stat2.label': 'Ofertas de Emprego Top', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Participantes Hackathon', 'stat3.sub': 'Maior hackathon de IA da África',
@@ -2837,6 +2853,8 @@ const translations = {
     'contact.donate': 'Changia A2SV', 'contact.hire': 'Ajiri Vipaji vya Afrika',
     'form.name': 'Jina', 'form.email': 'Barua pepe', 'form.message': 'Ujumbe', 'form.send': 'Tuma Ujumbe',
     'contact.tag': 'wasiliana', 'form.ph.name': 'Jina lako', 'form.ph.email': 'wewe@mfano.com', 'form.ph.message': 'Andika ujumbe wako...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'zaidi ya msimbo', 'gallery.tag': 'picha', 'blog.tag': 'blogu',
+    'pill.guitar': '🎸 Gitaa', 'pill.football': '⚽ Mpira', 'pill.hiking': '🥾 Kutembea', 'pill.reading': '📚 Kusoma', 'pill.writing': '✍️ Kuandika', 'pill.cheese': '🧀 Jibini Nzuri',
     'stat1.label': 'Wahandisi Waliofunzwa', 'stat1.sub': 'kutoka nchi 22 za Afrika',
     'stat2.label': 'Ofa za Kazi Bora', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Washiriki wa Hackathon', 'stat3.sub': 'Hackathon kubwa zaidi ya AI Afrika',
@@ -2923,6 +2941,8 @@ const translations = {
     'contact.donate': 'ለ A2SV ልገሳ', 'contact.hire': 'የአፍሪካ ችሎታ ቅጠር',
     'form.name': 'ስም', 'form.email': 'ኢሜይል', 'form.message': 'መልእክት', 'form.send': 'መልእክት ላክ',
     'contact.tag': 'ያናግሩን', 'form.ph.name': 'ስምዎ', 'form.ph.email': 'ኢሜይልዎ@ምሳሌ.com', 'form.ph.message': 'መልእክትዎን ይጻፉ...',
+    'a2sv.tag': 'a2sv', 'personal.tag': 'ከኮድ ባሻገር', 'gallery.tag': 'ፎቶዎች', 'blog.tag': 'ብሎግ',
+    'pill.guitar': '🎸 ጊታር', 'pill.football': '⚽ እግር ኳስ', 'pill.hiking': '🥾 ሃይኪንግ', 'pill.reading': '📚 ማንበብ', 'pill.writing': '✍️ መጻፍ', 'pill.cheese': '🧀 ጥሩ አይብ',
     'stat1.label': 'የሰለጠኑ መሃንዲሶች', 'stat1.sub': 'ከ22 አፍሪካ ሃገሮች',
     'stat2.label': 'ምርጥ ቴክ ስራ ቅናሾች', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'የሃካቶን ተሳታፊዎች', 'stat3.sub': 'በአፍሪካ ትልቁ AI ሃካቶን',
