@@ -25,9 +25,18 @@
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@vaaborern" />
+  <meta name="twitter:creator" content="@vaaborern" />
   <meta name="twitter:title" content="Emre Varol | Founder & CEO of A2SV" />
   <meta name="twitter:description" content="Founder & CEO of A2SV, transforming Africa's tech ecosystem. 8+ years at Google, Palantir & Liftoff." />
   <meta name="twitter:image" content="https://emrevarol.com/images/emre-hero.jpeg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/emre-hero.jpeg" />
+  <link rel="apple-touch-icon" href="/images/emre-hero.jpeg" />
+
+  <!-- Preload hero image (LCP) -->
+  <link rel="preload" as="image" href="images/emre-hero.jpeg" />
 
   <!-- Hreflang for multilingual -->
   <link rel="alternate" hreflang="en" href="https://emrevarol.com/" />
@@ -47,10 +56,12 @@
   {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": "https://emrevarol.com/#person",
     "name": "Emre Varol",
     "url": "https://emrevarol.com",
     "image": "https://emrevarol.com/images/emre-hero.jpeg",
     "jobTitle": "Founder & CEO",
+    "nationality": { "@type": "Country", "name": "Turkey" },
     "worksFor": {
       "@type": "Organization",
       "name": "A2SV (Africa to Silicon Valley)",
@@ -72,6 +83,48 @@
     ],
     "email": "emre@a2sv.org",
     "description": "Founder & CEO of A2SV, a Google-backed nonprofit that has trained 1,200+ engineers across 22 African countries. Former engineer at Google, Palantir, and Liftoff with 8+ years in Silicon Valley."
+  }
+  </script>
+
+  <!-- FAQ Schema for AI Search -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Who is Emre Varol?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Emre Varol is the Founder & CEO of A2SV (Africa to Silicon Valley), a Google-backed nonprofit transforming Africa's tech ecosystem. He is a former software engineer at Google, Palantir, and Liftoff with 8+ years of experience in Silicon Valley."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is A2SV?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A2SV (Africa to Silicon Valley) is a Google-backed nonprofit that has trained 1,200+ engineers across 22 African countries. It offers competitive programming training, interview preparation, and has achieved a 70% Google interview success rate in 2021 vs the ~2% global average."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I hire African software engineers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can hire world-class African engineers through Eskalate (eskalate.io), an A2SV product that connects top African tech talent with global companies. Visit eskalate.io/book-a-call to get started."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I support or donate to A2SV?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can donate to A2SV at a2sv.org/donate. A2SV is a registered nonprofit and donations support training the next generation of African tech talent."
+        }
+      }
+    ]
   }
   </script>
 
@@ -682,7 +735,7 @@
       display: flex; align-items: center; justify-content: center;
       opacity: 0; pointer-events: none; transition: opacity .3s;
     }
-    .video-modal.open { opacity: 1; pointer-events: all; }
+    .video-modal.open { opacity: 1; pointer-events: auto; }
     .video-modal-inner {
       position: relative; width: 72vw; max-width: 820px; aspect-ratio: 16/9;
       border-radius: 14px; overflow: hidden;
@@ -712,7 +765,7 @@
       opacity: 0; pointer-events: none; transition: opacity .3s;
       padding: 2rem;
     }
-    .doc-viewer.open { opacity: 1; pointer-events: all; }
+    .doc-viewer.open { opacity: 1; pointer-events: auto; }
     .doc-viewer-inner {
       position: relative; max-width: 700px; width: 100%;
       max-height: 90vh; overflow-y: auto; border-radius: 14px;
@@ -904,9 +957,8 @@
       border-radius: 12px; padding: .5rem; min-width: 140px;
       backdrop-filter: blur(20px); box-shadow: 0 20px 60px rgba(0,0,0,.5);
       z-index: 300;
-      display: grid; grid-template-columns: 1fr 1fr; gap: .2rem;
+      grid-template-columns: 1fr 1fr; gap: .2rem;
     }
-    .lang-dropdown-menu { display: none; }
     .lang-dropdown.open .lang-dropdown-menu { display: grid; }
     .lang-dropdown::after {
       content: ''; position: absolute; top: 100%; left: 0; right: 0; height: 12px;
@@ -964,6 +1016,7 @@
 <canvas id="particles"></canvas>
 
 <!-- NAV -->
+<main>
 <nav id="topnav">
   <a href="#hero" class="nav-logo">Emre<span> Varol</span></a>
   <ul class="nav-links">
@@ -973,13 +1026,13 @@
     <li class="nav-dropdown">
       <a href="#products" data-i18n="nav.products">Products ▾</a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="https://adot.life" target="_blank"><img src="https://www.google.com/s2/favicons?domain=adot.life&sz=32" alt="">Adot</a>
-        <a class="dropdown-item" href="https://afrochat.app" target="_blank"><img src="https://www.google.com/s2/favicons?domain=afrochat.app&sz=32" alt="">AfroChat</a>
-        <a class="dropdown-item" href="https://akilconnect.org" target="_blank"><img src="https://www.google.com/s2/favicons?domain=akilconnect.org&sz=32" alt="">Akil</a>
-        <a class="dropdown-item" href="https://dime.gold" target="_blank"><img src="images/dime-logo.svg" alt="Dime">Dime</a>
-        <a class="dropdown-item" href="https://eskalate.io" target="_blank"><img src="https://www.google.com/s2/favicons?domain=eskalate.io&sz=32" alt="">Eskalate</a>
-        <a class="dropdown-item" href="https://rateeat.app" target="_blank"><img src="https://www.google.com/s2/favicons?domain=rateeat.app&sz=32" alt="">RateEat</a>
-        <a class="dropdown-item" href="https://skillbridge.academy" target="_blank"><img src="images/skillbridge-logo.svg" alt="SkillBridge">SkillBridge</a>
+        <a class="dropdown-item" href="https://adot.life" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=adot.life&sz=32" alt="Adot logo">Adot</a>
+        <a class="dropdown-item" href="https://afrochat.app" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=afrochat.app&sz=32" alt="AfroChat logo">AfroChat</a>
+        <a class="dropdown-item" href="https://akilconnect.org" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=akilconnect.org&sz=32" alt="Akil logo">Akil</a>
+        <a class="dropdown-item" href="https://dime.gold" target="_blank" rel="noopener"><img src="images/dime-logo.svg" alt="Dime logo">Dime</a>
+        <a class="dropdown-item" href="https://eskalate.io" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=eskalate.io&sz=32" alt="Eskalate logo">Eskalate</a>
+        <a class="dropdown-item" href="https://rateeat.app" target="_blank" rel="noopener"><img src="https://www.google.com/s2/favicons?domain=rateeat.app&sz=32" alt="RateEat logo">RateEat</a>
+        <a class="dropdown-item" href="https://skillbridge.academy" target="_blank" rel="noopener"><img src="images/skillbridge-logo.svg" alt="SkillBridge logo">SkillBridge</a>
       </div>
     </li>
     <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
@@ -1029,11 +1082,11 @@
         </a>
       </div>
       <div class="hero-actions" style="margin-top:.75rem">
-        <a href="https://a2sv.org/donate" target="_blank" class="btn-ghost" style="font-size:.82rem;padding:.55rem 1.2rem;">
+        <a href="https://a2sv.org/donate" target="_blank" rel="noopener" class="btn-ghost" style="font-size:.82rem;padding:.55rem 1.2rem;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
           <span data-i18n="contact.donate">Donate to A2SV</span>
         </a>
-        <a href="https://eskalate.io/book-a-call" target="_blank" class="btn-ghost" style="font-size:.82rem;padding:.55rem 1.2rem;">
+        <a href="https://eskalate.io/book-a-call" target="_blank" rel="noopener" class="btn-ghost" style="font-size:.82rem;padding:.55rem 1.2rem;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
           <span data-i18n="contact.hire">Hire African Talent</span>
         </a>
@@ -1042,16 +1095,16 @@
 
     <div class="hero-photo-wrap">
       <div class="hero-social">
-        <a href="https://www.linkedin.com/in/emre-varol/" target="_blank" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/emre-varol/" target="_blank" rel="noopener" title="LinkedIn">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="https://a2sv.org" target="_blank" title="A2SV">
+        <a href="https://a2sv.org" target="_blank" rel="noopener" title="A2SV">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
         </a>
         <a href="mailto:emre@a2sv.org" title="Email">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         </a>
-        <a href="https://www.instagram.com/varolemre" target="_blank" title="Instagram @varolemre">
+        <a href="https://www.instagram.com/varolemre" target="_blank" rel="noopener" title="Instagram @varolemre">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
       </div>
@@ -1313,7 +1366,7 @@
     <div class="vid-row anim" style="margin-top:2.5rem">
       <div class="vid-row-label" data-i18n-html="resources.h">A2SV <em>Documents</em></div>
       <div class="doc-grid" style="margin-top:.5rem">
-        <div class="vid-card" onclick="openPdfViewer()" style="cursor:pointer">
+        <div class="vid-card" onclick="openPdfViewer()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openPdfViewer()}" tabindex="0" role="button" style="cursor:pointer">
           <img class="vid-thumb" src="images/a2sv-5years-cover.jpg" alt="A2SV 5 Years of Impact Report" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
@@ -1321,7 +1374,7 @@
             <div class="vid-title" data-i18n="resources.link1">A2SV 5 Years of Impact Report</div>
           </div>
         </div>
-        <div class="vid-card" onclick="openDoc()" style="cursor:pointer">
+        <div class="vid-card" onclick="openDoc()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDoc()}" tabindex="0" role="button" style="cursor:pointer">
           <img class="vid-thumb" src="images/a2sv-2pager-1.jpg" alt="A2SV 2-Pager" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
@@ -1337,7 +1390,7 @@
       <div class="vid-row-label" data-i18n="media.label">Videos</div>
       <div class="vid-grid">
 
-        <div class="vid-card" onclick="openVideo('52ELtLxgMto')" style="cursor:pointer">
+        <div class="vid-card" onclick="openVideo('52ELtLxgMto')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openVideo('52ELtLxgMto')}" tabindex="0" role="button" style="cursor:pointer">
           <img class="vid-thumb" src="https://img.youtube.com/vi/52ELtLxgMto/hqdefault.jpg" alt="Global AI Summit on Africa 2025" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
@@ -1346,7 +1399,7 @@
           </div>
         </div>
 
-        <div class="vid-card" onclick="openVideo('meUHhneJRiE')" style="cursor:pointer">
+        <div class="vid-card" onclick="openVideo('meUHhneJRiE')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openVideo('meUHhneJRiE')}" tabindex="0" role="button" style="cursor:pointer">
           <img class="vid-thumb" src="https://img.youtube.com/vi/meUHhneJRiE/hqdefault.jpg" alt="A2SV in 2023" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
@@ -1355,7 +1408,7 @@
           </div>
         </div>
 
-        <div class="vid-card" onclick="openVideo('nnbEglsSLZw')" style="cursor:pointer">
+        <div class="vid-card" onclick="openVideo('nnbEglsSLZw')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openVideo('nnbEglsSLZw')}" tabindex="0" role="button" style="cursor:pointer">
           <img class="vid-thumb" src="https://img.youtube.com/vi/nnbEglsSLZw/hqdefault.jpg" alt="A2SV on TRT World" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
@@ -1364,7 +1417,7 @@
           </div>
         </div>
 
-        <div class="vid-card" onclick="openVideo('yg59HhjeVWc')" style="cursor:pointer">
+        <div class="vid-card" onclick="openVideo('yg59HhjeVWc')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openVideo('yg59HhjeVWc')}" tabindex="0" role="button" style="cursor:pointer">
           <img class="vid-thumb" src="https://img.youtube.com/vi/yg59HhjeVWc/hqdefault.jpg" alt="Emre Varol — Upbringings, Faith, Career, A2SV and more" loading="lazy" />
           <div class="vid-overlay">
             <div class="vid-play"><svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg></div>
@@ -1681,71 +1734,71 @@
     <div class="section-tag">gallery</div>
     <h2 class="section-h" style="font-size:clamp(1.5rem,3vw,2.2rem)" data-i18n-html="gallery.h">Moments &amp; <em>Memories</em></h2>
     <div class="gallery-grid">
-      <div class="gallery-item" onclick="openLightbox('images/gallery-1.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-1.jpg')">
         <img src="images/gallery-1.jpg" alt="GITEX 2024 Morocco" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap1">GITEX 2024 · Morocco</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-2.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-2.jpg')">
         <img src="images/gallery-2.jpg" alt="University of Ghana Legon with A2SV students" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap2">University of Ghana, Legon · With A2SV students</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-3.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-3.jpg')">
         <img src="images/gallery-3.jpg" alt="A2SV AI Hackathon 2023 Finals" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap3">A2SV AI Hackathon 2023 · Finals</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-4.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-4.jpg')">
         <img src="images/gallery-4.jpg" alt="With Karim Beguir" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap4">With Karim Beguir · A2SV advisor &amp; InstaDeep founder</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-5.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-5.jpg')">
         <img src="images/gallery-5.jpg" alt="With Anand Raju in Qatar" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap5">With Anand Raju · Qatar Investment Authority. Bilkent roommate, reunited in Qatar 2025</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-6.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-6.jpg')">
         <img src="images/gallery-6.jpg" alt="With KOICA manager in Ethiopia" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap6">With KOICA manager · Ethiopia</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-7.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-7.jpg')">
         <img src="images/gallery-7.jpg" alt="A2SV AI Hackathon 2023 finalist team" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap7">With finalist team · A2SV AI Hackathon 2023</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-8.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-8.jpg')">
         <img src="images/gallery-8.jpg" alt="Global AI Summit on Africa 2025 speaker" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap8">Global AI Summit on Africa 2025 · Speaker, with fellow panelists</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-9.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-9.jpg')">
         <img src="images/gallery-9.jpg" alt="Global AI Summit on Africa 2025 team" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap9">Global AI Summit on Africa 2025 · The team</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-10.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-10.jpg')">
         <img src="images/gallery-10.jpg" alt="Google MTV Googleplex 2015" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap10">Google years · MTV Googleplex, 2015</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-11.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-11.jpg')">
         <img src="images/gallery-11.jpg" alt="With H.E. Dr. Abiy Ahmed, Prime Minister of Ethiopia" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap11">With PM Abiy Ahmed · Startup Ethiopia 2024</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-12.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-12.jpg')">
         <img src="images/gallery-12.jpg" alt="With Jeff Dean, Google Chief Scientist" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap12">With Jeff Dean, Google Chief Scientist · Silicon Valley</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-13.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-13.jpg')">
         <img src="images/gallery-13.jpg" alt="With Hon. Paula Ingabire, Rwanda Minister of ICT" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap13">With Hon. Paula Ingabire · Rwanda Minister of ICT</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-14.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-14.jpg')">
         <img src="images/gallery-14.jpg" alt="With Hon. Haruna Iddrisu, Ghana Minister of Education" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap14">With Hon. Haruna Iddrisu · Ghana Minister of Education</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-15.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-15.jpg')">
         <img src="images/gallery-15.jpg" alt="With Karim Beguir at Global AI Summit on Africa 2025" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap15">With Karim Beguir · Global AI Summit on Africa, Kigali 2025</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-16.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-16.jpg')">
         <img src="images/gallery-16.jpg" alt="With Harry Robertson, Liftoff CTO" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap16">With Harry Robertson · Liftoff CTO, Silicon Valley</span></div>
       </div>
-      <div class="gallery-item" onclick="openLightbox('images/gallery-17.jpg')">
+      <div class="gallery-item" tabindex="0" role="button" onclick="openLightbox('images/gallery-17.jpg')">
         <img src="images/gallery-17.jpg" alt="A2SV Hackathon 2023 Jury" loading="lazy" />
         <div class="gallery-overlay"><span class="gallery-cap" data-i18n="gallery.cap17">A2SV Hackathon 2023 · Jury panel</span></div>
       </div>
@@ -1911,11 +1964,11 @@
       outsourcing your next IT project, or just want to say hello? I'd love to hear from you.
     </p>
     <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.5rem">
-      <a href="https://a2sv.org/donate" target="_blank" class="btn-primary" style="font-size:.82rem;padding:.65rem 1.4rem;">
+      <a href="https://a2sv.org/donate" target="_blank" rel="noopener" class="btn-primary" style="font-size:.82rem;padding:.65rem 1.4rem;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         <span data-i18n="contact.donate">Donate to A2SV</span>
       </a>
-      <a href="https://eskalate.io/book-a-call" target="_blank" class="btn-ghost" style="font-size:.82rem;padding:.65rem 1.4rem;">
+      <a href="https://eskalate.io/book-a-call" target="_blank" rel="noopener" class="btn-ghost" style="font-size:.82rem;padding:.65rem 1.4rem;">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
         <span data-i18n="contact.hire">Hire African Talent</span>
       </a>
@@ -1925,11 +1978,11 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         emre@a2sv.org
       </a>
-      <a href="https://a2sv.org" target="_blank" class="c-link">
+      <a href="https://a2sv.org" target="_blank" rel="noopener" class="c-link">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
         a2sv.org
       </a>
-      <a href="https://www.linkedin.com/in/emre-varol/" target="_blank" class="c-link">
+      <a href="https://www.linkedin.com/in/emre-varol/" target="_blank" rel="noopener" class="c-link">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
         LinkedIn
       </a>
@@ -1937,7 +1990,7 @@
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.45a16 16 0 006.29 6.29l1.51-1.51a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
         +1 (470) 846-9962
       </a>
-      <a href="https://www.instagram.com/varolemre" target="_blank" class="c-link">
+      <a href="https://www.instagram.com/varolemre" target="_blank" rel="noopener" class="c-link">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         @varolemre
       </a>
@@ -1951,31 +2004,33 @@
       <div class="form-row">
         <div class="form-group">
           <label for="contactName" data-i18n="form.name">Name</label>
-          <input type="text" id="contactName" name="name" required placeholder="Your name" />
+          <input type="text" id="contactName" name="name" required maxlength="100" placeholder="Your name" />
         </div>
         <div class="form-group">
           <label for="contactEmail" data-i18n="form.email">Email</label>
-          <input type="email" id="contactEmail" name="email" required placeholder="you@example.com" />
+          <input type="email" id="contactEmail" name="email" required maxlength="254" placeholder="you@example.com" />
         </div>
       </div>
       <div class="form-group">
         <label for="contactMsg" data-i18n="form.message">Message</label>
-        <textarea id="contactMsg" name="message" required placeholder="Write your message..."></textarea>
+        <textarea id="contactMsg" name="message" required maxlength="5000" placeholder="Write your message..."></textarea>
       </div>
       <button type="submit" class="btn-send" data-i18n="form.send">Send Message</button>
     </form>
   </div>
 </section>
 
+</main>
+
 <footer>
-  <p>© 2026 Emre Varol &nbsp;·&nbsp; Founder &amp; CEO, <a href="https://a2sv.org" target="_blank">A2SV</a> &nbsp;·&nbsp; <span data-i18n="footer.purpose">Built with purpose 🌍</span></p>
+  <p>© 2026 Emre Varol &nbsp;·&nbsp; Founder &amp; CEO, <a href="https://a2sv.org" target="_blank" rel="noopener">A2SV</a> &nbsp;·&nbsp; <span data-i18n="footer.purpose">Built with purpose 🌍</span></p>
   <p style="margin-top:.5rem">
     <img src="https://visitor-badge.laobi.icu/badge?page_id=emrevarol.emrevarol&left_color=%2306060f&right_color=%2300e5b8&left_text=visitors" alt="visitor count" style="height:20px;border-radius:4px;" />
   </p>
 </footer>
 
 <!-- GoatCounter Analytics — view at https://emrevarol.goatcounter.com -->
-<script data-goatcounter="https://emrevarol.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://emrevarol.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 
 <script>
 // ═══ PARTICLES ═══
@@ -2010,7 +2065,10 @@ function drawLines() {
     if(d<100) { ctx.beginPath(); ctx.moveTo(dots[i].x,dots[i].y); ctx.lineTo(dots[j].x,dots[j].y); ctx.strokeStyle=`rgba(0,229,184,${(1-d/100)*.06})`; ctx.lineWidth=.4; ctx.stroke(); }
   }
 }
-function animate() { ctx.clearRect(0,0,W,H); dots.forEach(d=>{d.update();d.draw();}); drawLines(); requestAnimationFrame(animate); }
+function animate() {
+  if (document.hidden) { requestAnimationFrame(animate); return; }
+  ctx.clearRect(0,0,W,H); dots.forEach(d=>{d.update();d.draw();}); drawLines(); requestAnimationFrame(animate);
+}
 animate();
 
 // ═══ TYPEWRITER ═══
@@ -2059,8 +2117,9 @@ document.querySelectorAll('[data-tilt]').forEach(card=>{
 // ═══ MOBILE NAV ═══
 function toggleNav() {
   const links=document.querySelector('.nav-links');
-  if(links.style.display==='flex'){ links.removeAttribute('style'); }
-  else { links.style.cssText='display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:rgba(6,6,15,.97);padding:1rem 5%;border-bottom:1px solid var(--border);gap:1.1rem;z-index:99;backdrop-filter:blur(20px)'; }
+  const burger=document.querySelector('.hamburger');
+  if(links.style.display==='flex'){ links.removeAttribute('style'); burger.setAttribute('aria-expanded','false'); }
+  else { links.style.cssText='display:flex;flex-direction:column;position:absolute;top:62px;left:0;right:0;background:rgba(6,6,15,.97);padding:1rem 5%;border-bottom:1px solid var(--border);gap:1.1rem;z-index:99;backdrop-filter:blur(20px)'; burger.setAttribute('aria-expanded','true'); }
 }
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
   if(window.innerWidth<=960) document.querySelector('.nav-links').removeAttribute('style');
@@ -2902,7 +2961,9 @@ const translations = {
 };
 
 function setLang(lang) {
-  const t = translations[lang] || translations.en;
+  if (!translations[lang]) lang = 'en';
+  const t = translations[lang];
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
     if (t[key] !== undefined) el.textContent = t[key];
@@ -2938,7 +2999,7 @@ window.addEventListener('scroll', ()=>{
   const y=window.scrollY;
   const ring=document.querySelector('.hero-photo-ring');
   if(ring) ring.style.transform=`translateY(${y*.08}px)`;
-});
+}, { passive: true });
 
 // ═══ LIGHTBOX ═══
 function openLightbox(src) {
@@ -3037,6 +3098,13 @@ function docGoTo(dir) {
 document.addEventListener('DOMContentLoaded', () => {
   const inner = document.getElementById('docViewerInner');
   if (inner) inner.addEventListener('scroll', updateDocPage);
+});
+
+// ═══ GALLERY KEYBOARD SUPPORT ═══
+document.querySelectorAll('.gallery-item[tabindex]').forEach(item => {
+  item.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.click(); }
+  });
 });
 
 // ═══ CONTACT FORM AJAX ═══

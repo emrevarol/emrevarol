@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- Homepage -->
   <url>
     <loc>https://emrevarol.com/</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/" />
@@ -18,40 +19,236 @@
     <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/?lang=am" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://emrevarol.com/" />
   </url>
+
+  <!-- Blog Index -->
   <url>
     <loc>https://emrevarol.com/blog/</loc>
     <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Blog: Partner With Us -->
   <url>
     <loc>https://emrevarol.com/blog/partner-with-us.html</loc>
     <lastmod>2024-08-31</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/blog/partner-with-us.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/blog/partner-with-us-tr.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/blog/partner-with-us-es.html" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/blog/partner-with-us-rw.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/blog/partner-with-us-fr.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/blog/partner-with-us-de.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/blog/partner-with-us-ar.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/blog/partner-with-us-pt.html" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/blog/partner-with-us-sw.html" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/blog/partner-with-us-am.html" />
   </url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-tr.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-es.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-rw.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-fr.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-de.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-ar.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-pt.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-sw.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/partner-with-us-am.html</loc><lastmod>2024-08-31</lastmod><priority>0.6</priority></url>
+
+  <!-- Blog: AI for Impact Hackathon -->
   <url>
     <loc>https://emrevarol.com/blog/ai-for-impact-hackathon.html</loc>
     <lastmod>2024-07-14</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/blog/ai-for-impact-hackathon.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/blog/ai-for-impact-hackathon-tr.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/blog/ai-for-impact-hackathon-es.html" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/blog/ai-for-impact-hackathon-rw.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/blog/ai-for-impact-hackathon-fr.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/blog/ai-for-impact-hackathon-de.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/blog/ai-for-impact-hackathon-ar.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/blog/ai-for-impact-hackathon-pt.html" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/blog/ai-for-impact-hackathon-sw.html" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/blog/ai-for-impact-hackathon-am.html" />
   </url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-tr.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-es.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-rw.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-fr.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-de.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-ar.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-pt.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-sw.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/ai-for-impact-hackathon-am.html</loc><lastmod>2024-07-14</lastmod><priority>0.6</priority></url>
+
+  <!-- Blog: Mahlet Dereje Haile -->
   <url>
     <loc>https://emrevarol.com/blog/mahlet-dereje-haile.html</loc>
     <lastmod>2024-04-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/blog/mahlet-dereje-haile.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/blog/mahlet-dereje-haile-tr.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/blog/mahlet-dereje-haile-es.html" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/blog/mahlet-dereje-haile-rw.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/blog/mahlet-dereje-haile-fr.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/blog/mahlet-dereje-haile-de.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/blog/mahlet-dereje-haile-ar.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/blog/mahlet-dereje-haile-pt.html" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/blog/mahlet-dereje-haile-sw.html" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/blog/mahlet-dereje-haile-am.html" />
   </url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-tr.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-es.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-rw.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-fr.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-de.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-ar.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-pt.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-sw.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/mahlet-dereje-haile-am.html</loc><lastmod>2024-04-15</lastmod><priority>0.6</priority></url>
+
+  <!-- Blog: A2SV 2023 Year in Review -->
   <url>
     <loc>https://emrevarol.com/blog/a2sv-2023-year-in-review.html</loc>
     <lastmod>2024-02-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/blog/a2sv-2023-year-in-review.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-tr.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-es.html" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-rw.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-fr.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-de.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-ar.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-pt.html" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-sw.html" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/blog/a2sv-2023-year-in-review-am.html" />
   </url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-tr.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-es.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-rw.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-fr.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-de.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-ar.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-pt.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-sw.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/a2sv-2023-year-in-review-am.html</loc><lastmod>2024-02-08</lastmod><priority>0.6</priority></url>
+
+  <!-- Blog: Generative AI Hackathon -->
   <url>
     <loc>https://emrevarol.com/blog/generative-ai-hackathon.html</loc>
     <lastmod>2023-12-04</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/blog/generative-ai-hackathon.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/blog/generative-ai-hackathon-tr.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/blog/generative-ai-hackathon-es.html" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/blog/generative-ai-hackathon-rw.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/blog/generative-ai-hackathon-fr.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/blog/generative-ai-hackathon-de.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/blog/generative-ai-hackathon-ar.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/blog/generative-ai-hackathon-pt.html" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/blog/generative-ai-hackathon-sw.html" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/blog/generative-ai-hackathon-am.html" />
+  </url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-tr.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-es.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-rw.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-fr.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-de.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-ar.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-pt.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-sw.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/blog/generative-ai-hackathon-am.html</loc><lastmod>2023-12-04</lastmod><priority>0.6</priority></url>
+
+  <!-- Lecture Index -->
+  <url>
+    <loc>https://emrevarol.com/lecture/</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/lecture/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/lecture/index-tr.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/lecture/index-es.html" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/lecture/index-rw.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/lecture/index-fr.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/lecture/index-de.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/lecture/index-ar.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/lecture/index-pt.html" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/lecture/index-sw.html" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/lecture/index-am.html" />
+  </url>
+  <url><loc>https://emrevarol.com/lecture/index-tr.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emrevarol.com/lecture/index-es.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emrevarol.com/lecture/index-rw.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emrevarol.com/lecture/index-fr.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emrevarol.com/lecture/index-de.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emrevarol.com/lecture/index-ar.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emrevarol.com/lecture/index-pt.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emrevarol.com/lecture/index-sw.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+  <url><loc>https://emrevarol.com/lecture/index-am.html</loc><lastmod>2026-03-10</lastmod><priority>0.7</priority></url>
+
+  <!-- Lecture: 7 Steps Problem Solving -->
+  <url>
+    <loc>https://emrevarol.com/lecture/7-steps-problem-solving.html</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/lecture/7-steps-problem-solving.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/lecture/7-steps-problem-solving-tr.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/lecture/7-steps-problem-solving-es.html" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/lecture/7-steps-problem-solving-rw.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/lecture/7-steps-problem-solving-fr.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/lecture/7-steps-problem-solving-de.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/lecture/7-steps-problem-solving-ar.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/lecture/7-steps-problem-solving-pt.html" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/lecture/7-steps-problem-solving-sw.html" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/lecture/7-steps-problem-solving-am.html" />
+  </url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-tr.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-es.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-rw.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-fr.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-de.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-ar.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-pt.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-sw.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/7-steps-problem-solving-am.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+
+  <!-- Lecture: Best Coding Practices -->
+  <url>
+    <loc>https://emrevarol.com/lecture/best-coding-practices.html</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://emrevarol.com/lecture/best-coding-practices.html" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://emrevarol.com/lecture/best-coding-practices-tr.html" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://emrevarol.com/lecture/best-coding-practices-es.html" />
+    <xhtml:link rel="alternate" hreflang="rw" href="https://emrevarol.com/lecture/best-coding-practices-rw.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://emrevarol.com/lecture/best-coding-practices-fr.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://emrevarol.com/lecture/best-coding-practices-de.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://emrevarol.com/lecture/best-coding-practices-ar.html" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://emrevarol.com/lecture/best-coding-practices-pt.html" />
+    <xhtml:link rel="alternate" hreflang="sw" href="https://emrevarol.com/lecture/best-coding-practices-sw.html" />
+    <xhtml:link rel="alternate" hreflang="am" href="https://emrevarol.com/lecture/best-coding-practices-am.html" />
+  </url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-tr.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-es.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-rw.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-fr.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-de.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-ar.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-pt.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-sw.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://emrevarol.com/lecture/best-coding-practices-am.html</loc><lastmod>2026-03-10</lastmod><priority>0.6</priority></url>
+
+  <!-- Lecture: Materials -->
+  <url>
+    <loc>https://emrevarol.com/lecture/materials.html</loc>
+    <lastmod>2026-03-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
