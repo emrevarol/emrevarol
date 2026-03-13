@@ -1957,7 +1957,7 @@
 <!-- ═══ CONTACT ═══ -->
 <section id="contact">
   <div class="contact-inner">
-    <div class="section-tag" style="justify-content:center">contact</div>
+    <div class="section-tag" style="justify-content:center" data-i18n="contact.tag">contact</div>
     <h2 data-i18n-html="contact.h">Let's <em style="font-style:normal;background:linear-gradient(135deg,var(--teal),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Connect</em></h2>
     <p data-i18n="contact.desc">
       Interested in partnering with A2SV, hiring world-class African engineers through Eskalate,
@@ -2004,16 +2004,16 @@
       <div class="form-row">
         <div class="form-group">
           <label for="contactName" data-i18n="form.name">Name</label>
-          <input type="text" id="contactName" name="name" required maxlength="100" placeholder="Your name" />
+          <input type="text" id="contactName" name="name" required maxlength="100" data-i18n-ph="form.ph.name" placeholder="Your name" />
         </div>
         <div class="form-group">
           <label for="contactEmail" data-i18n="form.email">Email</label>
-          <input type="email" id="contactEmail" name="email" required maxlength="254" placeholder="you@example.com" />
+          <input type="email" id="contactEmail" name="email" required maxlength="254" data-i18n-ph="form.ph.email" placeholder="you@example.com" />
         </div>
       </div>
       <div class="form-group">
         <label for="contactMsg" data-i18n="form.message">Message</label>
-        <textarea id="contactMsg" name="message" required maxlength="5000" placeholder="Write your message..."></textarea>
+        <textarea id="contactMsg" name="message" required maxlength="5000" data-i18n-ph="form.ph.message" placeholder="Write your message..."></textarea>
       </div>
       <button type="submit" class="btn-send" data-i18n="form.send">Send Message</button>
     </form>
@@ -2148,6 +2148,7 @@ const translations = {
     'contact.desc': "Interested in partnering with A2SV, hiring world-class African engineers through Eskalate, outsourcing your next IT project, or just want to say hello? I'd love to hear from you.",
     'contact.donate': 'Donate to A2SV', 'contact.hire': 'Hire African Talent',
     'form.name': 'Name', 'form.email': 'Email', 'form.message': 'Message', 'form.send': 'Send Message',
+    'contact.tag': 'contact', 'form.ph.name': 'Your name', 'form.ph.email': 'you@example.com', 'form.ph.message': 'Write your message...',
     'stat1.label': 'Engineers Trained', 'stat1.sub': 'from 22 African countries',
     'stat2.label': 'Top Tech Job Offers', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon Participants', 'stat3.sub': "Africa's largest AI hackathon",
@@ -2233,6 +2234,7 @@ const translations = {
     'contact.desc': "A2SV ile iş birliği yapmak, Eskalate üzerinden dünya standartlarında Afrika mühendislerini işe almak, IT projenizi outsource etmek ya da sadece merhaba demek isterseniz — bana ulaşın.",
     'contact.donate': "A2SV'ye Bağış Yap", 'contact.hire': 'Afrikalı Yetenek İşe Al',
     'form.name': 'Ad Soyad', 'form.email': 'E-posta', 'form.message': 'Mesaj', 'form.send': 'Mesajı Gönder',
+    'contact.tag': 'iletişim', 'form.ph.name': 'Adınız', 'form.ph.email': 'ornek@email.com', 'form.ph.message': 'Mesajınızı yazın...',
     'stat1.label': 'Yetiştirilen Mühendis', 'stat1.sub': '22 Afrika ülkesinden',
     'stat2.label': 'İş Teklifi Alındı', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon Katılımcısı', 'stat3.sub': "Afrika'nın en büyük AI yarışması",
@@ -2318,6 +2320,7 @@ const translations = {
     'contact.desc': '¿Quieres asociarte con A2SV, contratar talento africano a través de Eskalate, o simplemente saludar? Escríbeme, me encanta conocer gente nueva.',
     'contact.donate': 'Donar a A2SV', 'contact.hire': 'Contratar Talento Africano',
     'form.name': 'Nombre', 'form.email': 'Correo', 'form.message': 'Mensaje', 'form.send': 'Enviar Mensaje',
+    'contact.tag': 'contacto', 'form.ph.name': 'Tu nombre', 'form.ph.email': 'tu@correo.com', 'form.ph.message': 'Escribe tu mensaje...',
     'stat1.label': 'Ingenieros Formados', 'stat1.sub': 'de 22 países africanos',
     'stat2.label': 'Ofertas de Trabajo', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Participantes Hackathon', 'stat3.sub': 'el mayor hackathon de IA en África',
@@ -2403,6 +2406,7 @@ const translations = {
     'contact.desc': "Ushaka gukorana na A2SV, gushaka inzobere z'Afurika binyuze muri Eskalate, cyangwa ukunda kuvuga muraho? Nishimiye kukumva.",
     'contact.donate': 'Tanga kuri A2SV', 'contact.hire': "Shaka Inzobere z'Afurika",
     'form.name': 'Izina', 'form.email': 'Imeyili', 'form.message': 'Ubutumwa', 'form.send': 'Ohereza Ubutumwa',
+    'contact.tag': 'twandikire', 'form.ph.name': 'Izina ryawe', 'form.ph.email': 'imeyili@urugero.com', 'form.ph.message': 'Andika ubutumwa bwawe...',
     'stat1.label': 'Inzobere Zitozwe', 'stat1.sub': 'biva mu bihugu 22 bya Afurika',
     'stat2.label': 'Ibyifuzo bya Akazi', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Abagize Hackathon', 'stat3.sub': 'irushanwa rinini rya AI muri Afurika',
@@ -2488,6 +2492,7 @@ const translations = {
     'contact.desc': "Vous souhaitez collaborer avec A2SV, recruter des talents africains via Eskalate, ou juste dire bonjour ? J'adorerais vous entendre.",
     'contact.donate': 'Faire un don à A2SV', 'contact.hire': 'Recruter des Talents Africains',
     'form.name': 'Nom', 'form.email': 'E-mail', 'form.message': 'Message', 'form.send': 'Envoyer',
+    'contact.tag': 'contact', 'form.ph.name': 'Votre nom', 'form.ph.email': 'vous@exemple.com', 'form.ph.message': 'Écrivez votre message...',
     'stat1.label': 'Ingénieurs Formés', 'stat1.sub': 'de 22 pays africains',
     'stat2.label': "Offres d'Emploi Top", 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Participants Hackathon', 'stat3.sub': "Plus grand hackathon IA d'Afrique",
@@ -2573,6 +2578,7 @@ const translations = {
     'contact.desc': 'Interesse an einer Partnerschaft mit A2SV, der Einstellung afrikanischer Talente über Eskalate, oder einfach Hallo sagen?',
     'contact.donate': 'An A2SV spenden', 'contact.hire': 'Afrikanische Talente einstellen',
     'form.name': 'Name', 'form.email': 'E-Mail', 'form.message': 'Nachricht', 'form.send': 'Nachricht senden',
+    'contact.tag': 'kontakt', 'form.ph.name': 'Ihr Name', 'form.ph.email': 'sie@beispiel.com', 'form.ph.message': 'Schreiben Sie Ihre Nachricht...',
     'stat1.label': 'Ausgebildete Ingenieure', 'stat1.sub': 'aus 22 afrikanischen Ländern',
     'stat2.label': 'Top-Tech-Stellenangebote', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Hackathon-Teilnehmer', 'stat3.sub': "Afrikas größter KI-Hackathon",
@@ -2658,6 +2664,7 @@ const translations = {
     'contact.desc': 'هل تود الشراكة مع A2SV، توظيف مواهب أفريقية عبر Eskalate، أو مجرد إلقاء التحية؟ يسعدني سماعك.',
     'contact.donate': 'تبرع لـ A2SV', 'contact.hire': 'وظّف مواهب أفريقية',
     'form.name': 'الاسم', 'form.email': 'البريد الإلكتروني', 'form.message': 'الرسالة', 'form.send': 'إرسال الرسالة',
+    'contact.tag': 'تواصل', 'form.ph.name': 'اسمك', 'form.ph.email': 'بريدك@مثال.com', 'form.ph.message': 'اكتب رسالتك...',
     'stat1.label': 'مهندس مدرّب', 'stat1.sub': 'من 22 دولة أفريقية',
     'stat2.label': 'عروض عمل مرموقة', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'مشارك في هاكاثون', 'stat3.sub': 'أكبر هاكاثون ذكاء اصطناعي في أفريقيا',
@@ -2743,6 +2750,7 @@ const translations = {
     'contact.desc': 'Interessado em fazer parceria com A2SV, contratar talentos africanos pela Eskalate, ou simplesmente dizer olá?',
     'contact.donate': 'Doar para A2SV', 'contact.hire': 'Contratar Talentos Africanos',
     'form.name': 'Nome', 'form.email': 'E-mail', 'form.message': 'Mensagem', 'form.send': 'Enviar Mensagem',
+    'contact.tag': 'contato', 'form.ph.name': 'Seu nome', 'form.ph.email': 'voce@exemplo.com', 'form.ph.message': 'Escreva sua mensagem...',
     'stat1.label': 'Engenheiros Treinados', 'stat1.sub': 'de 22 países africanos',
     'stat2.label': 'Ofertas de Emprego Top', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Participantes Hackathon', 'stat3.sub': 'Maior hackathon de IA da África',
@@ -2828,6 +2836,7 @@ const translations = {
     'contact.desc': 'Una nia ya kushirikiana na A2SV, kuajiri vipaji vya Afrika kupitia Eskalate, au kusema habari tu?',
     'contact.donate': 'Changia A2SV', 'contact.hire': 'Ajiri Vipaji vya Afrika',
     'form.name': 'Jina', 'form.email': 'Barua pepe', 'form.message': 'Ujumbe', 'form.send': 'Tuma Ujumbe',
+    'contact.tag': 'wasiliana', 'form.ph.name': 'Jina lako', 'form.ph.email': 'wewe@mfano.com', 'form.ph.message': 'Andika ujumbe wako...',
     'stat1.label': 'Wahandisi Waliofunzwa', 'stat1.sub': 'kutoka nchi 22 za Afrika',
     'stat2.label': 'Ofa za Kazi Bora', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'Washiriki wa Hackathon', 'stat3.sub': 'Hackathon kubwa zaidi ya AI Afrika',
@@ -2913,6 +2922,7 @@ const translations = {
     'contact.desc': 'ከ A2SV ጋር ለመተባበር፣ ከ Eskalate በኩል የአፍሪካ ችሎታ ለመቅጠር ወይም ሰላም ለማለት? ከናንተ ለመሰማት እወዳለሁ።',
     'contact.donate': 'ለ A2SV ልገሳ', 'contact.hire': 'የአፍሪካ ችሎታ ቅጠር',
     'form.name': 'ስም', 'form.email': 'ኢሜይል', 'form.message': 'መልእክት', 'form.send': 'መልእክት ላክ',
+    'contact.tag': 'ያናግሩን', 'form.ph.name': 'ስምዎ', 'form.ph.email': 'ኢሜይልዎ@ምሳሌ.com', 'form.ph.message': 'መልእክትዎን ይጻፉ...',
     'stat1.label': 'የሰለጠኑ መሃንዲሶች', 'stat1.sub': 'ከ22 አፍሪካ ሃገሮች',
     'stat2.label': 'ምርጥ ቴክ ስራ ቅናሾች', 'stat2.sub': 'Google · Amazon · Bloomberg',
     'stat3.label': 'የሃካቶን ተሳታፊዎች', 'stat3.sub': 'በአፍሪካ ትልቁ AI ሃካቶን',
@@ -2991,6 +3001,10 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.getAttribute('data-i18n-html');
     if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const key = el.getAttribute('data-i18n-ph');
+    if (t[key] !== undefined) el.placeholder = t[key];
   });
   // Update typewriter roles
   if (t.roles) {
