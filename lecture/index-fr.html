@@ -356,6 +356,19 @@
             .card-link { justify-content: center; }
             footer .inner { flex-direction: column; gap: 0.5rem; }
         }
+    
+/* Language Switcher */
+.lang-sw{position:relative;display:inline-flex;align-items:center;margin-left:auto;margin-right:.75rem;z-index:200;}
+.lang-sw-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#f0f4ff;font-size:.78rem;font-weight:500;padding:.3rem .65rem;cursor:pointer;display:flex;align-items:center;gap:.35rem;transition:background .2s,border-color .2s;font-family:'Inter',sans-serif;}
+.lang-sw-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);}
+.lang-sw-btn .chevron{font-size:.55rem;opacity:.6;transition:transform .2s;}
+.lang-sw.open .chevron{transform:rotate(180deg);}
+.lang-sw-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#0d0d1a;border:1px solid #1a1a2e;border-radius:10px;min-width:140px;padding:.35rem 0;box-shadow:0 8px 24px rgba(0,0,0,.5);max-height:320px;overflow-y:auto;}
+.lang-sw.open .lang-sw-menu{display:block;}
+.lang-sw-menu a{display:block;padding:.4rem .85rem;font-size:.78rem;color:#8888aa;text-decoration:none;transition:background .15s,color .15s;font-family:'Inter',sans-serif;}
+.lang-sw-menu a:hover{background:rgba(0,229,184,.08);color:#00e5b8;}
+.lang-sw-menu a.active{color:#00e5b8;font-weight:600;}
+
     </style>
 </head>
 <body>
@@ -363,6 +376,21 @@
     <nav>
         <div class="inner">
             <a href="/">&larr; Retour à emrevarol.com</a>
+            <div class="lang-sw" id="langSw">
+  <button class="lang-sw-btn" onclick="document.getElementById('langSw').classList.toggle('open')">FR <span class="chevron">&#9660;</span></button>
+  <div class="lang-sw-menu">
+    <a href="index.html">English</a>
+    <a href="index-tr.html">Türkçe</a>
+    <a href="index-es.html">Español</a>
+    <a href="index-rw.html">Kinyarwanda</a>
+    <a href="index-fr.html" class="active">Français</a>
+    <a href="index-de.html">Deutsch</a>
+    <a href="index-ar.html">العربية</a>
+    <a href="index-pt.html">Português</a>
+    <a href="index-sw.html">Kiswahili</a>
+    <a href="index-am.html">አማርኛ</a>
+  </div>
+</div>
         </div>
     </nav>
 
@@ -392,7 +420,7 @@
                 <span class="tag">CI/CD</span>
             </div>
             <div class="card-links">
-                <a href="best-coding-practices.html" class="card-link">
+                <a href="best-coding-practices-fr.html" class="card-link">
                     Présentation (92 diapositives) <span class="arrow">&rarr;</span>
                 </a>
                 <a href="materials.html" class="card-link secondary">
@@ -419,7 +447,7 @@
                 <span class="tag">Algorithms</span>
             </div>
             <div class="card-links">
-                <a href="7-steps-problem-solving.html" class="card-link">
+                <a href="7-steps-problem-solving-fr.html" class="card-link">
                     Présentation (56 diapositives) <span class="arrow">&rarr;</span>
                 </a>
             </div>
@@ -440,6 +468,9 @@
             <a href="https://a2sv.org" target="_blank" rel="noopener">A2SV</a>
         </div>
     </footer>
+
+
+<script>document.addEventListener('click',function(e){var sw=document.getElementById('langSw');if(sw&&!sw.contains(e.target))sw.classList.remove('open');});</script>
 
 </body>
 </html>

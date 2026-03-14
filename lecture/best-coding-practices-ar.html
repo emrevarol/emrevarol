@@ -193,6 +193,19 @@ padding:10px 18px;border-radius:8px;font-size:.85rem;font-weight:500;color:var(-
 .compare{display:flex;gap:20px;margin:12px 0;}
 .compare>div{flex:1;}
 .compare h3{font-size:.9rem;margin-bottom:8px;}
+
+/* Language Switcher */
+.lang-sw{position:relative;display:inline-flex;align-items:center;margin-left:auto;margin-right:.75rem;z-index:200;}
+.lang-sw-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:#f0f4ff;font-size:.78rem;font-weight:500;padding:.3rem .65rem;cursor:pointer;display:flex;align-items:center;gap:.35rem;transition:background .2s,border-color .2s;font-family:'Inter',sans-serif;}
+.lang-sw-btn:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2);}
+.lang-sw-btn .chevron{font-size:.55rem;opacity:.6;transition:transform .2s;}
+.lang-sw.open .chevron{transform:rotate(180deg);}
+.lang-sw-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#0d0d1a;border:1px solid #1a1a2e;border-radius:10px;min-width:140px;padding:.35rem 0;box-shadow:0 8px 24px rgba(0,0,0,.5);max-height:320px;overflow-y:auto;}
+.lang-sw.open .lang-sw-menu{display:block;}
+.lang-sw-menu a{display:block;padding:.4rem .85rem;font-size:.78rem;color:#8888aa;text-decoration:none;transition:background .15s,color .15s;font-family:'Inter',sans-serif;}
+.lang-sw-menu a:hover{background:rgba(0,229,184,.08);color:#00e5b8;}
+.lang-sw-menu a.active{color:#00e5b8;font-weight:600;}
+
 </style>
 </head>
 <body>
@@ -200,6 +213,21 @@ padding:10px 18px;border-radius:8px;font-size:.85rem;font-weight:500;color:var(-
 <div id="topbar">
   <a href="https://emrevarol.com">&larr; emrevarol.com</a>
   <a href="materials.html" style="color:var(--teal);font-size:.85rem;margin-left:auto;margin-right:1rem;text-decoration:none;opacity:.7;transition:opacity .2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='.7'">المواد وقائمة المراجعة &rarr;</a>
+  <div class="lang-sw" id="langSw">
+  <button class="lang-sw-btn" onclick="document.getElementById('langSw').classList.toggle('open')">AR <span class="chevron">&#9660;</span></button>
+  <div class="lang-sw-menu">
+    <a href="best-coding-practices.html">English</a>
+    <a href="best-coding-practices-tr.html">Türkçe</a>
+    <a href="best-coding-practices-es.html">Español</a>
+    <a href="best-coding-practices-rw.html">Kinyarwanda</a>
+    <a href="best-coding-practices-fr.html">Français</a>
+    <a href="best-coding-practices-de.html">Deutsch</a>
+    <a href="best-coding-practices-ar.html" class="active">العربية</a>
+    <a href="best-coding-practices-pt.html">Português</a>
+    <a href="best-coding-practices-sw.html">Kiswahili</a>
+    <a href="best-coding-practices-am.html">አማርኛ</a>
+  </div>
+</div>
   <span class="a2sv-badge">A2SV &middot; University of Rwanda</span>
 </div>
 
@@ -1653,5 +1681,8 @@ Be specific and suggest improvements."</span></pre>
   updateUI();
 })();
 </script>
+
+<script>document.addEventListener('click',function(e){var sw=document.getElementById('langSw');if(sw&&!sw.contains(e.target))sw.classList.remove('open');});</script>
+
 </body>
 </html>
